@@ -8,19 +8,19 @@ import App from "next/app"
 function MyApp({ Component, pageProps, initialFlagsData, initialVisitorData }) {
   return (
     <>
-      <Head>
-        <title>The Coffee House</title>
-      </Head>
-      <Layout>
       <FlagshipProvider
       visitorData={initialVisitorData}
       initialFlagsData={initialFlagsData} //  set initial flags fetched server side
       envId={"blrok2jb3fq008ho9c70"}
       apiKey={"k0Q3wqL9GEajXlL6dw8vr4zfqxz50LIa7QAJDz8q"}
     >
+      <Head>
+        <title>The Coffee House</title>
+      </Head>
+      <Layout>
         <Component {...pageProps} />
-        </FlagshipProvider>
       </Layout>
+      </FlagshipProvider>
     </>
   )
 }

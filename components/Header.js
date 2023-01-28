@@ -1,6 +1,11 @@
 import Image from 'next/image'
+import { HitType, useFlagship, useFsFlag } from "@flagship.io/react-sdk";
 
 export default function Header({ scrollHandler }) {
+  const fs = useFlagship();
+
+  //get flag 
+  const flagImageSrc = useFsFlag("flagImageSrc", "/hero.jpg");
   return (
     <header className="relative">
       <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gray-100" />
@@ -11,7 +16,7 @@ export default function Header({ scrollHandler }) {
               priority
               fill
               className="h-full w-full object-cover"
-              src="/vaibhav-jewellers-customer-story-hero-image.jpg"
+              src={flagImageSrc.getValue()}
               alt="People working on laptops"
             />
             <div className="absolute inset-0 bg-orange-100 mix-blend-multiply" />
