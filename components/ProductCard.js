@@ -28,9 +28,6 @@ export default function ProductCard({ product }) {
         <h3>{product.name}</h3>
         <p>${product.price}</p>
       </div>
-      <p className="mt-1 text-sm italic text-gray-500">
-        {product.options[0].values[0].name} calories
-      </p>
     </Link>
   )
 }
