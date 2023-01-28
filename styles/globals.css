@@ -9,3 +9,12 @@
 .h-screen {
     height: auto;
 }
+
+.epoq-rs-headline {
+    text-align: center;
+    font-size: 3rem;
+    text-transform: uppercase;
+    font-weight: 700;
+    line-height: 3rem;
+    padding: 60px;
+}
