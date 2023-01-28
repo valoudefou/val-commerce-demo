@@ -44,6 +44,7 @@ export default function Product({ product }) {
             <p className="max-w-xl">{product.description}</p>
           </div>
         </div>
+          <div id="epoq-widget-homepage" className="epoq-recommendations-widget"></div>
       </div>
     </div>
   )
