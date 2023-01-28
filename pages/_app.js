@@ -1,11 +1,15 @@
 import '../styles/globals.css'
 import Layout from '../components/layout'
 import Head from 'next/head'
-import { Flagship, FlagshipProvider } from "@flagship.io/react-sdk"
+import { Flagship, FlagshipProvider, HitType, useFlagship, useFsFlag } from "@flagship.io/react-sdk"
 import React from "react"
 import App from "next/app"
 
 function MyApp({ Component, pageProps, initialFlagsData, initialVisitorData }) {
+  const fs = useFlagship();
+
+  //get flag 
+  const flagIndustry = useFsFlag("flagIndustry", "Product");
   return (
     <>
       <FlagshipProvider
@@ -15,7 +19,7 @@ function MyApp({ Component, pageProps, initialFlagsData, initialVisitorData }) {
       apiKey={"k0Q3wqL9GEajXlL6dw8vr4zfqxz50LIa7QAJDz8q"}
     >
       <Head>
-        <title>The Coffee House</title>
+        <title>{'The ' + flagIndustry.getValue() + ' House'}</title>
       </Head>
       <Layout>
         <Component {...pageProps} />
@@ -47,7 +51,7 @@ MyApp.getInitialProps = async (appContext) => {
   });
 
   //Fetch flags
-  await visitor?.fetchFlags();
+  await visitor?.fetchFlags()
 
   // Pass data to the page via props
   return {
