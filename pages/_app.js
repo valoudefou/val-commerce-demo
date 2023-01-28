@@ -4,6 +4,7 @@ import Head from 'next/head'
 import { Flagship, FlagshipProvider, HitType, useFlagship, useFsFlag } from "@flagship.io/react-sdk"
 import React from "react"
 import App from "next/app"
+import Script from 'next/script'
 
 function MyApp({ Component, pageProps, initialFlagsData, initialVisitorData }) {
   const fs = useFlagship();
@@ -12,6 +13,7 @@ function MyApp({ Component, pageProps, initialFlagsData, initialVisitorData }) {
   const flagIndustry = useFsFlag("flagIndustry", "Product");
   return (
     <>
+      <Script src="https://try.abtasty.com/1ceff369b6cd9aceaa9ee318e6498167.js" />
       <FlagshipProvider
       visitorData={initialVisitorData}
       initialFlagsData={initialFlagsData} //  set initial flags fetched server side
