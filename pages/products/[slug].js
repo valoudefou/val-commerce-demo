@@ -2,14 +2,20 @@ import swell from '../../swell'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
 import { useEffect } from 'react'
+import { HitType, useFlagship, useFsFlag } from "@flagship.io/react-sdk";
 
 export default function Product({ product }) {
-  useEffect(() => {
-    const script = document.createElement('script')
-    script.src = '//cdn.epoq.de/flow/quickstartdemo1.js'
-    script.async = false
-    document.body.appendChild(script)
-  }, [])
+  // useEffect(() => {
+  //   const script = document.createElement('script')
+  //   script.src = '//cdn.epoq.de/flow/quickstartdemo1.js'
+  //   script.async = false
+  //   document.body.appendChild(script)
+  // }, [])
+
+  const fs = useFlagship();
+
+  //get flag 
+  const epoqWidgetId = useFsFlag("epoqWidgetId", "homepage");
 
 const router = useRouter()
   async function checkout(productId) {
@@ -52,7 +58,7 @@ const router = useRouter()
             <p className="max-w-xl">{product.description}</p>
           </div>
         </div>
-        <div id="epoq-widget-homepage" className="epoq-recommendations-widget"></div>
+        <div id={'epoq-widget-' + epoqWidgetId.getValue()} className="epoq-recommendations-widget"></div>
       </div>
     </div>
   )
