@@ -1,11 +1,12 @@
 import Image from 'next/image'
-import { HitType, useFlagship, useFsFlag } from "@flagship.io/react-sdk";
+import { HitType, useFlagship, useFsFlag } from "@flagship.io/react-sdk"
 
 export default function Header({ scrollHandler }) {
   const fs = useFlagship();
 
   //get flag 
-  const flagImageSrc = useFsFlag("flagImageSrc", "/hero.jpg");
+  const flagImageSrc = useFsFlag("flagImageSrc", "/hero.jpg")
+  const flagBtnText = useFsFlag("flagBtnText", "Shop")
   return (
     <header className="relative">
       <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gray-100" />
@@ -35,7 +36,7 @@ export default function Header({ scrollHandler }) {
                 className="flex items-center justify-center rounded-md border border-transparent bg-white px-4 py-3 text-base font-medium text-orange-600 shadow-sm hover:bg-orange-100 sm:px-8"
                 onClick={scrollHandler}
               >
-                Shop catalog
+                {flagBtnText.getValue()}
               </button>
             </div>
           </div>
