@@ -1,9 +1,17 @@
 import swell from '../../swell'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
+import { useEffect } from 'react'
 
 export default function Product({ product }) {
-  const router = useRouter()
+  useEffect(() => {
+    const script = document.createElement('script')
+    script.src = '//cdn.epoq.de/flow/quickstartdemo1.js'
+    script.async = false
+    document.body.appendChild(script)
+  }, [])
+
+const router = useRouter()
   async function checkout(productId) {
     await swell.cart.setItems([])
     await swell.cart.addItem({
@@ -44,7 +52,7 @@ export default function Product({ product }) {
             <p className="max-w-xl">{product.description}</p>
           </div>
         </div>
-          <div id="epoq-widget-homepage" className="epoq-recommendations-widget"></div>
+        <div id="epoq-widget-homepage" className="epoq-recommendations-widget"></div>
       </div>
     </div>
   )

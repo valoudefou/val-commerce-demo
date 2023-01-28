@@ -13,7 +13,7 @@ function MyApp({ Component, pageProps, initialFlagsData, initialVisitorData }) {
   const flagIndustry = useFsFlag("flagIndustry", "Product");
   return (
     <>
-      <Script src="https://try.abtasty.com/1ceff369b6cd9aceaa9ee318e6498167.js" />
+      {/* <Script src="https://try.abtasty.com/1ceff369b6cd9aceaa9ee318e6498167.js" /> */}
       <FlagshipProvider
       visitorData={initialVisitorData}
       initialFlagsData={initialFlagsData} //  set initial flags fetched server side
