@@ -11,7 +11,7 @@ export default function Header({ scrollHandler }) {
               priority
               fill
               className="h-full w-full object-cover"
-              src="/hero.jpg"
+              src="/vaibhav-jewellers-customer-story-hero-image.jpg"
               alt="People working on laptops"
             />
             <div className="absolute inset-0 bg-orange-100 mix-blend-multiply" />

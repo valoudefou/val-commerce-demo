@@ -24,7 +24,7 @@ export default function Gallery({ data }) {
               className="mt-1 text-4xl font-bold uppercase text-gray-900 sm:text-5xl sm:tracking-tight lg:text-5xl"
               ref={(element) => (coffeeRef = element)}
             >
-              This is a headline
+              Shop our products
             </p>
           </div>
         </div>
