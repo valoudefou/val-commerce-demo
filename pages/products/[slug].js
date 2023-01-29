@@ -1,8 +1,7 @@
 import swell from '../../swell'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
-import { useEffect } from 'react'
-import { HitType, useFlagship, useFsFlag } from "@flagship.io/react-sdk";
+import { HitType, useFlagship, useFsFlag } from "@flagship.io/react-sdk"
 
 export default function Product({ product }) {
   // useEffect(() => {
@@ -12,10 +11,10 @@ export default function Product({ product }) {
   //   document.body.appendChild(script)
   // }, [])
 
-  const fs = useFlagship();
+  const fs = useFlagship()
 
   //get flag 
-  const epoqWidgetId = useFsFlag("epoqWidgetId", "homepage");
+  const epoqWidgetId = useFsFlag("epoqWidgetId", "homepage")
 
 const router = useRouter()
   async function checkout(productId) {
