@@ -4,7 +4,6 @@ import Head from 'next/head'
 import { Flagship, FlagshipProvider, HitType, useFlagship, useFsFlag } from "@flagship.io/react-sdk"
 import React from "react"
 import App from "next/app"
-import Script from 'next/script'
 
 function MyApp({ Component, pageProps, initialFlagsData, initialVisitorData }) {
   const fs = useFlagship();
