@@ -6,7 +6,7 @@ import React from "react"
 import App from "next/app"
 
 function MyApp({ Component, pageProps, initialFlagsData, initialVisitorData }) {
-  const fs = useFlagship();
+  const fs = useFlagship()
 
   //get flag 
   const flagIndustry = useFsFlag("flagIndustry", "Product")
@@ -38,9 +38,9 @@ MyApp.getInitialProps = async (appContext) => {
   });
 
   const initialVisitorData = {
-    id: "my_visitor_id17",
+    id: "my_visitor_id18",
     context: {
-      segment: "coffee",
+      segment: "jewelry",
     },
   };
 
