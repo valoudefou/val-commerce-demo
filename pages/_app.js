@@ -19,19 +19,10 @@ function MyApp({ Component, pageProps, initialFlagsData, initialVisitorData }) {
       apiKey={"k0Q3wqL9GEajXlL6dw8vr4zfqxz50LIa7QAJDz8q"}
     >
       <Head>
-      {/* <Script strategy="afterInteractive" src="https://www.googletagmanager.com/gtag/js?id=G-983490BZWX" /> */}
         <title>{'The ' + flagIndustry.getValue() + ' House'}</title>
       </Head>
       <Layout>
         <Component {...pageProps} />
-        {/* <Script id="google-analytics" strategy="afterInteractive">
-        {`
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){window.dataLayer.push(arguments);}
-          gtag('js', new Date());
-          gtag('config', 'G-983490BZWX');
-        `}
-      </Script> */}
       </Layout>
       </FlagshipProvider>
     </>
