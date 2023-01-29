@@ -1,4 +1,8 @@
+import { HitType, useFlagship, useFsFlag } from "@flagship.io/react-sdk"
+
 export default function Layout({ children }) {
+  const fs = useFlagship();
+  const flagBackgroundColor = useFsFlag("flagBackgroundColor", "#FF6600")
   return (
     <>
       <main>{children}</main>
@@ -7,7 +11,7 @@ export default function Layout({ children }) {
         <span>|</span>
         <a
           href="https://github.com/Nutlope/nextjs-swell"
-          className="font-medium text-orange-600"
+          className="font-medium text-orange-600" style={{color: flagBackgroundColor.getValue()}}
         >
           Source code
         </a>

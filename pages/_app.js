@@ -10,7 +10,7 @@ function MyApp({ Component, pageProps, initialFlagsData, initialVisitorData }) {
   const fs = useFlagship();
 
   //get flag 
-  const flagIndustry = useFsFlag("flagIndustry", "Product");
+  const flagIndustry = useFsFlag("flagIndustry", "Product")
   return (
     <>
       <Script src="https://try.abtasty.com/1ceff369b6cd9aceaa9ee318e6498167.js" />
@@ -49,9 +49,9 @@ MyApp.getInitialProps = async (appContext) => {
   });
 
   const initialVisitorData = {
-    id: "my_visitor_id8",
+    id: "my_visitor_id17",
     context: {
-      segment: "jewelry",
+      segment: "coffee",
     },
   };
 
