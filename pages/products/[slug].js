@@ -14,7 +14,7 @@ export default function Product({ product }) {
   const fs = useFlagship()
 
   //get flag 
-  const epoqWidgetId = useFsFlag("epoqWidgetId", "homepage")
+  const epoqWidgetId = useFsFlag("epoqWidgetId", "homepage-alternatives")
 
 const router = useRouter()
   async function checkout(productId) {
