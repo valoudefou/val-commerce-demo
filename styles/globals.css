@@ -6,19 +6,15 @@
     font-family: Montserrat, sans-serif;
 }
 
-.h-screen {
-    height: auto;
-}
-
 .epoq-rs-headline {
     text-align: center;
     font-size: 3rem;
     text-transform: uppercase;
     font-weight: 700;
     line-height: 3rem;
-    padding: 60px;
+    padding-top: 3rem;
 }
 
-#__next > main > header > div.mx-auto > div > div.relative.px-4.py-16.sm\:px-6.sm\:py-24.lg\:py-32.lg\:px-8 > p {
-    color: white;
+.justify-between {
+    height: auto;
 }

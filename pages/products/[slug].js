@@ -2,6 +2,7 @@ import swell from '../../swell'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
 import { HitType, useFlagship, useFsFlag } from "@flagship.io/react-sdk"
+import Link from 'next/link'
 
 export default function Product({ product }) {
   // useEffect(() => {
@@ -52,13 +53,15 @@ const router = useRouter()
               Checkout
             </button>
             <div className="mt-10 mb-5 border-t border-gray-200 pt-10 font-bold">
+            <Link href='/products/confirmation'>
               Description
+              </Link>
             </div>
             <p className="max-w-xl">{product.description}</p>
           </div>
         </div>
-        <div id={'epoq-widget-' + epoqWidgetId.getValue()} className="epoq-recommendations-widget"></div>
       </div>
+      <div id={'epoq-widget-' + epoqWidgetId.getValue()} className="epoq-recommendations-widget"></div>
     </div>
   )
 }
