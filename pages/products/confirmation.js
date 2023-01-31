@@ -16,7 +16,7 @@ export default function Confirmation() {
           'actionField': {
             'id': orderId, // Transaction ID. Required for purchases and refunds.
             'affiliation': 'Purchase',
-            'revenue': 54, // Total transaction value (incl. tax and shipping)
+            'revenue': Math.floor(100 + Math.random() * 900), // Total transaction value (incl. tax and shipping)
             'tax': 3,
             'shipping': 5.99,
             'coupon': 'SUMMER_SALE'
