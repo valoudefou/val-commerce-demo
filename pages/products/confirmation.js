@@ -43,14 +43,14 @@ export default function Confirmation() {
         }
       }
     });
-    console.log('Script executed');
+    console.log('Transaction executed');
   }, []); // Pass an empty dependency array to run only once on mount
   return (
     <>
-      <h1 style={{ color: flagBackgroundColor.getValue(), padding: '30px', fontSize: '17px' }}>
+      <h1 style={{ color: flagBackgroundColor.getValue(), padding: '30px', fontSize: '15px' }}>
         <Link href="/">Back home</Link>
       </h1>
-      <h2 style={{ fontSize: 'xxx-large', textAlign: 'center', padding: '40px' }}>Your order is confirmed!</h2>
+      <h2 style={{ fontSize: 'xxx-large', textAlign: 'center', padding: '80px', lineHeight: '4rem' }}>Your order is confirmed!</h2>
     </>
   );
 }
