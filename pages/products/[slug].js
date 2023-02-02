@@ -52,10 +52,15 @@ const router = useRouter()
             >
               Checkout
             </button>
-            <div className="mt-10 mb-5 border-t border-gray-200 pt-10 font-bold">
-            <Link href='/products/confirmation'>
-              Description
+            <button
+              className="mt-5 rounded-md border border-transparent bg-black px-4 py-3 font-medium text-white shadow-sm hover:bg-neutral-600 sm:px-8"
+            > 
+              <Link href='/products/confirmation' width="100%">
+              Pay with 1-Click
               </Link>
+            </button>
+            <div className="mt-10 mb-5 border-t border-gray-200 pt-10 font-bold">
+              Description
             </div>
             <p className="max-w-xl">{product.description}</p>
           </div>
