@@ -3,6 +3,7 @@ import Image from 'next/image'
 import { useRouter } from 'next/router'
 import { HitType, useFlagship, useFsFlag } from "@flagship.io/react-sdk"
 import Link from 'next/link'
+import { useState } from 'react'
 
 export default function Product({ product }) {
   // useEffect(() => {
@@ -16,7 +17,8 @@ export default function Product({ product }) {
 
   //get flag 
   const epoqWidgetId = useFsFlag("epoqWidgetId", "homepage-alternatives")
-
+  const paymentFeature1Click = useFsFlag("paymentFeature1Click", "false")
+  const [showMe, setShowMe] = useState(paymentFeature1Click.getValue())
 const router = useRouter()
   async function checkout(productId) {
     await swell.cart.setItems([])
@@ -52,6 +54,8 @@ const router = useRouter()
             >
               Checkout
             </button>
+            <>
+            {paymentFeature1Click.getValue() === 'true' &&
             <button
               className="mt-5 rounded-md border border-transparent bg-black px-4 py-3 font-medium text-white shadow-sm hover:bg-neutral-600 sm:px-8"
             > 
@@ -59,6 +63,8 @@ const router = useRouter()
               Pay with 1-Click
               </Link>
             </button>
+            }
+            </>
             <div className="mt-10 mb-5 border-t border-gray-200 pt-10 font-bold">
               Description
             </div>
@@ -92,3 +98,5 @@ export async function getStaticPaths() {
     fallback: 'blocking',
   }
 }
+
+

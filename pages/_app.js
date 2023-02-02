@@ -38,7 +38,7 @@ MyApp.getInitialProps = async (appContext) => {
   });
 
   const initialVisitorData = {
-    id: "my_visitor_id22",
+    id: "my_visitor_id45",
     context: {
       segment: "jewelry",
     },
