@@ -1,4 +1,5 @@
 import ProductCard from '../components/ProductCard'
+import Navbar from '../components/Navbar'
 import swell from '../swell'
 import Header from '../components/Header'
 import { useRef } from 'react'
@@ -16,6 +17,7 @@ export default function Gallery({ data }) {
 
   return (
     <>
+      <Navbar />
       <Header scrollHandler={scrollHandler} />
       <div className="mx-auto max-w-2xl px-4 sm:px-6 lg:max-w-7xl lg:px-8">
         <div className="sm:py-15 mx-auto max-w-7xl py-16 px-4 sm:px-6 lg:px-8">

@@ -4,6 +4,7 @@ import { useRouter } from 'next/router'
 import { HitType, useFlagship, useFsFlag } from "@flagship.io/react-sdk"
 import Link from 'next/link'
 import { useState } from 'react'
+import Navbar from '../../components/Navbar'
 
 export default function Product({ product }) {
   // useEffect(() => {
@@ -31,6 +32,7 @@ const router = useRouter()
   }
   return (
     <div className="flex h-screen flex-col justify-between">
+          <Navbar />
       <div className="mx-auto mt-16 max-w-2xl px-4 sm:px-6 lg:max-w-7xl lg:px-8">
         <div className="mx-auto flex flex-col sm:flex-row">
           <Image
