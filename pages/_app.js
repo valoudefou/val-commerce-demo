@@ -1,5 +1,5 @@
 import '../styles/globals.css'
-import Layout from '../components/layout'
+import Layout from '../components/Layout'
 import Head from 'next/head'
 import { Flagship, FlagshipProvider, HitType, useFlagship, useFsFlag } from "@flagship.io/react-sdk"
 import React from "react"
@@ -16,14 +16,11 @@ function MyApp({ Component, pageProps, initialFlagsData, initialVisitorData }) {
       visitorData={initialVisitorData}
       initialFlagsData={initialFlagsData} //  set initial flags fetched server side
       envId={"blrok2jb3fq008ho9c70"}
-      apiKey={"k0Q3wqL9GEajXlL6dw8vr4zfqxz50LIa7QAJDz8q"}
-    >
-      <Head>
-        <title>{'The ' + flagIndustry.getValue() + ' House'}</title>
-      </Head>
-      <Layout>
-        <Component {...pageProps} />
-      </Layout>
+      apiKey={"k0Q3wqL9GEajXlL6dw8vr4zfqxz50LIa7QAJDz8q"}>
+      <Head />
+      <title>{'The ' + flagIndustry.getValue() + ' House'}</title>
+      <Component {...pageProps} />
+      <Layout />
       </FlagshipProvider>
     </>
   )
