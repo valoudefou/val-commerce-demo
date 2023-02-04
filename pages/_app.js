@@ -3,7 +3,7 @@ import Head from 'next/head'
 import { Flagship, FlagshipProvider, HitType, useFlagship, useFsFlag } from "@flagship.io/react-sdk"
 import React from "react"
 import App from "next/app"
-import Layout from '../components/Layout'
+import Footer from '../components/Footer'
 
 function MyApp({ Component, pageProps, initialFlagsData, initialVisitorData }) {
   const fs = useFlagship()
@@ -20,7 +20,7 @@ function MyApp({ Component, pageProps, initialFlagsData, initialVisitorData }) {
       <Head />
       <title>{'The ' + flagIndustry.getValue() + ' House'}</title>
       <Component {...pageProps} />
-      <Layout />
+      <Footer />
       </FlagshipProvider>
     </>
   )
