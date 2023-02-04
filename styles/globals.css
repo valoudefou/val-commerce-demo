@@ -8,9 +8,9 @@
 
 .epoq-rs-headline {
     text-align: center;
-    font-size: 2rem;
+    font-size: 2.25rem;
     text-transform: uppercase;
     font-weight: 700;
-    line-height: 3rem;
-    padding-top: 4rem;
+    line-height: 2.25rem;
+    padding: 4rem;
 }
