@@ -6,7 +6,7 @@ export default function Confirmation() {
   const fs = useFlagship();
   
   //get flag 
-  const flagBackgroundColor = useFsFlag("flagBackgroundColor", "black");
+  const flagBackgroundColor = useFsFlag("flagBackgroundColor", "black")
   useEffect(() => {
     const orderId = 'PW' + Math.floor(100000000 + Math.random() * 900000000)
     window.dataLayer = window.dataLayer || [];
@@ -17,6 +17,7 @@ export default function Confirmation() {
             'id': orderId, // Transaction ID. Required for purchases and refunds.
             'affiliation': 'Purchase',
             'revenue': Math.floor(100 + Math.random() * 900), // Total transaction value (incl. tax and shipping)
+            'currency': 'GBP',
             'tax': 3,
             'shipping': 5.99,
             'coupon': 'SUMMER_SALE'
@@ -48,11 +49,11 @@ export default function Confirmation() {
   return (
     <>
         <Link href="/">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="absolute left-7 top-7 h-12 w-12 ...">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" color={flagBackgroundColor.getValue()} stroke-width="1" stroke="currentColor" class="absolute left-7 top-7 h-12 w-12 ...">
   <path stroke-linecap="round" stroke-linejoin="round" d="M11.25 9l-3 3m0 0l3 3m-3-3h7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
 </svg>
 </Link>
-      <h2 className='flex justify-center h-screen items-center text-5xl'>Your order is confirmed!</h2>
+      <h2 className='flex justify-center h-screen items-center text-5xl font-light'>Your order is confirmed!</h2>
     </>
   );
 }

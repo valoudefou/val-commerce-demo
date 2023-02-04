@@ -7,6 +7,7 @@ const fs = useFlagship();
 
 //get flag 
 const flagIndustry = useFsFlag("flagIndustry", "Product")
+const flagBackgroundColor = useFsFlag("flagBackgroundColor", "black")
   const [navbarOpen, setNavbarOpen] = React.useState(false);
   return (
     <>
@@ -38,34 +39,34 @@ const flagIndustry = useFsFlag("flagIndustry", "Product")
             <ul className="flex flex-col lg:flex-row list-none lg:ml-auto">
               <li className="nav-item">
                 <a
-                  className="my-1 text-sm text-gray-900 font-medium hover:text-indigo-500 md:mx-4 md:my-0"
+                  className="my-1 text-sm text-gray-900 font-medium md:mx-4 md:my-0"
                   href="/"
                 >
-                  <i className="fab fa-facebook-square text-lg leading-lg text-gray-900 opacity-75"></i><span className="ml-2">Home</span>
+                  <span className="ml-2">Home</span>
                 </a>
               </li>
               <li className="nav-item">
                 <a
-                  className="my-1 text-sm text-gray-900 font-medium hover:text-indigo-500 md:mx-4 md:my-0"
+                  className="my-1 text-sm text-gray-900 font-medium md:mx-4 md:my-0"
                   href="/"
                 >
-                  <i className="fab fa-twitter text-lg leading-lg text-gray-900 opacity-75"></i><span className="ml-2">Shop</span>
+                  <span className="ml-2">Shop</span>
                 </a>
               </li>
               <li className="nav-item">
                 <a
-                  className="my-1 text-sm text-gray-900 font-medium hover:text-indigo-500 md:mx-4 md:my-0"
+                  className="my-1 text-sm text-gray-900 font-medium md:mx-4 md:my-0"
                   href="/"
                 >
-                  <i className="fab fa-pinterest text-lg leading-lg text-gray-900 opacity-75"></i><span className="ml-2">Contact</span>
+                  <span className="ml-2">Contact</span>
                 </a>
               </li>
               <li className="nav-item">
                 <a
-                  className="my-1 text-sm text-gray-900 font-medium hover:text-indigo-500 md:mx-4 md:my-0"
+                  className="my-1 text-sm text-gray-900 font-medium md:mx-4 md:my-0"
                   href="/"
                 >
-                  <i className="fab fa-pinterest text-lg leading-lg text-gray-900 opacity-75"></i><span className="ml-2">About</span>
+                  <span className="ml-2">About</span>
                 </a>
               </li>
             </ul>
@@ -75,7 +76,7 @@ const flagIndustry = useFsFlag("flagIndustry", "Product")
             <path d="M3 3H5L5.4 5M7 13H17L21 5H5.4M7 13L5.4 5M7 13L4.70711 15.2929C4.07714 15.9229 4.52331 17 5.41421 17H17M17 17C15.8954 17 15 17.8954 15 19C15 20.1046 15.8954 21 17 21C18.1046 21 19 20.1046 19 19C19 17.8954 18.1046 17 17 17ZM9 19C9 20.1046 8.10457 21 7 21C5.89543 21 5 20.1046 5 19C5 17.8954 5.89543 17 7 17C8.10457 17 9 17.8954 9 19Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
           </svg>
 
-          <span class="absolute top-0 left-0 rounded-full bg-indigo-500 text-gray-900 p-1 text-xs"></span>
+          <span style={{ backgroundColor: flagBackgroundColor.getValue() }} class="absolute top-0 left-0 rounded-full bg-indigo-100 text-gray-900 p-1 text-xs"></span>
         </a>
       </div>
           </div>

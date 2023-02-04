@@ -2,7 +2,7 @@ import { HitType, useFlagship, useFsFlag } from "@flagship.io/react-sdk"
 
 export default function Footer({ children }) {
   const fs = useFlagship();
-  const flagBackgroundColor = useFsFlag("flagBackgroundColor", "#FF6600")
+  const flagBackgroundColor = useFsFlag("flagBackgroundColor", "black")
   return (
     <>
       <main>{children}</main>

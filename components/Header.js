@@ -8,7 +8,7 @@ export default function Header({ scrollHandler }) {
   const flagImageSrc = useFsFlag("flagImageSrc", "/hero.jpg")
   const flagBtnText = useFsFlag("flagBtnText", "Shop")
   const flagIndustry = useFsFlag("flagIndustry", "Product")
-  const flagBackgroundColor = useFsFlag("flagBackgroundColor", "#FF6600")
+  const flagBackgroundColor = useFsFlag("flagBackgroundColor", "black")
   return (
     <header className="relative">
       <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gray-100" />
@@ -35,7 +35,7 @@ export default function Header({ scrollHandler }) {
 
             <div className="mx-auto mt-10 max-w-xs sm:flex sm:max-w-none sm:justify-center">
               <button
-                className="flex items-center justify-center rounded-md border border-transparent bg-white px-4 py-3 text-base font-medium text-orange-600 shadow-sm hover:bg-orange-100 sm:px-8" id="ab-btn" style={{color: flagBackgroundColor.getValue()}}
+                className="flex items-center justify-center rounded-md border border-transparent bg-white px-4 py-3 text-base font-medium text-gray-900 shadow-sm hover:bg-gray-100 sm:px-8" id="ab-btn"
                 onClick={scrollHandler}
               >
                 {flagBtnText.getValue()}

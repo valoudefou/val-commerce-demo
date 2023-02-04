@@ -43,7 +43,7 @@ const router = useRouter()
             height={640}
           />
           <div className="mt-10 flex flex-col sm:mt-0">
-            <h1 className="mt-1 text-4xl font-bold uppercase text-gray-900 sm:text-3xl sm:tracking-tight lg:text-3xl">
+            <h1 className="mt-1 text-2xl font-bold uppercase text-gray-900 sm:text-2xl sm:tracking-tight lg:text-3xl">
               {product.name}
             </h1>
             <h1 className="mt-3 text-4xl font-bold text-gray-500 sm:text-3xl sm:tracking-tight lg:text-3xl">
