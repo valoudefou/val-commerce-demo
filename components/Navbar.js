@@ -19,7 +19,7 @@ const flagBackgroundColor = useFsFlag("flagBackgroundColor", "black")
               href="/"
             >
             {flagIndustry.getValue()}
-            <span className="text-sm font-extralight py-1 absolute">®</span>
+            <span className="text-sm font-thin py-1 absolute">®</span>
             </a>
             <button
               className="text-gray-900 cursor-pointer text-xl leading-none px-3 py-1 border border-solid border-transparent rounded bg-transparent block lg:hidden outline-none focus:outline-none"
