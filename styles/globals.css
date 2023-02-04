@@ -8,17 +8,9 @@
 
 .epoq-rs-headline {
     text-align: center;
-    font-size: 3rem;
+    font-size: 2rem;
     text-transform: uppercase;
     font-weight: 700;
     line-height: 3rem;
-    padding-top: 3rem;
-}
-
-.justify-between {
-    height: auto;
-}
-
-.max-w-xs {
-    max-width: fit-content;
+    padding-top: 4rem;
 }

@@ -14,7 +14,6 @@ export default function ProductCard({ product }) {
           alt=""
           src={product.images[0].file.url}
           fill
-          objectFit="cover"
           className={cn(
             'duration-700 ease-in-out group-hover:opacity-75',
             isLoading

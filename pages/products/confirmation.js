@@ -47,10 +47,12 @@ export default function Confirmation() {
   }, []); // Pass an empty dependency array to run only once on mount
   return (
     <>
-      <h1 style={{ color: flagBackgroundColor.getValue(), padding: '30px', fontSize: '15px' }}>
-        <Link href="/">Back home</Link>
-      </h1>
-      <h2 style={{ fontSize: 'xxx-large', textAlign: 'center', padding: '80px', lineHeight: '4rem' }}>Your order is confirmed!</h2>
+        <Link href="/">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="absolute left-7 top-7 h-12 w-12 ...">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M11.25 9l-3 3m0 0l3 3m-3-3h7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+</svg>
+</Link>
+      <h2 className='flex justify-center h-screen items-center text-4xl'>Your order is confirmed!</h2>
     </>
   );
 }
