@@ -1,7 +1,9 @@
 import { useRef } from "react"
+import { HitType, useFlagship, useFsFlag } from "@flagship.io/react-sdk"
 
 export default function SearchBar() {
-
+    const fs = useFlagship();
+    const flagIndustry = useFsFlag("flagIndustry", "Product")
     const clickPoint = useRef();
     const handleFocus = () => {
         clickPoint.current.style.display = "none";
@@ -19,8 +21,8 @@ export default function SearchBar() {
                 </div>
                 <input
                     type="text"
-                    className="block p-2 pl-10 w-70 text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:pl-3"
-                    placeholder="Search Here..."
+                    className="block p-2 pl-10 w-70 text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:pl-3 lowercase"
+                    placeholder={'Search ' + flagIndustry.getValue() + ' ...'}
                     onFocus={handleFocus}
                     onBlur={handleBlur}
                 />
