@@ -30,12 +30,12 @@ export default function Header({ scrollHandler }) {
             </p>
             <h1 className="mt-1 text-center font-medium text-gray-900 sm:text-5xl sm:tracking-tight lg:text-6xl">
               <span className="block text-white">Life is better with</span>
-              <span className="block text-orange-500" style={{color: flagBackgroundColor.getValue()}}>{flagIndustry.getValue()}</span>
+              <span className="block" style={{color: flagBackgroundColor.getValue()}}>{flagIndustry.getValue()}</span>
             </h1>
 
             <div className="mx-auto mt-10 max-w-xs sm:flex sm:max-w-none sm:justify-center">
               <button
-                className="flex items-center justify-center rounded-md border border-transparent bg-white px-4 py-3 text-base font-medium text-gray-900 shadow-sm hover:bg-gray-100 sm:px-8" id="ab-btn"
+                className="flex items-center justify-center rounded-md border border-transparent bg-white px-4 py-3 text-base font-normal text-gray-900 shadow-sm hover:bg-gray-100 sm:px-8" id="ab-btn"
                 onClick={scrollHandler}
               >
                 {flagBtnText.getValue()}
