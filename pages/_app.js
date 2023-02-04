@@ -1,5 +1,4 @@
 import '../styles/globals.css'
-import Layout from '../components/Layout'
 import Head from 'next/head'
 import { Flagship, FlagshipProvider, HitType, useFlagship, useFsFlag } from "@flagship.io/react-sdk"
 import React from "react"
@@ -20,7 +19,6 @@ function MyApp({ Component, pageProps, initialFlagsData, initialVisitorData }) {
       <Head />
       <title>{'The ' + flagIndustry.getValue() + ' House'}</title>
       <Component {...pageProps} />
-      <Layout />
       </FlagshipProvider>
     </>
   )
