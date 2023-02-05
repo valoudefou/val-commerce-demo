@@ -21,7 +21,7 @@ export default function SearchBar() {
                 </div>
                 <input
                     type="text"
-                    className="block p-2 pl-10 w-70 text-gray-900 bg-gray-50 rounded-lg border border-gray-200 focus:pl-3 lowercase"
+                    className="block p-2 font-light pl-10 w-70 text-gray-900 bg-gray-50 rounded-lg border border-gray-200 focus:pl-3 lowercase"
                     placeholder={'Search ' + flagIndustry.getValue() + ' ...'}
                     onFocus={handleFocus}
                     onBlur={handleBlur}
