@@ -17,7 +17,7 @@ const flagBackgroundColor = useFsFlag("flagBackgroundColor", "black")
         <div className="container px-4 mx-auto flex lg:flex-wrap items-center justify-between">
           <div className="w-full relative flex justify-between lg:w-auto lg:static lg:block lg:justify-start">
             <a
-              className="text-2xl px-7 font-bold leading-relaxed inline-block mr-4 py-2 whitespace-nowrap uppercase text-gray-900"
+              className="text-2xl px-7 font-bold leading-relaxed inline-block mr-4 py-3 whitespace-nowrap uppercase text-gray-900"
               href="/"
             >
             {flagIndustry.getValue()}
@@ -74,7 +74,7 @@ const flagBackgroundColor = useFsFlag("flagBackgroundColor", "black")
             </ul>
             <div onMouseEnter={() => setIsShown(true)}
               onMouseLeave={() => setIsShown(false)}
-              className="flex justify-center px-7 md:block">
+              className="flex justify-center px-7 py-3 md:block">
               <a className="relative text-gray-900 hover:text-gray-700" target="_blank">
                 <svg className="h-6 w-6" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path d="M3 3H5L5.4 5M7 13H17L21 5H5.4M7 13L5.4 5M7 13L4.70711 15.2929C4.07714 15.9229 4.52331 17 5.41421 17H17M17 17C15.8954 17 15 17.8954 15 19C15 20.1046 15.8954 21 17 21C18.1046 21 19 20.1046 19 19C19 17.8954 18.1046 17 17 17ZM9 19C9 20.1046 8.10457 21 7 21C5.89543 21 5 20.1046 5 19C5 17.8954 5.89543 17 7 17C8.10457 17 9 17.8954 9 19Z" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"></path>

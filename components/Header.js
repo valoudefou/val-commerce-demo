@@ -35,7 +35,7 @@ export default function Header({ scrollHandler }) {
 
             <div className="mx-auto mt-10 max-w-xs sm:flex sm:max-w-none sm:justify-center">
               <button
-                className="flex items-center justify-center rounded-md border border-transparent bg-white px-4 py-3 text-base font-normal text-gray-900 shadow-sm hover:bg-gray-100 sm:px-8" id="ab-btn"
+                className="flex uppercase items-center justify-center rounded-md border border-transparent bg-white px-4 py-3 text-xs font-medium text-gray-900 shadow-sm hover:bg-gray-100 sm:px-8" id="ab-btn"
                 onClick={scrollHandler}
               >
                 {flagBtnText.getValue()}
