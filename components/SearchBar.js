@@ -2,16 +2,16 @@ import { useRef } from "react"
 import { HitType, useFlagship, useFsFlag } from "@flagship.io/react-sdk"
 
 export default function SearchBar() {
-const fs = useFlagship();
+const fs = useFlagship()
 const flagIndustry = useFsFlag("flagIndustry", "Product")
-const clickPoint = useRef();
+const clickPoint = useRef()
 const handleFocus = () => {
-clickPoint.current.style.display = "none";
-};
+clickPoint.current.style.display = "none"
+}
 
 const handleBlur = () => {
-clickPoint.current.style.display = "block";
-};
+clickPoint.current.style.display = "block"
+}
 
 return (
 <div className="items-center px-4 flex justify-center" >

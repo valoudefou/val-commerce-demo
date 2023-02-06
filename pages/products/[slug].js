@@ -1,4 +1,3 @@
-import swell from '../../swell'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
 import { HitType, useFlagship, useFsFlag } from "@flagship.io/react-sdk"
@@ -6,7 +5,7 @@ import Link from 'next/link'
 import { useState } from 'react'
 import Navbar from '../../components/Navbar'
 
-export default function Product({ product }) {
+export default function Product() {
 // useEffect(() => {
 //   const script = document.createElement('script')
 //   script.src = '//cdn.epoq.de/flow/quickstartdemo1.js'
@@ -20,38 +19,38 @@ const fs = useFlagship()
 const epoqWidgetId = useFsFlag("epoqWidgetId", "homepage-alternatives")
 const paymentFeature1Click = useFsFlag("paymentFeature1Click", "false")
 const [showMe, setShowMe] = useState(paymentFeature1Click.getValue())
-const router = useRouter()
-async function checkout(productId) {
-await swell.cart.setItems([])
-await swell.cart.addItem({
-product_id: productId,
-quantity: 1,
-})
-const cart = await swell.cart.get()
-router.push(cart.checkout_url)
-}
+// const router = useRouter()
+// async function checkout(productId) {
+// await swell.cart.setItems([])
+// await swell.cart.addItem({
+// product_id: productId,
+// quantity: 1,
+// })
+// const cart = await swell.cart.get()
+// router.push(cart.checkout_url)
+// }
 return (
 <div className="flex h-auto flex-col justify-between">
 <Navbar />
 <div className="mx-auto mt-16 mb-24 max-w-1xl px-4 sm:px-6 lg:max-w-7xl lg:px-8">
 <div className="mx-auto flex flex-col lg:flex-row">
-<Image
+{/* <Image
 alt="coffee"
 className="rounded-lg object-contain self-center px-8"
 src={product.images[0].file.url}
 width={560}
 height={640}
-/>
+/> */}
 <div className="mt-10 flex flex-col sm:mt-0">
 <h1 className="mt-1 text-2xl font-medium text-gray-900 sm:text-2xl sm:tracking-tight lg:text-3xl">
-{product.name}
+{/* {product.name} */}
 </h1>
 <h1 className="mt-3 text-3xl font-bold text-gray-500 sm:text-3xl sm:tracking-wide lg:text-2xl">
-${product.price}
+{/* ${product.price} */}
 </h1>
 <button
 className="flex items-center justify-center text-sm font-base mt-5 border border-transparent bg-orange-600 px-4 py-4 text-white shadow-sm hover:bg-orange-800 sm:px-8 w-full"
-onClick={() => checkout(product.id)}
+// onClick={() => checkout(product.id)}
 >
 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-6 h-6 py-0.5">
 <path strokeLinecap="round" strokeLinejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3" />
@@ -75,7 +74,9 @@ Pay
 <div className="mt-10 mb-5 border-t border-gray-200 pt-10 font-bold text-base">
 Description
 </div>
-<p className="max-w-xxl font-light text-sm">{product.description}</p>
+<p className="max-w-xxl font-light text-sm">
+{/* {product.description} */}
+</p>
 </div>
 </div>
 </div>
@@ -84,26 +85,26 @@ Description
 )
 }
 
-export async function getStaticProps({ params }) {
-const swellProduct = await swell.products.get(params.slug)
-return {
-props: {
-product: swellProduct,
-},
-}
-}
+// export async function getStaticProps({ params }) {
+// const swellProduct = await swell.products.get(params.slug)
+// return {
+// props: {
+// product: swellProduct,
+// },
+// }
+// }
 
-export async function getStaticPaths() {
-const swellProducts = await swell.products.list()
-let fullPaths = []
-for (let product of swellProducts.results) {
-fullPaths.push({ params: { slug: product.id } })
-}
+// export async function getStaticPaths() {
+// const swellProducts = await swell.products.list()
+// let fullPaths = []
+// for (let product of swellProducts.results) {
+// fullPaths.push({ params: { slug: product.id } })
+// }
 
-return {
-paths: fullPaths,
-fallback: 'blocking',
-}
-}
+// return {
+// paths: fullPaths,
+// fallback: 'blocking',
+// }
+// }
 
 
