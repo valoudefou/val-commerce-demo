@@ -6,56 +6,56 @@ import App from "next/app"
 import Footer from '../components/Footer'
 
 function MyApp({ Component, pageProps, initialFlagsData, initialVisitorData }) {
-  const fs = useFlagship()
+const fs = useFlagship()
 
-  //get flag 
-  const flagIndustry = useFsFlag("flagIndustry", "Product")
-  return (
-    <>
-      <FlagshipProvider
-      visitorData={initialVisitorData}
-      initialFlagsData={initialFlagsData} //  set initial flags fetched server side
-      envId={"blrok2jb3fq008ho9c70"}
-      apiKey={"k0Q3wqL9GEajXlL6dw8vr4zfqxz50LIa7QAJDz8q"}>
-      <Head />
-      <title>{'The ' + flagIndustry.getValue() + ' House'}</title>
-      <Component {...pageProps} />
-      <Footer />
-      </FlagshipProvider>
-    </>
-  )
+//get flag 
+const flagIndustry = useFsFlag("flagIndustry", "Product")
+return (
+<>
+<FlagshipProvider
+visitorData={initialVisitorData}
+initialFlagsData={initialFlagsData} //  set initial flags fetched server side
+envId={"blrok2jb3fq008ho9c70"}
+apiKey={"k0Q3wqL9GEajXlL6dw8vr4zfqxz50LIa7QAJDz8q"}>
+<Head />
+<title>{'The ' + flagIndustry.getValue() + ' House'}</title>
+<Component {...pageProps} />
+<Footer />
+</FlagshipProvider>
+</>
+)
 }
 
 MyApp.getInitialProps = async (appContext) => {
-  const appProps = await App.getInitialProps(appContext);
+const appProps = await App.getInitialProps(appContext);
 
-  //Start the Flagship SDK
-  const flagship = Flagship.start("blrok2jb3fq008ho9c70", "k0Q3wqL9GEajXlL6dw8vr4zfqxz50LIa7QAJDz8q", {
-    fetchNow: false,
-  });
+//Start the Flagship SDK
+const flagship = Flagship.start("blrok2jb3fq008ho9c70", "k0Q3wqL9GEajXlL6dw8vr4zfqxz50LIa7QAJDz8q", {
+fetchNow: false,
+});
 
-  const initialVisitorData = {
-    id: "my_visitor_id56",
-    context: {
-      segment: "coffee",
-    },
-  };
+const initialVisitorData = {
+id: "my_visitor_id56",
+context: {
+segment: "coffee",
+},
+};
 
-  // Create a new visitor
-  const visitor = flagship?.newVisitor({
-    visitorId: initialVisitorData.id,
-    context: initialVisitorData.context,
-  });
+// Create a new visitor
+const visitor = flagship?.newVisitor({
+visitorId: initialVisitorData.id,
+context: initialVisitorData.context,
+});
 
-  //Fetch flags
-  await visitor?.fetchFlags()
+//Fetch flags
+await visitor?.fetchFlags()
 
-  // Pass data to the page via props
-  return {
-    ...appProps,
-    initialFlagsData: visitor?.getFlagsDataArray(),
-    initialVisitorData,
-  };
+// Pass data to the page via props
+return {
+...appProps,
+initialFlagsData: visitor?.getFlagsDataArray(),
+initialVisitorData,
+};
 };
 
 export default MyApp
