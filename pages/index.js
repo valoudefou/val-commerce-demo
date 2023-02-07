@@ -2,23 +2,6 @@ import ProductCard from '../components/ProductCard'
 import Navbar from '../components/Navbar'
 import Header from '../components/Header'
 import { useRef } from 'react'
-import { createClient } from 'contentful'
-
-export async function getStaticProps() {
-    const client = createClient({
-        space: 'mwr46hk1hvcf',
-        accessToken: 'P7e2zlwtUe4ZDhEuBW9cQ8ma8ViKddL3f1oYrfCHbdk'
-    })
-    const res = await client.getEntries({
-        content_type: 'product'
-    })
-    console.log('exec')
-    return {
-        props: {
-            products: res.items
-        }
-    }
-}
 
 export default function Gallery({ data }) {
 let coffeeRef = useRef()

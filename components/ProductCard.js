@@ -11,9 +11,9 @@ src="/product.png"
 fill
 />
 </div>
-<div className="mt-4 flex items-center justify-between text-base font-medium text-gray-900">
+<div className="mt-4 flex items-center justify-between text-base font-normal text-gray-900">
 <h3>Pretty Woman ring Mini model 18k white gold and diamonds</h3>
-<p>1,650.00€</p>
+<p className='font-base font-bold'>1,650.00€</p>
 </div>
 </Link>
 )

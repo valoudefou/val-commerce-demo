@@ -74,7 +74,7 @@ Pay
 <div className="mt-10 mb-5 border-t border-gray-200 pt-10 font-bold text-base">
 Description
 </div>
-<p className="max-w-xxl font-light text-sm">
+<p className="max-w-xxl font-light text-base tracking-normal">
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris et ultricies ex, quis tincidunt odio. Phasellus porttitor scelerisque dui, pretium ullamcorper arcu gravida non.
 </p>
 </div>
