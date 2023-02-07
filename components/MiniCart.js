@@ -16,7 +16,7 @@ return (
 <span className="text-gray-900 font-light text-sm w-4/5">Force 10 ring Small model in 18k pink gold and diamonds</span>
 <div className="flex items-center">
 <span className="text-gray-500 font-light text-sm">1 x</span>
-<span className="text-gray-500 font-light text-sm px-2">$2330</span>
+<span className="text-gray-500 font-light text-sm px-2">2,330.00 €</span>
 </div>
 </div>
 <Image
@@ -36,7 +36,7 @@ height={70}
 <span className="text-gray-900 font-light text-sm w-4/5">Force 10 ring Small model in 18k pink gold and diamonds</span>
 <div className="flex items-center">
 <span className="text-gray-500 font-light text-sm">1 x</span>
-<span className="text-gray-500 font-light text-sm px-2">$2330</span>
+<span className="text-gray-500 font-light text-sm px-2">2,330.00 €</span>
 </div>
 </div>
 <Image
@@ -53,7 +53,7 @@ height={70}
 </div>
 <div className="flex justify-between font-light border-t-[1px] py-3 text-sm">
 <span className="text-gray-500">TOTAL</span>
-<span className="text-gray-500 tracking-wide">$4660</span>
+<span className="text-gray-500 tracking-wide">4,660.00 €</span>
 </div>
 <div className="flex space-x-4 place-content-end items-stretch">
 {paymentFeature1Click.getValue() === 'true' &&
