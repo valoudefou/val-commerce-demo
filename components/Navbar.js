@@ -13,7 +13,7 @@ const flagBackgroundColor = useFsFlag("flagBackgroundColor", "black")
 const [navbarOpen, setNavbarOpen] = React.useState(false);
 return (
 <>
-<nav className="relative flex flex-wrap items-center justify-between px-2 py-3 bg-white border-b-[1px] border-gray-200">
+<nav className="relative flex flex-wrap items-center justify-between px-2 py-2 bg-white border-b-[1px] border-gray-200">
 <div className="container px-4 mx-auto flex lg:flex-wrap items-center justify-between">
 <div className="w-full relative flex justify-between lg:w-auto lg:static lg:block lg:justify-start">
 <a
