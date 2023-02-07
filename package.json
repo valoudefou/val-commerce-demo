@@ -9,7 +9,8 @@
   "dependencies": {
     "@flagship.io/react-sdk": "^3.1.0",
     "contentful": "^9.3.0",
-    "swell-js": "^3.13.1"
+    "swell-js": "^3.13.1",
+    "swr": "^2.0.3"
   },
   "devDependencies": {
     "@tailwindcss/aspect-ratio": "^0.4.0",
