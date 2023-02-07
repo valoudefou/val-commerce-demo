@@ -34,19 +34,19 @@ return (
 <Navbar />
 <div className="mx-auto mt-16 mb-24 max-w-1xl px-4 sm:px-6 lg:max-w-7xl lg:px-8">
 <div className="mx-auto flex flex-col lg:flex-row">
-{/* <Image
+<Image
 alt="coffee"
 className="rounded-lg object-contain self-center px-8"
-src={product.images[0].file.url}
+src='/product.png'
 width={560}
 height={640}
-/> */}
+/>
 <div className="mt-10 flex flex-col sm:mt-0">
 <h1 className="mt-1 text-2xl font-medium text-gray-900 sm:text-2xl sm:tracking-tight lg:text-3xl">
-{/* {product.name} */}
+Pretty Woman ring Mini model 18k white gold and diamonds
 </h1>
 <h1 className="mt-3 text-3xl font-bold text-gray-500 sm:text-3xl sm:tracking-wide lg:text-2xl">
-{/* ${product.price} */}
+1,650.00€
 </h1>
 <button
 className="flex items-center justify-center text-sm font-base mt-5 border border-transparent bg-orange-600 px-4 py-4 text-white shadow-sm hover:bg-orange-800 sm:px-8 w-full"
@@ -75,7 +75,7 @@ Pay
 Description
 </div>
 <p className="max-w-xxl font-light text-sm">
-{/* {product.description} */}
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris et ultricies ex, quis tincidunt odio. Phasellus porttitor scelerisque dui, pretium ullamcorper arcu gravida non.
 </p>
 </div>
 </div>

@@ -9,10 +9,10 @@ export async function getStaticProps() {
         space: 'mwr46hk1hvcf',
         accessToken: 'P7e2zlwtUe4ZDhEuBW9cQ8ma8ViKddL3f1oYrfCHbdk'
     })
-
     const res = await client.getEntries({
         content_type: 'product'
     })
+    console.log('exec')
     return {
         props: {
             products: res.items
@@ -46,10 +46,9 @@ Shop our products
 </div>
 </div>
 <div className="grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
-{/* {data &&
-data.results.map((product) => (
-<ProductCard product={product} key={product.id} />
-))} */}
+
+<ProductCard product='/pretty-woman-ring-mini' key="" />
+
 </div>
 </div>
 </>

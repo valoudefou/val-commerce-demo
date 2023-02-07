@@ -1,31 +1,19 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import { useEffect, useState } from 'react'
 
 export default function ProductCard() {
-const [isLoading, setLoading] = useState(true)
-function cn(...classes) {
-return classes.filter(Boolean).join(' ')
-}
 return (
-<Link href={`/products/${product.id}`} className="group">
+<Link href="/products/pretty-woman-ring-mini-model" className="group">
 <div className="aspect-w-1 aspect-h-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-w-7 xl:aspect-h-8">
 <Image
 alt=""
-src={product.images[0].file.url}
+src="/product.png"
 fill
-className={cn(
-'duration-700 ease-in-out group-hover:opacity-75',
-isLoading
-? 'scale-110 blur-2xl grayscale'
-: 'scale-100 blur-0 grayscale-0'
-)}
-onLoadingComplete={() => setLoading(false)}
 />
 </div>
 <div className="mt-4 flex items-center justify-between text-base font-medium text-gray-900">
-<h3>{product.name}</h3>
-<p>${product.price}</p>
+<h3>Pretty Woman ring Mini model 18k white gold and diamonds</h3>
+<p>1,650.00€</p>
 </div>
 </Link>
 )
