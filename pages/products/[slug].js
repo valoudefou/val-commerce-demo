@@ -45,7 +45,7 @@ height={640}
 <h1 className="mt-1 text-2xl font-medium text-gray-900 sm:text-2xl sm:tracking-tight lg:text-3xl">
 Pretty Woman ring Mini model 18k white gold and diamonds
 </h1>
-<h1 className="mt-3 text-3xl font-bold text-gray-500 sm:text-3xl sm:tracking-wide lg:text-2xl">
+<h1 className="mt-3 text-2xl font-bold text-gray-500 sm:text-3xl sm:tracking-wide lg:text-2xl">
 1,650.00€
 </h1>
 <button
