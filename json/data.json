@@ -1,10 +1,10 @@
-[
 {
-  "record": {
-    "id": 8221,
-    "uid": "a15c1f1d-9e4e-4dc7-9c45-c04412fc5064",
-    "name": "Next.js",
-    "language": "JavaScript"
-  }
+    "productId": 561036003436,
+    "name": "Pretty Woman ring Mini model 18k white gold and diamonds",
+    "brand": "Salomon",
+    "price" : "349.95",
+    "oldprice": "499.95",
+    "category": "Snowboard>Snowboards>Freestyle Snowboards",
+    "productUrl": "https://www.efashionshop.net/product-details/561036003436",
+    "smallImage": "/product.png"
 }
-]

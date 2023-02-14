@@ -1,6 +1,6 @@
 module.exports = {
   reactStrictMode: true,
   images: {
-    domains: ['cdn.schema.io'],
+    domains: ['i.dummyjson.com'],
   },
 }

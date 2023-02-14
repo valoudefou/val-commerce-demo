@@ -5,7 +5,7 @@ import Link from 'next/link'
 import { useState } from 'react'
 import Navbar from '../../components/Navbar'
 
-export default function Product() {
+export default function Product(props) {
 // useEffect(() => {
 //   const script = document.createElement('script')
 //   script.src = '//cdn.epoq.de/flow/quickstartdemo1.js'
@@ -19,34 +19,28 @@ const fs = useFlagship()
 const epoqWidgetId = useFsFlag("epoqWidgetId", "homepage-alternatives")
 const paymentFeature1Click = useFsFlag("paymentFeature1Click", "false")
 const [showMe, setShowMe] = useState(paymentFeature1Click.getValue())
-// const router = useRouter()
-// async function checkout(productId) {
-// await swell.cart.setItems([])
-// await swell.cart.addItem({
-// product_id: productId,
-// quantity: 1,
-// })
-// const cart = await swell.cart.get()
-// router.push(cart.checkout_url)
-// }
+const router = useRouter()
+if (router.isFallback) {
+return <div className='flex justify-center h-screen items-center text-4xl font-thin'>Loading product...</div>
+}
 return (
 <div className="flex h-auto flex-col justify-between">
 <Navbar />
-<div className="mx-auto mt-16 mb-24 max-w-1xl px-4 sm:px-6 lg:max-w-7xl lg:px-8">
-<div className="mx-auto flex flex-col lg:flex-row">
+<div className="mx-auto mb-24 max-w-1xl px-4 sm:px-6 lg:max-w-7xl lg:px-8">
+<div className="mx-auto items-center space-x-8 flex flex-col lg:flex-row p-10">
 <Image
 alt="coffee"
 className="rounded-lg object-contain self-center px-8"
-src='/product.png'
+src={props.product.images[0]}
 width={560}
 height={640}
 />
 <div className="mt-10 flex flex-col sm:mt-0">
 <h1 className="mt-1 text-2xl font-medium text-gray-900 sm:text-2xl sm:tracking-tight lg:text-3xl">
-Pretty Woman ring Mini model 18k white gold and diamonds
+{props.product.title}
 </h1>
 <h1 className="mt-3 text-2xl font-bold text-gray-500 sm:text-3xl sm:tracking-wide lg:text-2xl">
-1,650.00€
+{props.product.price}€
 </h1>
 <button
 className="flex items-center justify-center text-sm font-base mt-5 border border-transparent bg-orange-600 px-4 py-4 text-white shadow-sm hover:bg-orange-800 sm:px-8 w-full"
@@ -75,7 +69,7 @@ Pay
 Description
 </div>
 <p className="max-w-xxl font-light text-base tracking-normal">
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris et ultricies ex, quis tincidunt odio. Phasellus porttitor scelerisque dui, pretium ullamcorper arcu gravida non.
+{props.product.description}
 </p>
 </div>
 </div>
@@ -85,26 +79,21 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris et ultricies ex,
 )
 }
 
-// export async function getStaticProps({ params }) {
-// const swellProduct = await swell.products.get(params.slug)
-// return {
-// props: {
-// product: swellProduct,
-// },
-// }
-// }
+export async function getStaticProps(context) {
+const { params } = context
+const res = await fetch(`https://dummyjson.com/products/${params.slug}`)
+const data = await res.json()
+console.log(data)
+return {
+props: {
+product: data,
+},
+}
+}
 
-// export async function getStaticPaths() {
-// const swellProducts = await swell.products.list()
-// let fullPaths = []
-// for (let product of swellProducts.results) {
-// fullPaths.push({ params: { slug: product.id } })
-// }
-
-// return {
-// paths: fullPaths,
-// fallback: 'blocking',
-// }
-// }
-
-
+export async function getStaticPaths() {
+return {
+paths: [{ params: { slug: '1'} }],
+fallback: true
+}
+}

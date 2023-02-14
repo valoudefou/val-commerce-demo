@@ -35,9 +35,9 @@ fetchNow: false,
 });
 
 const initialVisitorData = {
-id: "my_visitor_id57",
+id: "my_visitor_id73",
 context: {
-segment: "jewelry",
+segment: "diy",
 },
 };
 

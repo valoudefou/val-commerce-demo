@@ -17,7 +17,7 @@ return (
 <div className="absolute inset-0">
 <Image
 priority
-fill
+layout='fill'
 className="h-full w-full object-cover"
 src={flagImageSrc.getValue()}
 alt={flagIndustry.getValue()}
