@@ -81,7 +81,7 @@ Description
 
 export async function getStaticProps(context) {
 const { params } = context
-const res = await fetch(`https://dummyjson.com/products/${params.slug}`)
+const res = await fetch(`http://localhost:3000/products/${params.slug}`)
 const data = await res.json()
 console.log(data)
 return {
