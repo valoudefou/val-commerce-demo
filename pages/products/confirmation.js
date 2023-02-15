@@ -53,7 +53,7 @@ return (
 <path strokeLinecap="round" strokeLinejoin="round" d="M11.25 9l-3 3m0 0l3 3m-3-3h7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
 </svg>
 </Link>
-<h2 className='flex justify-center h-screen items-center text-5xl font-thin'>Your order is confirmed!</h2>
+<h2 className='flex justify-center h-screen items-center text-3xl sm:5xl font-thin'>Your order is confirmed!</h2>
 </>
 );
 }
