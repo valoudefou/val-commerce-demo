@@ -11,7 +11,7 @@ return (
 <span>|</span>
 <a
 href="https://github.com/valoudefou/commerce-demo"
-className="text-gray-600 text-[13px]"
+className="text-gray-600 text-[13px] font-medium"
 >
 Source code
 </a>
