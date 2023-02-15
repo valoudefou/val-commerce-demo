@@ -21,7 +21,7 @@ const paymentFeature1Click = useFsFlag("paymentFeature1Click", "false")
 const [showMe, setShowMe] = useState(paymentFeature1Click.getValue())
 const router = useRouter()
 if (router.isFallback) {
-return <div className='flex justify-center h-screen items-center text-4xl font-thin'>Loading product...</div>
+return <div className='flex justify-center h-screen items-center text-4xl font-thin'>Loading...</div>
 }
 return (
 <div className="flex h-auto flex-col justify-between">
