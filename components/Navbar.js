@@ -11,6 +11,7 @@ const fs = useFlagship()
 const flagIndustry = useFsFlag("flagIndustry", "Product")
 const flagBackgroundColor = useFsFlag("flagBackgroundColor", "black")
 const [navbarOpen, setNavbarOpen] = React.useState(false);
+const my_test_flag = useFsFlag("my_test_flag", 5)
 return (
 <>
 <nav className="relative flex flex-wrap items-center justify-between px-2 py-2 bg-white border-b-[1px] border-gray-200">
@@ -22,6 +23,9 @@ href="/"
 >
 {flagIndustry.getValue()}
 <span className="text-sm font-thin py-1 absolute">®</span>
+<span className="text-2xl font-normal py-1 absolute ml-10 bg-red-600 p-10 text-white">
+{my_test_flag.getValue()}
+</span>
 </a>
 <button
 className="text-gray-900 cursor-pointer text-xl leading-none px-3 py-1 border border-solid border-transparent rounded bg-transparent block lg:hidden outline-none focus:outline-none"
