@@ -35,7 +35,7 @@ src={props.product.images[0]}
 width={560}
 height={640}
 />
-<div className="mt-10 flex flex-col sm:mt-0">
+<div className="mt-10 flex flex-col" id="adjust">
 <h1 className="mt-1 text-2xl font-medium text-gray-900 sm:text-2xl sm:tracking-tight lg:text-3xl">
 {props.product.title}
 </h1>
