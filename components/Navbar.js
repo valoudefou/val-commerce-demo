@@ -24,7 +24,7 @@ className="text-2xl px-7 font-bold leading-relaxed inline-block mr-4 py-3 whites
 href="/"
 >
 {flagIndustry.getValue()}
-<span className="text-sm font-thin py-1 absolute">®</span>
+<span className="text-xs font-thin py-1 absolute">®</span>
 {/* <span className="text-2xl font-normal py-1 absolute ml-10 bg-red-600 p-10 text-white">
 {my_test_flag.getValue()}
 {my_test_flag.getValue()}
@@ -50,7 +50,7 @@ id="example-navbar-danger"
 <li className="nav-item">
 
 <a
-className="my-1 text-sm text-gray-900 hover:text-gray-700 font-light md:mx-4 md:my-0"
+className="my-1 text-xs text-gray-900 hover:text-gray-700 font-light md:mx-4 md:my-0"
 href="/"
 >
 <span className="ml-2">Home</span>
@@ -58,7 +58,7 @@ href="/"
 </li>
 <li className="nav-item">
 <a
-className="my-1 text-sm text-gray-900 hover:text-gray-700 font-light md:mx-4 md:my-0"
+className="my-1 text-xs text-gray-900 hover:text-gray-700 font-light md:mx-4 md:my-0"
 href="/"
 >
 <span className="ml-2">Shop</span>
@@ -66,7 +66,7 @@ href="/"
 </li>
 <li className="nav-item">
 <a
-className="my-1 text-sm text-gray-900 hover:text-gray-700 font-light md:mx-4 md:my-0"
+className="my-1 text-xs text-gray-900 hover:text-gray-700 font-light md:mx-4 md:my-0"
 href="/"
 >
 <span className="ml-2">Contact</span>
@@ -74,7 +74,7 @@ href="/"
 </li>
 <li className="nav-item">
 <a
-className="my-1 text-sm text-gray-900 hover:text-gray-700 font-light md:mx-4 md:my-0"
+className="my-1 text-xs text-gray-900 hover:text-gray-700 font-light md:mx-4 md:my-0"
 href="/"
 >
 <span className="ml-2">About</span>
