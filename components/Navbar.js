@@ -23,9 +23,11 @@ href="/"
 >
 {flagIndustry.getValue()}
 <span className="text-sm font-thin py-1 absolute">®</span>
-<span className="text-2xl font-normal py-1 absolute ml-10 bg-red-600 p-10 text-white">
+{/* <span className="text-2xl font-normal py-1 absolute ml-10 bg-red-600 p-10 text-white">
 {my_test_flag.getValue()}
-</span>
+{my_test_flag.getValue()}
+{my_test_flag.getValue()}
+</span> */}
 </a>
 <button
 className="text-gray-900 cursor-pointer text-xl leading-none px-3 py-1 border border-solid border-transparent rounded bg-transparent block lg:hidden outline-none focus:outline-none"
@@ -45,7 +47,7 @@ id="example-navbar-danger"
 <ul className="flex flex-col lg:flex-row list-none lg:ml-auto">
 <li className="nav-item">
 <a
-className="my-1 text-sm text-gray-900 hover:text-gray-700 font-light md:mx-4 md:my-0"
+className="my-1 text-normal text-gray-900 hover:text-gray-700 font-light md:mx-4 md:my-0"
 href="/"
 >
 <span className="ml-2">Home</span>

@@ -35,9 +35,9 @@ fetchNow: false,
 });
 
 const initialVisitorData = {
-id: 'fff-00-'+ Math.floor(Math.random() * 100),
+id: "my_visitor_ivd110",
 context: {
-segment: "jewelry",
+segment: "cosmetic",
 system: "ios",
 },
 };
