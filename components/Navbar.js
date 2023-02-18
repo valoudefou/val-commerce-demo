@@ -17,7 +17,7 @@ const my_test_flag = useFsFlag("my_test_flag", 5)
 return (
 <>
 <nav className="relative z-40 flex flex-wrap items-center justify-between px-2 py-2 bg-white border-b-[1px] border-gray-200">
-<div className="container px-4 mx-auto flex lg:flex-wrap items-center justify-between">
+<div className="container mx-auto flex lg:flex-wrap items-center justify-between">
 <div className="w-full relative flex justify-between lg:w-auto lg:static lg:block lg:justify-start">
 <a
 className="text-2xl px-7 font-bold leading-relaxed inline-block mr-4 py-3 whitespace-nowrap uppercase text-gray-900"

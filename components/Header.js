@@ -25,7 +25,7 @@ alt={flagIndustry.getValue()}
 <div className="absolute inset-0 bg-orange-100 mix-blend-multiply" />
 </div>
 <div className="relative px-4 py-16 sm:px-6 sm:py-24 lg:py-32 lg:px-8">
-<p className="relative left-0 right-0 mx-auto mt-5 max-w-xl text-center text-xl font-semibold uppercase tracking-wide text-white">
+<p className="mx-auto max-w-xl text-center text-xl font-semibold uppercase tracking-wide text-white">
 {'The ' + flagIndustry.getValue() + ' House'}
 </p>
 <h1 className="mt-1 text-center font-medium text-gray-900 text-4xl sm:text-5xl">
