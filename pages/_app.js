@@ -37,7 +37,7 @@ fetchNow: false,
 const initialVisitorData = {
 id: "my_visitor_ivd110",
 context: {
-segment: "coffee",
+segment: "cosmetic",
 system: "ios",
 },
 };

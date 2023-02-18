@@ -11,6 +11,7 @@ const paymentFeature1Click = useFsFlag("paymentFeature1Click", "false")
 return (
 <div className="absolute right-0 top-[3.5rem] select-none bg-white z-50 p-5 border border-gray-200 rounded-lg mt-3 mr-[3vh] shadow-lg">
 <div className="grid grid-cols-1 gap-4">
+<div className="my-5 text-3xl font-semibold text-gray-900">Cart</div>
 <div className="flex items-center">
 <div className="flex flex-col text-gray-700 font-light justify-around">
 <span className="text-gray-900 font-light text-sm w-4/5">Force 10 ring Small model in 18k pink gold and diamonds</span>

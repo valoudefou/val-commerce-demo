@@ -70,7 +70,7 @@ Pay
 </button>
 </Link>
 }
-<button className="items-center flex text-normal px-5 py-2 border border-transparent bg-orange-600 font-normal text-white shadow-sm hover:bg-orange-700"
+<button className="items-center flex text-base px-5 py-2 border border-transparent bg-orange-600 font-normal text-white shadow-sm hover:bg-orange-700"
 >
 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-6 h-6 py-0.5 w-5 h-5">
 <path strokeLinecap="round" strokeLinejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3" />
