@@ -1,6 +1,7 @@
 import React, { useState } from "react"
 import SearchBar from "./SearchBar"
 import { HitType, useFlagship, useFsFlag } from "@flagship.io/react-sdk"
+import SlidingCart from "./SlidingCart"
 import MiniCart from "./MiniCart"
 
 export default function Navbar() {
@@ -9,12 +10,13 @@ const fs = useFlagship()
 
 //get flag 
 const flagIndustry = useFsFlag("flagIndustry", "Product")
+const flagCartFeature = useFsFlag("flagCartFeature", "MiniCart")
 const flagBackgroundColor = useFsFlag("flagBackgroundColor", "black")
 const [navbarOpen, setNavbarOpen] = React.useState(false);
 const my_test_flag = useFsFlag("my_test_flag", 5)
 return (
 <>
-<nav className="relative flex flex-wrap items-center justify-between px-2 py-2 bg-white border-b-[1px] border-gray-200">
+<nav className="relative z-40 flex flex-wrap items-center justify-between px-2 py-2 bg-white border-b-[1px] border-gray-200">
 <div className="container px-4 mx-auto flex lg:flex-wrap items-center justify-between">
 <div className="w-full relative flex justify-between lg:w-auto lg:static lg:block lg:justify-start">
 <a
@@ -23,11 +25,11 @@ href="/"
 >
 {flagIndustry.getValue()}
 <span className="text-sm font-thin py-1 absolute">®</span>
-<span className="text-2xl font-normal py-1 absolute ml-10 bg-red-600 p-10 text-white">
+{/* <span className="text-2xl font-normal py-1 absolute ml-10 bg-red-600 p-10 text-white">
 {my_test_flag.getValue()}
 {my_test_flag.getValue()}
 {my_test_flag.getValue()}
-</span>
+</span> */}
 </a>
 <button
 className="text-gray-900 cursor-pointer text-xl leading-none px-3 py-1 border border-solid border-transparent rounded bg-transparent block lg:hidden outline-none focus:outline-none"
@@ -46,6 +48,7 @@ id="example-navbar-danger"
 >
 <ul className="flex flex-col lg:flex-row list-none lg:ml-auto">
 <li className="nav-item">
+
 <a
 className="my-1 text-normal text-gray-900 hover:text-gray-700 font-light md:mx-4 md:my-0"
 href="/"
@@ -78,8 +81,8 @@ href="/"
 </a>
 </li>
 </ul>
-<div onMouseEnter={() => setIsShown(true)}
-onMouseLeave={() => setIsShown(false)}
+<div onClick={() => setIsShown(!isShown)}
+
 className="flex justify-center px-7 py-3 md:block">
 <a className="relative text-gray-900 hover:text-gray-700" target="_blank">
 <svg className="h-6 w-6" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -87,13 +90,16 @@ className="flex justify-center px-7 py-3 md:block">
 </svg>
 <span style={{ backgroundColor: flagBackgroundColor.getValue() }} className="absolute top-0 left-0 rounded-full bg-indigo-100 text-gray-900 p-1 text-xs"></span>
 </a>
-{isShown && (
-<MiniCart />
-)}
 </div>
 </div>
 </div>
 </nav>
+{isShown && flagCartFeature.getValue() === 'MiniCart' && (    
+<MiniCart />
+)}
+{isShown && flagCartFeature.getValue() === 'SlidingCart' && (    
+<SlidingCart />
+)}
 </>
 )
 }
