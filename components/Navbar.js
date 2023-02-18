@@ -46,11 +46,11 @@ className={
 }
 id="example-navbar-danger"
 >
-<ul className="flex flex-col lg:flex-row list-none lg:ml-auto">
+<ul className="flex flex-col lg:flex-row list-none lg:ml-auto uppercase">
 <li className="nav-item">
 
 <a
-className="my-1 text-normal text-gray-900 hover:text-gray-700 font-light md:mx-4 md:my-0"
+className="my-1 text-sm text-gray-900 hover:text-gray-700 font-light md:mx-4 md:my-0"
 href="/"
 >
 <span className="ml-2">Home</span>
