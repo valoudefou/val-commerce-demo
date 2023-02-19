@@ -31,11 +31,11 @@ href="/"
 >
 {flagIndustry.getValue()}
 <span className="text-sm font-thin py-1 absolute">®</span>
-{/* <span className="text-2xl font-normal py-1 absolute ml-10 bg-red-600 p-10 text-white">
+<span className="text-2xl font-normal py-1 absolute ml-10 bg-red-600 p-10 text-white">
 {my_test_flag.getValue()}
 {my_test_flag.getValue()}
 {my_test_flag.getValue()}
-</span> */}
+</span>
 </a>
 <button
 className="text-gray-900 cursor-pointer text-xl leading-none px-3 py-1 border border-solid border-transparent rounded bg-transparent block lg:hidden outline-none focus:outline-none"
