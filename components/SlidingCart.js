@@ -10,7 +10,7 @@ const paymentFeature1Click = useFsFlag("paymentFeature1Click", "false")
 return (
 <div>
 <div className="h-screen w-screen top-0 z-20 bg-gray-900 fixed opacity-70"></div>
-<div className="flex-auto h-screen top-0 z-20 select-none fixed right-0 bg-white p-8 border border-gray-200 shadow-lg">
+<div className="flex-auto h-screen top-0 z-20 select-none fixed right-0 bg-white p-6 border border-gray-200 shadow-lg">
 <div className="grid grid-cols-1 gap-4 py-20">
 <div className="mb-10 text-3xl font-semibold text-gray-900">Cart</div>
 <div className="flex items-center">
