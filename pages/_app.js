@@ -35,11 +35,11 @@ fetchNow: false,
 });
 
 const initialVisitorData = {
-id: "my_visitor_ivd143",
+id: "my_visitor_ivd164",
 context: {
 segment: "diy",
 system: "ios",
-regionId: 3
+regionId: 3,
 },
 };
 
