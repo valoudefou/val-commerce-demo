@@ -35,9 +35,9 @@ fetchNow: false,
 });
 
 const initialVisitorData = {
-id: "my_visitor_ivd164",
+id: "my_visitor_id170",
 context: {
-segment: "diy",
+segment: "jewelry",
 system: "ios",
 regionId: 3,
 },
