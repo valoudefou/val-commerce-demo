@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import { HitType, useFlagship, useFsFlag } from "@flagship.io/react-sdk"
-import React, { useEffect } from 'react'
+import { useEffect } from 'react'
 
 export default function Confirmation() {
 const fs = useFlagship();
