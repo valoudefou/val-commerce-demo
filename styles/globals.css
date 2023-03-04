@@ -13,9 +13,8 @@
     text-transform: uppercase;
     font-weight: 700;
     padding: 4rem;
-    margin-bottom: 100px;
 }
 
-.epoq-widget-content.epoq-recommendations-homepage.epoq-rs-widget-homepage-alternatives {
+.epoq-recommendations-widget {
     margin-bottom: 7rem;
 }
