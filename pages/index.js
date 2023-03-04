@@ -44,7 +44,7 @@ Shop our products
 }
 
 export async function getStaticProps() {
-const res = await fetch('https://nextjs-swell-beta.vercel.app/api/staticdata')
+const res = await fetch('https://nextjs-swell-beta.vercel.app/api/staticdata/products')
 const data = await res.json()
 
 return {
