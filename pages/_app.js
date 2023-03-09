@@ -4,7 +4,6 @@ import { Flagship, FlagshipProvider, HitType, useFlagship, useFsFlag } from "@fl
 import React from "react"
 import App from "next/app"
 import Footer from '../components/Footer'
-import { env } from 'env'
 
 function MyApp({ Component, pageProps, initialFlagsData, initialVisitorData }) {
 const fs = useFlagship()
