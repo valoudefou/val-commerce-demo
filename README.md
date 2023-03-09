@@ -1,10 +1,10 @@
-# Swell / Next.js App
+# Flagship by AB Tasty / Next.js App
 
-Learn how to create a headless ecommerce application using Swell and Next.js
+Evaluate flickering feature flag A/B testing on SSR technology.
 
 ## Built With
 
-- [Swell](https://swell.is/)
+- [Flagship by AB Tasty](https://docs.developers.flagship.io/docs/avoid-flickering-with-nextjs-ssr/)
 - [Tailwind CSS](https://tailwindcss.com)
 - [Next.js](https://nextjs.org)
 - [Vercel](https://vercel.com)
