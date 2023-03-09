@@ -4,6 +4,7 @@ import { Flagship, FlagshipProvider, HitType, useFlagship, useFsFlag } from "@fl
 import React from "react"
 import App from "next/app"
 import Footer from '../components/Footer'
+import { env } from 'env'
 
 function MyApp({ Component, pageProps, initialFlagsData, initialVisitorData }) {
 const fs = useFlagship()
@@ -15,8 +16,8 @@ return (
 <FlagshipProvider
 visitorData={initialVisitorData}
 initialFlagsData={initialFlagsData} //  set initial flags fetched server side
-envId={"blrok2jb3fq008ho9c70"}
-apiKey={"k0Q3wqL9GEajXlL6dw8vr4zfqxz50LIa7QAJDz8q"}>
+envId={process.env.FS_ENV}
+apiKey={process.env.FS_KEY}>
 <Head />
 <title>{'The ' + flagIndustry.getValue() + ' House'}</title>
 <Component {...pageProps} />
@@ -30,7 +31,7 @@ MyApp.getInitialProps = async (appContext) => {
 const appProps = await App.getInitialProps(appContext);
 
 //Start the Flagship SDK
-const flagship = Flagship.start("blrok2jb3fq008ho9c70", "k0Q3wqL9GEajXlL6dw8vr4zfqxz50LIa7QAJDz8q", {
+const flagship = Flagship.start(process.env.FS_ENV, process.env.FS_KEY, {
 fetchNow: false,
 });
 
