@@ -5,7 +5,7 @@ export default function Header({ scrollHandler }) {
 const fs = useFlagship();
 
 //get flag 
-const flagImageSrc = useFsFlag("flagImageSrc", "/hero.jpg")
+const flagImageSrc = useFsFlag("flagImageSrc", "/coffee.jpg")
 const flagBtnText = useFsFlag("flagBtnText", "Shop")
 const flagIndustry = useFsFlag("flagIndustry", "Product")
 const flagBackgroundColor = useFsFlag("flagBackgroundColor", "black")
