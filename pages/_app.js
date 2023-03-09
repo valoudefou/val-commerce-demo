@@ -35,7 +35,7 @@ fetchNow: false,
 });
 
 const initialVisitorData = {
-id: "my_visitor_id188",
+id: "my_visitor_id192",
 context: {
 segment: "jewelry",
 system: "ios",

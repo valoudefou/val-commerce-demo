@@ -4,7 +4,6 @@ import { useEffect } from 'react'
 
 export default function Confirmation() {
 const fs = useFlagship();
-
 //get flag 
 const flagBackgroundColor = useFsFlag("flagBackgroundColor", "black")
 useEffect(() => {
