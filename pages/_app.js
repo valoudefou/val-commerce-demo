@@ -35,9 +35,9 @@ fetchNow: false,
 });
 
 const initialVisitorData = {
-id: "my_visitor_id192",
+id: "my_visitor_id195",
 context: {
-segment: "diy",
+segment: "cosmetic",
 system: "ios",
 regionId: 3,
 },
