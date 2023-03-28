@@ -13,10 +13,10 @@ const flagIndustry = useFsFlag("flagIndustry", "Product")
 return (
 <>
 <FlagshipProvider
+envId={"blrok2jb3fq008ho9c70"}
+apiKey={"k0Q3wqL9GEajXlL6dw8vr4zfqxz50LIa7QAJDz8q"}
 visitorData={initialVisitorData}
-initialFlagsData={initialFlagsData} //  set initial flags fetched server side
-envId={process.env.FS_ENV}
-apiKey={process.env.FS_KEY}>
+initialFlagsData={initialFlagsData || {}}>
 <Head />
 <title>{'The ' + flagIndustry.getValue() + ' House'}</title>
 <Component {...pageProps} />
@@ -30,14 +30,14 @@ MyApp.getInitialProps = async (appContext) => {
 const appProps = await App.getInitialProps(appContext);
 
 //Start the Flagship SDK
-const flagship = Flagship.start(process.env.FS_ENV, process.env.FS_KEY, {
+const flagship = Flagship.start("blrok2jb3fq008ho9c70", "k0Q3wqL9GEajXlL6dw8vr4zfqxz50LIa7QAJDz8q", {
 fetchNow: false,
 });
 
 const initialVisitorData = {
-id: "my_visitor_id196",
+id: "my_visitor_id197",
 context: {
-segment: "coffee",
+segment: "jewelry",
 system: "ios",
 regionId: 3,
 },
