@@ -18,3 +18,7 @@
 .epoq-recommendations-widget {
     margin-bottom: 7rem;
 }
+
+.epoq_speech_button {
+    padding: 13px !important;
+}
