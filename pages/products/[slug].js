@@ -2,21 +2,21 @@ import Image from 'next/image'
 import { useRouter } from 'next/router'
 import { HitType, useFlagship, useFsFlag } from "@flagship.io/react-sdk"
 import Link from 'next/link'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Navbar from '../../components/Navbar'
 
 export default function Product(props) {
-// useEffect(() => {
-//   const script = document.createElement('script')
-//   script.src = '//cdn.epoq.de/flow/quickstartdemo1.js'
-//   script.async = false
-//   document.body.appendChild(script)
-// }, [])
+useEffect(() => {
+  const script = document.createElement('script')
+  script.src = '//cdn.epoq.de/flow/quickstartdemo-valerian1.js'
+  script.async = true
+  document.body.appendChild(script)
+}, [])
 
 const fs = useFlagship()
 
 //get flag 
-const epoqWidgetId = useFsFlag("epoqWidgetId", "homepage-alternatives")
+const epoqWidgetId = useFsFlag("epoqWidgetId", "homepage")
 const paymentFeature1Click = useFsFlag("paymentFeature1Click", "false")
 const [showMe, setShowMe] = useState(paymentFeature1Click.getValue())
 const router = useRouter()

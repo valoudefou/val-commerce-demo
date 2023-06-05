@@ -8,23 +8,28 @@ const fs = useFlagship();
 const flagBackgroundColor = useFsFlag("flagBackgroundColor", "black")
 useEffect(() => {
 const orderId = 'PW' + Math.floor(100000000 + Math.random() * 900000000)
+const itemId1 = 'PA1' + Math.floor(100000000 + Math.random() * 900000000)
+const itemId2 = 'PA2' + Math.floor(100000000 + Math.random() * 900000000)
 window.dataLayer = window.dataLayer || [];
+var currencies = ["AUD","CAD","CHF","CNY","CNY","DKK","EUR","GBP","HKD","ILS","JPY","KRW","MYR","NOK","NZD","SEK","SGD","USD"]; // include AED, TWD and SAR
+var precision = 100; // 2 decimals
+var revenue1 = Math.floor(Math.random() * (100 * precision - 1 * precision) + 1 * precision) / (1*precision);
+var revenue2 = Math.floor(Math.random() * (100 * precision - 1 * precision) + 1 * precision) / (1*precision);
+var currency = currencies[Math.floor(Math.random() * currencies.length)];
 window.dataLayer.push({
 'ecommerce': {
 'purchase': {
 'actionField': {
 'id': orderId, // Transaction ID. Required for purchases and refunds.
 'affiliation': 'Purchase',
-'revenue': Math.floor(100 + Math.random() * 900), // Total transaction value (incl. tax and shipping)
-'currency': 'GBP',
-'tax': 3,
-'shipping': 5.99,
+'revenue': revenue1 + revenue2, // Total transaction value (incl. tax and shipping)
+'currency': currency,
 'coupon': 'SUMMER_SALE'
 },
 'products': [{ // List of productFieldObjects.
 'name': 'Triblend Android T-Shirt', // Name or ID is required.
-'id': orderId,
-'price': 15,
+'id': itemId1,
+'price': revenue1.toFixed(2),
 'brand': 'Google',
 'category': 'Apparel',
 'variant': 'Gray',
@@ -33,8 +38,8 @@ window.dataLayer.push({
 },
 {
 'name': 'Donut Friday Scented T-Shirt',
-'id': orderId,
-'price': 33,
+'id': itemId2,
+'price': revenue2.toFixed(2),
 'brand': 'Google',
 'category': 'Apparel',
 'variant': 'Black',
@@ -52,7 +57,7 @@ return (
 <path strokeLinecap="round" strokeLinejoin="round" d="M11.25 9l-3 3m0 0l3 3m-3-3h7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
 </svg>
 </Link>
-<h2 className='flex justify-center h-screen items-center sm:text-5xl text-3xl font-thin'>Your order is confirmed!</h2>
+<h2 id="order-details" className='sm:leading-tight flex justify-center h-screen items-center px-16 text-center sm:text-5xl text-3xl font-thin'>Your order is confirmed!</h2>
 </>
 );
 }

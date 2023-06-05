@@ -2,6 +2,7 @@ import { useState, useRef } from "react"
 import { HitType, useFlagship, useFsFlag } from "@flagship.io/react-sdk"
 import SlidingCart from "./SlidingCart"
 import MiniCart from "./MiniCart"
+import Link from 'next/link'
 
 export default function Navbar() {
 const clickPoint = useRef()
@@ -85,7 +86,7 @@ href="/"
 className="my-1 text-sm text-gray-900 hover:text-gray-700 font-light md:mx-4 md:my-0"
 href="/"
 >
-<span className="ml-2">Blog</span>
+<Link href='/blog/content-1'><span className="ml-2">Blog</span></Link>
 </a>
 </li>
 <li className="nav-item">

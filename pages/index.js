@@ -3,8 +3,10 @@ import Navbar from '../components/Navbar'
 import Header from '../components/Header'
 import { useRef } from 'react'
 import Link from 'next/link'
+import { createClient } from 'contentful'
 
-export default function Index( {products} ) {
+export default function Index( {products, articles} ) {
+    console.log(articles)
 let coffeeRef = useRef()
 const scrollHandler = (e) => {
 e.preventDefault()
@@ -44,12 +46,26 @@ Shop our products
 }
 
 export async function getStaticProps() {
+    const client = createClient({
+        space: 'mwr46hk1hvcf',
+        accessToken: 'P7e2zlwtUe4ZDhEuBW9cQ8ma8ViKddL3f1oYrfCHbdk',
+        })
 const res = await fetch('https://dummyjson.com/products')
 const data = await res.json()
-
+const art = await client.getEntries({
+    content_type: 'articles'
+    })
 return {
 props: {
 products: data,
+articles: art.items
 },
 }
 }
+
+
+
+
+
+
+
