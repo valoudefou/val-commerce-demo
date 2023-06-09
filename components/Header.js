@@ -60,7 +60,7 @@ alt={flagIndustry.getValue()}
 <p className="mx-auto max-w-xl text-center text-xl font-semibold uppercase tracking-wide text-white">
 {'The ' + flagIndustry.getValue() + ' House'}
 </p>
-<h1 className="mt-1 text-center font-medium text-gray-900 text-4xl sm:text-5xl">
+<h1 className="mt-1 text-center font-semibold text-gray-900 text-4xl sm:text-5xl">
 <span className="block text-white">Life is better with</span>
 <span className="block" style={{color: flagBackgroundColor.getValue()}}>{flagIndustry.getValue()}</span>
 </h1>
