@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import { HitType, useFlagship, useFsFlag } from "@flagship.io/react-sdk"
-import { useEffect } from 'react';
+import { useEffect,  } from 'react';
 
 export default function Header({ scrollHandler }) {
 const fs = useFlagship();
@@ -9,6 +9,13 @@ const flagImageSrc = useFsFlag("flagImageSrc", "/coffee.jpg")
 const flagBtnText = useFsFlag("flagBtnText", "Shop")
 const flagIndustry = useFsFlag("flagIndustry", "Product")
 const flagBackgroundColor = useFsFlag("flagBackgroundColor", "black")
+const { hit: fsHit } = useFlagship();
+useEffect(() => {
+    fsHit.send({
+        type: HitType.PAGE, // or "PAGEVIEW",
+        documentLocation: window.document.href
+    });
+}, []);
 // useEffect(() => {
 //     if (typeof window !== 'undefined'){
 //     // create a new datalyer, or let it be empty
