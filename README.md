@@ -1,6 +1,6 @@
 # Flagship by AB Tasty / Next.js App
 
-Evaluate flickering feature flag A/B testing on SSR technology.
+Product recommendation and inteligent search. Evaluate flickering feature flag A/B testing on SSR technology.
 
 ## Built With
 
@@ -8,6 +8,7 @@ Evaluate flickering feature flag A/B testing on SSR technology.
 - [Tailwind CSS](https://tailwindcss.com)
 - [Next.js](https://nextjs.org)
 - [Vercel](https://vercel.com)
+- [Contentful](https://www.contentful.com/sign-up/)
 
 ## Deploy with Vercel
 
