@@ -6,6 +6,8 @@ import { useState, useEffect } from 'react'
 import Navbar from '../../components/Navbar'
 
 export default function Product(props) {
+
+
 useEffect(() => {
   const script = document.createElement('script')
   script.src = '//cdn.epoq.de/flow/quickstartdemo-valerian1.js'
@@ -82,6 +84,7 @@ Description
 export async function getStaticProps(context) {
 const { params } = context
 const res = await fetch(`https://dummyjson.com/products/${params.slug}`)
+
 const data = await res.json()
 console.log(data)
 return {
