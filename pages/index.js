@@ -5,14 +5,14 @@ import { useRef } from 'react'
 import Link from 'next/link'
 import { createClient } from 'contentful'
 
-export default function Index( {products, articles, sheetdata} ) {
+export default function Index( {products, articles} ) {
     // console.log(articles)
 console.log(products)
     // console.log(sheetdata)
 
 
-    const t = sheetdata.slice(1).map(([productId,name,brand,price,oldprice,category,productUrl,smallImage,availability,quantity,size,google_product_category]) => ({ productId,name,brand,price,oldprice,category,productUrl,smallImage,availability,quantity,size,google_product_category }) )
-    console.log(t)
+    // const t = sheetdata.slice(1).map(([productId,name,brand,price,oldprice,category,productUrl,smallImage,availability,quantity,size,google_product_category]) => ({ productId,name,brand,price,oldprice,category,productUrl,smallImage,availability,quantity,size,google_product_category }) )
+    // console.log(t)
 
 let coffeeRef = useRef()
 const scrollHandler = (e) => {
@@ -42,8 +42,8 @@ Shop our products
 </div>
 <div className="grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
 <>
-{t.map((product) => (
-<ProductCard product={product} key={product.productId} /> 
+{products.products.map((product) => (
+<ProductCard product={product} key={product.id} /> 
 ))}
 </>
 </div>
@@ -59,8 +59,8 @@ export async function getStaticProps() {
         })
 const res = await fetch('https://dummyjson.com/products')
 const data = await res.json()
-const req1 = await fetch('https://nextjs-abtasty.vercel.app/api/sheet');
-const res1 = await req1.json();
+// const req1 = await fetch('https://nextjs-abtasty.vercel.app/api/sheet');
+// const res1 = await req1.json();
 const art = await client.getEntries({
     content_type: 'articles'
     })
@@ -68,7 +68,7 @@ return {
 props: {
 products: data,
 articles: art.items,
-sheetdata: res1.data
+// sheetdata: res1.data
 },
 }
 }
