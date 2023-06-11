@@ -20,8 +20,6 @@ export default function handler(req, res) {
                 range: 'quickstartdemo-valerian1!A:Z'
             };
             let data = await gsapi.spreadsheets.values.get(opt);
-                const t = data.slice(1).map(([productId,name,brand,price,oldprice,category,productUrl,smallImage,availability,quantity,size,google_product_category]) => ({ productId,name,brand,price,oldprice,category,productUrl,smallImage,availability,quantity,size,google_product_category }) )
-    console.log(t)
             return res.status(400).send(JSON.stringify({error: false, data: data.data.values}));
         });
     } catch (e) {
