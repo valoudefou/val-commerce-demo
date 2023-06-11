@@ -21,7 +21,7 @@ export default function handler(req, res) {
             };
             let data = await gsapi.spreadsheets.values.get(opt);
             let t = data.slice(1).map(([productId,name,brand,price,oldprice,category,productUrl,smallImage,availability,quantity,size,google_product_category]) => ({ productId,name,brand,price,oldprice,category,productUrl,smallImage,availability,quantity,size,google_product_category }) )
-            return res.status(400).send(JSON.stringify({error: false, t: t.t.values}));
+            return res.status(400).send(JSON.stringify({error: false, t: data.data.values}));
         });
     } catch (e) {
         return res.status(400).send(JSON.stringify({error: true, message: e.message}));
