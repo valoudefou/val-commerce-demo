@@ -10,6 +10,7 @@
   "dependencies": {
     "@flagship.io/react-sdk": "^3.1.0",
     "contentful": "^10.2.2",
+    "googleapis": "^118.0.0",
     "json-server": "^0.17.1",
     "swr": "^2.0.3"
   },
