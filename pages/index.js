@@ -6,12 +6,8 @@ import Link from 'next/link'
 import { createClient } from 'contentful'
 
 export default function Index( {products, articles, sheetdata} ) {
-    // console.log(articles)
+console.log(sheetdata)
 console.log(products)
-
-
-    // const t = sheetdata.slice(1).map(([productId,name,brand,price,oldprice,category,productUrl,smallImage,availability,quantity,size,google_product_category]) => ({ productId,name,brand,price,oldprice,category,productUrl,smallImage,availability,quantity,size,google_product_category }) )
-    // console.log(t)
 
 let coffeeRef = useRef()
 const scrollHandler = (e) => {
@@ -58,8 +54,8 @@ export async function getStaticProps() {
         })
 const res = await fetch('https://dummyjson.com/products')
 const data = await res.json()
-// const req1 = await fetch('https://nextjs-abtasty.vercel.app/api/sheet');
-// const res1 = await req1.json();
+const req1 = await fetch('https://nextjs-abtasty.vercel.app/api/sheet');
+const res1 = await req1.json();
 const art = await client.getEntries({
     content_type: 'articles'
     })
@@ -67,7 +63,7 @@ return {
 props: {
 products: data,
 articles: art.items,
-// sheetdata: res1.data
+sheetdata: res1.data
 },
 }
 }

@@ -84,12 +84,14 @@ Description
 export async function getStaticProps(context) {
 const { params } = context
 const res = await fetch(`https://dummyjson.com/products/${params.slug}`)
-
 const data = await res.json()
+// const req1 = await fetch(`https://nextjs-abtasty.vercel.app/api/sheet/${params.slug}`);
+// const res1 = await req1.json();
 console.log(data)
 return {
 props: {
 product: data,
+// sheetdata: res1.data,
 },
 }
 }

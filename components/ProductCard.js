@@ -2,7 +2,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { useState } from 'react'
 
-function ProductCard( {product } ) {
+function ProductCard( {product} ) {
 const [isLoading, setLoading] = useState(true)
 function cn(...classes) {
 return classes.filter(Boolean).join(' ')
