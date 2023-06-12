@@ -7,7 +7,7 @@ export default function Header({ scrollHandler }) {
     //get flag 
     const flagImageSrc = useFsFlag("flagImageSrc", "/coffee.jpg")
     const flagBtnText = useFsFlag("flagBtnText", "Shop")
-    const flagIndustry = useFsFlag("test_reporting", "Product")
+    const flagIndustry = useFsFlag("flagIndustry", "Product")
     const flagBackgroundColor = useFsFlag("flagBackgroundColor", "black")
     const { hit: fsHit } = useFlagship();
     useEffect(() => {
