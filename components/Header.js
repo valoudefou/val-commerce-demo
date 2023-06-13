@@ -11,7 +11,7 @@ const flagIndustry = useFsFlag("flagIndustry", "Product")
 const flagBackgroundColor = useFsFlag("flagBackgroundColor", "black")
 const { hit: fsHit } = useFlagship();
 useEffect(() => {
-    this.abTastyService.visitor.send({
+    fsHit.send({
         type: HitType.PAGE, // or "PAGEVIEW",
         documentLocation: 'https://nextjs-abtasty.vercel.app/'
     });
