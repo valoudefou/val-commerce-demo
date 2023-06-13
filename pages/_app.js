@@ -34,7 +34,7 @@ const appProps = await App.getInitialProps(appContext);
 
 //Start the Flagship SDK
 const flagship = Flagship.start("blrok2jb3fq008ho9c70", "k0Q3wqL9GEajXlL6dw8vr4zfqxz50LIa7QAJDz8q", {
-fetchNow: false
+fetchNow: true
 });
 
 const initialVisitorData = {
