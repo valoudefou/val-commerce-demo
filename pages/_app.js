@@ -11,7 +11,6 @@ const fs = useFlagship()
 //get flag 
 const flagIndustry = useFsFlag("flagIndustry", "Product")
 return (
-    
 <>
 <FlagshipProvider
 envId={"blrok2jb3fq008ho9c70"}
@@ -25,20 +24,18 @@ initialFlagsData={initialFlagsData || {}}>
 </FlagshipProvider>
 </>
 )
-
 }
 
 MyApp.getInitialProps = async (appContext) => {
 const appProps = await App.getInitialProps(appContext);
 
-
 //Start the Flagship SDK
 const flagship = Flagship.start("blrok2jb3fq008ho9c70", "k0Q3wqL9GEajXlL6dw8vr4zfqxz50LIa7QAJDz8q", {
-fetchNow: true
+fetchNow: false,
 });
 
 const initialVisitorData = {
-id: Math.floor(Math.random() * 100000000000000),
+id: "my_visitor_id353",
 context: {
 segment: "coffee",
 system: "ios",
