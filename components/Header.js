@@ -13,7 +13,7 @@ const { hit: fsHit } = useFlagship();
 useEffect(() => {
     fsHit.send({
         type: HitType.PAGE, // or "PAGEVIEW",
-        documentLocation: 'https://nextjs-abtasty.vercel.app/products/1'
+        documentLocation: 'https://nextjs-abtasty.vercel.app/'
     });
 }, []);
 // useEffect(() => {

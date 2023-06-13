@@ -1,6 +1,6 @@
 import '../styles/globals.css'
 import Head from 'next/head'
-import { Flagship, FlagshipProvider, HitType, useFlagship, useFsFlag } from "@flagship.io/react-sdk"
+import { Flagship, FlagshipProvider, HitType, useFlagship, useFsFlag, CacheStrategy } from "@flagship.io/react-sdk"
 import React from "react"
 import App from "next/app"
 import Footer from '../components/Footer'
@@ -11,6 +11,7 @@ const fs = useFlagship()
 //get flag 
 const flagIndustry = useFsFlag("flagIndustry", "Product")
 return (
+    
 <>
 <FlagshipProvider
 envId={"blrok2jb3fq008ho9c70"}
@@ -24,20 +25,24 @@ initialFlagsData={initialFlagsData || {}}>
 </FlagshipProvider>
 </>
 )
+
 }
 
 MyApp.getInitialProps = async (appContext) => {
 const appProps = await App.getInitialProps(appContext);
 
+
 //Start the Flagship SDK
 const flagship = Flagship.start("blrok2jb3fq008ho9c70", "k0Q3wqL9GEajXlL6dw8vr4zfqxz50LIa7QAJDz8q", {
 fetchNow: false,
+disableCache: true,
+enableClientCache: false
 });
 
 const initialVisitorData = {
-id: "my_visitor_id352",
+id: "my_visitor_id353",
 context: {
-segment: "jewelry",
+segment: "coffee",
 system: "ios",
 regionId: 3,
 },
