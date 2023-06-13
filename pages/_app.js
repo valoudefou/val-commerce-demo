@@ -1,6 +1,6 @@
 import '../styles/globals.css'
 import Head from 'next/head'
-import { Flagship, FlagshipProvider, HitType, useFlagship, useFsFlag, CacheStrategy } from "@flagship.io/react-sdk"
+import { Flagship, FlagshipProvider, HitType, useFlagship, useFsFlag } from "@flagship.io/react-sdk"
 import React from "react"
 import App from "next/app"
 import Footer from '../components/Footer'
@@ -34,13 +34,11 @@ const appProps = await App.getInitialProps(appContext);
 
 //Start the Flagship SDK
 const flagship = Flagship.start("blrok2jb3fq008ho9c70", "k0Q3wqL9GEajXlL6dw8vr4zfqxz50LIa7QAJDz8q", {
-fetchNow: false,
-disableCache: true,
-enableClientCache: false
+fetchNow: false
 });
 
 const initialVisitorData = {
-id: "my_visitor_id353",
+id: Math.floor(Math.random() * 100000000000000),
 context: {
 segment: "coffee",
 system: "ios",
