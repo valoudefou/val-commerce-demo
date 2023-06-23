@@ -5,9 +5,11 @@ import { useRef } from 'react'
 import Link from 'next/link'
 import { createClient } from 'contentful'
 
+
 export default function Index( {products, articles, sheetdata} ) {
 console.log(sheetdata)
 console.log(products)
+
 
 let coffeeRef = useRef()
 const scrollHandler = (e) => {
