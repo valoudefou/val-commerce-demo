@@ -8,12 +8,12 @@ import Navbar from '../../components/Navbar'
 export default function Product(props) {
 
 
-useEffect(() => {
-  const script = document.createElement('script')
-  script.src = '//cdn.epoq.de/flow/quickstartdemo-valerian1.js'
-  script.async = true
-  document.body.appendChild(script)
-}, [])
+// useEffect(() => {
+//   const script = document.createElement('script')
+//   script.src = '//cdn.epoq.de/flow/quickstartdemo-valerian1.js'
+//   script.async = true
+//   document.body.appendChild(script)
+// }, [])
 
 const fs = useFlagship()
 

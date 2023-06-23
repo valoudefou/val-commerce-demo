@@ -13,7 +13,7 @@ return (
 href="https://github.com/valoudefou/commerce-demo"
 style={{color: flagBackgroundColor.getValue()}}
 >
-Source code
+GitHub
 </a>
 </footer>
 </>
