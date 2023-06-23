@@ -2,6 +2,7 @@ export const products = [
     {
         "productId": "40046926495807",
         "name": "The Short: Linen, Sage Green",
+        "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
         "brand": "With Nothing Underneath",
         "price": "60.00 GBP",
         "oldprice": "",
@@ -16,6 +17,7 @@ export const products = [
     {
         "productId": "40046800502847",
         "name": "The Boyfriend: Linen, Sunshine Yellow Stripe",
+        "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
         "brand": "With Nothing Underneath",
         "price": "100.00 GBP",
         "oldprice": "",
@@ -30,6 +32,7 @@ export const products = [
     {
         "productId": "40041209069631",
         "name": "The Weekend: Oxford, Raspberry",
+        "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
         "brand": "With Nothing Underneath",
         "price": "95.00 GBP",
         "oldprice": "",
@@ -44,6 +47,7 @@ export const products = [
     {
         "productId": "40041205858367",
         "name": "The Weekend: Oxford, Butter Yellow",
+        "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
         "brand": "With Nothing Underneath",
         "price": "95.00 GBP",
         "oldprice": "",
@@ -58,6 +62,7 @@ export const products = [
     {
         "productId": "40041201139775",
         "name": "The Boyfriend: Linen, Lapis Blue x Venetia Berry",
+        "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
         "brand": "With Nothing Underneath",
         "price": "120.00 GBP",
         "oldprice": "",
@@ -72,6 +77,7 @@ export const products = [
     {
         "productId": "40041194029119",
         "name": "The Boyfriend: Linen, White x Venetia Berry",
+        "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
         "brand": "With Nothing Underneath",
         "price": "120.00 GBP",
         "oldprice": "",
@@ -86,6 +92,7 @@ export const products = [
     {
         "productId": "40022184984639",
         "name": "The Short: Cotton Blend, Airforce Blue Stripe",
+        "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
         "brand": "With Nothing Underneath",
         "price": "65.00 GBP",
         "oldprice": "",
@@ -100,6 +107,7 @@ export const products = [
     {
         "productId": "40022183903295",
         "name": "The Classic: Cotton Blend, Airforce Blue Stripe",
+        "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
         "brand": "With Nothing Underneath",
         "price": "115.00 GBP",
         "oldprice": "",
@@ -114,6 +122,7 @@ export const products = [
     {
         "productId": "40008755085375",
         "name": "The Classic: Linen, Blue Gingham",
+        "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
         "brand": "With Nothing Underneath",
         "price": "100.00 GBP",
         "oldprice": "",
@@ -128,6 +137,7 @@ export const products = [
     {
         "productId": "40008740405311",
         "name": "The Classic: Linen, Red Gingham",
+        "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
         "brand": "With Nothing Underneath",
         "price": "100.00 GBP",
         "oldprice": "",
@@ -142,6 +152,7 @@ export const products = [
     {
         "productId": "40008737685567",
         "name": "The Girlfriend Collarless: Weave, Grapefruit Pink Stripe",
+        "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
         "brand": "With Nothing Underneath",
         "price": "95.00 GBP",
         "oldprice": "",
@@ -156,6 +167,7 @@ export const products = [
     {
         "productId": "40008734474303",
         "name": "The Girlfriend Collarless: Weave, Cream Stripe",
+        "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
         "brand": "With Nothing Underneath",
         "price": "95.00 GBP",
         "oldprice": "",
@@ -170,6 +182,7 @@ export const products = [
     {
         "productId": "40008732868671",
         "name": "The Boyfriend: Weave, Khaki Stripe",
+        "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
         "brand": "With Nothing Underneath",
         "price": "95.00 GBP",
         "oldprice": "",
@@ -184,6 +197,7 @@ export const products = [
     {
         "productId": "40006444417087",
         "name": "The Boyfriend: Weave, Lavender Stripe",
+        "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
         "brand": "With Nothing Underneath",
         "price": "95.00 GBP",
         "oldprice": "",
@@ -198,6 +212,7 @@ export const products = [
     {
         "productId": "39985020895295",
         "name": "The Classic: Denim",
+        "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
         "brand": "With Nothing Underneath",
         "price": "130.00 GBP",
         "oldprice": "",
@@ -212,6 +227,7 @@ export const products = [
     {
         "productId": "39941610930239",
         "name": "The Classic: Poplin, Midnight Blue Stripe",
+        "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
         "brand": "With Nothing Underneath",
         "price": "95.00 GBP",
         "oldprice": "",
@@ -226,6 +242,7 @@ export const products = [
     {
         "productId": "39941606277183",
         "name": "The Classic: Poplin, Morning Blue Stripe",
+        "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
         "brand": "With Nothing Underneath",
         "price": "95.00 GBP",
         "oldprice": "",
@@ -240,6 +257,7 @@ export const products = [
     {
         "productId": "39941599035455",
         "name": "The Classic: Poplin, Royal Blue Stripe",
+        "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
         "brand": "With Nothing Underneath",
         "price": "95.00 GBP",
         "oldprice": "",
@@ -254,6 +272,7 @@ export const products = [
     {
         "productId": "39927374512191",
         "name": "The Boyfriend: Tencel, Maple Red Stripe",
+        "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
         "brand": "With Nothing Underneath",
         "price": "110.00 GBP",
         "oldprice": "",
@@ -268,6 +287,7 @@ export const products = [
     {
         "productId": "39927370416191",
         "name": "The Boyfriend: Tencel, Navy Blue Stripe",
+        "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
         "brand": "With Nothing Underneath",
         "price": "110.00 GBP",
         "oldprice": "",
@@ -282,6 +302,7 @@ export const products = [
     {
         "productId": "39927309434943",
         "name": "The Boyfriend: Tencel, Forest Green Stripe",
+        "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
         "brand": "With Nothing Underneath",
         "price": "110.00 GBP",
         "oldprice": "",
@@ -296,6 +317,7 @@ export const products = [
     {
         "productId": "39914809032767",
         "name": "The Short: Oxford, Celeste Blue Stripe",
+        "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
         "brand": "With Nothing Underneath",
         "price": "55.00 GBP",
         "oldprice": "",
@@ -310,6 +332,7 @@ export const products = [
     {
         "productId": "39914794451007",
         "name": "The Short: Fine Brushed, Racing Green",
+        "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
         "brand": "With Nothing Underneath",
         "price": "65.00 GBP",
         "oldprice": "",
@@ -324,6 +347,7 @@ export const products = [
     {
         "productId": "39914792419391",
         "name": "The Short: Fine Brushed, Airforce Blue",
+        "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
         "brand": "With Nothing Underneath",
         "price": "65.00 GBP",
         "oldprice": "",
@@ -338,6 +362,7 @@ export const products = [
     {
         "productId": "39914792091711",
         "name": "The Short: Fine Brushed, Burgundy",
+        "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
         "brand": "With Nothing Underneath",
         "price": "65.00 GBP",
         "oldprice": "",
@@ -352,6 +377,7 @@ export const products = [
     {
         "productId": "39868016787519",
         "name": "The Classic: Fine Brushed, Off-White Check",
+        "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
         "brand": "With Nothing Underneath",
         "price": "130.00 GBP",
         "oldprice": "",
@@ -366,6 +392,7 @@ export const products = [
     {
         "productId": "39868016558143",
         "name": "The Classic: Fine Brushed, Biscuit Check",
+        "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
         "brand": "With Nothing Underneath",
         "price": "130.00 GBP",
         "oldprice": "",
@@ -380,6 +407,7 @@ export const products = [
     {
         "productId": "39868015116351",
         "name": "The Weekend: Fine Brushed, Racing Green",
+        "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
         "brand": "With Nothing Underneath",
         "price": "120.00 GBP",
         "oldprice": "",
@@ -394,6 +422,7 @@ export const products = [
     {
         "productId": "39868014723135",
         "name": "The Weekend: Fine Brushed, Burgundy",
+        "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
         "brand": "With Nothing Underneath",
         "price": "120.00 GBP",
         "oldprice": "",
@@ -408,6 +437,7 @@ export const products = [
     {
         "productId": "39868014624831",
         "name": "The Weekend: Fine Brushed, Airforce Blue",
+        "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
         "brand": "With Nothing Underneath",
         "price": "120.00 GBP",
         "oldprice": "",
@@ -422,6 +452,7 @@ export const products = [
     {
         "productId": "39834393215039",
         "name": "The Classic: Fine Brushed, Navy Plaid",
+        "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
         "brand": "With Nothing Underneath",
         "price": "120.00 GBP",
         "oldprice": "",
@@ -436,6 +467,7 @@ export const products = [
     {
         "productId": "39834377093183",
         "name": "The Classic: Fine Brushed, Dusty Pink",
+        "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
         "brand": "With Nothing Underneath",
         "price": "120.00 GBP",
         "oldprice": "",
@@ -450,6 +482,7 @@ export const products = [
     {
         "productId": "39834376470591",
         "name": "The Classic: Fine Brushed, Dusty Blue",
+        "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
         "brand": "With Nothing Underneath",
         "price": "120.00 GBP",
         "oldprice": "",
@@ -464,6 +497,7 @@ export const products = [
     {
         "productId": "39834348617791",
         "name": "The Boyfriend: Brushed, Mocha",
+        "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
         "brand": "With Nothing Underneath",
         "price": "115.00 GBP",
         "oldprice": "",
@@ -478,6 +512,7 @@ export const products = [
     {
         "productId": "39834347569215",
         "name": "The Boyfriend: Brushed, Oat",
+        "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
         "brand": "With Nothing Underneath",
         "price": "115.00 GBP",
         "oldprice": "",
@@ -492,6 +527,7 @@ export const products = [
     {
         "productId": "39806620336191",
         "name": "The Classic: Oxford, Rose Pink",
+        "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
         "brand": "With Nothing Underneath",
         "price": "85.00 GBP",
         "oldprice": "",
@@ -506,6 +542,7 @@ export const products = [
     {
         "productId": "39806614143039",
         "name": "The Classic: Oxford, Rose Pink Stripe",
+        "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
         "brand": "With Nothing Underneath",
         "price": "85.00 GBP",
         "oldprice": "",
@@ -520,6 +557,7 @@ export const products = [
     {
         "productId": "39806613159999",
         "name": "The Classic: Oxford, Hunter Green Stripe",
+        "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
         "brand": "With Nothing Underneath",
         "price": "85.00 GBP",
         "oldprice": "",
@@ -534,6 +572,7 @@ export const products = [
     {
         "productId": "39806612897855",
         "name": "The Classic: Oxford, Celeste Blue Stripe",
+        "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
         "brand": "With Nothing Underneath",
         "price": "85.00 GBP",
         "oldprice": "",
@@ -548,6 +587,7 @@ export const products = [
     {
         "productId": "39776479936575",
         "name": "The Girlfriend Collarless Contrast: Poplin, Morning Blue Stripe",
+        "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
         "brand": "With Nothing Underneath",
         "price": "95.00 GBP",
         "oldprice": "",
@@ -562,6 +602,7 @@ export const products = [
     {
         "productId": "39776471679039",
         "name": "The Girlfriend Collarless Contrast: Poplin, Royal Blue Stripe",
+        "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
         "brand": "With Nothing Underneath",
         "price": "95.00 GBP",
         "oldprice": "",
@@ -576,6 +617,7 @@ export const products = [
     {
         "productId": "39776455983167",
         "name": "The Boyfriend Contrast: Poplin, Royal Blue Stripe",
+        "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
         "brand": "With Nothing Underneath",
         "price": "95.00 GBP",
         "oldprice": "",
@@ -590,6 +632,7 @@ export const products = [
     {
         "productId": "39776450084927",
         "name": "The Boyfriend Contrast: Poplin, Steel Blue",
+        "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
         "brand": "With Nothing Underneath",
         "price": "95.00 GBP",
         "oldprice": "",
@@ -604,6 +647,7 @@ export const products = [
     {
         "productId": "39759711731775",
         "name": "The Classic: Poplin, White",
+        "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
         "brand": "With Nothing Underneath",
         "price": "95.00 GBP",
         "oldprice": "",
@@ -618,6 +662,7 @@ export const products = [
     {
         "productId": "39725092208703",
         "name": "The Short: Hemp, Navy Blue",
+        "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
         "brand": "With Nothing Underneath",
         "price": "60.00 GBP",
         "oldprice": "",
@@ -632,6 +677,7 @@ export const products = [
     {
         "productId": "39725091749951",
         "name": "The Short: Hemp, Periwinkle Blue",
+        "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
         "brand": "With Nothing Underneath",
         "price": "60.00 GBP",
         "oldprice": "",
@@ -646,6 +692,7 @@ export const products = [
     {
         "productId": "39725091520575",
         "name": "The Short: Hemp, White",
+        "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
         "brand": "With Nothing Underneath",
         "price": "60.00 GBP",
         "oldprice": "",
@@ -660,6 +707,7 @@ export const products = [
     {
         "productId": "39725091061823",
         "name": "The Weekend: Hemp, Navy Blue",
+        "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
         "brand": "With Nothing Underneath",
         "price": "100.00 GBP",
         "oldprice": "",
@@ -674,6 +722,7 @@ export const products = [
     {
         "productId": "39725090799679",
         "name": "The Weekend: Hemp, Periwinkle Blue",
+        "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
         "brand": "With Nothing Underneath",
         "price": "100.00 GBP",
         "oldprice": "",
@@ -688,6 +737,7 @@ export const products = [
     {
         "productId": "39725089587263",
         "name": "The Weekend: Hemp, White",
+        "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
         "brand": "With Nothing Underneath",
         "price": "100.00 GBP",
         "oldprice": "",
@@ -702,6 +752,7 @@ export const products = [
     {
         "productId": "39699901087807",
         "name": "The Weekend: Poplin, Steel Blue",
+        "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
         "brand": "With Nothing Underneath",
         "price": "95.00 GBP",
         "oldprice": "",
@@ -716,6 +767,7 @@ export const products = [
     {
         "productId": "39682937421887",
         "name": "The Short: Seersucker, Rain Blue Stripe",
+        "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
         "brand": "With Nothing Underneath",
         "price": "55.00 GBP",
         "oldprice": "",
@@ -730,6 +782,7 @@ export const products = [
     {
         "productId": "39682937159743",
         "name": "The Short: Seersucker, Sunshine Yellow Stripe",
+        "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
         "brand": "With Nothing Underneath",
         "price": "55.00 GBP",
         "oldprice": "",
@@ -744,6 +797,7 @@ export const products = [
     {
         "productId": "39682930343999",
         "name": "The Weekend: Seersucker, Rain Blue Stripe",
+        "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
         "brand": "With Nothing Underneath",
         "price": "95.00 GBP",
         "oldprice": "",
@@ -758,6 +812,7 @@ export const products = [
     {
         "productId": "39682930245695",
         "name": "The Weekend: Seersucker, Sunshine Yellow Stripe",
+        "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
         "brand": "With Nothing Underneath",
         "price": "95.00 GBP",
         "oldprice": "",
@@ -772,6 +827,7 @@ export const products = [
     {
         "productId": "39677035085887",
         "name": "The Weekend: Poplin, Midnight and Royal Blue Stripe Patchwork",
+        "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
         "brand": "With Nothing Underneath",
         "price": "95.00 GBP",
         "oldprice": "",
@@ -786,6 +842,7 @@ export const products = [
     {
         "productId": "39677034987583",
         "name": "The Weekend: Poplin, White",
+        "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
         "brand": "With Nothing Underneath",
         "price": "95.00 GBP",
         "oldprice": "",
@@ -800,6 +857,7 @@ export const products = [
     {
         "productId": "39668334002239",
         "name": "The Cabana: Linen, Stone",
+        "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
         "brand": "With Nothing Underneath",
         "price": "85.00 GBP",
         "oldprice": "",
@@ -814,6 +872,7 @@ export const products = [
     {
         "productId": "39668332101695",
         "name": "The Cabana: Linen, White",
+        "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
         "brand": "With Nothing Underneath",
         "price": "85.00 GBP",
         "oldprice": "",
@@ -828,6 +887,7 @@ export const products = [
     {
         "productId": "39668322435135",
         "name": "The Short: Linen, Sky Blue Stripe",
+        "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
         "brand": "With Nothing Underneath",
         "price": "60.00 GBP",
         "oldprice": "",
@@ -842,6 +902,7 @@ export const products = [
     {
         "productId": "39668320534591",
         "name": "The Short: Linen, Periwinkle Blue",
+        "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
         "brand": "With Nothing Underneath",
         "price": "60.00 GBP",
         "oldprice": "",
@@ -856,6 +917,7 @@ export const products = [
     {
         "productId": "39668312768575",
         "name": "The Short: Linen, Grapefruit Pink",
+        "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
         "brand": "With Nothing Underneath",
         "price": "60.00 GBP",
         "oldprice": "",
@@ -870,6 +932,7 @@ export const products = [
     {
         "productId": "39668311392319",
         "name": "The Short: Linen, White",
+        "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
         "brand": "With Nothing Underneath",
         "price": "60.00 GBP",
         "oldprice": "",
@@ -884,6 +947,7 @@ export const products = [
     {
         "productId": "39668289699903",
         "name": "The Short: Linen, Cornflower Blue Stripe",
+        "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
         "brand": "With Nothing Underneath",
         "price": "60.00 GBP",
         "oldprice": "",
@@ -898,6 +962,7 @@ export const products = [
     {
         "productId": "39668286947391",
         "name": "The Short: Linen, Mint Green",
+        "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
         "brand": "With Nothing Underneath",
         "price": "60.00 GBP",
         "oldprice": "",
@@ -912,6 +977,7 @@ export const products = [
     {
         "productId": "39668260700223",
         "name": "The Short: Linen, Lilac",
+        "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
         "brand": "With Nothing Underneath",
         "price": "60.00 GBP",
         "oldprice": "",
@@ -926,6 +992,7 @@ export const products = [
     {
         "productId": "39668241694783",
         "name": "The Short: Linen, Cardinal Red",
+        "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
         "brand": "With Nothing Underneath",
         "price": "60.00 GBP",
         "oldprice": "",
@@ -940,6 +1007,7 @@ export const products = [
     {
         "productId": "39668235337791",
         "name": "The Boyfriend: Linen, Cardinal Red",
+        "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
         "brand": "With Nothing Underneath",
         "price": "100.00 GBP",
         "oldprice": "",
@@ -954,6 +1022,7 @@ export const products = [
     {
         "productId": "39668232421439",
         "name": "The Boyfriend: Linen, Cornflower Blue Stripe",
+        "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
         "brand": "With Nothing Underneath",
         "price": "100.00 GBP",
         "oldprice": "",
@@ -968,6 +1037,7 @@ export const products = [
     {
         "productId": "39666250186815",
         "name": "The Boyfriend: Linen, Black",
+        "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
         "brand": "With Nothing Underneath",
         "price": "100.00 GBP",
         "oldprice": "",
@@ -982,6 +1052,7 @@ export const products = [
     {
         "productId": "39666212929599",
         "name": "The Boyfriend: Linen, Lilac",
+        "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
         "brand": "With Nothing Underneath",
         "price": "100.00 GBP",
         "oldprice": "",
@@ -996,6 +1067,7 @@ export const products = [
     {
         "productId": "39666211323967",
         "name": "The Boyfriend: Linen, Mint Green",
+        "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
         "brand": "With Nothing Underneath",
         "price": "100.00 GBP",
         "oldprice": "",
@@ -1010,6 +1082,7 @@ export const products = [
     {
         "productId": "39651142598719",
         "name": "The Short: Weave, Blue Stripe",
+        "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
         "brand": "With Nothing Underneath",
         "price": "55.00 GBP",
         "oldprice": "",
@@ -1024,6 +1097,7 @@ export const products = [
     {
         "productId": "39651140370495",
         "name": "The Short: Weave, Celeste Blue",
+        "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
         "brand": "With Nothing Underneath",
         "price": "55.00 GBP",
         "oldprice": "",
@@ -1038,6 +1112,7 @@ export const products = [
     {
         "productId": "39651137814591",
         "name": "The Short: Weave, White",
+        "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
         "brand": "With Nothing Underneath",
         "price": "55.00 GBP",
         "oldprice": "",
@@ -1052,6 +1127,7 @@ export const products = [
     {
         "productId": "39650732703807",
         "name": "The Short: Poplin, Merlot Stripe",
+        "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
         "brand": "With Nothing Underneath",
         "price": "55.00 GBP",
         "oldprice": "",
@@ -1066,6 +1142,7 @@ export const products = [
     {
         "productId": "39650718154815",
         "name": "The Short: Poplin, Midnight Blue Stripe",
+        "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
         "brand": "With Nothing Underneath",
         "price": "55.00 GBP",
         "oldprice": "",
@@ -1080,6 +1157,7 @@ export const products = [
     {
         "productId": "39650717532223",
         "name": "The Short: Poplin, Royal Blue Stripe",
+        "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
         "brand": "With Nothing Underneath",
         "price": "55.00 GBP",
         "oldprice": "",
@@ -1094,6 +1172,7 @@ export const products = [
     {
         "productId": "39650716909631",
         "name": "The Short: Poplin, Morning Blue Stripe",
+        "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
         "brand": "With Nothing Underneath",
         "price": "55.00 GBP",
         "oldprice": "",
@@ -1108,6 +1187,7 @@ export const products = [
     {
         "productId": "39650716057663",
         "name": "The Short: Poplin, Steel Blue",
+        "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
         "brand": "With Nothing Underneath",
         "price": "55.00 GBP",
         "oldprice": "",
@@ -1122,6 +1202,7 @@ export const products = [
     {
         "productId": "39650715795519",
         "name": "The Short: Poplin, White",
+        "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
         "brand": "With Nothing Underneath",
         "price": "55.00 GBP",
         "oldprice": "",
@@ -1136,6 +1217,7 @@ export const products = [
     {
         "productId": "39631320743999",
         "name": "The Girlfriend Collarless: Weave, Rose Pink",
+        "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
         "brand": "With Nothing Underneath",
         "price": "95.00 GBP",
         "oldprice": "",
@@ -1150,6 +1232,7 @@ export const products = [
     {
         "productId": "39631318483007",
         "name": "The Girlfriend: Weave, Rose Pink",
+        "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
         "brand": "With Nothing Underneath",
         "price": "95.00 GBP",
         "oldprice": "",
@@ -1164,6 +1247,7 @@ export const products = [
     {
         "productId": "39631314714687",
         "name": "The Girlfriend Collarless: Weave, Celeste Blue",
+        "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
         "brand": "With Nothing Underneath",
         "price": "95.00 GBP",
         "oldprice": "",
@@ -1178,6 +1262,7 @@ export const products = [
     {
         "productId": "39631312027711",
         "name": "The Girlfriend: Weave, Celeste Blue",
+        "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
         "brand": "With Nothing Underneath",
         "price": "95.00 GBP",
         "oldprice": "",
@@ -1192,6 +1277,7 @@ export const products = [
     {
         "productId": "39631307571263",
         "name": "The Girlfriend Collarless: Weave, White",
+        "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
         "brand": "With Nothing Underneath",
         "price": "95.00 GBP",
         "oldprice": "",
@@ -1206,6 +1292,7 @@ export const products = [
     {
         "productId": "39631300034623",
         "name": "The Girlfriend: Weave, White",
+        "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
         "brand": "With Nothing Underneath",
         "price": "95.00 GBP",
         "oldprice": "",
@@ -1220,6 +1307,7 @@ export const products = [
     {
         "productId": "39631281029183",
         "name": "The Girlfriend Collarless: Poplin, Steel Blue",
+        "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
         "brand": "With Nothing Underneath",
         "price": "95.00 GBP",
         "oldprice": "",
@@ -1234,6 +1322,7 @@ export const products = [
     {
         "productId": "39631278276671",
         "name": "The Girlfriend: Poplin, Steel Blue",
+        "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
         "brand": "With Nothing Underneath",
         "price": "95.00 GBP",
         "oldprice": "",
@@ -1248,6 +1337,7 @@ export const products = [
     {
         "productId": "39631275032639",
         "name": "The Girlfriend Collarless: Poplin, White",
+        "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
         "brand": "With Nothing Underneath",
         "price": "95.00 GBP",
         "oldprice": "",
@@ -1262,6 +1352,7 @@ export const products = [
     {
         "productId": "39631272116287",
         "name": "The Girlfriend: Poplin, White",
+        "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
         "brand": "With Nothing Underneath",
         "price": "95.00 GBP",
         "oldprice": "",
@@ -1276,6 +1367,7 @@ export const products = [
     {
         "productId": "39619195699263",
         "name": "The Boyfriend: Weave, Navy Blue Horizontal Stripe",
+        "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
         "brand": "With Nothing Underneath",
         "price": "95.00 GBP",
         "oldprice": "",
@@ -1290,6 +1382,7 @@ export const products = [
     {
         "productId": "39619186360383",
         "name": "The Boyfriend: Weave, Navy Blue Stripe",
+        "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
         "brand": "With Nothing Underneath",
         "price": "95.00 GBP",
         "oldprice": "",
@@ -1304,6 +1397,7 @@ export const products = [
     {
         "productId": "39619175415871",
         "name": "The Boyfriend: Weave, Grapefruit Pink Patchwork",
+        "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
         "brand": "With Nothing Underneath",
         "price": "95.00 GBP",
         "oldprice": "",
@@ -1318,6 +1412,7 @@ export const products = [
     {
         "productId": "39619174858815",
         "name": "The Boyfriend: Weave, Grapefruit Pink Stripe",
+        "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
         "brand": "With Nothing Underneath",
         "price": "95.00 GBP",
         "oldprice": "",
@@ -1332,6 +1427,7 @@ export const products = [
     {
         "productId": "39546183680063",
         "name": "The Boyfriend: Poplin, Merlot Stripe",
+        "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
         "brand": "With Nothing Underneath",
         "price": "95.00 GBP",
         "oldprice": "",
@@ -1346,6 +1442,7 @@ export const products = [
     {
         "productId": "39417193988159",
         "name": "The Boyfriend: Silk, Onyx",
+        "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
         "brand": "With Nothing Underneath",
         "price": "220.00 GBP",
         "oldprice": "",
@@ -1360,6 +1457,7 @@ export const products = [
     {
         "productId": "39417191432255",
         "name": "The Boyfriend: Silk, Pearl",
+        "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
         "brand": "With Nothing Underneath",
         "price": "220.00 GBP",
         "oldprice": "",
@@ -1374,6 +1472,7 @@ export const products = [
     {
         "productId": "39413315207231",
         "name": "The Boyfriend: Brushed, Rain Blue Plaid",
+        "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
         "brand": "With Nothing Underneath",
         "price": "115.00 GBP",
         "oldprice": "",
@@ -1388,6 +1487,7 @@ export const products = [
     {
         "productId": "39413313110079",
         "name": "The Boyfriend: Brushed, Sage Green",
+        "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
         "brand": "With Nothing Underneath",
         "price": "115.00 GBP",
         "oldprice": "",
@@ -1402,6 +1502,7 @@ export const products = [
     {
         "productId": "39417150701631",
         "name": "The Boyfriend: Linen, Periwinkle Blue",
+        "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
         "brand": "With Nothing Underneath",
         "price": "100.00 GBP",
         "oldprice": "",
@@ -1416,6 +1517,7 @@ export const products = [
     {
         "productId": "39299802628159",
         "name": "The Boyfriend: Linen, Sage Green",
+        "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
         "brand": "With Nothing Underneath",
         "price": "100.00 GBP",
         "oldprice": "",
@@ -1430,6 +1532,7 @@ export const products = [
     {
         "productId": "39594161963071",
         "name": "The Cabana Curved Collar: Linen, White",
+        "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
         "brand": "With Nothing Underneath",
         "price": "85.00 GBP",
         "oldprice": "",
@@ -1444,6 +1547,7 @@ export const products = [
     {
         "productId": "39261481631807",
         "name": "The Cabana Curved Collar: Linen, Lapis Blue",
+        "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
         "brand": "With Nothing Underneath",
         "price": "85.00 GBP",
         "oldprice": "",
@@ -1458,6 +1562,7 @@ export const products = [
     {
         "productId": "39417154404415",
         "name": "The Boyfriend: Weave, Ocean Blue Stripe",
+        "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
         "brand": "With Nothing Underneath",
         "price": "95.00 GBP",
         "oldprice": "",
@@ -1472,6 +1577,7 @@ export const products = [
     {
         "productId": "39417153552447",
         "name": "The Boyfriend: Weave, Cream Stripe",
+        "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
         "brand": "With Nothing Underneath",
         "price": "95.00 GBP",
         "oldprice": "",
@@ -1486,6 +1592,7 @@ export const products = [
     {
         "productId": "39510805807167",
         "name": "Digital Gift Card",
+        "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
         "brand": "With Nothing Underneath",
         "price": "50.00 GBP",
         "oldprice": "",
@@ -1500,6 +1607,7 @@ export const products = [
     {
         "productId": "39417112690751",
         "name": "The Boyfriend: Poplin, Morning Blue Stripe",
+        "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
         "brand": "With Nothing Underneath",
         "price": "95.00 GBP",
         "oldprice": "",
@@ -1514,6 +1622,7 @@ export const products = [
     {
         "productId": "32885756624959",
         "name": "The Boyfriend: Poplin, Blue Pinstripe",
+        "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
         "brand": "With Nothing Underneath",
         "price": "95.00 GBP",
         "oldprice": "",
@@ -1528,6 +1637,7 @@ export const products = [
     {
         "productId": "39417145851967",
         "name": "The Boyfriend: Linen, Grapefruit Pink",
+        "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
         "brand": "With Nothing Underneath",
         "price": "100.00 GBP",
         "oldprice": "",
@@ -1542,6 +1652,7 @@ export const products = [
     {
         "productId": "39417144901695",
         "name": "The Boyfriend: Linen, White",
+        "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
         "brand": "With Nothing Underneath",
         "price": "100.00 GBP",
         "oldprice": "",
@@ -1556,6 +1667,7 @@ export const products = [
     {
         "productId": "31080318992447",
         "name": "The Boyfriend: Brushed, Arctic Blue",
+        "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
         "brand": "With Nothing Underneath",
         "price": "115.00 GBP",
         "oldprice": "",
@@ -1570,6 +1682,7 @@ export const products = [
     {
         "productId": "31080312832063",
         "name": "The Boyfriend: Fine Brushed, Oat",
+        "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
         "brand": "With Nothing Underneath",
         "price": "110.00 GBP",
         "oldprice": "",
@@ -1584,6 +1697,7 @@ export const products = [
     {
         "productId": "31080279507007",
         "name": "The Boyfriend: Brushed, Alaska Blue",
+        "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
         "brand": "With Nothing Underneath",
         "price": "115.00 GBP",
         "oldprice": "",
@@ -1598,6 +1712,7 @@ export const products = [
     {
         "productId": "39417147162687",
         "name": "The Boyfriend: Linen, Lapis Blue",
+        "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
         "brand": "With Nothing Underneath",
         "price": "100.00 GBP",
         "oldprice": "",
@@ -1612,6 +1727,7 @@ export const products = [
     {
         "productId": "39417148375103",
         "name": "The Boyfriend: Linen, Sky Blue Stripe",
+        "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
         "brand": "With Nothing Underneath",
         "price": "100.00 GBP",
         "oldprice": "",
@@ -1626,6 +1742,7 @@ export const products = [
     {
         "productId": "39417152045119",
         "name": "The Boyfriend: Weave, White",
+        "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
         "brand": "With Nothing Underneath",
         "price": "95.00 GBP",
         "oldprice": "",
@@ -1640,6 +1757,7 @@ export const products = [
     {
         "productId": "39417152471103",
         "name": "The Boyfriend: Weave, Celeste Blue",
+        "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
         "brand": "With Nothing Underneath",
         "price": "95.00 GBP",
         "oldprice": "",
@@ -1654,6 +1772,7 @@ export const products = [
     {
         "productId": "39417106366527",
         "name": "The Boyfriend: Poplin, Midnight Blue Stripe",
+        "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
         "brand": "With Nothing Underneath",
         "price": "95.00 GBP",
         "oldprice": "",
@@ -1668,6 +1787,7 @@ export const products = [
     {
         "productId": "39417099681855",
         "name": "The Boyfriend: Poplin, Steel Blue",
+        "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
         "brand": "With Nothing Underneath",
         "price": "95.00 GBP",
         "oldprice": "",
@@ -1682,6 +1802,7 @@ export const products = [
     {
         "productId": "39417108824127",
         "name": "The Boyfriend: Poplin, Royal Blue Stripe",
+        "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
         "brand": "With Nothing Underneath",
         "price": "95.00 GBP",
         "oldprice": "",
@@ -1696,6 +1817,7 @@ export const products = [
     {
         "productId": "39417051349055",
         "name": "The Boyfriend: Poplin, White",
+        "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
         "brand": "With Nothing Underneath",
         "price": "95.00 GBP",
         "oldprice": "",
