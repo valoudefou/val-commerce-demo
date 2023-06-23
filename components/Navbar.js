@@ -51,7 +51,7 @@ type="button"
 </div>
 <input
 type="text"
-className="epoq_search_box ui-autocomplete-input block p-2 mr-4 font-light pl-10 w-70 text-gray-900 bg-gray-50 rounded border border-gray-200 focus:pl-3 lowercase"
+className="epoq_search_box ui-autocomplete-input block p-2 font-light pl-10 w-70 text-gray-900 bg-gray-50 rounded border border-gray-200 focus:pl-3 lowercase"
 placeholder={'Search ' + flagIndustry.getValue() + ' ...'}
 onFocus={handleFocus}
 onBlur={handleBlur}
