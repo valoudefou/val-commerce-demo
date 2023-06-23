@@ -1,4 +1,4 @@
-import { products } from sheetdata
+import { products } from 'https://nextjs-abtasty.vercel.app/api/sheet'
 
 export default function handler(req, res) {
     const { productId } = req.query
