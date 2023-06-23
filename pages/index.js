@@ -37,7 +37,7 @@ Shop our products
 </div>
 <div className="grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
 <>
-{sheetdata.map((product) => (
+{products.map((product) => (
 <ProductCard product={product} key={product.productId} /> 
 ))}
 </>
@@ -52,7 +52,7 @@ export async function getStaticProps() {
         space: 'mwr46hk1hvcf',
         accessToken: 'P7e2zlwtUe4ZDhEuBW9cQ8ma8ViKddL3f1oYrfCHbdk',
         })
-const res = await fetch('https://dummyjson.com/products')
+const res = await fetch('https://nextjs-abtasty.vercel.app/api/products')
 const data = await res.json()
 const req1 = await fetch('https://nextjs-abtasty.vercel.app/api/sheet');
 const res1 = await req1.json();
