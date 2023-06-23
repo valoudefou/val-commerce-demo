@@ -5,11 +5,9 @@ import { useRef } from 'react'
 import Link from 'next/link'
 import { createClient } from 'contentful'
 
-
 export default function Index( {products, articles, sheetdata} ) {
 // console.log(sheetdata)
 // console.log(products)
-
 
 let coffeeRef = useRef()
 const scrollHandler = (e) => {
@@ -39,8 +37,8 @@ Shop our products
 </div>
 <div className="grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
 <>
-{products.products.map((product) => (
-<ProductCard product={product} key={product.id} /> 
+{sheetdata.map((product) => (
+<ProductCard product={product} key={product.productId} /> 
 ))}
 </>
 </div>

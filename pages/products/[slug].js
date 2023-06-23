@@ -33,16 +33,16 @@ return (
 <Image
 alt="coffee"
 className="rounded-lg object-contain self-center px-8"
-src={props.product.images[0]}
+src={props.product.smallImage}
 width={560}
 height={640}
 />
 <div className="mt-10 flex flex-col lg:pl-20 md:pl-0">
 <h1 className="mt-1 text-2xl font-medium text-gray-900 sm:text-2xl sm:tracking-tight lg:text-3xl">
-{props.product.title}
+{props.product.name}
 </h1>
 <h1 className="mt-3 text-2xl font-bold text-gray-500 sm:text-3xl sm:tracking-wide lg:text-2xl">
-{props.product.price}€
+{props.product.price}
 </h1>
 <button
 className="flex items-center justify-center text-sm font-base mt-5 border border-transparent bg-orange-600 px-4 py-4 text-white shadow-sm hover:bg-orange-800 sm:px-8 w-full"
@@ -83,15 +83,15 @@ Description
 
 export async function getStaticProps(context) {
 const { params } = context
-const res = await fetch(`https://dummyjson.com/products/${params.slug}`)
-const data = await res.json()
-// const req1 = await fetch(`https://nextjs-abtasty.vercel.app/api/sheet/${params.slug}`);
-// const res1 = await req1.json();
-console.log(data)
+// const res = await fetch(`https://dummyjson.com/products/${params.slug}`)
+// const data = await res.json()
+const req1 = await fetch(`https://nextjs-abtasty.vercel.app/api/products/${params.slug}`);
+const res1 = await req1.json();
+
 return {
 props: {
-product: data,
-// sheetdata: res1.data,
+// product: data,
+product: res1,
 },
 }
 }
