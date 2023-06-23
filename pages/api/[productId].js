@@ -1,4 +1,4 @@
-import { products } from 'pages/api/sheet.js'
+import { products } from sheetdata
 
 export default function handler(req, res) {
     const { productId } = req.query
