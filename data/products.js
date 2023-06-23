@@ -574,7 +574,7 @@ export const products = [
         "name": "The Classic: Oxford, Celeste Blue Stripe",
         "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
         "brand": "With Nothing Underneath",
-        "price": "86.00 GBP",
+        "price": "85.00 GBP",
         "oldprice": "",
         "category": "Shirts",
         "productUrl": "https://www.withnothingunderneath.com/products/the-classic-oxford-celeste-blue-stripe?variant=39806612897855",
