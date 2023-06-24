@@ -4,7 +4,7 @@ export const products = [
         "name": "The Short: Linen, Sage Green",
         "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
         "brand": "With Nothing Underneath",
-        "price": "60.00 GBP",
+        "price": "61.00 GBP",
         "oldprice": "",
         "category": "Shorts",
         "productUrl": "https://www.withnothingunderneath.com/products/the-short-linen-sage-green?variant=40046926495807",
