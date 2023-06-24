@@ -98,7 +98,7 @@ product: res1,
 
 export async function getStaticPaths() {
 return {
-paths: [{ params: { slug: '40046926495807'} }],
+paths: [{ params: { slug: 'L2.909.4.78.3'} }],
 fallback: true
 }
 }
