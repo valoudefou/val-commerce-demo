@@ -49,8 +49,8 @@ Shop our products
 
 export async function getStaticProps() {
     const client = createClient({
-        space: 'mwr46hk1hvcf',
-        accessToken: 'P7e2zlwtUe4ZDhEuBW9cQ8ma8ViKddL3f1oYrfCHbdk',
+        space: process.env.SPACE,
+        accessToken: process.env.ACCESS_TOKEN,
         })
 const res = await fetch('https://nextjs-abtasty.vercel.app/api/products')
 const data = await res.json()
