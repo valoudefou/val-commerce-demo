@@ -1,5 +1,6 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 secrets.json
+key.json
 
 # dependencies
 /node_modules
@@ -19,7 +20,6 @@ secrets.json
 # misc
 .DS_Store
 *.pem
-*.json
 
 # debug
 npm-debug.log*
