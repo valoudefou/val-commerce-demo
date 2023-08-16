@@ -3,12 +3,14 @@ import { HitType, useFlagship, useFsFlag } from "@flagship.io/react-sdk"
 
 export default function Header({ scrollHandler }) {
 const fs = useFlagship();
+
 //get flag 
 const flagImageSrc = useFsFlag("flagImageSrc", "/coffee.jpg")
 const flagBtnText = useFsFlag("flagBtnText", "Shop")
 const flagIndustry = useFsFlag("flagIndustry", "Product")
 const flagBackgroundColor = useFsFlag("flagBackgroundColor", "black")
 const { hit: fsHit } = useFlagship();
+
 // useEffect(() => {
 //     fsHit.send({
 //         type: HitType.PAGE, // or "PAGEVIEW",

@@ -7,6 +7,7 @@ import { useEffect } from "react"
 export default function MiniCart() {
 const fs = useFlagship()
 
+
 //get flag 
 const paymentFeature1Click = useFsFlag("paymentFeature1Click", "false")
 // useEffect(() => {

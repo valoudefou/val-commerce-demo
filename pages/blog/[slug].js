@@ -41,18 +41,28 @@ props: {articles: items[0]}
 }
 }
 export default function Article({articles}) {
-
+console.log(articles)
     const fs = useFlagship()
 
     //get flag 
-    const contentfulContent = useFsFlag("contentfulContent", "title")
+    const contentfulContent = useFsFlag("contentfulContent", "flex-col")
 
 return (
-<div className="grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
+    <div className="flex flex-col p-4">
 
-{articles.fields.title}
-{articles.fields.content}
+
+<h1 className="text-4xl p-5 place-self-center font-semibold">{articles.fields.titleV2}</h1>
+<h2 className="text-2xl p-5 font-medium">{articles.fields.title}</h2>
+<div className={'flex ' + contentfulContent.getValue()}>
+<p className="p-5 text-justify">{articles.fields.content}</p>
+<div className="divider divider-horizontal"></div>
+<p className="p-5 text-justify">{articles.fields.content}</p>
 </div>
+
+
+
+
+</div>
+
 )
 }
-

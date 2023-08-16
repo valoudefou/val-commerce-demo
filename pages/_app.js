@@ -4,6 +4,7 @@ import { Flagship, FlagshipProvider, HitType, useFlagship, useFsFlag } from "@fl
 import React from "react"
 import App from "next/app"
 import Footer from '../components/Footer'
+import { v4 as uuidv4 } from 'uuid'
 
 function MyApp({ Component, pageProps, initialFlagsData, initialVisitorData }) {
 const fs = useFlagship()
@@ -31,22 +32,24 @@ const appProps = await App.getInitialProps(appContext);
 
 //Start the Flagship SDK
 const flagship = Flagship.start("blrok2jb3fq008ho9c70", "k0Q3wqL9GEajXlL6dw8vr4zfqxz50LIa7QAJDz8q", {
-fetchNow: false,
+    fetchNow: false,
 });
 
 const initialVisitorData = {
-id: "my_visitor_id38",
-context: {
-segment: "jewelry",
-system: "ios",
-regionId: 3,
-},
+    id: uuidv4(),
+    context: {
+    organisation: "whatever",
+    segment: "fashion",
+    system: "ios",
+    regionId: 3,
+    },
 };
+
 
 // Create a new visitor
 const visitor = flagship?.newVisitor({
-visitorId: initialVisitorData.id,
-context: initialVisitorData.context,
+    visitorId: initialVisitorData.id,
+    context: initialVisitorData.context,
 });
 
 //Fetch flags
@@ -54,9 +57,9 @@ await visitor?.fetchFlags()
 
 // Pass data to the page via props
 return {
-...appProps,
-initialFlagsData: visitor?.getFlagsDataArray(),
-initialVisitorData,
+    ...appProps,
+    initialFlagsData: visitor?.getFlagsDataArray(),
+    initialVisitorData,
 };
 };
 
