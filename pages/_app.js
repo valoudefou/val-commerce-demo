@@ -39,7 +39,7 @@ const initialVisitorData = {
     id: uuidv4(),
     context: {
     organisation: "whatever",
-    segment: "coffee",
+    segment: "jewelry",
     login: 'true',
     system: "ios",
     regionId: 3,
