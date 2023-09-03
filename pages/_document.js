@@ -21,7 +21,7 @@ rel="stylesheet"
 />
 </Head>
 <body>
-<div id="ab-tasty-anti-flicker"><span></span></div>
+<div id="ab-tasty-anti-flicker"></div>
 <noscript dangerouslySetInnerHTML={{ __html: `<iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TR4C6NR"
 height="0" width="0" style="display:none;visibility:hidden"></iframe>`}}></noscript>
 <Main />

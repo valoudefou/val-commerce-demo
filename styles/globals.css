@@ -42,12 +42,6 @@
     0%   { opacity:1; }
     50%  { opacity:0; }
     100% { opacity:1; }
-  }
+}
 
-  #ab-tasty-anti-flicker span {
-    opacity:1;  
-    font-size: 17px;
-    font-weight: 200;
-    animation: flickerAnimation 1s infinite;
-  }
 
