@@ -45,7 +45,7 @@ height={640}
 {props.product.price}
 </h1>
 <button
-className="flex items-center justify-center text-sm font-base mt-5 border border-transparent bg-orange-600 px-4 py-4 text-white shadow-sm hover:bg-orange-800 sm:px-8 w-full"
+className="flex items-center justify-center text-sm font-base mt-5 border border-black bg-white px-4 py-4 text-black sm:px-8 w-full"
 // onClick={() => checkout(product.id)}
 >
 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-6 h-6 py-0.5">
