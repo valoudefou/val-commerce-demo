@@ -16,17 +16,19 @@ if (antiFlicker && window.ABTasty !== 'undefined') {
 window.addEventListener('abtasty_executedCampaign', (event) => {
 console.log(event.detail);
 function antiFlicker() {
-document.querySelector('#ab-tasty-anti-flicker').style.visibility = 'hidden';
+    const antiFlicker = document.querySelector('#ab-tasty-anti-flicker');  
+    antiFlicker.style.visibility = 'hidden';
 }
 setTimeout(antiFlicker, 500);
 });
 } 
 } 
     window.addEventListener('load', () => {
-
-        document.querySelector('#ab-tasty-anti-flicker').style.visibility = 'hidden';
+        const antiFlicker = document.querySelector('#ab-tasty-anti-flicker'); 
+        if (antiFlicker) {
+            antiFlicker.style.visibility = 'hidden';
         
-    
+    }
         });
 
 }, []);
