@@ -1,5 +1,6 @@
 import Image from 'next/image'
 import { HitType, useFlagship, useFsFlag } from "@flagship.io/react-sdk"
+import Script from "next/script"
 
 export default function Header({ scrollHandler }) {
 const fs = useFlagship();
@@ -48,6 +49,9 @@ return (
 <div className="mx-auto">
 <div className="relative shadow-xl sm:overflow-hidden">
 <div className="absolute inset-0">
+<Script>
+  {`console.log('hello')`}
+</Script>
 <Image
 priority
 layout='fill'

@@ -5,10 +5,31 @@ import React from "react"
 import App from "next/app"
 import Footer from '../components/Footer'
 import { v4 as uuidv4 } from 'uuid'
+import { useEffect } from 'react'
 
 function MyApp({ Component, pageProps, initialFlagsData, initialVisitorData }) {
 const fs = useFlagship()
+useEffect(() => {
+if (typeof window !== 'undefined') {
+const antiFlicker = document.querySelector('#ab-tasty-anti-flicker');
+if (antiFlicker && window.ABTasty !== 'undefined') {
+window.addEventListener('abtasty_executedCampaign', (event) => {
+console.log(event.detail);
+function antiFlicker() {
+document.querySelector('#ab-tasty-anti-flicker').style.visibility = 'hidden';
+}
+setTimeout(antiFlicker, 500);
+});
+} 
+} 
+    window.addEventListener('load', () => {
 
+        document.querySelector('#ab-tasty-anti-flicker').style.visibility = 'hidden';
+        
+    
+        });
+
+}, []);
 //get flag 
 const flagIndustry = useFsFlag("flagIndustry", "Product")
 return (
