@@ -19,11 +19,12 @@ const fs = useFlagship()
 
 //get flag 
 const epoqWidgetId = useFsFlag("epoqWidgetId", "homepage")
+const redirectionCheckout = useFsFlag("redirectionCheckout", "http://localhost:3000/products/checkout-1")
 const paymentFeature1Click = useFsFlag("paymentFeature1Click", "false")
 const [showMe, setShowMe] = useState(paymentFeature1Click.getValue())
 const router = useRouter()
 if (router.isFallback) {
-return <div className='flex justify-center h-screen items-center text-4xl font-thin'>Loading...</div>
+return <div className='flex justify-center h-screen items-center text-4xl font-thin invisible'>Loading...</div>
 }
 return (
 <div className="flex h-auto flex-col justify-between">
@@ -44,6 +45,7 @@ height={640}
 <h1 className="mt-3 text-2xl font-bold text-gray-500 sm:text-3xl sm:tracking-wide lg:text-2xl">
 {props.product.price}
 </h1>
+<Link href={redirectionCheckout.getValue()} replace>
 <button
 className="flex items-center justify-center text-sm font-base mt-5 border border-black bg-white px-4 py-4 text-black sm:px-8 w-full"
 // onClick={() => checkout(product.id)}
@@ -53,6 +55,7 @@ className="flex items-center justify-center text-sm font-base mt-5 border border
 </svg>
 Checkout
 </button>
+</Link>
 <>
 {paymentFeature1Click.getValue() === 'true' &&
 <Link href='/products/confirmation'>
