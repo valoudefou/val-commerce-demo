@@ -12,7 +12,7 @@ return (
 <path strokeLinecap="round" strokeLinejoin="round" d="M11.25 9l-3 3m0 0l3 3m-3-3h7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
 </svg>
 </Link>
-<h2 id="order-details" className='bg-red-500 sm:leading-tight flex justify-center h-screen items-center px-16 text-center sm:text-5xl text-3xl font-thin'>User goes through default checkout funnel</h2>
+<h2 id="order-details" className='bg-cyan-300 sm:leading-tight flex justify-center h-screen items-center px-16 text-center sm:text-5xl text-3xl font-thin'>User goes through default checkout funnel</h2>
 </>
 );
 }
