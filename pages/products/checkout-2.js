@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import { HitType, useFlagship, useFsFlag } from "@flagship.io/react-sdk"
 
-export default function Confirmation() {
+export default function Checkout() {
 const fs = useFlagship();
 //get flag 
 const flagBackgroundColor = useFsFlag("flagBackgroundColor", "black")
