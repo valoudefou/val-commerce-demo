@@ -21,6 +21,7 @@
 
 .epoq_speech_button {
     padding: 13px !important;
+    display: none;
 }
 
 #ab-tasty-anti-flicker {
