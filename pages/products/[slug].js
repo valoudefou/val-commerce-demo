@@ -19,7 +19,7 @@ const fs = useFlagship()
 
 //get flag 
 const epoqWidgetId = useFsFlag("epoqWidgetId", "homepage")
-const redirectionCheckout = useFsFlag("redirectionCheckout", "http://localhost:3000/products/checkout-1")
+const redirectionCheckout = useFsFlag("redirectionCheckout", "https://nextjs-abtasty.vercel.app/products/checkout-1")
 const paymentFeature1Click = useFsFlag("paymentFeature1Click", "false")
 const [showMe, setShowMe] = useState(paymentFeature1Click.getValue())
 const router = useRouter()
