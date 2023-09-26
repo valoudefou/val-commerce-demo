@@ -12,8 +12,10 @@
     "contentful": "^10.2.2",
     "googleapis": "^118.0.0",
     "json-server": "^0.17.1",
+    "semver": "^7.5.4",
     "swr": "^2.0.3",
-    "uuid": "^9.0.0"
+    "uuid": "^9.0.0",
+    "word-wrap": "^1.2.5"
   },
   "devDependencies": {
     "@tailwindcss/aspect-ratio": "^0.4.0",

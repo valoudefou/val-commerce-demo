@@ -12,26 +12,26 @@ function MyApp({ Component, pageProps, initialFlagsData, initialVisitorData }) {
 // AB Tasty anti flicker
 useEffect(() => {
 if (typeof window !== 'undefined') {
-const antiFlicker = document.querySelector('#ab-tasty-anti-flicker')
-if (antiFlicker && window.ABTasty !== 'undefined') {
-window.addEventListener('abtasty_executedCampaign', (event) => {
-console.log(event.detail)
-function antiFlicker() {
-const antiFlicker = document.querySelector('#ab-tasty-anti-flicker')  
-antiFlicker.style.visibility = 'hidden'
-}
-setTimeout(antiFlicker, 500)
-})
-} 
-} 
+        const antiFlicker = document.querySelector('#ab-tasty-anti-flicker')
+        if (antiFlicker && window.ABTasty !== 'undefined') {
+            window.addEventListener('abtasty_executedCampaign', (event) => {
+                console.log(event.detail)
+                function antiFlicker() {
+                    const antiFlicker = document.querySelector('#ab-tasty-anti-flicker')  
+                    antiFlicker.style.visibility = 'hidden'
+                }
+                setTimeout(antiFlicker, 500)
+            })
+        } 
+    } 
 
-// anti flicker when AB Tasty is not defined
-window.addEventListener('load', () => {
-const antiFlicker = document.querySelector('#ab-tasty-anti-flicker') 
-if (antiFlicker) {
-antiFlicker.style.visibility = 'hidden'
-}
-})
+    // anti flicker when AB Tasty is not defined
+    window.addEventListener('load', () => {
+        const antiFlicker = document.querySelector('#ab-tasty-anti-flicker') 
+        if (antiFlicker) {
+            antiFlicker.style.visibility = 'hidden'
+        }
+    })
 }, [])
 
 //get flag 
