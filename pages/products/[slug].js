@@ -45,7 +45,7 @@ height={640}
 <h1 className="mt-3 text-2xl font-bold text-gray-500 sm:text-3xl sm:tracking-wide lg:text-2xl">
 {props.product.price}
 </h1>
-<Link href={redirectionCheckout.getValue()} replace>
+<Link href={redirectionCheckout.getValue()}>
 <button
 className="flex items-center justify-center text-sm font-base mt-5 border border-black bg-white px-4 py-4 text-black sm:px-8 w-full"
 // onClick={() => checkout(product.id)}
