@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import { HitType, useFlagship, useFsFlag } from "@flagship.io/react-sdk"
 import Script from "next/script"
+import { useEffect } from 'react'
 
 export default function Header({ scrollHandler }) {
 const fs = useFlagship();
@@ -18,31 +19,33 @@ const { hit: fsHit } = useFlagship();
 //         documentLocation: 'https://nextjs-abtasty.vercel.app/'
 //     });
 // }, []);
-// useEffect(() => {
-//     if (typeof window !== 'undefined'){
-//     // create a new datalyer, or let it be empty
-//         window.dataLayer = window.dataLayer || [];
+useEffect(() => {
 
-//     //reset datalayer if length greater than 150, otherwise might cause issues
-//     if(window.dataLayer.length >150){
-//         window.dataLayer = []
+  if (typeof window !== 'undefined') {
+  // create a new datalyer, or let it be empty
+      window.dataLayer = window.dataLayer || [];
 
-//         // this is how the documentation says to flush the datalayer, but is not working
-//         // so using the above line where dataLayer = []
+  //reset datalayer if length greater than 150, otherwise might cause issues
+  if (window.dataLayer.length > 150) {
+      window.dataLayer = []
 
-//         /*window.dataLayer.push(function() {
-//             this.reset();
-//         })*/
-//     }
+      // this is how the documentation says to flush the datalayer, but is not working
+      // so using the above line where dataLayer = []
 
-//     // insert page data into datalayer
-//     window.dataLayer.push({
-//         'event': 'FlagshipData',
-//         'flag_key': 'flagImageSrc',
-//         'flag_value': flagImageSrc.getValue()
-//     });
-//     }
-// }, []);
+      /*window.dataLayer.push(function() {
+          this.reset();
+      })*/
+  }
+
+  // insert page data into datalayer
+  window.dataLayer.push({
+      'event': 'FlagshipData',
+      'flag_key': 'flagImageSrc',
+      'flag_value': flagImageSrc.getValue()
+  });
+  }
+}, []);
+
 return (
 <header className="relative">
 <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gray-100" />
@@ -50,7 +53,6 @@ return (
 <div className="relative shadow-xl sm:overflow-hidden">
 <div className="absolute inset-0">
 <Script>
-  {`console.log('hello')`}
 </Script>
 <Image
 priority

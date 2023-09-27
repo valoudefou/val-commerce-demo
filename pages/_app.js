@@ -7,8 +7,8 @@ import Footer from '../components/Footer'
 import { v4 as uuidv4 } from 'uuid'
 import { useEffect } from 'react'
 
-function MyApp({ Component, pageProps, initialFlagsData, initialVisitorData }) {
 
+function MyApp({ Component, pageProps, initialFlagsData, initialVisitorData }) {
 // AB Tasty anti flicker
 useEffect(() => {
 if (typeof window !== 'undefined') {
@@ -40,14 +40,24 @@ const flagIndustry = useFsFlag("flagIndustry", "Product")
 return (
 <>
 <FlagshipProvider
+onVisitorExposed={({ exposedVisitor, fromFlag }) => {
+    window.abtasty.send("segment", {
+        s: {
+          userId: exposedVisitor.id,
+          flagInfo: fromFlag.metadata
+        }
+    })
+}}
 envId={"blrok2jb3fq008ho9c70"}
 apiKey={"k0Q3wqL9GEajXlL6dw8vr4zfqxz50LIa7QAJDz8q"}
 visitorData={initialVisitorData}
 initialFlagsData={initialFlagsData || {}}>
+
 <Head />
 <title>{'The ' + flagIndustry.getValue() + ' House'}</title>
 <Component {...pageProps} />
 <Footer />
+
 </FlagshipProvider>
 </>
 )
