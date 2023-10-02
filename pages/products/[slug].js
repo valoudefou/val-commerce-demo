@@ -43,8 +43,8 @@ useEffect(() => {
     // insert page data into datalayer
     window.dataLayer.push({
         'event': 'abtasty',
-        'flag': 'paymentFeature1Click',
-        'value': paymentFeature1Click.getValue()
+        'abtasty_flag': 'paymentFeature1Click',
+        'abtasty_value': paymentFeature1Click.getValue()
     });
     }
   }, []);
