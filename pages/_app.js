@@ -15,7 +15,7 @@ if (typeof window !== 'undefined') {
         const antiFlicker = document.querySelector('#ab-tasty-anti-flicker')
         if (antiFlicker && window.ABTasty !== 'undefined') {
             window.addEventListener('abtasty_executedCampaign', (event) => {
-                console.log(event.detail)
+                // console.log(event.detail)
                 function antiFlicker() {
                     const antiFlicker = document.querySelector('#ab-tasty-anti-flicker')  
                     antiFlicker.style.visibility = 'hidden'
@@ -73,13 +73,12 @@ const initialVisitorData = {
 id: uuidv4(),
 context: {
 organisation: "whatever",
-segment: "coffee",
+segment: "jewelry",
 login: 'true',
 system: "ios",
 regionId: 3,
 },
 }
-
 // Create a new visitor
 const visitor = flagship?.newVisitor({
 visitorId: initialVisitorData.id,

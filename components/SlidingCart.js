@@ -7,6 +7,13 @@ function SlidingCart() {
 const fs = useFlagship()
 //get flag 
 const paymentFeature1Click = useFsFlag("paymentFeature1Click", "false")
+// useEffect(() => {
+//     fsHit.send({
+//         type: HitType.PAGE, // or "PAGEVIEW",
+//         documentLocation: 'https://nextjs-abtasty.vercel.app/'
+//     });
+// }, []);
+
 return (
 <div>
 <div className="h-screen w-screen top-0 z-20 bg-gray-900 fixed opacity-70"></div>

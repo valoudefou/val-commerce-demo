@@ -23,6 +23,31 @@ const redirectionCheckout = useFsFlag("redirectionCheckout", "https://nextjs-abt
 const paymentFeature1Click = useFsFlag("paymentFeature1Click", "false")
 const [showMe, setShowMe] = useState(paymentFeature1Click.getValue())
 const router = useRouter()
+useEffect(() => {
+    if (typeof window !== 'undefined') {
+    // create a new datalyer, or let it be empty
+        window.dataLayer = window.dataLayer || [];
+  
+    //reset datalayer if length greater than 150, otherwise might cause issues
+    if (window.dataLayer.length > 150) {
+        window.dataLayer = []
+  
+        // this is how the documentation says to flush the datalayer, but is not working
+        // so using the above line where dataLayer = []
+  
+        /*window.dataLayer.push(function() {
+            this.reset();
+        })*/
+    }
+  
+    // insert page data into datalayer
+    window.dataLayer.push({
+        'event': 'abtasty',
+        'flag': 'paymentFeature1Click',
+        'value': paymentFeature1Click.getValue()
+    });
+    }
+  }, []);
 if (router.isFallback) {
 return <div className='flex justify-center h-screen items-center text-4xl font-thin invisible'>Loading...</div>
 }
