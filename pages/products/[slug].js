@@ -46,7 +46,7 @@ useEffect(() => {
         '1' : 'abtasty',
         '2' : {
         'abtasty_flag': 'paymentFeature1Click',
-        'abtasty_value': paymentFeature1Click.getValue()
+        'abtasty_value': paymentFeature1Click.getValue(),
         }
     });
     }
