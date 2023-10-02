@@ -42,9 +42,12 @@ useEffect(() => {
   
     // insert page data into datalayer
     window.dataLayer.push({
-        'event': 'abtasty',
+        '0' : 'event',
+        '1' : 'abtasty',
+        '2' : {
         'abtasty_flag': 'paymentFeature1Click',
         'abtasty_value': paymentFeature1Click.getValue()
+        }
     });
     }
   }, []);
