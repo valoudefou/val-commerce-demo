@@ -58,16 +58,16 @@ return (
 <Image
 alt="coffee"
 className="rounded-lg object-contain self-center px-8"
-src={props.product.smallImage}
+src={props.product.images[0]}
 width={560}
 height={640}
 />
 <div className="mt-10 flex flex-col lg:pl-20 md:pl-0">
 <h1 className="mt-1 text-2xl font-medium text-gray-900 sm:text-2xl sm:tracking-tight lg:text-3xl">
-{props.product.name}
+{props.product.title}
 </h1>
 <h1 className="mt-3 text-2xl font-bold text-gray-500 sm:text-3xl sm:tracking-wide lg:text-2xl">
-{props.product.price}
+{props.product.price}€
 </h1>
 <Link href={redirectionCheckout.getValue()}>
 <button
@@ -109,23 +109,20 @@ Description
 }
 
 export async function getStaticProps(context) {
-const { params } = context
-// const res = await fetch(`https://dummyjson.com/products/${params.slug}`)
-// const data = await res.json()
-const req1 = await fetch(`https://nextjs-abtasty.vercel.app/api/products/${params.slug}`);
-const res1 = await req1.json();
-
-return {
-props: {
-// product: data,
-product: res1,
-},
-}
-}
-
-export async function getStaticPaths() {
-return {
-paths: [{ params: { slug: '40046926495807'} }],
-fallback: true
-}
-}
+    const { params } = context
+    const res = await fetch(`https://dummyjson.com/products/${params.slug}`)
+    const data = await res.json()
+    console.log(data)
+    return {
+    props: {
+    product: data,
+    },
+    }
+    }
+    
+    export async function getStaticPaths() {
+    return {
+    paths: [{ params: { slug: '1'} }],
+    fallback: true
+    }
+    }
