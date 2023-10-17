@@ -10,7 +10,7 @@ return (
 <p>Powered by Next.js / Vercel / Tailwind / Contentful / AB Tasty / EmotionsAI</p>
 <span>|</span>
 <a
-href="https://github.com/valoudefou/commerce-demo"
+href="https://github.com/valoudefou/ed-commerce-demo"
 style={{color: flagBackgroundColor.getValue()}}
 >
 GitHub
