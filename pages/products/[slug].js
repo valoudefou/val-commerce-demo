@@ -7,7 +7,7 @@ import Navbar from '../../components/Navbar'
 
 export default function Product(props) {
 
-
+    let coffeeRef = useRef()
 // useEffect(() => {
 //   const script = document.createElement('script')
 //   script.src = '//cdn.epoq.de/flow/quickstartdemo-valerian1.js'

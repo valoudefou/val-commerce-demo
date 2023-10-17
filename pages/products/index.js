@@ -1,5 +1,6 @@
 import ProductCard from '../../components/ProductCard'
 import Navbar from '../../components/Navbar'
+import { useRef } from 'react'
 
 export default function Index( {products} ) {
     let coffeeRef = useRef()
