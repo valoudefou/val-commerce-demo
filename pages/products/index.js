@@ -22,7 +22,9 @@ export default function Index( {products} ) {
     className="mt-1 text-3xl font-bold uppercase text-gray-900 sm:text-3xl sm:tracking-tight lg:text-3xl"
     ref={(element) => (coffeeRef = element)}
     >
+    <Link href='/products'>
     Shop our products
+    </Link>
     </p>
     </div>
     </div>
