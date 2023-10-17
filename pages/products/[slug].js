@@ -2,7 +2,7 @@ import Image from 'next/image'
 import { useRouter } from 'next/router'
 import { HitType, useFlagship, useFsFlag } from "@flagship.io/react-sdk"
 import Link from 'next/link'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import Navbar from '../../components/Navbar'
 
 export default function Product(props) {
