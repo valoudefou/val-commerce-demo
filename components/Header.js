@@ -39,9 +39,17 @@ alt={flagIndustry.getValue()}
 <span className="block" style={{color: flagBackgroundColor.getValue()}}>{flagIndustry.getValue()}</span>
 </h1>
 <div className="mt-10 flex justify-center">
-<button
+<button onClick={()=>{
+				
+                fsHit.send({
+            type: HitType.EVENT,
+            category: "Action Tracking",
+            action: "Click CTA",
+          })
+      
+            }}
 className="font-base flex items-center justify-center border border-transparent bg-white px-4 py-3 text-sm font-medium text-gray-900 shadow-sm hover:bg-gray-100 sm:px-8" id="ab-btn"
-onClick={scrollHandler}
+// onClick={scrollHandler}
 >
 {flagBtnText.getValue()}
 </button>
