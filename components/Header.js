@@ -45,6 +45,7 @@ alt={flagIndustry.getValue()}
             type: HitType.EVENT,
             category: "Action Tracking",
             action: "Click CTA",
+	    label: "Engagement"
           })
       
             }}
