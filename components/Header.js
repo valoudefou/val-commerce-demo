@@ -44,7 +44,7 @@ alt={flagIndustry.getValue()}
                 fsHit.send({
             type: HitType.EVENT,
             category: "Action Tracking",
-            action: "Click CTA",
+            action: "Click Apple Pay",
 	    label: "Engagement"
           })
       
