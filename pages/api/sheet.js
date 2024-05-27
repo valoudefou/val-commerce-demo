@@ -21,7 +21,7 @@ export default function handler(req, res) {
             };
 
             let data = await gsapi.spreadsheets.values.get(opt);
-            return res.status(400).send(JSON.stringify({data: data.data.values.slice(1).map(([smallImage,largeImage,price,salePrice,margin,productId,title,brand,productUrl,category,availability,quantity,attribute,attribute1,attribute2,attribute3,attribute4,attribute5,attribute6,attribute7,attribute8,attribute9,attribute10,attribute11,description,availabilityDate,expirationDate,saleEffectiveDate,condition]) => ({ smallImage,largeImage,price,salePrice,margin,productId,title,brand,productUrl,category,availability,quantity,attribute,attribute1,attribute2,attribute3,attribute4,attribute5,attribute6,attribute7,attribute8,attribute9,attribute10,attribute11,description,availabilityDate,expirationDate,saleEffectiveDate,condition }))}));
+            return res.status(400).send(JSON.stringify({data: data.data.values.slice(1).map(([title,smallImage,largeImage,price,salePrice,margin,productId,brand,productUrl,category,availability,quantity,attribute,attribute1,attribute2,attribute3,attribute4,attribute5,attribute6,attribute7,attribute8,attribute9,attribute10,attribute11,description,availabilityDate,expirationDate,saleEffectiveDate,condition]) => ({ title,smallImage,largeImage,price,salePrice,margin,productId,brand,productUrl,category,availability,quantity,attribute,attribute1,attribute2,attribute3,attribute4,attribute5,attribute6,attribute7,attribute8,attribute9,attribute10,attribute11,description,availabilityDate,expirationDate,saleEffectiveDate,condition }))}));
         });
     } catch (e) {
         return res.status(400).send(JSON.stringify({error: true, message: e.message}));
