@@ -1,12 +1,14 @@
 import Link from "next/link"
-import { HitType, useFlagship, useFsFlag } from "@flagship.io/react-sdk"
+import { HitType, fsHit, useFlagship, useFsFlag } from "@flagship.io/react-sdk"
 import React from "react"
 import Image from "next/image"
+import Emotion from "./Emotion"
 
 function SlidingCart() {
 const fs = useFlagship()
 //get flag 
 const paymentFeature1Click = useFsFlag("paymentFeature1Click", "false")
+const tripAssistFeature = useFsFlag("tripAssistFeature", false)
 // useEffect(() => {
 //     fsHit.send({
 //         type: HitType.PAGE, // or "PAGEVIEW",
@@ -17,9 +19,9 @@ const paymentFeature1Click = useFsFlag("paymentFeature1Click", "false")
 return (
 <div>
 <div className="h-screen w-screen top-0 z-20 bg-gray-900 fixed opacity-70"></div>
-<div className="flex-auto h-screen top-0 z-20 select-none fixed right-0 bg-white p-6 border border-gray-200 shadow-lg">
-<div className="grid grid-cols-1 gap-4 py-20">
-<div className="mb-10 text-3xl font-semibold text-gray-900">Cart</div>
+<div className="flex-auto h-screen top-0 z-20 select-none fixed right-0 bg-white p-6 border border-gray-200">
+<div className="grid grid-cols-1 gap-3 py-[65px]">
+<div className="text-3xl font-semibold text-gray-900">Cart</div>
 <div className="flex items-center">
 <div className="flex flex-col text-gray-700 font-light justify-around">
 <span className="text-gray-900 font-light text-sm mt-2 w-4/5">Force 10 ring Small model in 18k pink gold and diamonds</span>
@@ -64,6 +66,11 @@ height={70}
 <span className="text-gray-500 text-base font-normal">TOTAL</span>
 <span className="text-gray-500 tracking-wide text-base font-normal">4,660.00 €</span>
 </div>
+
+{tripAssistFeature.getValue() === true &&
+<Emotion/>
+}
+
 <div className="flex space-x-4 place-content-end items-stretch">
 {paymentFeature1Click.getValue() === 'true' &&
 <Link href='/products/confirmation'>
@@ -88,6 +95,8 @@ Checkout
 </div>
 </div>
 </div>
+
+
 )
 }
 

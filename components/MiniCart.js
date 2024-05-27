@@ -10,12 +10,6 @@ const fs = useFlagship()
 
 //get flag 
 const paymentFeature1Click = useFsFlag("paymentFeature1Click", "false")
-// useEffect(() => {
-//     fsHit.send({
-//         type: HitType.PAGE, // or "PAGEVIEW",
-//         documentLocation: 'https://nextjs-abtasty.vercel.app/'
-//     });
-// }, []);
 return (
 <div className="absolute right-0 top-[3.5rem] select-none bg-white z-50 p-5 border border-gray-200 rounded-lg mt-3 mr-[3vh] shadow-lg">
 <div className="grid grid-cols-1 gap-4">

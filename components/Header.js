@@ -4,6 +4,10 @@ import Script from "next/script"
 import { useEffect } from 'react'
 
 export default function Header({ scrollHandler }) {
+<<<<<<< HEAD
+=======
+
+>>>>>>> a1421d3 (DEV)
 const fs = useFlagship();
 //get flag 
 const flagImageSrc = useFsFlag("flagImageSrc", "/coffee.jpg")
@@ -11,16 +15,27 @@ const flagBtnText = useFsFlag("flagBtnText", "Shop")
 const flagIndustry = useFsFlag("flagIndustry", "Product")
 const flagBackgroundColor = useFsFlag("flagBackgroundColor", "black")
 const { hit: fsHit } = useFlagship()
+<<<<<<< HEAD
 const flagAbtasty = useFsFlag("flagAbtasty", false)
+=======
+const flagAbtasty = useFsFlag("flagAbtasty", '')
+>>>>>>> a1421d3 (DEV)
 return (
 <header className="relative">
 <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gray-100" />
 <div className="mx-auto">
 <div className="relative shadow-xl sm:overflow-hidden">
 <div className="absolute inset-0">
+<<<<<<< HEAD
 {flagAbtasty.getValue() === true &&
 <Script src="https://try.abtasty.com/fd484caef44a079844c8c94a967e630f.js" />
 }
+=======
+
+    
+            <Script src={'https://try.abtasty.com/' + flagAbtasty.getValue() + '.js'} />
+            
+>>>>>>> a1421d3 (DEV)
 <Image
 priority
 layout='fill'
@@ -40,6 +55,7 @@ alt={flagIndustry.getValue()}
 </h1>
 <div className="mt-10 flex justify-center">
 <button onClick={()=>{
+<<<<<<< HEAD
 fsHit.send({
 type: HitType.EVENT,
 category: "Action Tracking",
@@ -47,6 +63,17 @@ action: "Click Apple Pay",
 label: "Engagement"
 })
 }}
+=======
+				
+                fsHit.send({
+            type: HitType.EVENT,
+            category: "Action Tracking",
+            action: "Click CTA",
+            label: "Engagement"
+          })
+          
+            }}
+>>>>>>> a1421d3 (DEV)
 className="font-base flex items-center justify-center border border-transparent bg-white px-4 py-3 text-sm font-medium text-gray-900 shadow-sm hover:bg-gray-100 sm:px-8" id="ab-btn"
 // onClick={scrollHandler}
 >

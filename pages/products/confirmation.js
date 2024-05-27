@@ -1,8 +1,33 @@
 import Link from 'next/link'
-import { HitType, useFlagship, useFsFlag } from "@flagship.io/react-sdk"
+import { HitType, fsHit, useFlagship, useFsFlag } from "@flagship.io/react-sdk"
 import { useEffect } from 'react'
 
 export default function Confirmation() {
+    const { hit: fsHit } = useFlagship()
+    fsHit.send({
+        type: HitType.TRANSACTION, //or "TRANSACTION"
+        transactionId: "#12346",
+        affiliation: "Purchase",
+        taxes: 19.99,
+        currency: "USD",
+        couponCode: "code",
+        itemCount: 1,
+        shippingMethod: "road",
+        shippingCosts: 5,
+        paymentMethod: "credit_card",
+        totalRevenue: 2199.99
+      })
+
+      fsHit.send({
+        type: HitType.ITEM, //or "ITEM"
+          transactionId: "#12346",
+          productName: "product",
+          productSku: "sku123",
+          itemPrice: 2199.99,
+          itemQuantity: 1,
+          itemCategory: "test"
+      }) 
+    
 const fs = useFlagship();
 //get flag 
 const flagBackgroundColor = useFsFlag("flagBackgroundColor", "black")

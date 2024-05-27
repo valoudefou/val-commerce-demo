@@ -20,7 +20,7 @@ const fs = useFlagship()
 const flagIndustry = useFsFlag("flagIndustry", "Product")
 const flagCartFeature = useFsFlag("flagCartFeature", "MiniCart")
 const flagBackgroundColor = useFsFlag("flagBackgroundColor", "black")
-const my_test_flag = useFsFlag("my_test_flag", 5)
+
 return (
 <>
 <nav className="relative z-40 flex flex-wrap items-center justify-between px-2 py-2 bg-white border-b-[1px] border-gray-200">
