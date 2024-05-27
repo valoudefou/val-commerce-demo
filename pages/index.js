@@ -7,7 +7,7 @@ import { createClient } from 'contentful'
 
 export default function Index( {products, articles, sheetdata} ) {
 // console.log(sheetdata)
-console.log(products)
+// console.log(products)
 
 let coffeeRef = useRef()
 const scrollHandler = (e) => {
