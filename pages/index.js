@@ -9,7 +9,7 @@ export default function Index( {products, articles, sheetdata} ) {
 // console.log(sheetdata)
 // console.log(products)
 // console.log(articles)
-
+console.log('teeeeest')
 let coffeeRef = useRef()
 const scrollHandler = (e) => {
 e.preventDefault()
