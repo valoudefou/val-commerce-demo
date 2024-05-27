@@ -4,10 +4,8 @@ import Header from '../components/Header'
 import { useRef } from 'react'
 import Link from 'next/link'
 import { createClient } from 'contentful'
-import { useRouter } from 'next/router'
 
 export default function Index( {products, articles, sheetdata} ) {
-
 // console.log(sheetdata)
 // console.log(products)
 // console.log(articles)
@@ -57,13 +55,12 @@ export async function getStaticProps() {
         })
 const res = await fetch('https://dummyjson.com/products')
 const data = await res.json()
-const req1 = await fetch('https://val-nextjs-abtasty.vercel.app/api/sheet');
+const req1 = await fetch('http://localhost:3005/api/sheet');
 const res1 = await req1.json();
 const art = await client.getEntries({
     content_type: 'articles'
     })
 return {
-
 props: {
 products: data,
 articles: art.items,
