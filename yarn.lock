@@ -277,7 +277,7 @@
     "debug" "^4.3.4"
     "globby" "^11.1.0"
     "is-glob" "^4.0.3"
-    "semver" "^7.3.7"
+    "semver" "^6.3.1"
     "tsutils" "^3.21.0"
 
 "@typescript-eslint/visitor-keys@5.48.2":
@@ -2936,17 +2936,20 @@
   "resolved" "https://registry.npmjs.org/semver-compare/-/semver-compare-1.0.0.tgz"
   "version" "1.0.0"
 
-"semver@^6.3.0":
-  "integrity" "sha512-b39TBaTSfV6yBrapU89p5fKekE2m/NwnDocOVruQFS1/veMgdzuPcnOM34M6CwxW8jH/lxEa5rBoDeUwu5HHTw=="
-  "resolved" "https://registry.npmjs.org/semver/-/semver-6.3.0.tgz"
-  "version" "6.3.0"
+"semver@^6.3.0", "semver@^6.3.1":
+  "integrity" "sha512-BR7VvDCVHO+q2xBEWskxS6DJE1qRnb7DxzUrogb71CWoSficBxYsiAGd+Kl0mmq/MprG9yArRkyrQxTO6XjMzA=="
+  "resolved" "https://registry.npmjs.org/semver/-/semver-6.3.1.tgz"
+  "version" "6.3.1"
 
-"semver@^7.0.0", "semver@^7.3.7", "semver@^7.3.8", "semver@^7.5.4":
-  "integrity" "sha512-1bCSESV6Pv+i21Hvpxp3Dx+pSD8lIPt8uVjRrxAUt/nbswYc+tK6Y2btiULjd4+fnq15PX+nqQDC7Oft7WkwcA=="
-  "resolved" "https://registry.npmjs.org/semver/-/semver-7.5.4.tgz"
-  "version" "7.5.4"
-  dependencies:
-    "lru-cache" "^6.0.0"
+"semver@^7.0.0":
+  "integrity" "sha512-FNAIBWCx9qcRhoHcgcJ0gvU7SN1lYU2ZXuSfl04bSC5OpvDHFyJCjdNHomPXxjQlCBU67YW64PzY7/VIEH7F2w=="
+  "resolved" "https://registry.npmjs.org/semver/-/semver-7.6.2.tgz"
+  "version" "7.6.2"
+
+"semver@^7.3.8":
+  "integrity" "sha512-FNAIBWCx9qcRhoHcgcJ0gvU7SN1lYU2ZXuSfl04bSC5OpvDHFyJCjdNHomPXxjQlCBU67YW64PzY7/VIEH7F2w=="
+  "resolved" "https://registry.npmjs.org/semver/-/semver-7.6.2.tgz"
+  "version" "7.6.2"
 
 "send@0.18.0":
   "integrity" "sha512-qqWzuOjSFOuqPjFe4NOsMLafToQQwBSOEpS+FwEt3A2V3vKubTquT3vmLTQpFgMXp8AlFWFuP1qKaJZOtPpVXg=="
