@@ -49,8 +49,8 @@ Shop our products
 
 export async function getStaticProps() {
     const client = createClient({
-        space: 'mwr46hk1hvcf',
-        accessToken: 'P7e2zlwtUe4ZDhEuBW9cQ8ma8ViKddL3f1oYrfCHbdk'
+        space: process.env.NEXT_PUBLIC_SPACE,
+        accessToken: NEXT_PUBLIC_TOKEN
         })
 const res = await fetch('https://dummyjson.com/products')
 const data = await res.json()

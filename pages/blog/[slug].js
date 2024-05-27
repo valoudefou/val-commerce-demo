@@ -3,8 +3,8 @@ import { HitType, useFlagship, useFsFlag } from "@flagship.io/react-sdk"
 import { createClient } from 'contentful'
 
 const client = createClient({
-space: 'mwr46hk1hvcf',
-accessToken: 'P7e2zlwtUe4ZDhEuBW9cQ8ma8ViKddL3f1oYrfCHbdk'
+space: process.env.NEXT_PUBLIC_SPACE,
+accessToken: NEXT_PUBLIC_TOKEN
 })
 
 export const getStaticPaths = async () => {
