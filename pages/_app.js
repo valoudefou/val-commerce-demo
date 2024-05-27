@@ -35,7 +35,7 @@ function MyApp({ Component, pageProps, initialFlagsData, initialVisitorData }) {
 // AB Tasty anti flicker
 useEffect(() => {
 
-    
+console.log('commit push worked');
 
 
 if (typeof window !== 'undefined') {
