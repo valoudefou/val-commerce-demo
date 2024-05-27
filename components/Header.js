@@ -21,7 +21,7 @@ return (
 <div className="absolute inset-0">
 
     
-            <Script src={'https://try.abtasty.com/' + flagAbtasty.getValue() + '.js'} />
+<Script src={'https://try.abtasty.com/' + flagAbtasty.getValue() + '.js'} />
             
 <Image
 priority
