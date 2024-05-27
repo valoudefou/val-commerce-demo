@@ -8,7 +8,7 @@ import { v4 as uuidv4 } from 'uuid'
 import { useEffect, useState } from 'react'
 
 function MyApp({ Component, pageProps, initialFlagsData, initialVisitorData }) {
-
+    console.log('test')
     console.log(process.env.NEXT_PUBLIC_FS_ENV);
     // const [name, setName] = useState("");
 
