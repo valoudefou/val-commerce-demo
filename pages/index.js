@@ -9,7 +9,7 @@ export default function Index( {products, articles, sheetdata} ) {
 // console.log(sheetdata)
 // console.log(products)
 // console.log(articles)
-console.log('teeddddeeest')
+
 let coffeeRef = useRef()
 const scrollHandler = (e) => {
 e.preventDefault()
@@ -53,7 +53,7 @@ export async function getStaticProps() {
         space: (process.env.NEXT_PUBLIC_SPACE),
         accessToken: (process.env.NEXT_PUBLIC_TOKEN)
         })
-const res = await fetch('https://dummyjson.com/products')
+const res = await fetch('https://dummyjson.com/products?limit=0')
 const data = await res.json()
 const req1 = await fetch('http://localhost:3005/api/sheet');
 const res1 = await req1.json();
