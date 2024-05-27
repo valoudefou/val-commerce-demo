@@ -55,7 +55,7 @@ export async function getStaticProps() {
         })
 const res = await fetch('https://dummyjson.com/products?limit=0')
 const data = await res.json()
-const req1 = await fetch('http://localhost:3000/api/sheet');
+const req1 = await fetch('https://val-nextjs-abtasty.vercel.app/api/sheet');
 const res1 = await req1.json();
 const art = await client.getEntries({
     content_type: 'articles'
