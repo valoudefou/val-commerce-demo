@@ -46,6 +46,11 @@
   dependencies:
     "regenerator-runtime" "^0.13.11"
 
+"@bloomreach/react-sdk@^23.3.0":
+  "integrity" "sha512-EdYLx4Y/VrQoP1ypMjOlV718PgeM8E2FmvrTR7TFKTSO6ZeRJQ6p0cN8dbAaC+O114fTdGiVVkpwjHF0vyCGWw=="
+  "resolved" "https://registry.npmjs.org/@bloomreach/react-sdk/-/react-sdk-23.3.0.tgz"
+  "version" "23.3.0"
+
 "@contentful/rich-text-types@^16.0.2":
   "integrity" "sha512-4BHC+mfa50JB70epzpnas4EkiuB3mGdBZ5Rp8w7R5wXvswEf8TLg5yGau2FxmZeEjrAkDrt4vzBLVQ8v3Y//Jw=="
   "resolved" "https://registry.npmjs.org/@contentful/rich-text-types/-/rich-text-types-16.2.0.tgz"
@@ -2820,7 +2825,7 @@
   "resolved" "https://registry.npmjs.org/react-is/-/react-is-16.13.1.tgz"
   "version" "16.13.1"
 
-"react@^16.11.0 || ^17.0.0 || ^18.0.0", "react@^16.8.0 || ^17.0.0 || ^18.0.0", "react@^17.0.2 || ^18.0.0-0", "react@^18.2.0", "react@>= 16.8.0 || 17.x.x || ^18.0.0-0", "react@>=16.8.0":
+"react@^16.11.0 || ^17.0.0 || ^18.0.0", "react@^16.14 || ^17.0 || ^18.0", "react@^16.8.0 || ^17.0.0 || ^18.0.0", "react@^17.0.2 || ^18.0.0-0", "react@^18.2.0", "react@>= 16.8.0 || 17.x.x || ^18.0.0-0", "react@>=16.8.0":
   "integrity" "sha512-/3IjMdb2L9QbBdWiW5e3P2/npwMBaU9mHCSCUzNln0ZCYbcfTsGbTJrU/kGemdH2IWmB2ioZ+zkxtmq6g09fGQ=="
   "resolved" "https://registry.npmjs.org/react/-/react-18.2.0.tgz"
   "version" "18.2.0"

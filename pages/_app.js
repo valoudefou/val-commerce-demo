@@ -1,51 +1,60 @@
 import '../styles/globals.css'
 import Head from 'next/head'
-import { Flagship, FlagshipProvider, HitType, useFlagship, useFsFlag } from "@flagship.io/react-sdk"
+import { Flagship, FlagshipProvider, useFlagship, useFsFlag } from "@flagship.io/react-sdk"
 import React from "react"
 import App from "next/app"
 import Footer from '../components/Footer'
 import { v4 as uuidv4 } from 'uuid'
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 
 function MyApp({ Component, pageProps, initialFlagsData, initialVisitorData }) {
 
-    // const [name, setName] = useState("");
-
-    // useEffect(() => {
-        
-    //   const url = "https://api.network.exponea.com/data/v2/projects/8e8563ec-6c56-11eb-b0d6-3a8740d3b174/customers/export-one";
-    //   const body = {
-    //     customer_ids: {
-    //     'cookie' : "b7faa647-f52e-4ead-b4ea-bbfa287f687d"
-    //     }
-    // };
-  
-    //   fetch(url, {
-    //     method: "POST",
-    //     headers: {
-    //         'Access-Control-Allow-Origin': 'http://localhost:3000/',
-    //         'Accept': 'application/json',
-    //         'Content-Type': 'application/json',
-    //         'Authorization': 'Basic MTUwajh5b3Q2cjVmeGtydHNwem5nNHh0ZHc2a2w2Y3kzd25ibG04dTNsY2NhNjR2em1jZXQ5cHVqYmh3ODB2MzowM3F6eWNhdmxhNm9nMWY4dXpjOGUzc3pmazA3cnc5NXpvcWtkbW5qZGtld3d6NWx1d3FndmE5bnZtcXJqcmdn'
-    //     },
-    //     body: JSON.stringify(body),
-    //   })
-    //     .then((response) => response.json())
-    //     .then((data) => console.log(data));
-    // }, [name]);
-// AB Tasty anti flicker
 useEffect(() => {
+    if (typeof window !== 'undefined') {
+        // create a new datalyer, or let it be empty
+        window.dataLayer = window.dataLayer || [];
 
+        //reset datalayer if length greater than 150, otherwise might cause issues
+        if (window.dataLayer.length > 150) {
+            window.dataLayer = []
 
+            // this is how the documentation says to flush the datalayer, but is not working
+            // so using the above line where dataLayer = []
 
+            /*window.dataLayer.push(function() {
+            this.reset();
+            })*/
+        }
 
-if (typeof window !== 'undefined') {
+        // window.exponea.getSegments(  <---- Documentation getSegments method https://documentation.bloomreach.com/engagement/docs/accessing-exposed-segmentations-from-engagement
+        // exposingCategory,  
+        // successCallback,  
+        // errorCallback,  
+        // options  
+        // )
+        
+        // store Bloomreach Segmentation in Variable Const??
+
+        // insert Bloomreach data into datalayer
+        window.dataLayer.push({
+            'id': '66140257f4cb337324209871',
+            'segmentation_id': '6655eb642e47971cc0272a72'
+        },
+        {                  
+            'id': '66140257f4cb337324209871',
+            'segmentation_id': '6655eb642e47971cc0272a73'
+        });
+    }
+
+    if (typeof window !== 'undefined') {
         const antiFlicker = document.querySelector('#ab-tasty-anti-flicker')
+
         if (antiFlicker && window.ABTasty !== 'undefined') {
             window.addEventListener('abtasty_executedCampaign', (event) => {
                 // console.log(event.detail)
                 function antiFlicker() {
                     const antiFlicker = document.querySelector('#ab-tasty-anti-flicker')  
+
                     antiFlicker.style.visibility = 'hidden'
                     // fsHit.send({
                     //     type: HitType.PAGE, // or "PAGEVIEW",
@@ -57,12 +66,10 @@ if (typeof window !== 'undefined') {
         } 
     } 
 
-
-
-
     // anti flicker when AB Tasty is not defined
     window.addEventListener('load', () => {
         const antiFlicker = document.querySelector('#ab-tasty-anti-flicker') 
+
         if (antiFlicker) {
             antiFlicker.style.visibility = 'hidden'
         }
@@ -116,9 +123,10 @@ context: {
     organisation: "whatever",
     device: 'mobile',
     store: 'US',
+    subscription: 'true',
     page: '/product',
     segment: 'coffee',
-    member: 'yes',
+    member: 'true',
     beta: 'test',
     product: '20948209482098490284',
     login: 'true',
@@ -140,10 +148,10 @@ await visitor?.fetchFlags()
 
 // Pass data to the page via props
 return {
-...appProps,
-initialFlagsData: visitor?.getFlagsDataArray(),
-initialVisitorData,
-}
+    ...appProps,
+    initialFlagsData: visitor?.getFlagsDataArray(),
+    initialVisitorData,
+    }
 }
 
 export default MyApp
