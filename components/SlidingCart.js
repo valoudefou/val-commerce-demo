@@ -1,10 +1,13 @@
 import Link from "next/link"
 import { HitType, fsHit, useFlagship, useFsFlag } from "@flagship.io/react-sdk"
-import React from "react"
+import { React, useState } from "react"
 import Image from "next/image"
 import Emotion from "./Emotion"
 
 function SlidingCart() {
+
+
+    const [isShown, setIsShown] = useState(false)
 const fs = useFlagship()
 //get flag 
 const paymentFeature1Click = useFsFlag("paymentFeature1Click", "false")
@@ -17,7 +20,7 @@ const tripAssistFeature = useFsFlag("tripAssistFeature", false)
 // }, []);
 
 return (
-<div>
+<div onClick={() => setIsShown(!isShown)} className={(isShown ? " hidden" : " visible")}>
 <div className="h-screen w-screen top-0 z-20 bg-gray-900 fixed opacity-70"></div>
 <div className="flex-auto h-screen top-0 z-20 select-none fixed right-0 bg-white p-6 border border-gray-200">
 <div className="grid grid-cols-1 gap-3 py-[65px]">

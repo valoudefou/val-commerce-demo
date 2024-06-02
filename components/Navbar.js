@@ -5,14 +5,8 @@ import MiniCart from "./MiniCart"
 import Link from 'next/link'
 
 export default function Navbar() {
-const clickPoint = useRef()
-const handleFocus = () => {
-clickPoint.current.style.display = "none"
-}
 
-const handleBlur = () => {
-clickPoint.current.style.display = "block"
-}
+
 const [isShown, setIsShown] = useState(false)
 const fs = useFlagship()
 
@@ -45,16 +39,14 @@ type="button"
 </button>
 </div>
 <div className="items-center px-4 justify-center hidden sm:flex">
-<div className={"flex relative mr-3"  + (isShown ? " hidden" : " visible")}>
-<div className="absolute top-3 left-3 items-center" ref={clickPoint}>
+<div className="flex relative mr-3">
+<div className="absolute top-3 left-3 items-center">
 <svg className="w-5 h-5 text-gray-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clipRule="evenodd"></path></svg>
 </div>
 <input
 type="text"
 className="epoq_search_box ui-autocomplete-input block p-2 font-light pl-10 w-70 text-gray-900 bg-gray-50 rounded border border-gray-200 focus:pl-3 lowercase"
 placeholder={'Search ' + flagIndustry.getValue() + ' ...'}
-onFocus={handleFocus}
-onBlur={handleBlur}
 />
 </div>
 </div>
