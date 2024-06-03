@@ -125,7 +125,7 @@ context: {
     store: 'US',
     subscription: 'true',
     page: '/product',
-    segment: 'coffee',
+    segment: 'shop',
     member: 'true',
     beta: 'test',
     product: '20948209482098490284',
