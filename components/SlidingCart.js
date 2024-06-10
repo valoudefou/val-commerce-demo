@@ -5,19 +5,22 @@ import Image from "next/image"
 import Emotion from "./Emotion"
 
 function SlidingCart() {
-const [visible, setVisible] = useState(true)
-const [data, setData] = useState("")
 
-const removeElement = () => {
-    setVisible((prev) => !prev);
-}
+const [cartContent, setHtmlContent] = useState('');
+const [data, setData] = useState('')
 
 useEffect(() => {
-    const value = window.localStorage.getItem('currentProduct')
-    setData(JSON.parse(value))
+    const storedHtml = localStorage.getItem('currentProduct')
+    const cartContent = '<p>1 item in your basket</p>'
+
+    if (storedHtml) {
+
+        setHtmlContent(cartContent)
+        const value = window.localStorage.getItem('currentProduct')
+        setData(JSON.parse(value))
+    }
 }, []);
 
-const [isShown, setIsShown] = useState(false)
 const fs = useFlagship()
 
 // Get flag 
@@ -28,7 +31,16 @@ return (
 <div>
 <div className="h-screen w-screen top-0 z-20 bg-gray-900 fixed opacity-70"></div>
 <div className="flex-auto h-screen top-0 z-20 select-none fixed right-0 bg-white p-6 border border-gray-200">
-<div className="grid grid-cols-1 gap-3 py-[65px]">
+<div>
+
+<div>
+      {cartContent ? (
+        <div className="grid grid-cols-1 gap-3 py-[65px]" dangerouslySetInnerHTML={{ __html: cartContent }} />
+      ) : (
+        <p className="grid grid-cols-1 gap-3 py-[65px]">The cart is empty</p>
+      )}
+    </div>
+
 <div className="text-3xl font-semibold text-gray-900">Cart</div>
 <div className="flex items-center justify-between">
 <div className="flex flex-col text-gray-700 font-light justify-around pr-5">
