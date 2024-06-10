@@ -10,41 +10,6 @@ import { useEffect } from 'react'
 function MyApp({ Component, pageProps, initialFlagsData, initialVisitorData }) {
 
 useEffect(() => {
-    if (typeof window !== 'undefined') {
-        // create a new datalyer, or let it be empty
-        window.dataLayer = window.dataLayer || [];
-
-        //reset datalayer if length greater than 150, otherwise might cause issues
-        if (window.dataLayer.length > 150) {
-            window.dataLayer = []
-
-            // this is how the documentation says to flush the datalayer, but is not working
-            // so using the above line where dataLayer = []
-
-            /*window.dataLayer.push(function() {
-            this.reset();
-            })*/
-        }
-
-        // window.exponea.getSegments(  <---- Documentation getSegments method https://documentation.bloomreach.com/engagement/docs/accessing-exposed-segmentations-from-engagement
-        // exposingCategory,  
-        // successCallback,  
-        // errorCallback,  
-        // options  
-        // )
-        
-        // store Bloomreach Segmentation in Variable Const??
-
-        // insert Bloomreach data into datalayer
-        window.dataLayer.push({
-            'id': '66140257f4cb337324209871',
-            'segmentation_id': '6655eb642e47971cc0272a72'
-        },
-        {                  
-            'id': '66140257f4cb337324209871',
-            'segmentation_id': '6655eb642e47971cc0272a73'
-        });
-    }
 
     if (typeof window !== 'undefined') {
         const antiFlicker = document.querySelector('#ab-tasty-anti-flicker')
@@ -54,12 +19,7 @@ useEffect(() => {
                 // console.log(event.detail)
                 function antiFlicker() {
                     const antiFlicker = document.querySelector('#ab-tasty-anti-flicker')  
-
                     antiFlicker.style.visibility = 'hidden'
-                    // fsHit.send({
-                    //     type: HitType.PAGE, // or "PAGEVIEW",
-                    //     documentLocation: location.href
-                    // });
                 }
                 setTimeout(antiFlicker, 500)
             })
@@ -74,6 +34,7 @@ useEffect(() => {
             antiFlicker.style.visibility = 'hidden'
         }
     })
+    
 }, [])
 
 //get flag 
