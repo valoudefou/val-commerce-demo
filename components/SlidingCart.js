@@ -1,10 +1,17 @@
 import Link from "next/link"
-import { HitType, fsHit, useFlagship, useFsFlag } from "@flagship.io/react-sdk"
+import { useFlagship, useFsFlag } from "@flagship.io/react-sdk"
 import { React, useState, useEffect } from "react"
 import Image from "next/image"
 import Emotion from "./Emotion"
 
 function SlidingCart() {
+
+  const [isShown, setIsShown] = useState(false)
+  const handleRemoveItem = () => {
+    const itemName = 'currentProduct'; // Replace with the key of the item you want to remove
+    localStorage.removeItem(itemName);
+    location.reload()   
+}
 
 const [cartContent, setHtmlContent] = useState('');
 const [data, setData] = useState('')
@@ -29,19 +36,20 @@ const tripAssistFeature = useFsFlag("tripAssistFeature", false)
 
 return (
 <div>
-<div className="h-screen w-screen top-0 z-20 bg-gray-900 fixed opacity-70"></div>
+<div onClick={() => setIsShown(isShown)} className="h-screen w-screen top-0 z-20 bg-gray-900 fixed opacity-70"></div>
 <div className="flex-auto h-screen top-0 z-20 select-none fixed right-0 bg-white p-6 border border-gray-200">
 <div>
 
-<div>
-      {cartContent ? (
-        <div className="grid grid-cols-1 gap-3 py-[65px]" dangerouslySetInnerHTML={{ __html: cartContent }} />
-      ) : (
-        <p className="grid grid-cols-1 gap-3 py-[65px]">The cart is empty</p>
-      )}
-    </div>
 
-<div className="text-3xl font-semibold text-gray-900">Cart</div>
+<div className="text-3xl font-semibold text-gray-900 pt-20">Cart</div>
+
+
+      {cartContent ? (
+        <div className="grid grid-cols-1 gap-3 py-[15px]" dangerouslySetInnerHTML={{ __html: cartContent }} />
+      ) : (
+        <p className="grid grid-cols-1 gap-3 py-[15px]">The cart is empty</p>
+      )}
+
 <div className="flex items-center justify-between">
 <div className="flex flex-col text-gray-700 font-light justify-around pr-5">
 <span className="text-gray-900 font-light text-sm mt-2">{data.productTitle}</span>
@@ -58,11 +66,13 @@ return (
         width={70}
         height={70}
     />
+
     <span className="text-gray-500 pl-5">
-    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-6 h-6 w-4 h-4">
+    <svg onClick={handleRemoveItem} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-6 h-6 w-4 h-4">
     <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
     </svg>
     </span>
+     
     </div>
     <div className="flex justify-between font-light border-t-[1px] py-3 mt-6 text-sm">
     <span className="text-gray-500 text-base font-normal">TOTAL</span>

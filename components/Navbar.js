@@ -1,5 +1,5 @@
-import { useState, useRef } from "react"
-import { HitType, useFlagship, useFsFlag } from "@flagship.io/react-sdk"
+import { useState} from "react"
+import { useFlagship, useFsFlag } from "@flagship.io/react-sdk"
 import SlidingCart from "./SlidingCart"
 import MiniCart from "./MiniCart"
 import Link from 'next/link'
