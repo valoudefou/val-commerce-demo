@@ -12,12 +12,11 @@ function SlidingCart() {
 }
 
 
-const [isVisible, setIsVisible] = useState(true);
-const [cartContent, setHtmlContent] = useState('');
+const [cartContent, setHtmlContent] = useState('')
 const [data, setData] = useState('')
 
 const handleClick = () => {
-  setIsVisible(false);
+  setHtmlContent(false);
 };
 
 useEffect(() => {
@@ -56,7 +55,7 @@ return (
 
 <div className="flex items-center justify-between">
 
-{isVisible && (
+{cartContent && (
 <div className="flex flex-col text-gray-700 font-light justify-around pr-5">
 <span className="text-gray-900 font-light text-sm mt-2">{data.productTitle}</span>
 
@@ -69,7 +68,7 @@ return (
     </div>
     )}
 <div>
-{isVisible && (
+{cartContent && (
     <Image
         src={data.productImage}
         alt=""
@@ -78,7 +77,7 @@ return (
     />
     )}
     </div>
-    {isVisible && (
+    {cartContent && (
     <span onClick={handleClick} className="text-gray-500 pl-5">
     <svg onClick={handleRemoveItem} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-6 h-6 w-4 h-4">
     <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
@@ -87,7 +86,7 @@ return (
     
     )}
     </div>
-    {isVisible && (
+    {cartContent && (
     <div className="flex justify-between font-light border-t-[1px] py-3 mt-6 text-sm">
     <span className="text-gray-500 text-base font-normal">TOTAL</span>
     <span className="text-gray-500 tracking-wide text-base font-normal">4,660.00 €</span>
@@ -96,7 +95,7 @@ return (
     {tripAssistFeature.getValue() === true &&
     <Emotion/>
     }
-    {isVisible && (
+    {cartContent && (
     <div className="flex space-x-4 place-content-end items-stretch">
     {paymentFeature1Click.getValue() === 'true' &&
     <Link href='/products/confirmation'>
