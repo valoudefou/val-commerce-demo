@@ -6,15 +6,19 @@ import Emotion from "./Emotion"
 
 function SlidingCart() {
 
-  const [isShown, setIsShown] = useState(false)
   const handleRemoveItem = () => {
     const itemName = 'currentProduct'; // Replace with the key of the item you want to remove
     localStorage.removeItem(itemName);
-    location.reload()   
 }
 
+
+const [isVisible, setIsVisible] = useState(true);
 const [cartContent, setHtmlContent] = useState('');
 const [data, setData] = useState('')
+
+const handleClick = () => {
+  setIsVisible(false);
+};
 
 useEffect(() => {
     const storedHtml = localStorage.getItem('currentProduct')
@@ -36,7 +40,7 @@ const tripAssistFeature = useFsFlag("tripAssistFeature", false)
 
 return (
 <div>
-<div onClick={() => setIsShown(isShown)} className="h-screen w-screen top-0 z-20 bg-gray-900 fixed opacity-70"></div>
+<div className="h-screen w-screen top-0 z-20 bg-gray-900 fixed opacity-70"></div>
 <div className="flex-auto h-screen top-0 z-20 select-none fixed right-0 bg-white p-6 border border-gray-200">
 <div>
 
@@ -51,38 +55,48 @@ return (
       )}
 
 <div className="flex items-center justify-between">
+
+{isVisible && (
 <div className="flex flex-col text-gray-700 font-light justify-around pr-5">
 <span className="text-gray-900 font-light text-sm mt-2">{data.productTitle}</span>
+
 <div className="flex items-center">      
 <span className="text-gray-500 font-light text-sm">{data.productQuantity} x</span>
 <span className="text-gray-500 font-light text-sm px-2">{ data.productPrice} €</span>
 
     </div>
+   
     </div>
-
+    )}
+<div>
+{isVisible && (
     <Image
         src={data.productImage}
         alt=""
         width={70}
         height={70}
     />
-
-    <span className="text-gray-500 pl-5">
+    )}
+    </div>
+    {isVisible && (
+    <span onClick={handleClick} className="text-gray-500 pl-5">
     <svg onClick={handleRemoveItem} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-6 h-6 w-4 h-4">
     <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
     </svg>
     </span>
-     
+    
+    )}
     </div>
+    {isVisible && (
     <div className="flex justify-between font-light border-t-[1px] py-3 mt-6 text-sm">
     <span className="text-gray-500 text-base font-normal">TOTAL</span>
     <span className="text-gray-500 tracking-wide text-base font-normal">4,660.00 €</span>
     </div>
-
+    )}
     {tripAssistFeature.getValue() === true &&
     <Emotion/>
     }
-
+    {isVisible && (
     <div className="flex space-x-4 place-content-end items-stretch">
     {paymentFeature1Click.getValue() === 'true' &&
     <Link href='/products/confirmation'>
@@ -104,9 +118,11 @@ return (
     Checkout
     </button>
     </div>
+       )}
     </div>
     </div>
     </div>
+
     )
 }
 

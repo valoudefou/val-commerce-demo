@@ -6,9 +6,9 @@ import { useState, useEffect, useRef } from 'react'
 import Navbar from '../../components/Navbar'
 
 export default function Product(props) {
-
+const [isShown, setIsShown] = useState(false)
 async function pushCart() {
-    console.log('test')
+
     const product = {
         "productId": props.product.id,
         "productTitle": props.product.title, 
@@ -57,7 +57,7 @@ return (
         redirectionCheckout.getValue()
     }> */}
 
-    <button onClick={() => [pushCart()]} className="flex items-center justify-center text-sm font-base mt-5 border border-black bg-white px-4 py-4 text-black sm:px-8 w-full">
+    <button onClick={() => [pushCart(), setIsShown(!isShown)]} className="flex items-center justify-center text-sm font-base mt-5 border border-black bg-white px-4 py-4 text-black sm:px-8 w-full">
     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-6 h-6 py-0.5">
     <path strokeLinecap="round" strokeLinejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3" />
     </svg>
