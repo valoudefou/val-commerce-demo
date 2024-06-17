@@ -18,7 +18,6 @@ const pushGaData = () => {
     ecommerce: {
       purchase: {
         actionField: {
-          'event': 'purchase',
           'id': data.transactionId,
           'revenue': data.productPrice,
           'affiliation': 'purchase',
