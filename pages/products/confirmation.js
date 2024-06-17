@@ -22,12 +22,12 @@ const pushGaData = () => {
           'id': data.transactionId,
           'revenue': data.productPrice,
           'affiliation': 'purchase',
-          'shpping': 'online',
+          'shipping': 'online',
           'currencyCode': 'EUR',
         },
         products: [{
           'sku': data.productId,
-          'productName': data.productTitle,
+          'name': data.productTitle,
           'category': data.productCategory,
           'price': data.productPrice,
           'quantity': data.productQuantity
@@ -36,9 +36,6 @@ const pushGaData = () => {
     }
   });
 };
-
-
-
 
 
 useEffect(() => {
