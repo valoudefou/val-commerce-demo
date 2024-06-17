@@ -47,16 +47,15 @@ export default function Confirmation() {
 
   return (
   <>
+  <Link href='/'>
   <div className="mx-auto max-w-2xl px-4 sm:px-6 lg:max-w-7xl lg:px-8 mb-24 mt-24">
   <div className="flex items-center">
-  <Link href='/'>
   <div onClick={handleRemoveItem} className="svg-container">    
   <svg className="ft-green-tick" xmlns="http://www.w3.org/2000/svg" height="75" width="75" viewBox="0 0 48 48" aria-hidden="true">
   <circle className="circle" fill="#5bb543" cx="24" cy="24" r="22"/>
   <path className="tick" fill="none" stroke="#FFF" strokeWidth="6" strokeLinecap="round" strokeLinejoin="round" strokeMiterlimit="10" d="M14 27l5.917 4.917L34 17"/>
   </svg>
   </div>
-  </Link>
   <div className="flex flex-col pl-4 pt-3">
   <h1 className="text-2xl dark:text-white lg:text-3xl font-semibold leading-7 lg:leading-9 text-gray-800">Your order {data.transactionId} is confirmed!</h1>
   <p className="text-base dark:text-gray-300 font-medium p-1 leading-6 text-gray-600">{data.date}</p>
@@ -155,6 +154,7 @@ export default function Confirmation() {
   </div>
   </div>
   </div>
+  </Link>
   </>
   )
 }
