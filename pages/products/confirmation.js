@@ -20,7 +20,7 @@ const pushGaData = () => {
         actionField: {
           'id': data.transactionId,
           'revenue': data.productPrice,
-          'affiliation': 'purchase',
+          'affiliation': 'Test Drive',
           'shipping': 'online',
           'currencyCode': 'EUR',
         },
