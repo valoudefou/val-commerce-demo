@@ -8,8 +8,7 @@ import Navbar from '../../components/Navbar'
 export default function Product(props) {
 const [isShown, setIsShown] = useState(false)
 async function pushCart() {
-    const randLetter = String.fromCharCode(65 + Math.floor(Math.random() * 26));
-    const transactionId = randLetter + Date.now();
+    const transactionId = '#' + Math.floor(Math.random() * 100000)
     const product = {
         "productId": props.product.id,
         "productCategory": props.product.category,
