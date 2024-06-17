@@ -22,7 +22,7 @@ const pushGaData = () => {
           'revenue': data.productPrice,
           'affiliation': 'Test Drive',
           'shipping': 'online',
-          'currencyCode': 'EUR',
+          'currency': 'EUR',
         },
         products: [{
           'sku': data.productId,
