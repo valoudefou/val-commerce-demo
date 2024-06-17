@@ -33,7 +33,7 @@ const todayDate = mm + '/' + dd + '/' + yyyy
 const handleClick = () => {
     const storedHtml = localStorage.getItem('currentProduct')
     if (!storedHtml) {
-    alert('Your basket is empty')
+    alert('Please Add To Cart')
     } else {
         window.location.href = "/products/confirmation";
     }
