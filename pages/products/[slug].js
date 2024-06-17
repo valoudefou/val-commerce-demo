@@ -16,7 +16,7 @@ const dd = String(today.getDate()).padStart(2, '0')
 const mm = String(today.getMonth() + 1).padStart(2, '0')
 const yyyy = today.getFullYear()
 
-today = mm + '/' + dd + '/' + yyyy
+const todayDate = mm + '/' + dd + '/' + yyyy
 
     const product = {
         "productId": props.product.id,
@@ -26,7 +26,7 @@ today = mm + '/' + dd + '/' + yyyy
         "productImage": props.product.images[0],
         "productQuantity": 1,
         "transactionId": transactionId,
-        "date": today
+        "date": todayDate
     }
 
     localStorage.setItem('currentProduct', JSON.stringify(product))
