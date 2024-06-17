@@ -41,7 +41,7 @@ export default function Confirmation() {
       const value = window.localStorage.getItem('currentProduct')
       setData(JSON.parse(value))
     }
-  }, []);
+  }, [])
 
   return (
   <>
