@@ -47,7 +47,7 @@ export default function Confirmation() {
 
   return (
   <>
-  <div className="py-14 px-4 md:px-6 2xl:px-20 2xl:container 2xl:mx-auto">
+  <div className="mx-auto max-w-2xl px-4 sm:px-6 lg:max-w-7xl lg:px-8 mb-24 mt-24">
   <div className="flex items-center">
   <Link href='/'>
   <div onClick={handleRemoveItem} className="svg-container">    
