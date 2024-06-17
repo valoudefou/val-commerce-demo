@@ -31,6 +31,7 @@ useEffect(() => {
 }, []);
 
 const pushGaData = () => {
+  window.dataLayer = window.dataLayer || [];
   window.dataLayer.push({
     'event': 'purchase',
     'transactionId': data.transactionId,

@@ -6,7 +6,9 @@ import { useState, useEffect, useRef } from 'react'
 import Navbar from '../../components/Navbar'
 
 export default function Product(props) {
-const [isShown, setIsShown] = useState(false)
+    const [data, setData] = useState('')
+const [cartContent, setHtmlContent] = useState('')
+
 async function pushCart() {
     const transactionId = '#' + Math.floor(Math.random() * 100000)
     const product = {
@@ -21,9 +23,45 @@ async function pushCart() {
 
     localStorage.setItem('currentProduct', JSON.stringify(product))
 }
+  
+const handleClick = () => {
+    const storedHtml = localStorage.getItem('currentProduct')
+    if (!storedHtml) {
+    alert('Your basket is empty')
+    } else {
+        window.location.href = "/products/confirmation";
+    }
+
+  }
+useEffect(() => {
+    const storedHtml = localStorage.getItem('currentProduct')
+
+
+    if (storedHtml) {
+        setHtmlContent(cartContent)
+
+        const value = window.localStorage.getItem('currentProduct')
+        setData(JSON.parse(value))
+    }
+}, []);
+
+const pushGaData = () => {
+window.dataLayer = window.dataLayer || [];
+  window.dataLayer.push({
+    'event': 'purchase',
+    'transactionId': data.transactionId,
+    'transactionTotal': data.productPrice,
+    'transactionProducts': [{
+      'sku': data.productId,
+      'name': data.productTitle,
+      'category': data.productCategory,
+      'price': data.productPrice,
+      'quantity': data.productQuantity
+    }]
+  });
+}
 
 // Get flag 
-const redirectionCheckout = useFsFlag("redirectionCheckout", "https://val-nextjs-abtasty.vercel.app/products/checkout-1")
 const paymentFeature1Click = useFsFlag("paymentFeature1Click", "false")
 
 const router = useRouter()
@@ -58,7 +96,7 @@ return (
         redirectionCheckout.getValue()
     }> */}
 
-    <button onClick={() => [pushCart(), setIsShown(!isShown)]} className="flex items-center justify-center text-sm font-base mt-5 border border-black bg-white px-4 py-4 text-black sm:px-8 w-full">
+    <button onClick={() => [pushCart()]} className="flex items-center justify-center text-sm font-base mt-5 border border-black bg-white px-4 py-4 text-black sm:px-8 w-full">
     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-6 h-6 py-0.5">
     <path strokeLinecap="round" strokeLinejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3" />
     </svg>
@@ -68,8 +106,8 @@ return (
     <>
 
     {paymentFeature1Click.getValue() === 'true' &&
-        <Link href='/products/confirmation'>
-        <button
+       
+        <button onClick={handleClick}
         className="flex items-center justify-center text-2xl font-normal mt-5 border border-transparent bg-black px-4 py-3 text-white shadow-sm hover:bg-neutral-600 sm:px-8 w-full"
         > 
         <svg xmlns="http://www.w3.org/2000/svg" fill="#FFFFFF" viewBox="0 0 24 24" width="24px" height="24px">    
@@ -77,8 +115,8 @@ return (
         </svg>
         Pay
         </button>
-        </Link>
-    }
+        
+}
     </>
 
     <div className="mt-10 mb-5 border-t border-gray-200 pt-10 font-bold text-base">

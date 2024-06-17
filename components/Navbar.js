@@ -12,10 +12,9 @@ const [cartContent, setHtmlContent] = useState(false)
 
 useEffect(() => {
     const storedHtml = localStorage.getItem('currentProduct')
-console.log('t')
+
     if (storedHtml) {
         setHtmlContent(cartContent);
-        console.log(cartContent)
     }
 
 }, []);
