@@ -30,21 +30,7 @@ useEffect(() => {
     }
 }, []);
 
-const pushGaData = () => {
-  window.dataLayer = window.dataLayer || [];
-  window.dataLayer.push({
-    'event': 'purchase',
-    'transactionId': data.transactionId,
-    'transactionTotal': data.productPrice,
-    'transactionProducts': [{
-      'sku': data.productId,
-      'name': data.productTitle,
-      'category': data.productCategory,
-      'price': data.productPrice,
-      'quantity': data.productQuantity
-    }]
-  });
-}
+
 
 const fs = useFlagship()
 
@@ -115,7 +101,7 @@ return (
     {paymentFeature1Click.getValue() === 'true' &&
     <Link href='/products/confirmation'>
     <button
-    onClick={pushGaData}
+ 
     className="flex items-center text-1xl px-5 py-2 border border-transparent bg-black font-normal text-white shadow-sm hover:bg-neutral-600"
     >
     <svg xmlns="http://www.w3.org/2000/svg" fill="#FFFFFF" viewBox="0 0 24 24" width="18px" height="18px">    

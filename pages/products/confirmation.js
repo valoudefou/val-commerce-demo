@@ -18,6 +18,25 @@ export default function Confirmation() {
         const value = window.localStorage.getItem('currentProduct')
         setData(JSON.parse(value))
     }
+
+
+
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({
+        'event': 'purchase',
+        'transactionId': data.transactionId,
+        'transactionTotal': data.productPrice,
+        'transactionProducts': [{
+          'sku': data.productId,
+          'name': data.productTitle,
+          'category': data.productCategory,
+          'price': data.productPrice,
+          'quantity': data.productQuantity
+        }]
+
+      });
+    
+  
 }, []);
 
   // useEffect(() => {
