@@ -4,11 +4,12 @@ import { useState } from 'react'
 import { HitType, useFlagship, useFsFlag } from "@flagship.io/react-sdk"
 
 function ProductCard( {product} ) {
-
-const fs = useFlagship()
-const add_to_cart_plp = useFsFlag("add_to_cart_plp", false)
-        const [isLoading, setLoading] = useState(true)
-        function cn(...classes) {
+    const fs = useFlagship()
+    const add_to_cart_plp = useFsFlag("add_to_cart_plp", false)
+    const [isLoading, setLoading] = useState(true)
+    const { hit: fsHit } = useFlagship()
+ 
+    function cn(...classes) {
         return classes.filter(Boolean).join(' ')
     }
 
