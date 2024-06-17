@@ -8,21 +8,22 @@ import Navbar from '../../components/Navbar'
 export default function Product(props) {
 const [isShown, setIsShown] = useState(false)
 async function pushCart() {
-
+    const randLetter = String.fromCharCode(65 + Math.floor(Math.random() * 26));
+    const transactionId = randLetter + Date.now();
     const product = {
         "productId": props.product.id,
         "productCategory": props.product.category,
         "productTitle": props.product.title, 
         "productPrice": props.product.price,
         "productImage": props.product.images[0],
-        "productQuantity": 1
+        "productQuantity": 1,
+        "transactionId": transactionId
     }
 
     localStorage.setItem('currentProduct', JSON.stringify(product))
 }
 
 // Get flag 
-const epoqWidgetId = useFsFlag("epoqWidgetId", "homepage")
 const redirectionCheckout = useFsFlag("redirectionCheckout", "https://val-nextjs-abtasty.vercel.app/products/checkout-1")
 const paymentFeature1Click = useFsFlag("paymentFeature1Click", "false")
 
@@ -93,11 +94,7 @@ return (
     </div>
     </div>
 
-    <div id={
-        'epoq-widget-' + epoqWidgetId.getValue()
-    } 
 
-    className="epoq-recommendations-widget"></div>
     </div>
     )
 }

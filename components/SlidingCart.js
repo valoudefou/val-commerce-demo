@@ -6,8 +6,6 @@ import Emotion from "./Emotion"
 import Navbar from "./Navbar"
 
 function SlidingCart() {
-
-
   const handleRemoveItem = () => {
     const itemName = 'currentProduct'; // Replace with the key of the item you want to remove
     localStorage.removeItem(itemName);
@@ -33,18 +31,16 @@ useEffect(() => {
 }, []);
 
 const pushGaData = () => {
-  const randLetter = String.fromCharCode(65 + Math.floor(Math.random() * 26));
-const uniqid = randLetter + Date.now();
   window.dataLayer.push({
     'event': 'purchase',
-    'transactionId': uniqid,
-    'transactionTotal': data.productQuantity,
+    'transactionId': data.transactionId,
+    'transactionTotal': data.productPrice,
     'transactionProducts': [{
-      'sku': data.productTitle,
+      'sku': data.productId,
       'name': data.productTitle,
       'category': data.productCategory,
-      'price': data.productQuantity,
-      'quantity': 1
+      'price': data.productPrice,
+      'quantity': data.productQuantity
     }]
   });
 }
@@ -148,5 +144,3 @@ return (
 }
 
 export default SlidingCart
-
-
