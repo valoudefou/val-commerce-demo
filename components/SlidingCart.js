@@ -30,7 +30,21 @@ useEffect(() => {
     }
 }, []);
 
-
+const pushGaData = () => {
+  window.dataLayer = window.dataLayer || [];
+  window.dataLayer.push({
+    'event': 'purchase',
+    'transactionId': data.transactionId,
+    'transactionTotal': data.productPrice,
+    'transactionProducts': [{
+      'sku': data.productId,
+      'name': data.productTitle,
+      'category': data.productCategory,
+      'price': data.productPrice,
+      'quantity': data.productQuantity
+    }]
+  });
+}
 
 const fs = useFlagship()
 

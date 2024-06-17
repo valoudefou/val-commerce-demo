@@ -2,42 +2,51 @@ import { useEffect, useState } from "react"
 import Link from 'next/link'
 
 export default function Confirmation() {
+  const [data, setData] = useState('')
+
 
   const handleRemoveItem = () => {
-    const itemName = 'currentProduct'; // Replace with the key of the item you want to remove
-    localStorage.removeItem(itemName);
+    const itemName = 'currentProduct' // Replace with the key of the item you want to remove
+    localStorage.removeItem(itemName)
+    pushGaData()
 }
-  const [data, setData] = useState('')
-  useEffect(() => {
 
-    const storedHtml = localStorage.getItem('currentProduct')
+const pushGaData = () => {
+  window.dataLayer = window.dataLayer || [];
+  window.dataLayer.push({
+    'event': 'purchase',
+    'transactionId': data.transactionId,
+    'transactionTotal': data.productPrice,
+    'transactionProducts': [{
+      'sku': data.productId,
+      'name': data.productTitle,
+      'category': data.productCategory,
+      'price': data.productPrice,
+      'quantity': data.productQuantity
+    }]
+  });
+};
 
-    if (storedHtml) {
-
-
-        const value = window.localStorage.getItem('currentProduct')
-        setData(JSON.parse(value))
-    }
 
 
 
-      window.dataLayer = window.dataLayer || [];
-      window.dataLayer.push({
-        'event': 'purchase',
-        'transactionId': data.transactionId,
-        'transactionTotal': data.productPrice,
-        'transactionProducts': [{
-          'sku': data.productId,
-          'name': data.productTitle,
-          'category': data.productCategory,
-          'price': data.productPrice,
-          'quantity': data.productQuantity
-        }]
 
-      });
-    
-  
+useEffect(() => {
+  const storedHtml = localStorage.getItem('currentProduct')
+
+  if (storedHtml) {
+
+
+      const value = window.localStorage.getItem('currentProduct')
+      setData(JSON.parse(value))
+
+
+  }
 }, []);
+
+
+
+
 
   // useEffect(() => {
   //   const storedHtml = localStorage.getItem('currentProduct')
