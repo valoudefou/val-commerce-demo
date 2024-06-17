@@ -12,7 +12,7 @@ export default function Confirmation() {
 }
 
 const pushGaData = () => {
-  window.dataLayer = window.dataLayer || [];
+  window.dataLayer.push({ecommerce: null})
   window.dataLayer.push({
     event: 'purchase',
     ecommerce: {
