@@ -8,7 +8,6 @@ import Navbar from "./Navbar"
 function SlidingCart() {
 
 
-
   const handleRemoveItem = () => {
     const itemName = 'currentProduct'; // Replace with the key of the item you want to remove
     localStorage.removeItem(itemName);
@@ -32,6 +31,23 @@ useEffect(() => {
         setData(JSON.parse(value))
     }
 }, []);
+
+const pushGaData = () => {
+  const randLetter = String.fromCharCode(65 + Math.floor(Math.random() * 26));
+const uniqid = randLetter + Date.now();
+  window.dataLayer.push({
+    'event': 'purchase',
+    'transactionId': uniqid,
+    'transactionTotal': data.productQuantity,
+    'transactionProducts': [{
+      'sku': data.productTitle,
+      'name': data.productTitle,
+      'category': data.productCategory,
+      'price': data.productQuantity,
+      'quantity': 1
+    }]
+  });
+}
 
 const fs = useFlagship()
 
@@ -102,6 +118,7 @@ return (
     {paymentFeature1Click.getValue() === 'true' &&
     <Link href='/products/confirmation'>
     <button
+    onClick={pushGaData}
     className="flex items-center text-1xl px-5 py-2 border border-transparent bg-black font-normal text-white shadow-sm hover:bg-neutral-600"
     >
     <svg xmlns="http://www.w3.org/2000/svg" fill="#FFFFFF" viewBox="0 0 24 24" width="18px" height="18px">    

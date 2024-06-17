@@ -11,6 +11,7 @@ async function pushCart() {
 
     const product = {
         "productId": props.product.id,
+        "productCategory": props.product.category,
         "productTitle": props.product.title, 
         "productPrice": props.product.price,
         "productImage": props.product.images[0],
