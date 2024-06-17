@@ -14,16 +14,26 @@ export default function Confirmation() {
 const pushGaData = () => {
   window.dataLayer = window.dataLayer || [];
   window.dataLayer.push({
-    'event': 'purchase',
-    'transactionId': data.transactionId,
-    'transactionTotal': data.productPrice,
-    'transactionProducts': [{
-      'sku': data.productId,
-      'name': data.productTitle,
-      'category': data.productCategory,
-      'price': data.productPrice,
-      'quantity': data.productQuantity
-    }]
+    event: 'purchase',
+    ecommerce: {
+      purchase: {
+        actionField: {
+          'event': 'purchase',
+          'id': data.transactionId,
+          'revenue': data.productPrice,
+          'affiliation': 'purchase',
+          'shpping': 'online',
+          'currencyCode': 'EUR',
+        },
+        products: [{
+          'sku': data.productId,
+          'productName': data.productTitle,
+          'category': data.productCategory,
+          'price': data.productPrice,
+          'quantity': data.productQuantity
+        }]
+      }
+    }
   });
 };
 
