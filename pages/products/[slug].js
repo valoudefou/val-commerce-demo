@@ -6,16 +6,14 @@ import { useState, useEffect, useRef } from 'react'
 import Navbar from '../../components/Navbar'
 
 export default function Product(props) {
-    const [data, setData] = useState('')
+const [data, setData] = useState('')
 const [cartContent, setHtmlContent] = useState('')
-
 async function pushCart() {
 const transactionId = '#' + Math.floor(Math.random() * 100000)
 const today = new Date()
 const dd = String(today.getDate()).padStart(2, '0')
 const mm = String(today.getMonth() + 1).padStart(2, '0')
 const yyyy = today.getFullYear()
-
 const todayDate = mm + '/' + dd + '/' + yyyy
 
     const product = {
