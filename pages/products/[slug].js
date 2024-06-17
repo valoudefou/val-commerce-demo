@@ -10,7 +10,14 @@ export default function Product(props) {
 const [cartContent, setHtmlContent] = useState('')
 
 async function pushCart() {
-    const transactionId = '#' + Math.floor(Math.random() * 100000)
+const transactionId = '#' + Math.floor(Math.random() * 100000)
+const today = new Date()
+const dd = String(today.getDate()).padStart(2, '0')
+const mm = String(today.getMonth() + 1).padStart(2, '0')
+const yyyy = today.getFullYear()
+
+today = mm + '/' + dd + '/' + yyyy
+
     const product = {
         "productId": props.product.id,
         "productCategory": props.product.category,
@@ -18,7 +25,8 @@ async function pushCart() {
         "productPrice": props.product.price,
         "productImage": props.product.images[0],
         "productQuantity": 1,
-        "transactionId": transactionId
+        "transactionId": transactionId,
+        "date": today
     }
 
     localStorage.setItem('currentProduct', JSON.stringify(product))
