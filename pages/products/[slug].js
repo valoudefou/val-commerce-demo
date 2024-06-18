@@ -29,6 +29,39 @@ const todayDate = mm + '/' + dd + '/' + yyyy
 
     localStorage.setItem('currentProduct', JSON.stringify(product))
 }
+
+
+
+
+
+  useEffect(() => {
+    let timerId
+  
+    if (data) {
+      timerId = setTimeout(() => {
+        pushGaData()
+      }, 1500)
+    }
+    return () => clearTimeout(timerId);
+  }, [data])
+
+  const pushGaData = () => {
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({
+      event: 'view_item',
+      ecommerce: {
+        products: [
+            {
+            'sku': data.productId,
+            'name': data.productTitle,
+            'category': data.productCategory,
+            'price': data.productPrice,
+            'quantity': data.productQuantity
+            }
+        ]
+      }
+    })
+  }
   
 const handleClick = () => {
     const storedHtml = localStorage.getItem('currentProduct')
