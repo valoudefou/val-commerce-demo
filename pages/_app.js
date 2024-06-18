@@ -36,7 +36,7 @@ function MyApp({ Component, pageProps, initialFlagsData, initialVisitorData }) {
             }
 
         })
-        
+
     }, [])
 
     // Get flag 
