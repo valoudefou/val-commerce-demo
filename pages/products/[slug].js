@@ -36,6 +36,7 @@ const handleClick = () => {
     alert('Please Add To Cart')
     } else {
         window.location.href = "/products/confirmation";
+
     }
 
   }
