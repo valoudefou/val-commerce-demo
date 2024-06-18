@@ -64,7 +64,6 @@ initialFlagsData={initialFlagsData || {}}>
 <title>{'The ' + flagIndustry.getValue() + ' House'}</title>
 <Component {...pageProps} />
 <Footer />
-
 </FlagshipProvider>
 </>
 )

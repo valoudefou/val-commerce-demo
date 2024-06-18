@@ -1,6 +1,5 @@
 import Image from 'next/image'
 import { HitType, useFlagship, useFsFlag } from "@flagship.io/react-sdk"
-import Script from "next/script"
 import Link from 'next/link'
 
 export default function Header() {
@@ -12,7 +11,6 @@ const flagBtnText = useFsFlag("flagBtnText", "Shop")
 const flagIndustry = useFsFlag("flagIndustry", "Product")
 const flagBackgroundColor = useFsFlag("flagBackgroundColor", "black")
 const { hit: fsHit } = useFlagship()
-const flagAbtasty = useFsFlag("flagAbtasty", '')
 
 return (
 <header className="relative">
@@ -20,7 +18,6 @@ return (
     <div className="mx-auto">
       <div className="relative shadow-xl sm:overflow-hidden">
         <div className="absolute inset-0">
-          <Script src={'https://try.abtasty.com/' + flagAbtasty.getValue() + '.js'} />
           <Image
             priority
             layout='fill'

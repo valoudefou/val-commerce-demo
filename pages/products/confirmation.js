@@ -1,11 +1,8 @@
 import { useEffect, useState } from "react"
-import Script from "next/script"
 import Link from 'next/link'
-import { useFsFlag } from "@flagship.io/react-sdk"
 
 export default function Confirmation() {
   const [data, setData] = useState('')
-  const flagAbtasty = useFsFlag("flagAbtasty", '')
 
   const handleRemoveItem = () => {
     const itemName = 'currentProduct'
@@ -60,7 +57,6 @@ export default function Confirmation() {
 
   return (
   <>
-  <Script src={'https://try.abtasty.com/' + flagAbtasty.getValue() + '.js'} />
   <Link href='/'>
   <div onClick={handleRemoveItem} className="mx-auto max-w-2xl px-4 sm:px-6 lg:max-w-7xl lg:px-8 mb-24 mt-24">
   <div className="flex items-center">
