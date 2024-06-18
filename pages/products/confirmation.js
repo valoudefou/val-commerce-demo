@@ -7,8 +7,18 @@ export default function Confirmation() {
   const handleRemoveItem = () => {
     const itemName = 'currentProduct'
     localStorage.removeItem(itemName)
-    pushGaData()
   }
+
+  useEffect(() => {
+    let timerId
+  
+    if (data) {
+      timerId = setTimeout(() => {
+        pushGaData()
+      }, 1500)
+    }
+    return () => clearTimeout(timerId);
+  }, [data])
 
   const pushGaData = () => {
     window.dataLayer.push({ecommerce: null})
