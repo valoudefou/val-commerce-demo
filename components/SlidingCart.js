@@ -9,7 +9,7 @@ function SlidingCart() {
     const itemName = 'currentProduct'
     localStorage.removeItem(itemName)
     window.dataLayer = window.dataLayer || []
-
+    console.log('rebase')
     window.dataLayer.push({
       event: 'remove_from_cart',
       ecommerce: {
