@@ -1,4 +1,4 @@
-AB Tasty / Next.js SPA App
+AB Tasty React Next.js SPA App
 
 This AB Tasty demo envionement provide real time insights around:
 - SPA / React / Next JS compatibility ----> [Documentation](https://support.abtasty.com/hc/en-us/articles/14427828636572-How-the-AB-Tasty-tag-is-designed-to-handle-Single-Page-Apps-SPA/)
