@@ -1,7 +1,6 @@
-import { useFlagship, useFsFlag } from "@flagship.io/react-sdk"
+import { useFsFlag } from "@flagship.io/react-sdk"
 
 export default function Footer({ children }) {
-    const fs = useFlagship()
     const flagBackgroundColor = useFsFlag("flagBackgroundColor", "black")
 
     return (
