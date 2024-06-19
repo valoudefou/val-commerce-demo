@@ -119,7 +119,7 @@ export default function Confirmation() {
                         <img className="w-full h-full" alt="logo" src="https://i.ibb.co/L8KSdNQ/image-3.png" />
                       </div>
                       <div className="flex flex-col justify-start items-center">
-                        <p className="text-lg leading-6 dark:text-white font-semibold text-gray-800">DPD Delivery<br /><span className="font-normal">Delivery with 24 Hours</span></p>
+                        <p className="text-base leading-6 dark:text-white font-semibold text-gray-800">DPD Delivery<br /><span className="text-base font-normal">Delivery with 24 Hours</span></p>
                       </div>
                     </div>
                     <p className="text-lg font-semibold leading-6 dark:text-white text-gray-800">8.01 €</p>
