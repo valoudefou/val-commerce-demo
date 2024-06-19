@@ -10,9 +10,9 @@ export default function Product(props) {
 
     async function pushView() {
         sendItemView.current = sendItemView.current + 1;
-        window.dataLayer = window.dataLayer || []
         
         if (sendItemView.current === 1) {
+            window.dataLayer = window.dataLayer || []
             window.dataLayer.push({
                 event: 'view_item',
                 ecommerce: {
