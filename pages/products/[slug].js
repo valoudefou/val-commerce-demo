@@ -1,12 +1,32 @@
 import Image from 'next/image'
 import { useRouter } from 'next/router'
 import { useFsFlag } from "@flagship.io/react-sdk"
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef} from 'react'
 import Navbar from '../../components/Navbar'
 
 export default function Product(props) {
     const [data, setData] = useState('')
-    const [cartContent, setHtmlContent] = useState('')
+    const sendItemView = useRef(0)
+
+    async function pushView() {
+        sendItemView.current = sendItemView.current + 1;
+        window.dataLayer = window.dataLayer || []
+        
+        if (sendItemView.current === 1) {
+            window.dataLayer.push({
+                event: 'view_item',
+                ecommerce: {
+                    products: [{
+                        'sku': props.product.id,
+                        'name': props.product.title,
+                        'category': props.product.category,
+                        'price': props.product.price,
+                        'quantity': 1
+                    }]
+                }
+            })
+        }
+    }
 
     async function pushCart() {
         const transactionId = '#' + Math.floor(Math.random() * 100000)
@@ -48,28 +68,21 @@ export default function Product(props) {
         const storedHtml = localStorage.getItem('currentProduct')
 
         if (!storedHtml) {
-            alert('Please Add To Cart')
+            alert('Please Add To Cart and then Click Pay')
         } 
         
         else {
             window.location.href = "/products/confirmation"
         }
-
     }
 
     useEffect(() => {
         const storedHtml = localStorage.getItem('currentProduct')
 
         if (storedHtml) {
-            setHtmlContent(cartContent)
             const value = window.localStorage.getItem('currentProduct')
             setData(JSON.parse(value))
         }
-
-        if (!storedHtml) {
-            console.log('item_view sent now')
-        }
-    
     }, []);
 
     // Get flag 
@@ -81,7 +94,7 @@ export default function Product(props) {
     }
 
     return (
-        <div className="flex h-auto flex-col justify-between">
+        <div onLoad={() => [pushView()]} className="flex h-auto flex-col justify-between">
             <Navbar />
             <div className="mx-auto mb-24 max-w-1xl px-4 sm:px-6 lg:max-w-7xl lg:px-8">
                 <div className="mx-auto items-center flex flex-col lg:flex-row p-10">

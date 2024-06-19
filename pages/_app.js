@@ -1,6 +1,6 @@
 import '../styles/globals.css'
 import Head from 'next/head'
-import { Flagship, FlagshipProvider, useFlagship, useFsFlag } from "@flagship.io/react-sdk"
+import { Flagship, FlagshipProvider, useFsFlag } from "@flagship.io/react-sdk"
 import React from "react"
 import App from "next/app"
 import Footer from '../components/Footer'
@@ -11,15 +11,15 @@ function MyApp({ Component, pageProps, initialFlagsData, initialVisitorData }) {
 
     useEffect(() => {
         const visitorId = initialVisitorData.id
-        localStorage.setItem('FS_VISITOR', visitorId)
-        document.cookie = 'FS_VISITOR=' + visitorId
+        localStorage.setItem('FS_VISITOR', visitorId) // BYOID in localStorage
+        document.cookie = 'FS_VISITOR=' + visitorId // BYOID in a cookie
         
         if (typeof window !== 'undefined') {
             const antiFlicker = document.querySelector('#ab-tasty-anti-flicker')
 
             if (antiFlicker && window.ABTasty !== 'undefined') {
 
-                window.addEventListener('abtasty_executedCampaign', (event) => {
+                window.addEventListener('abtasty_executedCampaign', () => {
 
                     function antiFlicker() {
                         const antiFlicker = document.querySelector('#ab-tasty-anti-flicker')  
@@ -69,8 +69,8 @@ MyApp.getInitialProps = async (appContext) => {
     })
 
     const initialVisitorData = {
-        // id: 'test20',
-        id: uuidv4(),
+        id: '3c970578-679d-49a6-81b9-cdad6960a63b',
+        // id: uuidv4(),
             context: {
             organisation: "whatever",
             device: 'mobile',
