@@ -1,13 +1,16 @@
 import '../styles/globals.css'
 import Head from 'next/head'
 import { Flagship, FlagshipProvider, useFsFlag } from "@flagship.io/react-sdk"
-import React from "react"
 import App from "next/app"
 import Footer from '../components/Footer'
 import { v4 as uuidv4 } from 'uuid'
-import { useEffect } from 'react'
+import { createContext, useState, useEffect } from 'react'
+
+export const AppContext = createContext()
 
 function MyApp({ Component, pageProps, initialFlagsData, initialVisitorData }) {
+    const [isShown, setIsShown] = useState(false)
+    const [isEmpty, setIsEmpty] = useState(true)
 
     useEffect(() => {
         const visitorId = initialVisitorData.id
@@ -37,7 +40,6 @@ function MyApp({ Component, pageProps, initialFlagsData, initialVisitorData }) {
             if (antiFlicker) {
                 antiFlicker.style.visibility = 'hidden'
             }
-
         })
     }, [])
 
@@ -46,16 +48,19 @@ function MyApp({ Component, pageProps, initialFlagsData, initialVisitorData }) {
 
     return (
         <>
-        <FlagshipProvider
-        envId={process.env.NEXT_PUBLIC_FS_ENV}
-        apiKey={process.env.NEXT_PUBLIC_FS_KEY}
-        visitorData={initialVisitorData}
-        initialFlagsData={initialFlagsData || {}}>
-        <Head />
-        <title>{'The ' + flagIndustry.getValue() + ' House'}</title>
-        <Component {...pageProps} />
-        <Footer />
-        </FlagshipProvider>
+        <AppContext.Provider value={[isShown, setIsShown]}>
+            <FlagshipProvider
+                envId={process.env.NEXT_PUBLIC_FS_ENV}
+                apiKey={process.env.NEXT_PUBLIC_FS_KEY}
+                visitorData={initialVisitorData}
+                initialFlagsData={initialFlagsData || {}}
+            >
+                <Head />
+                <title>{'The ' + flagIndustry.getValue() + ' House'}</title>
+                <Component {...pageProps} />
+                <Footer />
+            </FlagshipProvider>
+        </AppContext.Provider>
         </>
     )
 }

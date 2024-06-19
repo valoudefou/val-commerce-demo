@@ -1,13 +1,13 @@
-import { useState, useEffect } from "react"
+import { useState, useEffect, useContext } from "react"
+import { AppContext } from "../pages/_app"
 import { useFsFlag } from "@flagship.io/react-sdk"
 import SlidingCart from "./SlidingCart"
 import MiniCart from "./MiniCart"
 import Link from 'next/link'
 
 export default function Navbar() {
-
-    const [isShown, setIsShown] = useState(false)
-    const [cartContent, setHtmlContent] = useState(false)
+    const [isShown, setIsShown] = useContext(AppContext)
+    const [cartContent, setHtmlContent] = useState(true)
 
     useEffect(() => {
         const storedHtml = localStorage.getItem('currentProduct')
@@ -15,7 +15,6 @@ export default function Navbar() {
         if (storedHtml) {
             setHtmlContent(cartContent)
         }
-
     }, [])
 
     // Get flag 
@@ -48,7 +47,7 @@ export default function Navbar() {
                         <ul className="hidden flex-col lg:flex lg:flex-row list-none">
                             <li className="nav-item">
                                 <a className="my-1 text-sm text-gray-900 hover:text-gray-700 font-light md:mx-4 md:my-0" href="/">
-                                <span className="ml-2">Home</span>
+                                <span className="ml-2">{isShown}</span>
                                 </a>
                             </li>
                             <li className="nav-item">

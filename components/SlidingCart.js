@@ -1,10 +1,13 @@
 import Link from "next/link"
 import { useFsFlag } from "@flagship.io/react-sdk"
-import { React, useState, useEffect } from "react"
+import { React, useState, useEffect, useContext } from "react"
+import { AppContext } from "../pages/_app"
 import Image from "next/image"
 import Emotion from "./Emotion"
 
 function SlidingCart() {
+  const [isShown, setIsShown] = useContext(AppContext)
+
   async function handleRemoveItem () {
     const itemName = 'currentProduct'
     localStorage.removeItem(itemName)
@@ -48,7 +51,7 @@ function SlidingCart() {
 
   return (
   <div>
-    <div className="h-screen w-screen top-0 z-20 bg-gray-900 fixed opacity-70"></div>
+    <div onClick={() => setIsShown(!isShown)} className="h-screen w-screen top-0 z-20 bg-gray-900 fixed opacity-70"></div>
     <div className="flex-auto h-screen top-0 z-20 select-none fixed right-0 bg-white p-6 border border-gray-200">
       <div className="w-64">
         <div className="text-3xl font-semibold text-gray-900 pt-20">Cart</div>

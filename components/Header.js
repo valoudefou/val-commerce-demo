@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import { HitType, useFlagship, useFsFlag } from "@flagship.io/react-sdk"
 import Link from 'next/link'
+import Navbar from '../components/Navbar'
 
 export default function Header() {
 const fs = useFlagship()
@@ -14,6 +15,7 @@ const { hit: fsHit } = useFlagship()
 
   return (
     <header className="relative">
+      <Navbar />
       <div className="absolute inset-x-0 bottom-0 h-1/2" />
         <div className="mx-auto">
           <div className="relative shadow-xl sm:overflow-hidden">
