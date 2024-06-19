@@ -21,7 +21,6 @@ export default function Confirmation() {
   }, [data])
 
   const pushGaData = () => {
-    window.dataLayer.push({ecommerce: null})
     window.dataLayer.push({
       event: 'purchase',
       ecommerce: {
@@ -43,6 +42,7 @@ export default function Confirmation() {
         }
       }
     })
+    window.dataLayer.push({ecommerce: null})
   }
 
   useEffect(() => {
