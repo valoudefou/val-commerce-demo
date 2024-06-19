@@ -1,3 +1,5 @@
+![alt text](https://www.abtasty.com/wp-content/uploads/2024/01/cropped-logo-abtasty-green.png)
+
 AB Tasty React Next.js SPA App
 
 This AB Tasty demo envionement provides real time technical insights around:
