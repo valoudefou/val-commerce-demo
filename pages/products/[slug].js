@@ -17,10 +17,10 @@ export default function Product(props) {
             window.dataLayer.push({
                 event: 'view_item',
                 ecommerce: {
-                    'price': props.product.price,
                     products: [{
                         'sku': props.product.id,
                         'name': props.product.title,
+                        'price': props.product.price,
                         'category': props.product.category,
                         'quantity': 1
                     }]
