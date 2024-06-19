@@ -26,7 +26,6 @@ function SlidingCart() {
       const value = window.localStorage.getItem('currentProduct')
       setData(JSON.parse(value))
     }
-console.log('dewede')
   }, []);
 
   // Get flag 
