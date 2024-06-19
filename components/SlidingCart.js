@@ -26,7 +26,7 @@ function SlidingCart() {
       const value = window.localStorage.getItem('currentProduct')
       setData(JSON.parse(value))
     }
-
+console.log('commit')
   }, []);
 
   // Get flag 
