@@ -10,7 +10,9 @@ import { useEffect } from 'react'
 function MyApp({ Component, pageProps, initialFlagsData, initialVisitorData }) {
 
     useEffect(() => {
-
+        const visitorId = initialVisitorData.id
+        localStorage.setItem('FS_VISITOR', visitorId)
+        
         if (typeof window !== 'undefined') {
             const antiFlicker = document.querySelector('#ab-tasty-anti-flicker')
 
@@ -36,11 +38,9 @@ function MyApp({ Component, pageProps, initialFlagsData, initialVisitorData }) {
             }
 
         })
-
     }, [])
 
     // Get flag 
-    const fs = useFlagship()
     const flagIndustry = useFsFlag("flagIndustry", "Product")
 
     return (

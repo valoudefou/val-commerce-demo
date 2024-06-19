@@ -44,34 +44,6 @@ export default function Product(props) {
         })
     }
 
-    useEffect(() => {
-        let timerId
-
-        if (data) {
-            timerId = setTimeout(() => {
-                pushGaData()
-            }, 1500)
-        }
-        return () => clearTimeout(timerId);
-        
-    }, [data])
-
-    const pushGaData = () => {
-        window.dataLayer = window.dataLayer || []
-        window.dataLayer.push({
-        event: 'view_item',
-            ecommerce: {
-                products: [{
-                    'sku': props.product.id,
-                    'name': props.product.title,
-                    'category': props.product.category,
-                    'price': props.product.price,
-                    'quantity': 1
-                }]
-            }
-        })
-    }
-
     const handleClick = () => {
         const storedHtml = localStorage.getItem('currentProduct')
 
@@ -94,6 +66,10 @@ export default function Product(props) {
             setData(JSON.parse(value))
         }
 
+        if (!storedHtml) {
+            console.log('item_view sent now')
+        }
+    
     }, []);
 
     // Get flag 
