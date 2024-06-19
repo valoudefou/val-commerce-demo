@@ -13,14 +13,15 @@ export default function Product(props) {
         
         if (sendItemView.current === 1) {
             window.dataLayer = window.dataLayer || []
+
             window.dataLayer.push({
                 event: 'view_item',
                 ecommerce: {
+                    'price': props.product.price,
                     products: [{
                         'sku': props.product.id,
                         'name': props.product.title,
                         'category': props.product.category,
-                        'price': props.product.price,
                         'quantity': 1
                     }]
                 }
