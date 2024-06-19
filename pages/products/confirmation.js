@@ -122,7 +122,7 @@ export default function Confirmation() {
                         <p className="text-base leading-6 dark:text-white font-semibold text-gray-800">DPD Delivery<br /><span className="text-base font-normal">Delivery with 24 Hours</span></p>
                       </div>
                     </div>
-                    <p className="text-lg font-semibold leading-6 dark:text-white text-gray-800">8.01 €</p>
+                    <p className="text-base font-semibold leading-6 dark:text-white text-gray-800">8.01 €</p>
                   </div>
                 </div>
               </div>
