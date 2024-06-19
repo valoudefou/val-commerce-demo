@@ -29,7 +29,7 @@ Shop our products
 }
 
 export async function getStaticProps() {
-const res = await fetch('https://dummyjson.com/products')
+const res = await fetch('https://dummyjson.com/product?limit=0')
 const data = await res.json()
 // console.log(data)
 return {
