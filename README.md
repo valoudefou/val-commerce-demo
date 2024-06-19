@@ -1,4 +1,4 @@
-# Flagship by AB Tasty / Next.js App
+#AB Tasty / Next.js SPA App
 
 Product recommendation and inteligent search. Evaluate flickering feature flag A/B testing on SSR technology.
 
