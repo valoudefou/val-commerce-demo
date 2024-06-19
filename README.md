@@ -1,4 +1,4 @@
-![alt text](https://www.abtasty.com/wp-content/uploads/2024/01/cropped-logo-abtasty-green.png)
+![AB Tasty logo](https://mma.prnewswire.com/media/2345649/AB_Tasty_Logo.jpg?p=facebook)
 
 AB Tasty React Next.js SPA App
 
