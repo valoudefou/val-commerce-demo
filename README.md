@@ -1,6 +1,6 @@
 ![AB Tasty logo](https://mma.prnewswire.com/media/2345649/AB_Tasty_Logo.jpg?p=facebook)
 
-<img src="https://mma.prnewswire.com/media/2345649/AB_Tasty_Logo.jpg" alt="AB Tasty logo" width="200"/>
+<img src="https://mma.prnewswire.com/media/2345649/AB_Tasty_Logo.jpg" alt="AB Tasty logo" width="400"/>
 
 AB Tasty React Next.js SPA App
 
