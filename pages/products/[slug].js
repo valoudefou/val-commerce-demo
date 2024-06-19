@@ -9,7 +9,7 @@ export default function Product(props) {
     const sendItemView = useRef(0)
 
     async function pushView() {
-        sendItemView.current = sendItemView.current + 1;
+        sendItemView.current = sendItemView.current + 1
         
         if (sendItemView.current === 1) {
             window.dataLayer = window.dataLayer || []

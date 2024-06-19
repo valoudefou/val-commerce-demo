@@ -5,9 +5,23 @@ import Image from "next/image"
 import Emotion from "./Emotion"
 
 function SlidingCart() {
-  const handleRemoveItem = () => {
+  async function handleRemoveItem () {
     const itemName = 'currentProduct'
     localStorage.removeItem(itemName)
+    window.dataLayer = window.dataLayer || []
+
+    window.dataLayer.push({
+      event: 'remove_from_cart',
+      ecommerce: {
+        products: [{
+          'sku': data.productId,
+          'name': data.productTitle,
+          'price': data.productPrice,
+          'category': data.productCategory,
+          'quantity': data.productQuantity
+        }]
+      }
+    })
   }
 
   const [cartContent, setHtmlContent] = useState('')
@@ -65,7 +79,7 @@ function SlidingCart() {
           </div>
           {cartContent && (
             <span onClick={handleClick} className="text-gray-500 pl-5">
-              <svg onClick={handleRemoveItem} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-6 h-6 w-4 h-4">
+              <svg onClick={() => [handleRemoveItem()]} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-6 h-6 w-4 h-4">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
               </svg>
             </span>
