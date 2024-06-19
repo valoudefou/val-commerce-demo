@@ -65,7 +65,7 @@ export default function Confirmation() {
               <path className="tick" fill="none" stroke="#FFF" strokeWidth="6" strokeLinecap="round" strokeLinejoin="round" strokeMiterlimit="10" d="M14 27l5.917 4.917L34 17"/>
               </svg>
             </div>
-            <div className="flex flex-col pl-4 pt-3">
+            <div className="flex flex-col pl-4 pt-2 pb-1">
               <h1 className="text-2xl dark:text-white lg:text-3xl font-semibold leading-7 lg:leading-9 text-gray-800">Your order {data.transactionId} is confirmed!</h1>
               <p className="text-base dark:text-gray-300 font-medium p-1 leading-6 text-gray-600">{data.date}</p>
             </div>
