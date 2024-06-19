@@ -1,7 +1,12 @@
 AB Tasty / Next.js SPA App
 
-Product recommendation and inteligent search. Evaluate flickering feature flag A/B testing on SSR technology.
-
+This AB Tasty demo envionement provide real time insights around:
+- SPA / React / Next JS compatibility ----> [Doc]([https://www.abtasty.com/](https://support.abtasty.com/hc/en-us/articles/14427828636572-How-the-AB-Tasty-tag-is-designed-to-handle-Single-Page-Apps-SPA/)
+- Bring Your Own ID (BYOID) ----> [Doc](https://support.abtasty.com/hc/en-us/articles/14503207884700-Visitor-Identity-Management/)
+- Offline Data Import ----> [Doc](https://developers.abtasty.com/docs/data/universal-data-connector/)
+- Search Recommendations ----> [Doc](https://techdocs.get-potions.com/)
+- BigQuery / Third Party Data Warehouse Intergation ----> [Doc](https://support.abtasty.com/hc/en-us/articles/12227118781084-Big-Query-Daily-exports-from-AB-Tasty-to-Big-Query/)
+  
 ## Built With
 
 - [AB Tasty](https://www.abtasty.com/)
