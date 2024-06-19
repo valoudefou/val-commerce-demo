@@ -4,11 +4,10 @@ Product recommendation and inteligent search. Evaluate flickering feature flag A
 
 ## Built With
 
-- [Flagship by AB Tasty](https://docs.developers.flagship.io/docs/avoid-flickering-with-nextjs-ssr/)
-- [Tailwind CSS](https://tailwindcss.com)
-- [Next.js](https://nextjs.org)
-- [Vercel](https://vercel.com)
-- [Contentful](https://www.contentful.com/sign-up/)
+- [AB Tasty](https://www.abtasty.com/)
+- [Tailwind CSS](https://tailwindcss.com/)
+- [Next.js](https://nextjs.org/)
+- [Vercel](https://vercel.com/)
 
 ## Deploy with Vercel
 
