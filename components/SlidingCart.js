@@ -16,11 +16,13 @@ function SlidingCart() {
     window.dataLayer.push({
       event: 'remove_from_cart',
       ecommerce: {
-        products: [{
-          'sku': data.productId,
-          'name': data.productTitle,
+        'currency': 'EUR',
+        'value': data.productPrice,
+        item: [{
+          'item_id': data.productId,
+          'item_name': data.productTitle,
+          'item_category': data.productCategory,
           'price': data.productPrice,
-          'category': data.productCategory,
           'quantity': data.productQuantity
         }]
       }
