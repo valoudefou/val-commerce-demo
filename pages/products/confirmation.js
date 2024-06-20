@@ -26,22 +26,18 @@ export default function Confirmation() {
     window.dataLayer.push({
       event: 'purchase',
       ecommerce: {
-        purchase: {
-          actionField: {
-            'id': data.transactionId,
-            'revenue': data.productPrice,
-            'affiliation': 'Test Drive',
-            'shipping': 'online',
-            'currency': 'EUR',
-          },
-          products: [{
-            'sku': data.productId,
-            'name': data.productTitle,
-            'category': data.productCategory,
-            'price': data.productPrice,
-            'quantity': data.productQuantity
-          }]
-        }
+        'transaction_id': data.transactionId,
+        'revenue': data.productPrice,
+        'shipping': 8.01,
+        'currency': 'EUR',
+      items: [{
+          'item_id': data.productId,
+          'item_name': data.productTitle,
+          'affiliation': 'Test Drive',
+          'item_category': data.productCategory,
+          'price': data.productPrice,
+          'quantity': data.productQuantity
+        }]
       }
     })
   }

@@ -19,11 +19,11 @@ export default function Product(props) {
                 ecommerce: {
                     'currency': 'EUR',
                     'value': props.product.price,
-                    products: [{
-                        'sku': props.product.id,
-                        'name': props.product.title,
+                    items: [{
+                        'item_id': props.product.id,
+                        'item_name': props.product.title,
                         'price': props.product.price,
-                        'category': props.product.category,
+                        'item_category': props.product.category,
                         'quantity': 1
                     }]
                 }
@@ -58,10 +58,10 @@ export default function Product(props) {
             ecommerce: {
                 'currency': 'EUR',
                 'value': data.productPrice,
-                products: [{
-                    'sku': data.productId,
-                    'name': data.productTitle,
-                    'category': data.productCategory,
+                items: [{
+                    'item_id': data.productId,
+                    'item_name': data.productTitle,
+                    'item_category': data.productCategory,
                     'price': data.productPrice,
                     'quantity': data.productQuantity
                 }]
