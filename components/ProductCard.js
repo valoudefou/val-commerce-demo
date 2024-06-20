@@ -14,7 +14,7 @@ function ProductCard( {product} ) {
 
     return (
         <Link href={`/products/${product.id}`} className="group">
-            <div className='flex flex-col'>
+            <div className='cursor-pointer flex flex-col'>
                 <div className="flex-1 aspect-w-1 aspect-h-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-w-7 xl:aspect-h-8">
                     <Image
                         alt=""
