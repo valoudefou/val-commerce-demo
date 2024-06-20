@@ -100,7 +100,7 @@ function SlidingCart() {
           </div>
         )}
         {cartContent && (
-          <div className="flex space-x-4 place-content-end items-stretch">
+          <div className="flex space-x-4 justify-start mt-3">
             {paymentFeature1Click.getValue() === 'true' &&
               <Link href='/products/confirmation'>
                 <button
