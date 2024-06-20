@@ -78,14 +78,13 @@ export default function Confirmation() {
                   <div className="md:flex-row flex-col flex justify-between items-start w-full space-y-4 md:space-y-0">
                     <div className="w-full flex flex-col justify-start items-start space-y-8">
                       <h3 className="text-xl dark:text-white xl:text-2xl font-semibold leading-6 text-gray-800">{data.productTitle}</h3>
-                      <div className="flex justify-start items-start flex-col space-y-2">
-                        <p className="text-sm dark:text-white leading-none text-gray-800"><span className="dark:text-gray-400 text-gray-300">Category: </span> {data.productCategory}</p>
-                        <p className="text-sm dark:text-white leading-none text-gray-800"><span className="dark:text-gray-400 text-gray-300">Quantity: </span> {data.productQuantity}</p>
+                      <div className="flex justify-between items-start w-full">
+                        <div className="flex flex-col flex-end">
+                          <p className="text-sm dark:text-white leading-6 text-gray-800"><span className="dark:text-gray-400 text-gray-300">Category: </span> {data.productCategory}</p>
+                          <p className="text-sm dark:text-white leading-6 text-gray-800"><span className="dark:text-gray-400 text-gray-300">Quantity: </span> {data.productQuantity}</p>
+                        </div>
+                        <p class="text-base leading-6 dark:text-white text-gray-800">{data.productPrice} €</p>
                       </div>
-                    </div>
-                    <div className="flex justify-between space-x-8 items-start w-full">
-                      <p className="text-base dark:text-white xl:text-lg leading-6"></p>
-                      <p className="text-base dark:text-white xl:text-lg leading-6 text-gray-800">{data.productPrice} €</p>
                     </div>
                   </div>
                 </div>
