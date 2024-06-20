@@ -33,7 +33,7 @@ function SlidingCart() {
   const [data, setData] = useState('')
 
   const handleClick = () => {
-    setHtmlContent(false);
+    setHtmlContent(false)
   }
 
   useEffect(() => {
@@ -45,7 +45,7 @@ function SlidingCart() {
       const value = window.localStorage.getItem('currentProduct')
       setData(JSON.parse(value))
     }
-  }, []);
+  }, [])
 
   // Get flag 
   const paymentFeature1Click = useFsFlag("paymentFeature1Click", "false")
@@ -53,13 +53,17 @@ function SlidingCart() {
   return (
   <div>
     <div onClick={() => setIsShown(!isShown)} className="h-screen w-screen top-0 z-20 bg-gray-900 fixed opacity-70"></div>
-    <div className="flex-auto h-screen top-0 z-20 select-none fixed right-0 bg-white p-6 border border-gray-200">
+    <div className="flex-auto h-screen top-0 z-20 fixed right-0 bg-white p-6 border border-gray-200">
       <div className="w-64">
-        <div className="text-3xl font-semibold text-gray-900 pt-20">Cart</div>
+        <div className="text-3xl font-semibold text-gray-900 pt-20">
+          Cart
+        </div>
         {cartContent ? (
-        <div className="grid grid-cols-1 gap-3 py-[15px]" dangerouslySetInnerHTML={{ __html: cartContent }} />
-        ) : (
-        <p className="grid grid-cols-1 gap-3 py-[15px]">The cart is empty</p>
+          <div className="grid grid-cols-1 gap-3 py-[15px]" dangerouslySetInnerHTML={{ __html: cartContent }} />
+          ) : (
+          <p className="grid grid-cols-1 gap-3 py-[15px]">
+            The cart is empty
+          </p>
         )}
         <div className="flex items-center justify-between">
           {cartContent && (
