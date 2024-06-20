@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import { useRouter } from 'next/router'
 import { useFsFlag } from "@flagship.io/react-sdk"
-import { useState, useEffect, useRef} from 'react'
+import { useState, useEffect, useRef, useContext } from 'react'
 import Navbar from '../../components/Navbar'
 
 export default function Product(props) {
@@ -17,6 +17,8 @@ export default function Product(props) {
             window.dataLayer.push({
                 event: 'view_item',
                 ecommerce: {
+                    'currency': 'EUR',
+                    'value': props.product.price,
                     products: [{
                         'sku': props.product.id,
                         'name': props.product.title,
@@ -54,6 +56,8 @@ export default function Product(props) {
         window.dataLayer.push({
             event: 'add_to_cart',
             ecommerce: {
+                'currency': 'EUR',
+                'value': data.productPrice,
                 products: [{
                     'sku': data.productId,
                     'name': data.productTitle,
@@ -119,7 +123,6 @@ export default function Product(props) {
                             </svg>
                             Add To Cart
                         </button>
-                        <>
                         {paymentFeature1Click.getValue() === 'true' &&
                             <button onClick={handleClick}
                                 className="flex items-center justify-center text-2xl font-medium mt-5 border border-transparent bg-black px-4 py-3 text-white shadow-sm hover:bg-neutral-600 sm:px-8 w-full"> 
@@ -129,7 +132,6 @@ export default function Product(props) {
                                 Pay
                             </button>
                         }
-                        </>
                         <div className="mt-10 mb-5 border-t border-gray-200 pt-10 font-bold text-base">
                             Description
                         </div>
@@ -157,7 +159,6 @@ export async function getStaticProps(context) {
 
 export async function getStaticPaths() {
     return {
-
         paths: [{ 
             params: { slug: '1'} 
         }],

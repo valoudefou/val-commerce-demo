@@ -1,6 +1,6 @@
 import Link from "next/link"
 import { useFsFlag } from "@flagship.io/react-sdk"
-import { React, useState, useEffect, useContext } from "react"
+import { useState, useEffect, useContext } from "react"
 import { AppContext } from "../pages/_app"
 import Image from "next/image"
 import Emotion from "./Emotion"

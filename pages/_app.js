@@ -10,7 +10,6 @@ export const AppContext = createContext()
 
 function MyApp({ Component, pageProps, initialFlagsData, initialVisitorData }) {
     const [isShown, setIsShown] = useState(false)
-    const [isEmpty, setIsEmpty] = useState(true)
 
     useEffect(() => {
         const visitorId = initialVisitorData.id
