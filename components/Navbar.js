@@ -1,4 +1,4 @@
-import { useState, useEffect, useContext, useRef } from "react"
+import { useState, useEffect, useContext } from "react"
 import { AppContext } from "../pages/_app"
 import { useFsFlag } from "@flagship.io/react-sdk"
 import SlidingCart from "./SlidingCart"
@@ -8,16 +8,16 @@ import Link from 'next/link'
 export default function Navbar() {
     const [isShown, setIsShown] = useContext(AppContext)
     const [cartContent, setHtmlContent] = useState(true)
-    const valueRef = useRef(0);
 
     useEffect(() => {
         const storedHtml = localStorage.getItem('currentProduct')
         if (storedHtml) {
-            console.log(cartContent)
-            setHtmlContent(storedHtml)
-            valueRef.current = valueRef.current + 1
-            console.log(valueRef.current)
-
+            setHtmlContent(true)
+        } 
+        
+        else  if (!storedHtml) {
+            setHtmlContent(false)
+  
         }
     }, [isShown])
 

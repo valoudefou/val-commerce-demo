@@ -3,12 +3,12 @@ import { useFsFlag } from "@flagship.io/react-sdk"
 import { useState, useEffect, useContext } from "react"
 import { AppContext } from "../pages/_app"
 import Image from "next/image"
-import Emotion from "./Emotion"
 
 function SlidingCart() {
   const [isShown, setIsShown] = useContext(AppContext)
 
   async function handleRemoveItem () {
+    setIsShown(false)
     const itemName = 'currentProduct'
     localStorage.removeItem(itemName)
     window.dataLayer = window.dataLayer || []
@@ -49,7 +49,6 @@ function SlidingCart() {
 
   // Get flag 
   const paymentFeature1Click = useFsFlag("paymentFeature1Click", "false")
-  const tripAssistFeature = useFsFlag("tripAssistFeature", false)
 
   return (
   <div>
@@ -96,9 +95,6 @@ function SlidingCart() {
             <span className="text-gray-500 tracking-wide text-base font-medium">{data.productPrice} €</span>
           </div>
         )}
-        {tripAssistFeature.getValue() === true &&
-          <Emotion/>
-        }
         {cartContent && (
           <div className="flex space-x-4 place-content-end items-stretch">
             {paymentFeature1Click.getValue() === 'true' &&
