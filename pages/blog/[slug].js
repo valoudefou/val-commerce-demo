@@ -22,6 +22,7 @@ return {
         fallback: false
     }
 }
+
 export async function getStaticProps({params}) {
     const {items} = await client.getEntries({
         content_type: 'articles',
