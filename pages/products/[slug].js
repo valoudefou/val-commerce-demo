@@ -76,7 +76,6 @@ export default function Product(props) {
         if (!storedHtml) {
             alert('Please Add To Cart and then Click Pay')
         } 
-        
         else {
             window.location.href = "/products/confirmation"
         }
