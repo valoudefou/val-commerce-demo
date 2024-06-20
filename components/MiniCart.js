@@ -96,7 +96,7 @@ export default function MiniCart() {
                     </div>
                 )}
                 {cartContent && (
-                    <div className="flex space-x-4 place-content-end items-stretch">
+                    <div className="flex space-x-4 justify-between">
                         {paymentFeature1Click.getValue() === 'true' &&
                             <Link href='/products/confirmation'>
                                 <button
