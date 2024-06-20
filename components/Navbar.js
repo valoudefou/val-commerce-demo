@@ -30,7 +30,7 @@ export default function Navbar() {
         <>
             <nav className="relative z-40 flex flex-wrap items-center justify-between px-2 py-2 bg-white border-b-[1px] border-gray-200">
                 <div className="flex flex-auto lg:flex-wrap items-center justify-between">
-                    <div className="w-full relative flex justify-between lg:w-auto lg:static lg:block lg:justify-start">
+                    <div className="relative flex justify-between lg:w-auto lg:static lg:block lg:justify-start">
                         <a className="text-2xl px-7 font-bold leading-relaxed inline-block mr-4 py-3 whitespace-nowrap uppercase text-gray-900" href="/">
                             {flagIndustry.getValue()}
                             <span className="text-sm font-thin py-1 absolute">®</span>
@@ -40,14 +40,14 @@ export default function Navbar() {
                         </button>
                     </div>
                     <div className="items-center px-4 justify-center hidden sm:flex">
-                        <div className="flex relative mr-3">
+                        <div className="flex relative">
                             <div className="absolute top-3 left-3 items-center">
                                 <svg className="w-5 h-5 text-gray-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clipRule="evenodd"></path></svg>
                             </div>
-                            <input type="text" className="epoq_search_box ui-autocomplete-input block p-2 font-light pl-10 w-70 text-gray-900 bg-gray-50 rounded border border-gray-200 focus:pl-3 lowercase" placeholder={'Search ' + flagIndustry.getValue() + ' ...'} />
+                            <input type="text" className="epoq_search_box w-96 ui-autocomplete-input block p-2 font-light pl-10 w-70 text-gray-900 bg-gray-50 rounded border border-gray-200 focus:pl-10 lowercase" placeholder={'Search ' + flagIndustry.getValue() + ' ...'} />
                         </div>
                     </div>
-                    <div className="lg:flex items-center" id="example-navbar-danger">
+                    <div className="lg:flex items-center">
                         <ul className="hidden flex-col lg:flex lg:flex-row list-none">
                             <li className="nav-item">
                                 <a className="my-1 text-sm text-gray-900 hover:text-gray-700 font-light md:mx-4 md:my-0" href="/">
