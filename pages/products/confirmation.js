@@ -27,7 +27,7 @@ export default function Confirmation() {
       event: 'purchase',
       ecommerce: {
         'transaction_id': data.transactionId,
-        'revenue': data.productPrice,
+        'value': data.productPrice,
         'shipping': 8.01,
         'currency': 'EUR',
       items: [{
