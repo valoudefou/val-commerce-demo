@@ -82,6 +82,8 @@ MyApp.getInitialProps = async (appContext) => {
             subscription: 'true',
             page: '/product',
             segment: 'coffee',
+            store: '1',
+            positionning: 'terrace',
             member: 'true',
             beta: 'test',
             product: '20948209482098490284',
