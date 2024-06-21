@@ -91,7 +91,9 @@ export default function MiniCart() {
                 </div>
                 {cartContent && (
                     <div className="flex justify-between font-light border-t-[1px] py-3 text-sm">
-                        <span className="text-black text-base">Total</span>
+                        <span className="text-black text-base">
+                            Total
+                        </span>
                         <span className="text-black text-base">{data.productPrice} €</span>
                     </div>
                 )}
