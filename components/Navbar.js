@@ -58,13 +58,13 @@ export default function Navbar() {
                             <div>
                                 <ul>
                                     <li class="mb-1">
-                                        <a class="block p-4 text-sm font-normal text-gray-900 rounded" href="#">Documentation</a>
+                                        <a class="block p-3 text-sm font-normal text-gray-900 rounded" href="#">Documentation</a>
                                     </li>
                                     <li class="mb-1">
-                                        <a class="block p-4 text-sm font-normal text-gray-900 rounded" href="#">Contact</a>
+                                        <a class="block p-3 text-sm font-normal text-gray-900 rounded" href="#">Contact</a>
                                     </li>
                                     <li class="mb-1">
-                                        <a class="block p-4 text-sm font-normal text-gray-900 rounded" href="#">About</a>
+                                        <a class="block p-3 text-sm font-normal text-gray-900 rounded" href="#">About</a>
                                     </li>
                                 </ul>
                             </div>
