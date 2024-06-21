@@ -71,7 +71,7 @@ export default function Navbar() {
                         </nav>   
                     </div>
                     )}
-                    <div className="relative flex justify-between lg:w-auto lg:static lg:block lg:justify-start">
+                    <div className="relative sm:left-[calc(-30%_+_185px)] left-[calc(-30%_+_75px)] flex justify-between lg:w-auto lg:static lg:block lg:justify-start">
                         <a className="text-2xl px-5 font-bold leading-relaxed inline-block py-3 whitespace-nowrap uppercase text-gray-900" href="/">
                             {flagIndustry.getValue()}
                             <span className="text-sm font-thin py-1 absolute">®</span>
