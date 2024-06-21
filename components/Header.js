@@ -47,7 +47,7 @@ const { hit: fsHit } = useFlagship()
                       label: "Engagement"
                     })
                   }}
-                  className="font-base flex items-center justify-center border border-transparent bg-white px-4 py-3 text-sm font-medium text-gray-900 shadow-sm hover:bg-gray-100 sm:px-8" id="ab-btn">
+                  className="cursor-pointer font-base flex items-center justify-center border border-transparent bg-white px-4 py-3 text-sm font-medium text-gray-900 shadow-sm hover:bg-gray-100 sm:px-8" id="ab-btn">
                   {flagBtnText.getValue()}
                 </button>
               </Link>
