@@ -51,7 +51,7 @@ export default function MiniCart() {
   const paymentFeature1Click = useFsFlag("paymentFeature1Click", "false")
 
     return (
-        <div className="absolute right-0 top-[3.5rem] bg-white z-50 py-8 px-8 border border-gray-200 rounded-lg mt-3 mr-[3vh] ml-[6px] shadow-lg">
+        <div className="absolute right-0 top-[3.5rem] bg-white z-50 py-8 px-8 border border-gray-200 rounded-lg mt-3 mr-[3vh] ml-[3vh] shadow-lg">
             <div className="grid grid-cols-1 gap-4">
                 <div className="pt-2 text-3xl font-semibold text-gray-900">
                     Cart
