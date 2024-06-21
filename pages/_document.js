@@ -13,6 +13,12 @@ class MyDocument extends Document {
                         'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
                         })(window,document,'script','dataLayer','GTM-TR4C6NR');`}}>
                     </Script>
+                        <Script strategy="afterInteractive" dangerouslySetInnerHTML={{ __html: `(function (i, s, o, g, r, a, m) { 
+                        i["abtiming"] = 1 * new Date(); 
+                        a = s.createElement(o), 
+                        m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+                        })(window, document, "script", "//cdn.epoq.de/flow/quickstartdemo-valerian1.js");`}}>
+                    </Script>
                     <meta
                     name="description"
                     content="The premiere e-commerce product."

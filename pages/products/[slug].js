@@ -114,7 +114,7 @@ export default function Product(props) {
                         <h1 className="mt-1 text-2xl font-medium text-gray-900 sm:text-2xl sm:tracking-tight lg:text-3xl">
                             {props.product.title}
                         </h1>
-                        <h1 className="mt-3 text-2xl font-bold text-gray-500 sm:text-3xl sm:tracking-wide lg:text-2xl">
+                        <h1 className="mt-3 text-2xl font-semibold text-gray-500 sm:text-3xl sm:tracking-wide lg:text-2xl">
                             {props.product.price}€
                         </h1>
                         <button onClick={() => [pushCart()]} className="flex items-center justify-center text-sm font-base mt-5 border border-black bg-white px-4 py-4 text-black sm:px-8 w-full">
