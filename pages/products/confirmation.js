@@ -83,7 +83,7 @@ export default function Confirmation() {
                           <p className="text-sm dark:text-white leading-6 text-gray-800"><span className="dark:text-gray-400 text-gray-300">Category: </span> {data.productCategory}</p>
                           <p className="text-sm dark:text-white leading-6 text-gray-800"><span className="dark:text-gray-400 text-gray-300">Quantity: </span> {data.productQuantity}</p>
                         </div>
-                        <p class="text-base leading-6 dark:text-white text-gray-800">{data.productPrice} €</p>
+                        <p className="text-base leading-6 dark:text-white text-gray-800">{data.productPrice} €</p>
                       </div>
                     </div>
                   </div>
