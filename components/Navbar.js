@@ -4,6 +4,7 @@ import { useFsFlag } from "@flagship.io/react-sdk"
 import SlidingCart from "./SlidingCart"
 import MiniCart from "./MiniCart"
 import Link from 'next/link'
+import Footer from "./Footer"
 
 export default function Navbar() {
     const [isShown, setIsShown] = useContext(AppContext)
@@ -41,7 +42,6 @@ export default function Navbar() {
                     </nav>
                     {burgerOn && (  
                         <div class="navbar-menu relative z-50">
-                
                         <div onClick={() => setBurgerOn(!burgerOn)} class="navbar-backdrop fixed inset-0 bg-gray-800 opacity-25"></div>  
                         <nav class="fixed top-0 left-0 bottom-0 flex flex-col w-5/6 max-w-sm py-6 px-6 bg-white border-r overflow-y-auto">
                             <div class="flex justify-between items-center mb-8">
@@ -72,7 +72,7 @@ export default function Navbar() {
                     </div>
                     )}
                     <div className="relative flex justify-between lg:w-auto lg:static lg:block lg:justify-start">
-                        <a className="text-2xl px-7 font-bold leading-relaxed inline-block py-3 whitespace-nowrap uppercase text-gray-900" href="/">
+                        <a className="text-2xl px-5 font-bold leading-relaxed inline-block py-3 whitespace-nowrap uppercase text-gray-900" href="/">
                             {flagIndustry.getValue()}
                             <span className="text-sm font-thin py-1 absolute">®</span>
                         </a>
@@ -116,6 +116,9 @@ export default function Navbar() {
                     </div>
                 </div>
             </nav>
+            {!burgerOn && ( 
+                <Footer />
+            )}
             {isShown && flagCartFeature.getValue() === 'MiniCart' && (    
                 <MiniCart />
             )}

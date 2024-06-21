@@ -18,7 +18,6 @@ function MyApp({ Component, pageProps, initialFlagsData, initialVisitorData }) {
         
         if (typeof window !== 'undefined') {
             const antiFlicker = document.querySelector('#ab-tasty-anti-flicker')
-
             if (antiFlicker && window.ABTasty !== 'undefined') {
 
                 window.addEventListener('abtasty_executedCampaign', () => {
@@ -57,7 +56,6 @@ function MyApp({ Component, pageProps, initialFlagsData, initialVisitorData }) {
                 <Head />
                 <title>{'The ' + flagIndustry.getValue() + ' House'}</title>
                 <Component {...pageProps} />
-                <Footer />
             </FlagshipProvider>
         </AppContext.Provider>
         </>
