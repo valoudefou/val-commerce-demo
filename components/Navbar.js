@@ -30,7 +30,7 @@ export default function Navbar() {
         <>
             <nav className="relative z-40 flex flex-wrap items-center lg:justify-between px-2 py-2 bg-white border-b-[1px] border-gray-200">
                 <div className="flex flex-auto items-center justify-between">
-                    <nav class="sm:px-0 lg:hidden relative px-4 py-4 flex lg:justify-between items-center bg-white">
+                    <nav class="sm:px-0 lg:hidden relative flex lg:justify-between items-center bg-white">
                         <div class="lg:hidden">
                             <button onClick={() => setBurgerOn(!burgerOn)} class="navbar-burger flex items-center text-black p-3">
                                 <svg class="block h-5 w-5 fill-current" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
@@ -85,7 +85,7 @@ export default function Navbar() {
                             <input type="text" className="epoq_search_box w-96 ui-autocomplete-input block p-2 font-light pl-10 text-gray-900 bg-gray-50 rounded border border-gray-200 focus:pl-10" placeholder={'Search ' + flagIndustry.getValue() + ' ...'} />
                         </div>
                     </div>
-                    <div className="md:px-5 md:py-0 xl:py-0 px-5 lg:py-0 py-3 lg:flex items-center">
+                    <div className="md:px-5 md:py-0 xl:py-0 px-3 lg:py-0 py-3 lg:flex items-center">
                         <ul className="hidden flex-col lg:flex lg:flex-row list-none">
                             <li className="nav-item">
                                 <a className="my-1 text-sm text-gray-900 hover:text-gray-700 font-light md:mx-4 md:my-0" href="/">
