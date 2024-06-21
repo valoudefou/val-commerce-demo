@@ -116,7 +116,7 @@ export default function Navbar() {
                     </div>
                 </div>
             </nav>
-            {!burgerOn && ( 
+            {!burgerOn && !isShown && ( 
                 <Footer />
             )}
             {isShown && flagCartFeature.getValue() === 'MiniCart' && (    
