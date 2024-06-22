@@ -2,9 +2,17 @@ import Image from 'next/image'
 import { HitType, useFlagship, useFsFlag } from "@flagship.io/react-sdk"
 import Link from 'next/link'
 import Navbar from '../components/Navbar'
+import { useEffect } from 'react'
 
 export default function Header() {
 const fs = useFlagship()
+
+useEffect(() => {
+  window.history.pushState(null, null, window.location.href)
+    window.onpopstate = function (event) {
+    history.go(1)
+  }
+})
 
 // Get flag 
 const flagImageSrc = useFsFlag("flagImageSrc", "/coffee.jpg")
