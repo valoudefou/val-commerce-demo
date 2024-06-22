@@ -1,6 +1,7 @@
 {
   "name": "swell-nextjs-app",
   "private": true,
+  
   "scripts": {
     "dev": "next dev",
     "build": "next build",
