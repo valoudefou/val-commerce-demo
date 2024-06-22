@@ -72,13 +72,13 @@ export default function Confirmation() {
       <div onLoad={pushTransaction} onClick={handleRedirect} className="cursor-pointer mx-auto max-w-2xl px-4 sm:px-6 lg:max-w-7xl lg:px-8 mb-24 mt-24">
         <div className="flex items-center">
           <div className="svg-container">    
-            <svg className="ft-green-tick" xmlns="http://www.w3.org/2000/svg" height="75" width="75" viewBox="0 0 48 48" aria-hidden="true">
+            <svg className="ft-green-tick" xmlns="http://www.w3.org/2000/svg" height="70" width="70" viewBox="0 0 48 48" aria-hidden="true">
             <circle className="circle" fill="#5bb543" cx="24" cy="24" r="22"/>
             <path className="tick" fill="none" stroke="#FFF" strokeWidth="6" strokeLinecap="round" strokeLinejoin="round" strokeMiterlimit="10" d="M14 27l5.917 4.917L34 17"/>
             </svg>
           </div>
           <div className="flex flex-col pl-4 pt-2 pb-1">
-            <h1 className="text-2xl md:text-1xl sm:text-3xl dark:text-white lg:text-4xl font-semibold leading-7 lg:leading-9 text-gray-800">Your order is confirmed!</h1>
+            <h1 className="text-3xl dark:text-white font-semibold leading-9 text-gray-800">Your order is confirmed!</h1>
           </div>
         </div>
         <div className="mt-10 flex flex-col xl:flex-row jusitfy-center items-stretch w-full xl:space-x-8 space-y-4 md:space-y-6 xl:space-y-0">
