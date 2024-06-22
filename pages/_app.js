@@ -22,7 +22,7 @@ function MyApp({ Component, pageProps, initialFlagsData, initialVisitorData }) {
                 "isReference": items.isReference,
                 "key": items.key,
                 "slug": items.slug,
-                "value": items.value,
+                "val": items.value,
                 "variationGroupId": items.variationGroupId,
                 "variationId": items.variationId,
             }
