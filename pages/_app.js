@@ -14,11 +14,9 @@ function MyApp({ Component, pageProps, initialFlagsData, initialVisitorData }) {
         const visitorId = initialVisitorData.id
         localStorage.setItem('FS_VISITOR', visitorId) // BYOID in localStorage
         document.cookie = 'FS_VISITOR=' + visitorId // BYOID in a cookie
-        console.log(initialFlagsData)
-        initialFlagsData.map(items => window.dataLayer.push({
-            "0": "event",
-            "1": "abtasty",
-            "2": {
+        initialFlagsData.map(items => dataLayer.push({
+            event: 'abtasty',
+            data: {
                 "campaignId": items.campaignId,
                 "campaignType": items.campaignType,
                 "isReference": items.isReference,
@@ -27,7 +25,6 @@ function MyApp({ Component, pageProps, initialFlagsData, initialVisitorData }) {
                 "value": items.value,
                 "variationGroupId": items.variationGroupId,
                 "variationId": items.variationId,
-                "send_to": "G-983490BZWX"
             }
         }))
         
