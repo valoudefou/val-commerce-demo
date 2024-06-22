@@ -61,7 +61,7 @@ export default function Confirmation() {
             </svg>
           </div>
           <div className="flex flex-col pl-4 pt-2 pb-1">
-            <h1 className="text-2xl dark:text-white lg:text-3xl font-semibold leading-7 lg:leading-9 text-gray-800">Your order {data.transactionId} is confirmed!</h1>
+            <h1 className="text-2xl dark:text-white lg:text-3xl font-semibold leading-7 lg:leading-9 text-gray-800">Your order is confirmed!</h1>
           </div>
         </div>
         <div className="mt-10 flex flex-col xl:flex-row jusitfy-center items-stretch w-full xl:space-x-8 space-y-4 md:space-y-6 xl:space-y-0">
@@ -78,8 +78,9 @@ export default function Confirmation() {
                     <h3 className="text-xl dark:text-white xl:text-2xl font-semibold leading-6 text-gray-800">{data.productTitle}</h3>
                     <div className="flex justify-between items-start w-full">
                       <div className="flex flex-col flex-end">
-                        <p className="text-sm dark:text-white leading-6 text-gray-800"><span className="dark:text-gray-400 text-gray-300">Category: </span> {data.productCategory}</p>
-                        <p className="text-sm dark:text-white leading-6 text-gray-800"><span className="dark:text-gray-400 text-gray-300">Quantity: </span> {data.productQuantity}</p>
+                        <p className="text-sm dark:text-white leading-6 text-gray-800"><span className="dark:text-gray-400 text-gray-300">Order: </span>{data.transactionId}</p>
+                        <p className="text-sm dark:text-white leading-6 text-gray-800"><span className="dark:text-gray-400 text-gray-300">Category: </span>{data.productCategory}</p>
+                        <p className="text-sm dark:text-white leading-6 text-gray-800"><span className="dark:text-gray-400 text-gray-300">Quantity: </span>{data.productQuantity}</p>
                       </div>
                       <p className="text-base leading-6 dark:text-white text-gray-800">{data.productPrice} €</p>
                     </div>
