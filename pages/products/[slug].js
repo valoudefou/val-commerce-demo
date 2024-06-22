@@ -7,12 +7,12 @@ import Emotion from '../../components/Emotion'
 
 export default function Product(props) {
     const [data, setData] = useState('')
-    const sendItemView = useRef(0)
+    const sendData = useRef(0)
 
     async function pushView() {
-        sendItemView.current = sendItemView.current + 1
+        sendData.current = sendData.current + 1
         
-        if (sendItemView.current === 1) {
+        if (sendData.current === 1) {
             window.dataLayer = window.dataLayer || []
 
             window.dataLayer.push({

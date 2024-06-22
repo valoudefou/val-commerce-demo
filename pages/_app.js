@@ -7,16 +7,16 @@ import { createContext, useState, useEffect, useRef } from 'react'
 
 export const AppContext = createContext()
 
-function MyApp({ Component, pageProps, initialFlagsData, initialVisitorData }) {
+function MyApp({ Component, pageProps, initialFlagsData, initialVisitorData, OnVisitorExposed }) {
     const [isShown, setIsShown] = useState(false)
-    const sendItemView = useRef(0)
+    const sendData = useRef(0)
 
     useEffect(() => {
         localStorage.setItem('FS_VISITOR', initialVisitorData.id) // BYOID in localStorage
         document.cookie = 'FS_VISITOR=' + initialVisitorData.id // BYOID in a cookie
-        sendItemView.current = sendItemView.current + 1
+        sendData.current = sendData.current + 1
 
-        if (sendItemView.current === 1) {
+        if (sendData.current === 1) {
             initialFlagsData.map(items => dataLayer.push({
                 'event': 'abtasty_flag',
                 "campaignId": items.campaignId,
@@ -65,6 +65,11 @@ function MyApp({ Component, pageProps, initialFlagsData, initialVisitorData }) {
                 apiKey={process.env.NEXT_PUBLIC_FS_KEY}
                 visitorData={initialVisitorData}
                 initialFlagsData={initialFlagsData || {}}
+                onVisitorExposed={({ exposedVisitor, fromFlag }) => 
+                console.log('flagship_event', {
+                    distinct_id: exposedVisitor.id,
+                    ...fromFlag.metadata
+                })}
             >
                 <Head />
                 <title>{'The ' + flagIndustry.getValue() + ' House'}</title>
@@ -91,7 +96,6 @@ MyApp.getInitialProps = async (appContext) => {
             device: 'mobile',
             store: 'US',
             subscription: 'true',
-            page: '/product',
             segment: 'coffee',
             store: '1',
             positionning: 'terrace',
