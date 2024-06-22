@@ -88,17 +88,17 @@ export default function Navbar() {
                     <div className="md:px-5 md:py-0 xl:py-0 px-3 lg:py-0 py-3 lg:flex items-center">
                         <ul className="hidden flex-col lg:flex lg:flex-row list-none">
                             <li className="nav-item">
-                                <a className="my-1 text-sm text-gray-900 hover:text-gray-700 font-light md:mx-4 md:my-0" href="/">
+                                <a className="my-1 text-sm text-gray-900 hover:text-gray-700 font-light md:mx-4 md:my-0" href="#">
                                     <Link href='/blog/content-1'><span className="ml-2">Documentation</span></Link>
                                 </a>
                             </li>
                             <li className="nav-item">
-                                <a className="my-1 text-sm text-gray-900 hover:text-gray-700 font-light md:mx-4 md:my-0" href="/">
+                                <a className="my-1 text-sm text-gray-900 hover:text-gray-700 font-light md:mx-4 md:my-0" href="#">
                                     <span className="ml-2">Contact</span>
                                 </a>
                             </li>
                             <li className="nav-item">
-                                <a className="my-1 text-sm text-gray-900 hover:text-gray-700 font-light md:mx-4 md:my-0" href="/">
+                                <a className="my-1 text-sm text-gray-900 hover:text-gray-700 font-light md:mx-4 md:my-0" href="#">
                                     <span className="ml-2">About</span>
                                 </a>
                             </li>
