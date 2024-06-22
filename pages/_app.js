@@ -11,11 +11,10 @@ function MyApp({ Component, pageProps, initialFlagsData, initialVisitorData }) {
     const [isShown, setIsShown] = useState(false)
 
     useEffect(() => {
-        const visitorId = initialVisitorData.id
-        localStorage.setItem('FS_VISITOR', visitorId) // BYOID in localStorage
-        document.cookie = 'FS_VISITOR=' + visitorId // BYOID in a cookie
+        localStorage.setItem('FS_VISITOR', initialVisitorData.id) // BYOID in localStorage
+        document.cookie = 'FS_VISITOR=' + initialVisitorData.id // BYOID in a cookie
         initialFlagsData.map(items => dataLayer.push({
-            event: 'abtasty',
+            event: 'abtasty_flag',
             data: [{
                 "campaignId": items.campaignId,
                 "campaignType": items.campaignType,
