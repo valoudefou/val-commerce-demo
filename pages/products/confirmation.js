@@ -11,7 +11,6 @@ export default function Confirmation() {
     sendItemView.current = sendItemView.current + 1
     
     if (sendItemView.current === 1) {
-      console.log('event fire')
       fsHit.send({
         type: HitType.TRANSACTION,
         transactionId: data.transactionId,
@@ -79,7 +78,7 @@ export default function Confirmation() {
             </svg>
           </div>
           <div className="flex flex-col pl-4 pt-2 pb-1">
-            <h1 className="text-2xl dark:text-white lg:text-3xl font-semibold leading-7 lg:leading-9 text-gray-800">Your order is confirmed!</h1>
+            <h1 className="text-2xl md:text-1xl sm:text-3xl dark:text-white lg:text-4xl font-semibold leading-7 lg:leading-9 text-gray-800">Your order is confirmed!</h1>
           </div>
         </div>
         <div className="mt-10 flex flex-col xl:flex-row jusitfy-center items-stretch w-full xl:space-x-8 space-y-4 md:space-y-6 xl:space-y-0">
