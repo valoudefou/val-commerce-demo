@@ -16,7 +16,7 @@ function MyApp({ Component, pageProps, initialFlagsData, initialVisitorData }) {
         document.cookie = 'FS_VISITOR=' + visitorId // BYOID in a cookie
         initialFlagsData.map(items => dataLayer.push({
             event: 'abtasty',
-            data: {
+            data: [{
                 "campaignId": items.campaignId,
                 "campaignType": items.campaignType,
                 "isReference": items.isReference,
@@ -25,7 +25,7 @@ function MyApp({ Component, pageProps, initialFlagsData, initialVisitorData }) {
                 "val": items.value,
                 "variationGroupId": items.variationGroupId,
                 "variationId": items.variationId,
-            }
+            }]
         }))
         
         if (typeof window !== 'undefined') {
