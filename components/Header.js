@@ -7,13 +7,6 @@ import { useEffect } from 'react'
 export default function Header() {
 const fs = useFlagship()
 
-useEffect(() => {
-  window.history.pushState(null, null, window.location.href)
-    window.onpopstate = function (event) {
-    history.go(1)
-  }
-})
-
 // Get flag 
 const flagImageSrc = useFsFlag("flagImageSrc", "/coffee.jpg")
 const flagBtnText = useFsFlag("flagBtnText", "Shop")
