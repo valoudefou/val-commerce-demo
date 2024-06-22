@@ -29,6 +29,26 @@ function SlidingCart() {
     })
   }
 
+  async function beginCheckout () {
+    window.dataLayer = window.dataLayer || []
+    alert('Send begin_checkout to GA4')
+
+    window.dataLayer.push({
+      event: 'begin_checkout',
+      ecommerce: {
+        'currency': 'EUR',
+        'value': data.productPrice,
+        item: [{
+          'item_id': data.productId,
+          'item_name': data.productTitle,
+          'item_category': data.productCategory,
+          'price': data.productPrice,
+          'quantity': data.productQuantity
+        }]
+      }
+    })
+  }
+
   const [cartContent, setHtmlContent] = useState('')
   const [data, setData] = useState('')
 
@@ -113,7 +133,7 @@ function SlidingCart() {
                 </button>
               </Link>
             }
-            <button className="items-center flex text-sm px-5 py-2 font-normal text-black border border-black">
+            <button onClick={() => [beginCheckout()]} className="items-center flex text-sm px-5 py-2 font-normal text-black border border-black">
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1" stroke="currentColor" className="w-6 h-6 py-1">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3" />
               </svg>
