@@ -3,9 +3,7 @@ import { useEffect, useState } from "react"
 export default function Confirmation() {
   const [data, setData] = useState('')
 
-  const handleRemoveItem = () => {
-    const itemName = 'currentProduct'
-    localStorage.removeItem(itemName)
+  const handleRedirect = () => {
     window.location.href = '/'
   }
 
@@ -52,7 +50,7 @@ export default function Confirmation() {
 
   return (
     <>
-      <div onClick={handleRemoveItem} className="mx-auto max-w-2xl px-4 sm:px-6 lg:max-w-7xl lg:px-8 mb-24 mt-24">
+      <div onClick={handleRedirect} className="mx-auto max-w-2xl px-4 sm:px-6 lg:max-w-7xl lg:px-8 mb-24 mt-24">
         <div className="flex items-center">
           <div className="svg-container">    
             <svg className="ft-green-tick" xmlns="http://www.w3.org/2000/svg" height="75" width="75" viewBox="0 0 48 48" aria-hidden="true">
