@@ -1,11 +1,12 @@
 import Link from "next/link"
 import { useFsFlag } from "@flagship.io/react-sdk"
-import { useState, useEffect, useContext } from "react"
+import { useState, useEffect, useContext, useRef } from "react"
 import { AppContext } from "../pages/_app"
 import Image from "next/image"
 
 function SlidingCart() {
   const [isShown, setIsShown] = useContext(AppContext)
+  const sendBeginCheckout = useRef(0)
 
   async function handleRemoveItem () {
     setIsShown(false)
@@ -30,23 +31,26 @@ function SlidingCart() {
   }
 
   async function beginCheckout () {
-    window.dataLayer = window.dataLayer || []
-    alert('Send begin_checkout to GA4')
+    alert('Work in progress...')
+    sendBeginCheckout.current = sendBeginCheckout.current + 1
+      if (sendBeginCheckout.current === 1) {
+      window.dataLayer = window.dataLayer || []
 
-    window.dataLayer.push({
-      event: 'begin_checkout',
-      ecommerce: {
-        'currency': 'EUR',
-        'value': data.productPrice,
-        item: [{
-          'item_id': data.productId,
-          'item_name': data.productTitle,
-          'item_category': data.productCategory,
-          'price': data.productPrice,
-          'quantity': data.productQuantity
-        }]
-      }
-    })
+      window.dataLayer.push({
+        event: 'begin_checkout',
+        ecommerce: {
+          'currency': 'EUR',
+          'value': data.productPrice,
+          item: [{
+            'item_id': data.productId,
+            'item_name': data.productTitle,
+            'item_category': data.productCategory,
+            'price': data.productPrice,
+            'quantity': data.productQuantity
+          }]
+        }
+      })
+    }
   }
 
   const [cartContent, setHtmlContent] = useState('')

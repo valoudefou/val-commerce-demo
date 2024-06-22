@@ -2,7 +2,6 @@ import '../styles/globals.css'
 import Head from 'next/head'
 import { Flagship, FlagshipProvider, useFsFlag } from "@flagship.io/react-sdk"
 import App from "next/app"
-import Footer from '../components/Footer'
 import { v4 as uuidv4 } from 'uuid'
 import { createContext, useState, useEffect } from 'react'
 
@@ -15,13 +14,28 @@ function MyApp({ Component, pageProps, initialFlagsData, initialVisitorData }) {
         const visitorId = initialVisitorData.id
         localStorage.setItem('FS_VISITOR', visitorId) // BYOID in localStorage
         document.cookie = 'FS_VISITOR=' + visitorId // BYOID in a cookie
+        console.log(initialFlagsData)
+        initialFlagsData.map(items => window.dataLayer.push({
+            "0": "event",
+            "1": "abtasty",
+            "2": {
+                "campaignId": items.campaignId,
+                "campaignType": items.campaignType,
+                "isReference": items.isReference,
+                "key": items.key,
+                "slug": items.slug,
+                "value": items.value,
+                "variationGroupId": items.variationGroupId,
+                "variationId": items.variationId,
+                "send_to": "G-983490BZWX"
+            }
+        }))
         
         if (typeof window !== 'undefined') {
             const antiFlicker = document.querySelector('#ab-tasty-anti-flicker')
+            
             if (antiFlicker && window.ABTasty !== 'undefined') {
-
                 window.addEventListener('abtasty_executedCampaign', () => {
-
                     function antiFlicker() {
                         const antiFlicker = document.querySelector('#ab-tasty-anti-flicker')  
                         antiFlicker.style.visibility = 'hidden'

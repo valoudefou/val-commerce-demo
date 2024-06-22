@@ -76,9 +76,9 @@ export default function Confirmation() {
                     <h3 className="text-xl dark:text-white xl:text-2xl font-semibold leading-6 text-gray-800">{data.productTitle}</h3>
                     <div className="flex justify-between items-start w-full">
                       <div className="flex flex-col flex-end">
-                        <p className="text-sm dark:text-white leading-6 text-gray-900"><span className="dark:text-gray-600 text-gray-300">Order: </span>{data.transactionId}</p>
-                        <p className="text-sm dark:text-white leading-6 text-gray-900"><span className="dark:text-gray-600 text-gray-300">Category: </span>{data.productCategory}</p>
-                        <p className="text-sm dark:text-white leading-6 text-gray-900"><span className="dark:text-gray-600 text-gray-300">Quantity: </span>{data.productQuantity}</p>
+                        <p className="text-sm dark:text-white leading-6 text-gray-700"><span className="dark:text-gray-400 text-gray-400">Order: </span> {data.transactionId}</p>
+                        <p className="text-sm dark:text-white leading-6 text-gray-700"><span className="dark:text-gray-400 text-gray-400">Category: </span> {data.productCategory}</p>
+                        <p className="text-sm dark:text-white leading-6 text-gray-700"><span className="dark:text-gray-400 text-gray-400">Quantity: </span> {data.productQuantity}</p>
                       </div>
                       <p className="text-base leading-6 dark:text-white text-gray-800">{data.productPrice} €</p>
                     </div>
