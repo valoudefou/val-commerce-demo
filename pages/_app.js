@@ -13,6 +13,7 @@ function MyApp({ Component, pageProps, initialFlagsData, initialVisitorData }) {
     useEffect(() => {
         localStorage.setItem('FS_VISITOR', initialVisitorData.id) // BYOID in localStorage
         document.cookie = 'FS_VISITOR=' + initialVisitorData.id // BYOID in a cookie
+        
         initialFlagsData.map(items => dataLayer.push({
             'event': 'abtasty_flag',
             "campaignId": items.campaignId,

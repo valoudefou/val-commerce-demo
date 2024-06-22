@@ -1,7 +1,27 @@
-import { useEffect, useState } from "react"
+import { useEffect, useState, useRef } from "react"
+import { HitType, useFlagship } from "@flagship.io/react-sdk"
 
 export default function Confirmation() {
   const [data, setData] = useState('')
+  const sendItemView = useRef(0)
+  const fs = useFlagship()
+  const { hit: fsHit } = useFlagship()
+
+  async function pushTransaction() {
+    sendItemView.current = sendItemView.current + 1
+    
+    if (sendItemView.current === 1) {
+      console.log('event fire')
+      fsHit.send({
+        type: HitType.TRANSACTION,
+        transactionId: data.transactionId,
+        totalRevenue: data.productPrice,
+        affiliation: 'Purchase',
+        currency: 'EUR',
+        shippingCosts: 8.01
+      })
+    }
+  }
 
   const handleRedirect = () => {
     window.location.href = '/'
@@ -50,7 +70,7 @@ export default function Confirmation() {
 
   return (
     <>
-      <div onClick={handleRedirect} className="cursor-pointer mx-auto max-w-2xl px-4 sm:px-6 lg:max-w-7xl lg:px-8 mb-24 mt-24">
+      <div onLoad={pushTransaction} onClick={handleRedirect} className="cursor-pointer mx-auto max-w-2xl px-4 sm:px-6 lg:max-w-7xl lg:px-8 mb-24 mt-24">
         <div className="flex items-center">
           <div className="svg-container">    
             <svg className="ft-green-tick" xmlns="http://www.w3.org/2000/svg" height="75" width="75" viewBox="0 0 48 48" aria-hidden="true">
