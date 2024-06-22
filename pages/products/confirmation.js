@@ -50,7 +50,7 @@ export default function Confirmation() {
 
   return (
     <>
-      <div onClick={handleRedirect} className="mx-auto max-w-2xl px-4 sm:px-6 lg:max-w-7xl lg:px-8 mb-24 mt-24">
+      <div onClick={handleRedirect} className="cursor-pointer mx-auto max-w-2xl px-4 sm:px-6 lg:max-w-7xl lg:px-8 mb-24 mt-24">
         <div className="flex items-center">
           <div className="svg-container">    
             <svg className="ft-green-tick" xmlns="http://www.w3.org/2000/svg" height="75" width="75" viewBox="0 0 48 48" aria-hidden="true">
@@ -76,9 +76,9 @@ export default function Confirmation() {
                     <h3 className="text-xl dark:text-white xl:text-2xl font-semibold leading-6 text-gray-800">{data.productTitle}</h3>
                     <div className="flex justify-between items-start w-full">
                       <div className="flex flex-col flex-end">
-                        <p className="text-sm dark:text-white leading-6 text-gray-800"><span className="dark:text-gray-400 text-gray-300">Order: </span>{data.transactionId}</p>
-                        <p className="text-sm dark:text-white leading-6 text-gray-800"><span className="dark:text-gray-400 text-gray-300">Category: </span>{data.productCategory}</p>
-                        <p className="text-sm dark:text-white leading-6 text-gray-800"><span className="dark:text-gray-400 text-gray-300">Quantity: </span>{data.productQuantity}</p>
+                        <p className="text-sm dark:text-white leading-6 text-gray-900"><span className="dark:text-gray-600 text-gray-300">Order: </span>{data.transactionId}</p>
+                        <p className="text-sm dark:text-white leading-6 text-gray-900"><span className="dark:text-gray-600 text-gray-300">Category: </span>{data.productCategory}</p>
+                        <p className="text-sm dark:text-white leading-6 text-gray-900"><span className="dark:text-gray-600 text-gray-300">Quantity: </span>{data.productQuantity}</p>
                       </div>
                       <p className="text-base leading-6 dark:text-white text-gray-800">{data.productPrice} €</p>
                     </div>
