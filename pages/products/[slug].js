@@ -68,6 +68,10 @@ export default function Product(props) {
                 }]
             }
         })
+
+        const x = window.scrollX
+        const y = window.scrollY
+        window.scroll(x, y - 1);
     }
 
     const handleClick = () => {
