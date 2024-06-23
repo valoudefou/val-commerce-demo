@@ -96,7 +96,7 @@ MyApp.getInitialProps = async (appContext) => {
             device: 'mobile',
             store: 'US',
             subscription: 'true',
-            segment: 'coffee',
+            segment: 'shop',
             store: '1',
             positionning: 'terrace',
             member: 'true',
