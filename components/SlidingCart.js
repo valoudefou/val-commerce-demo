@@ -118,11 +118,11 @@ function SlidingCart() {
             )}
           </div>
           {cartContent && (
-            <div className="flex justify-between font-light border-t-[1px] py-3 mt-6 text-sm">
-              <span className="text-black text-base">
+            <div className="flex justify-between border-t-[1px] py-3 mt-6 text-lg">
+              <span className="text-gray-500">
                 Total
               </span>
-              <span className="text-black text-base">{data.productPrice} €</span>
+              <span className="text-gray-500">{data.productPrice} €</span>
             </div>
           )}
           {cartContent && (
