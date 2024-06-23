@@ -58,6 +58,6 @@ export async function getStaticProps() {
         props: {
             products: data,
             articles: art.items,
-        },
+        }
     }
 }
