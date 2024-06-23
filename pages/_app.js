@@ -107,7 +107,6 @@ MyApp.getInitialProps = async (appContext) => {
             sku: '92842942398',
             ios: "true",
             regionId: 3,
-            android: '0.0.3',
         },
     }
     // Create a new visitor

@@ -106,7 +106,7 @@ export default function Product(props) {
         <div onLoad={() => [pushView()]} className="flex h-auto flex-col justify-between">
             <Navbar />
             <div className="mx-auto mb-24 max-w-1xl px-4 sm:px-6 lg:max-w-7xl lg:px-8">
-                <div className="mx-auto items-center flex flex-col lg:flex-row pt-10">
+                <div className="mx-auto items-center flex flex-col lg:flex-row">
                     <Image
                         alt="coffee"
                         className="rounded-lg object-contain self-center px-8"
@@ -114,7 +114,7 @@ export default function Product(props) {
                         width={560}
                         height={640}
                     />
-                    <div className="mt-10 flex flex-col lg:pl-20 md:pl-0">
+                    <div className="flex flex-col lg:p-20 md:p-10">
                         <h1 className="mt-1 text-2xl font-medium text-gray-900 sm:text-2xl sm:tracking-tight lg:text-3xl">
                             {props.product.title}
                         </h1>

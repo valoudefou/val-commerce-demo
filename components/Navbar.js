@@ -44,12 +44,12 @@ export default function Navbar() {
                         <div className="navbar-menu relative z-50">
                         <div onClick={() => setBurgerOn(!burgerOn)} className="navbar-backdrop fixed inset-0 bg-gray-800 opacity-25"></div>  
                         <nav className="fixed top-0 left-0 bottom-0 flex flex-col w-5/6 max-w-sm py-6 px-6 bg-white border-r overflow-y-auto">
-                            <div className="flex justify-between items-center mb-8">
+                            <div className="flex justify-between items-center mb-6">
                                 <a className="text-2xl px-4 font-bold leading-relaxed inline-block py-3 whitespace-nowrap uppercase text-gray-900" href="/">
                                     {flagIndustry.getValue()}
                                     <span className="text-sm font-thin py-1 absolute">®</span>
                                 </a>
-                                <button onClick={() => setBurgerOn(!burgerOn)} className="navbar-close">
+                                <button onClick={() => setBurgerOn(!burgerOn)} className="navbar-close pr-3">
                                     <svg className="h-6 w-6 text-gray-400 cursor-pointer hover:text-gray-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12"></path>
                                     </svg>
