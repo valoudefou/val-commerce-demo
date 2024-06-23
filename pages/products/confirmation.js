@@ -3,14 +3,14 @@ import { HitType, useFlagship } from "@flagship.io/react-sdk"
 
 export default function Confirmation() {
   const [data, setData] = useState('')
-  const sendData = useRef(0)
+  const sendItemView = useRef(0) // Prevent pushTransaction() from being called multiple times
   const fs = useFlagship()
   const { hit: fsHit } = useFlagship()
 
   async function pushTransaction() {
-    sendData.current = sendData.current + 1
+    sendItemView.current = sendItemView.current + 1
     
-    if (sendData.current === 1) {
+    if (sendItemView.current === 1) {
       fsHit.send({
         type: HitType.TRANSACTION,
         transactionId: data.transactionId,

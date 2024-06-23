@@ -6,7 +6,7 @@ import Image from "next/image"
 
 function SlidingCart() {
   const [isShown, setIsShown] = useContext(AppContext)
-  const sendBeginCheckout = useRef(0)
+  const sendBeginCheckout = useRef(0) // Prevent beginCheckout() from being called multiple times
 
   async function handleRemoveItem () {
     setIsShown(false)

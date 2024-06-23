@@ -1,11 +1,19 @@
 import Link from "next/link"
 import { useFsFlag } from "@flagship.io/react-sdk"
-import { useState, useEffect, useContext } from "react"
+import { useState, useEffect, useContext, useRef } from "react"
 import { AppContext } from "../pages/_app"
 import Image from "next/image"
 
 export default function MiniCart() {
     const [isShown, setIsShown] = useContext(AppContext)
+    const [scroll, setScroll] = useState(false)
+    const sendBeginCheckout = useRef(0) // Prevent beginCheckout() from being called multiple times
+
+    useEffect(() => {
+        window.addEventListener("scroll", () => {
+            setScroll(window.scrollY > 50)
+        })
+    }, [])
 
     async function handleRemoveItem () {
         setIsShown(false)
@@ -27,6 +35,29 @@ export default function MiniCart() {
                 }]
             }
         })
+    }
+
+    async function beginCheckout () {
+        alert('Work in progress...')
+        sendBeginCheckout.current = sendBeginCheckout.current + 1
+          if (sendBeginCheckout.current === 1) {
+          window.dataLayer = window.dataLayer || []
+    
+          window.dataLayer.push({
+                event: 'begin_checkout',
+                ecommerce: {
+                    'currency': 'EUR',
+                    'value': data.productPrice,
+                    item: [{
+                        'item_id': data.productId,
+                        'item_name': data.productTitle,
+                        'item_category': data.productCategory,
+                        'price': data.productPrice,
+                        'quantity': data.productQuantity
+                    }]
+                }
+            })
+        }
     }
 
     const [cartContent, setHtmlContent] = useState('')
@@ -51,7 +82,7 @@ export default function MiniCart() {
   const paymentFeature1Click = useFsFlag("paymentFeature1Click", "false")
 
     return (
-        <div className="absolute right-0 top-[3.5rem] bg-white z-50 py-8 px-8 border border-gray-200 rounded-lg mt-3 mr-[3vh] ml-[3vh] shadow-lg">
+        <div className={scroll ? "fixed right-0 bg-white z-50 py-8 px-8 border border-gray-200 rounded-lg mt-3 mr-[3vh] ml-[3vh] shadow-lg" : "absolute right-0 top-[3.5rem] bg-white z-50 py-8 px-8 border border-gray-200 rounded-lg mt-3 mr-[3vh] ml-[3vh] shadow-lg"}>
             <div className="grid grid-cols-1 gap-4">
                 <div className="pt-2 text-3xl font-semibold text-gray-900">
                     Cart
@@ -109,7 +140,7 @@ export default function MiniCart() {
                                 </button>
                             </Link>
                         }
-                        <button className="items-center flex text-sm px-5 py-2 font-normal text-black border border-black">
+                        <button onClick={() => [beginCheckout()]} className="items-center flex text-sm px-5 py-2 font-normal text-black border border-black">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-6 h-6 py-1">
                                 <path strokeLinecap="round" strokeLinejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3" />
                             </svg>

@@ -9,7 +9,7 @@ export const AppContext = createContext()
 
 function MyApp({ Component, pageProps, initialFlagsData, initialVisitorData, OnVisitorExposed }) {
     const [isShown, setIsShown] = useState(false)
-    const sendData = useRef(0)
+    const sendData = useRef(0) // Prevent dataLayer to push duplicates of abtasty_flag event
 
     useEffect(() => {
         localStorage.setItem('FS_VISITOR', initialVisitorData.id) // BYOID in localStorage
@@ -96,7 +96,7 @@ MyApp.getInitialProps = async (appContext) => {
             device: 'mobile',
             store: 'US',
             subscription: 'true',
-            segment: 'coffee',
+            segment: 'jewelry',
             store: '1',
             positionning: 'terrace',
             member: 'true',

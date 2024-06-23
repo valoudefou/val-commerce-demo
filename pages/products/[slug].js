@@ -7,7 +7,7 @@ import Emotion from '../../components/Emotion'
 
 export default function Product(props) {
     const [data, setData] = useState('')
-    const sendData = useRef(0)
+    const sendData = useRef(0) // Prevent pushView() from being called multiple times
 
     async function pushView() {
         sendData.current = sendData.current + 1
@@ -32,7 +32,7 @@ export default function Product(props) {
         }
     }
 
-    async function pushCart() {
+    function pushCart() {
         const transactionId = '#' + Math.floor(Math.random() * 100000)
         const today = new Date()
         const dd = String(today.getDate()).padStart(2, '0')
@@ -88,7 +88,7 @@ export default function Product(props) {
             const value = window.localStorage.getItem('currentProduct')
             setData(JSON.parse(value))
         }
-    }, []);
+    }, [])
 
     // Get flag 
     const paymentFeature1Click = useFsFlag("paymentFeature1Click", "false")
