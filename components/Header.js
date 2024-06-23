@@ -28,7 +28,7 @@ const { hit: fsHit } = useFlagship()
                 src={flagImageSrc.getValue()}
                 alt={flagIndustry.getValue()}
               />
-              <div className="absolute inset-0 mix-blend-multiply" />
+              <div className="absolute inset-0" />
             </div>
             <div className="relative px-4 py-16 sm:px-6 sm:py-24 lg:py-32 lg:px-8">
             <p className="mx-auto max-w-xl text-center text-xl font-semibold uppercase tracking-wide text-white">
