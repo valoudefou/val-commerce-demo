@@ -59,23 +59,23 @@ function MyApp({ Component, pageProps, initialFlagsData, initialVisitorData, OnV
 
     return (
         <>
-        <AppContext.Provider value={[isShown, setIsShown]}>
-            <FlagshipProvider
-                envId={process.env.NEXT_PUBLIC_FS_ENV}
-                apiKey={process.env.NEXT_PUBLIC_FS_KEY}
-                visitorData={initialVisitorData}
-                initialFlagsData={initialFlagsData || {}}
-                onVisitorExposed={({ exposedVisitor, fromFlag }) => 
-                console.log('flagship_event', {
-                    distinct_id: exposedVisitor.id,
-                    ...fromFlag.metadata
-                })}
-            >
-                <Head />
-                <title>{'The ' + flagIndustry.getValue() + ' House'}</title>
-                <Component {...pageProps} />
-            </FlagshipProvider>
-        </AppContext.Provider>
+            <AppContext.Provider value={[isShown, setIsShown]}>
+                <FlagshipProvider
+                    envId={process.env.NEXT_PUBLIC_FS_ENV}
+                    apiKey={process.env.NEXT_PUBLIC_FS_KEY}
+                    visitorData={initialVisitorData}
+                    initialFlagsData={initialFlagsData || {}}
+                    onVisitorExposed={({ exposedVisitor, fromFlag }) => 
+                    console.log('flagship_event', {
+                        distinct_id: exposedVisitor.id,
+                        ...fromFlag.metadata
+                    })}
+                >
+                    <Head />
+                    <title>{'The ' + flagIndustry.getValue() + ' House'}</title>
+                    <Component {...pageProps} />
+                </FlagshipProvider>
+            </AppContext.Provider>
         </>
     )
 }
