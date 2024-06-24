@@ -48,7 +48,8 @@ export default function Product(props) {
             "productImage": props.product.images[0],
             "productQuantity": 1,
             "transactionId": transactionId,
-            "date": todayDate
+            "date": todayDate,
+            "info": "Popular"
         }
 
         localStorage.setItem('currentProduct', JSON.stringify(product))
