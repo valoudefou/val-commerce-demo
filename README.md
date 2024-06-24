@@ -8,8 +8,8 @@ This AB Tasty demo environment provides real time technical insights around:
 - Offline Data Import ----> [Documentation](https://developers.abtasty.com/docs/data/universal-data-connector/)
 - Search Recommendations ----> [Documentation](https://techdocs.get-potions.com/)
 - BigQuery / Third Party Data Warehouse Intergation ----> [Documentation](https://support.abtasty.com/hc/en-us/articles/12227118781084-Big-Query-Daily-exports-from-AB-Tasty-to-Big-Query/)
+- Headless CMS Content Handling
 - Anti-Flicker
-- Headless CMS Handling
   
 ## Built With
 
