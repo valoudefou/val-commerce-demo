@@ -29,7 +29,7 @@ export default function Navbar() {
 
     return (
         <>
-            <nav className="relative z-40 flex flex-wrap items-center lg:justify-between px-2 py-2 bg-white border-b-[1px] border-gray-200">
+            <nav className="relative z-20 flex flex-wrap items-center lg:justify-between px-2 py-2 bg-white border-b-[1px] border-gray-200">
                 <div className="flex flex-auto items-center justify-between">
                     <nav className="sm:px-0 lg:hidden relative flex lg:justify-between items-center bg-white">
                         <div className="lg:hidden">
@@ -77,7 +77,7 @@ export default function Navbar() {
                             <span className="text-sm font-thin py-1 absolute">®</span>
                         </a>
                     </div> 
-                    <div className={isShown ? 'invisible' : ''}>
+                    <div>
                         <div className="hidden sm:flex relative">
                             <div className="absolute top-3 left-3 items-center">
                                 <svg className="w-5 h-5 text-gray-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clipRule="evenodd"></path></svg>
@@ -116,9 +116,7 @@ export default function Navbar() {
                     </div>
                 </div>
             </nav>
-            {!burgerOn && ( 
                 <Footer />
-            )}
             {isShown && flagCartFeature.getValue() === 'MiniCart' && (    
                 <MiniCart />
             )}
