@@ -10,6 +10,7 @@ export default function Navbar() {
     const [isShown, setIsShown] = useContext(AppContext)
     const [cartContent, setHtmlContent] = useState(true)
     const [burgerOn, setBurgerOn] = useState(false)
+    const [searchOpen, setSearchOpen] = useState(false)
 
     useEffect(() => {
         const storedHtml = localStorage.getItem('currentProduct')
@@ -29,7 +30,18 @@ export default function Navbar() {
 
     return (
         <>
-            <nav className="relative z-20 flex flex-wrap items-center lg:justify-between px-2 py-2 bg-white border-b-[1px] border-gray-200">
+            {searchOpen && (
+            <div onClick={() => setSearchOpen(!searchOpen)} className="h-screen w-screen top-0 z-20 bg-gray-800 fixed opacity-25"></div>
+            )}
+            {searchOpen && (
+                <div className="sm:hidden bg-white fixed w-full px-6 py-4 z-30">
+                    <input type="text" className="epoq_search_box w-full ui-autocomplete-input block p-3 font-light pl-10 text-gray-900 bg-gray-50 rounded border border-gray-200 focus:pl-10" placeholder='Search term ...' />
+                    <div className="absolute top-7 left-9 items-center">
+                        <svg className="w-5 h-5 text-gray-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clipRule="evenodd"></path></svg>
+                    </div>
+                </div>
+            )}
+            <nav className="relative w-full z-20 flex flex-wrap items-center lg:justify-between px-2 py-2 bg-white border-b-[1px] border-gray-200">
                 <div className="flex flex-auto items-center justify-between">
                     <nav className="sm:px-0 lg:hidden relative flex lg:justify-between items-center bg-white">
                         <div className="lg:hidden">
@@ -41,35 +53,35 @@ export default function Navbar() {
                         </div>
                     </nav>
                     {burgerOn && (  
-                        <div className="navbar-menu relative z-50">
-                        <div onClick={() => setBurgerOn(!burgerOn)} className="navbar-backdrop fixed inset-0 bg-gray-800 opacity-25"></div>  
-                        <nav className="fixed top-0 left-0 bottom-0 flex flex-col w-5/6 max-w-sm py-6 px-6 bg-white border-r overflow-y-auto">
-                            <div className="flex justify-between items-center mb-6">
-                                <a className="text-2xl px-4 font-bold leading-relaxed inline-block py-3 whitespace-nowrap uppercase text-gray-900" href="/">
-                                    {flagIndustry.getValue()}
-                                    <span className="text-sm font-thin py-1 absolute">®</span>
-                                </a>
-                                <button onClick={() => setBurgerOn(!burgerOn)} className="navbar-close pr-3">
-                                    <svg className="h-6 w-6 text-gray-400 cursor-pointer hover:text-gray-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12"></path>
-                                    </svg>
-                                </button>
-                            </div>
-                            <div>
-                                <ul>
-                                    <li className="mb-1">
-                                        <a className="block p-3 text-sm font-mormal text-gray-900 rounded" href="#">Documentation</a>
-                                    </li>
-                                    <li className="mb-1">
-                                        <a className="block p-3 text-sm font-mormal text-gray-900 rounded" href="#">Contact</a>
-                                    </li>
-                                    <li className="mb-1">
-                                        <a className="block p-3 text-sm font-mormal text-gray-900 rounded" href="#">About</a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </nav>   
-                    </div>
+                        <div className="navbar-menu relative z-40">
+                            <div onClick={() => setBurgerOn(!burgerOn)} className="navbar-backdrop fixed inset-0 bg-gray-800 opacity-25"></div>  
+                            <nav className="fixed top-0 left-0 bottom-0 flex flex-col w-5/6 max-w-sm py-6 px-6 bg-white border-r overflow-y-auto">
+                                <div className="flex justify-between items-center mb-6">
+                                    <a className="text-2xl px-4 font-bold leading-relaxed inline-block py-3 whitespace-nowrap uppercase text-gray-900" href="/">
+                                        {flagIndustry.getValue()}
+                                        <span className="text-sm font-thin py-1 absolute">®</span>
+                                    </a>
+                                    <button onClick={() => setBurgerOn(!burgerOn)} className="navbar-close pr-3">
+                                        <svg className="h-6 w-6 text-gray-400 cursor-pointer hover:text-gray-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12"></path>
+                                        </svg>
+                                    </button>
+                                </div>
+                                <div>
+                                    <ul>
+                                        <li className="mb-1">
+                                            <a className="block p-3 text-sm font-mormal text-gray-900 rounded" href="#">Documentation</a>
+                                        </li>
+                                        <li className="mb-1">
+                                            <a className="block p-3 text-sm font-mormal text-gray-900 rounded" href="#">Contact</a>
+                                        </li>
+                                        <li className="mb-1">
+                                            <a className="block p-3 text-sm font-mormal text-gray-900 rounded" href="#">About</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </nav>   
+                        </div>
                     )} 
                     <div className="relative sm:left-[calc(-30%_+_185px)] left-[calc(-30%_+_75px)] flex justify-between lg:w-auto lg:static lg:block lg:justify-start">
                         <a className="text-2xl px-5 font-bold leading-relaxed inline-block py-3 whitespace-nowrap uppercase text-gray-900" href="/">
@@ -82,7 +94,7 @@ export default function Navbar() {
                             <div className="absolute top-3 left-3 items-center">
                                 <svg className="w-5 h-5 text-gray-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clipRule="evenodd"></path></svg>
                             </div>
-                            <input type="text" suppressHydrationWarning={true} className="epoq_search_box w-96 ui-autocomplete-input block p-2 font-light pl-10 text-gray-900 bg-gray-50 rounded border border-gray-200 focus:pl-10" placeholder='Search term ...' />
+                            <input type="text" className="epoq_search_box w-96 ui-autocomplete-input block p-2 font-light pl-10 text-gray-900 bg-gray-50 rounded border border-gray-200 focus:pl-10" placeholder='Search term ...' />
                         </div>
                     </div>
                         <div className="md:px-5 md:py-0 xl:py-0 px-3 lg:py-0 py-3 lg:flex items-center">
@@ -104,7 +116,7 @@ export default function Navbar() {
                                 </li>
                             </ul>
                             <div className="flex">
-                            <div className="pr-2 flex justify-center cursor-pointer">
+                            <div onClick={() => setSearchOpen(!searchOpen)} className="pr-2 flex justify-center cursor-pointer">
                                 <a className="sm:hidden relative text-gray-900 hover:text-gray-700" target="_blank">
                                     <svg class="w-6 h-6 text-gray-900" stroke="white" strokeWidth="0.8" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                                         <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"></path>
