@@ -17,6 +17,7 @@ export default function Product(props) {
 
             window.dataLayer.push({
                 event: 'view_item',
+                info: 'Popular',
                 ecommerce: {
                     'currency': 'EUR',
                     'value': props.product.price,
@@ -25,8 +26,7 @@ export default function Product(props) {
                         'item_name': props.product.title,
                         'price': props.product.price,
                         'item_category': props.product.category,
-                        'quantity': 1,
-                        "info": "Popular"
+                        'quantity': 1
                     }]
                 }
             })
