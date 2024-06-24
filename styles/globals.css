@@ -11,6 +11,10 @@
     -ms-user-select: none; /* IE10+ */
 }
 
+button {
+    border-radius: 0.10rem;
+}
+
 .epoq-rs-headline {
     text-align: center;
     font-size: 1.875rem; /* 30px */
