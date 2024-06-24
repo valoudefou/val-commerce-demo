@@ -9,7 +9,7 @@ This AB Tasty demo environment provides real time technical insights around:
 - Search Recommendations ----> [Documentation](https://techdocs.get-potions.com/)
 - BigQuery / Third Party Data Warehouse Intergation ----> [Documentation](https://support.abtasty.com/hc/en-us/articles/12227118781084-Big-Query-Daily-exports-from-AB-Tasty-to-Big-Query/)
 - Headless CMS Content Handling
-- Anti-Flicker
+- Anti-Flicker Solutions
   
 ## Built With
 
@@ -22,4 +22,3 @@ This AB Tasty demo environment provides real time technical insights around:
 
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fnutlope%2Fnextjs-swell&env=NEXT_PUBLIC_SWELL_STORE_ID,NEXT_PUBLIC_SWELL_PUBLIC_KEY,REVALIDATE_SECRET&envDescription=API%20Keys%20from%20Swell%20needed%20to%20run%20this%20application.)
 ## val-commerce-demo
-
