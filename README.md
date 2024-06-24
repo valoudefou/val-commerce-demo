@@ -9,6 +9,7 @@ This AB Tasty demo environment provides real time technical insights around:
 - Search Recommendations ----> [Documentation](https://techdocs.get-potions.com/)
 - BigQuery / Third Party Data Warehouse Intergation ----> [Documentation](https://support.abtasty.com/hc/en-us/articles/12227118781084-Big-Query-Daily-exports-from-AB-Tasty-to-Big-Query/)
 - Anti-Flicker
+- Headless CMS handling
   
 ## Built With
 
