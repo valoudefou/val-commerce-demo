@@ -25,7 +25,8 @@ export default function Product(props) {
                         'item_name': props.product.title,
                         'price': props.product.price,
                         'item_category': props.product.category,
-                        'quantity': 1
+                        'quantity': 1,
+                        "info": "Popular"
                     }]
                 }
             })
