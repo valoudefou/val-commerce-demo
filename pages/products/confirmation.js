@@ -132,7 +132,7 @@ export default function Confirmation() {
                     </div>
                     <div className="flex flex-col justify-start items-center">
                       <p className="text-sm leading-6 dark:text-white font-semibold text-gray-800">DPD Delivery<br />
-                        <span className="text-sm font-normal">Within 24 Hours</span>
+                        <span className="text-sm font-normal">within 24 Hours</span>
                       </p>
                     </div>
                   </div>

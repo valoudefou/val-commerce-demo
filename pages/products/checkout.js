@@ -235,10 +235,10 @@ return (
                 </div>
               </div>
               <div className="flex justify-between items-center w-full">
-                  <p className="text-xl dark:text-white font-semibold leading-4 text-gray-800">
+                  <p className="text-lg dark:text-white font-semibold leading-4 text-gray-800">
                     Total
                   </p>
-                <p className="text-xl dark:text-gray-300 font-semibold leading-4 text-gray-800">{Math.round(data.productPrice + 8)} €</p>
+                <p className="text-lg dark:text-gray-300 font-semibold leading-4 text-gray-800">{Math.round(data.productPrice + 8)} €</p>
               </div>
             </div>
             <div className="flex xl:pb-0 lg:pb-6 md:pb-6 justify-center md:flex-row flex-col items-stretch w-full space-y-4 md:space-y-0 md:space-x-6 xl:space-x-8">
