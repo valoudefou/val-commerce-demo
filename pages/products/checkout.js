@@ -253,7 +253,7 @@ return (
                     <div className="flex flex-col justify-start items-center">
                       <p className="text-base leading-6 dark:text-white font-semibold text-gray-800">
                         DPD Delivery<br />
-                        <span className="text-base font-normal">
+                        <span className="text-sm font-normal">
                           within 24 Hours
                         </span>
                       </p>
