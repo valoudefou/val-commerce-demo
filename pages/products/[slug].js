@@ -80,7 +80,7 @@ export default function Product(props) {
         const storedHtml = localStorage.getItem('currentProduct')
 
         if (!storedHtml) {
-            alert('Please Add To Cart and then Click Pay')
+            alert('Please Add To Cart')
         } 
         else {
             window.location.href = "/products/confirmation"
