@@ -148,7 +148,7 @@ return (
                   </div>
                   <div className="mb-4">
                     <label className="block text-grey-darker text-sm font-normal mb-2" htmlFor="address">
-                      Start typing your address
+                      Address
                     </label>
                     <input className="appearance-none border rounded-2xl w-full py-4 px-4 text-grey-darker" id="address" type="address" placeholder="Start typing your address"/>
                   </div>
