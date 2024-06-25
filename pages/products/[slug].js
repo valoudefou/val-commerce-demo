@@ -122,7 +122,7 @@ export default function Product(props) {
                         <h1 className="mt-1 text-2xl font-medium text-gray-900 sm:text-2xl sm:tracking-tight lg:text-3xl">
                             {props.product.title}
                         </h1>
-                        <h1 className="mt-3 text-2xl font-semibold text-slate-500 sm:text-3xl sm:tracking-wide lg:text-2xl">
+                        <h1 className="mt-3 text-2xl font-semibold text-slate-500 sm:text-3xl tracking-wide lg:text-2xl">
                             {props.product.price}€
                         </h1>
                         <button onClick={() => [pushCart()]} className="mt-5 bg-white border hover:bg-gray-50 border-slate-600 text-slate-600 text-semibold text-sm rounded-full font-medium w-full">

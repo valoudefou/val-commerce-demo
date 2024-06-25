@@ -8,7 +8,7 @@ const [data, setData] = useState('')
 // Get flag 
 const paymentFeature1Click = useFsFlag("paymentFeature1Click", "false")
 const flagIndustry = useFsFlag("flagIndustry", "Product")
-const sendBeginCheckout = useRef(0) // Prevent pushTransaction() from being called multiple times
+const sendBeginCheckout = useRef(0) // Prevent beginCheckout() from being called multiple times
 
 
 
@@ -56,7 +56,7 @@ useEffect(() => {
 
 return (
     <>
-    <div className="mx-auto max-w-2xl px-4 sm:px-6 lg:max-w-7xl lg:px-8 mb-24 mt-24">
+    <div className="mx-auto max-w-2xl px-4 sm:px-6 lg:max-w-7xl lg:px-8 mb-10 mt-10">
       <div className="flex justify-between">
         <div className="relative flex justify-between lg:w-auto lg:static lg:block lg:justify-start">
           <a className="text-2xl px-2 font-bold leading-relaxed inline-block py-3 whitespace-nowrap uppercase text-gray-900" href="/">

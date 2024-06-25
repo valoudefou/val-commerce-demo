@@ -31,9 +31,9 @@ function ProductCard( {product} ) {
                     />
                 </div>
 
-                <div className="mt-4 flex items-center justify-between text-base font-normal text-gray-900">
+                <div className="mt-4 flex items-start justify-between text-base font-normal text-gray-900">
                     <h3>{product.title}</h3>
-                    <p className='font-base font-bold'>{product.price}€</p>
+                    <p className='font-base font-bold text-slate-600 tracking-wide'>{product.price}€</p>
                 </div>
 
                 {viewDetailsPlp.getValue() === true &&
