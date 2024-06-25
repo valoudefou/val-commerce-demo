@@ -113,7 +113,7 @@ return (
                     <div className="flex mt-5 align-start text-sm leading-5">
                     <label>
                       <input className="mr-3" type="checkbox"/>
-                      Keep me up to date with the latest news, special offers, expert health advice and receive a welcome gift of 10% off your next order
+                      Keep me up to date with the latest news, special offers and receive a welcome gift of 10% off your next order
                     </label>
                     </div>
                   </div>
