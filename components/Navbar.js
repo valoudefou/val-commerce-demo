@@ -41,7 +41,7 @@ export default function Navbar() {
                     </div>
                 </div>
             )}
-            <nav className="relative w-full z-20 flex flex-wrap items-center lg:justify-between px-2 py-2 bg-white border-b-[1px] border-gray-200">
+            <nav className="relative w-full z-20 flex flex-wrap items-center lg:justify-between px-5 py-2 bg-white border-b-[1px] border-gray-200">
                 <div className="flex flex-auto items-center justify-between">
                     <nav className="sm:px-0 lg:hidden relative flex lg:justify-between items-center bg-white">
                         <div className="lg:hidden">
