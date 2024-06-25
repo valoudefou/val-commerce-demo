@@ -163,7 +163,7 @@ return (
                       </button>
                     </Link>
                     }
-                    <button onClick={() => [beginCheckout()]} className="flex items-center justify-center py-3 px-6 bg-white border hover:bg-gray-50 border-slate-600 text-slate-600 text-semibold text-sm rounded-full font-medium">
+                    <button onClick={() => [beginCheckout()]} className="flex items-center justify-center py-3 px-5 bg-white border hover:bg-gray-50 border-slate-600 text-slate-600 text-semibold text-sm rounded-full font-medium">
                       Continue To Delivery
                     </button>
                   </div>
