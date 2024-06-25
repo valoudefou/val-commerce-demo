@@ -46,7 +46,7 @@ function ProductCard( {product} ) {
                             label: "Engagement"
                         })
 
-                    }} className="flex items-center justify-center text-sm font-base mt-5 border border-black bg-white px-4 py-4 text-black sm:px-8 w-full  hover:border-gray-600 hover:text-gray-600">
+                    }} className="mt-5 py-3 bg-white border hover:bg-gray-50 border-slate-600 text-slate-600 text-semibold text-sm rounded-full font-medium w-full">
                     View details
                     </button>
                 }

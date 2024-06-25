@@ -83,7 +83,7 @@ export default function Confirmation() {
         </div>
         <div className="mt-10 flex flex-col xl:flex-row jusitfy-center items-stretch w-full xl:space-x-8 space-y-4 md:space-y-6 xl:space-y-0">
           <div className="flex flex-col justify-start items-start w-full space-y-4 md:space-y-6 xl:space-y-8">
-            <div className="flex flex-col justify-start items-start dark:bg-gray-800 bg-gray-50 px-4 py-4 md:py-6 md:p-6 xl:p-8 w-full">
+            <div className="flex flex-col border rounded border-slate-200 justify-start items-start dark:bg-gray-800 bg-gray-50 px-4 py-4 md:py-6 md:p-6 xl:p-8 w-full">
               <p className="text-xl md:text-1xl dark:text-white font-semibold leading-6 xl:leading-5 text-gray-800">Order details</p>
               <div className="mt-4 md:mt-6 flex flex-col md:flex-row justify-start items-start md:items-center md:space-x-6 xl:space-x-8 w-full">
                 <div className="w-full md:w-40">
@@ -105,7 +105,7 @@ export default function Confirmation() {
                 </div>
               </div>
             </div>
-            <div className="flex justify-center md:flex-row flex-col items-stretch w-full space-y-4 md:space-y-0 md:space-x-6 xl:space-x-8">
+            <div className="flex justify-center md:flex-row border rounded border-slate-200 flex-col items-stretch w-full space-y-4 md:space-y-0 md:space-x-6 xl:space-x-8">
               <div className="flex flex-col px-4 py-6 md:p-6 xl:p-8 w-full bg-gray-50 dark:bg-gray-800 space-y-6">
                 <h3 className="text-xl dark:text-white font-semibold leading-5 text-gray-800">Summary</h3>
                 <div className="flex justify-center items-center w-full space-y-4 flex-col border-gray-200 border-b pb-4">
@@ -120,18 +120,20 @@ export default function Confirmation() {
                 </div>
                 <div className="flex justify-between items-center w-full">
                   <p className="text-lg dark:text-white font-semibold leading-4 text-gray-800">Total</p>
-                  <p className="text-lg dark:text-gray-300 font-semibold leading-4 text-gray-600">{Math.round(data.productPrice + 8)} €</p>
+                  <p className="text-lg dark:text-gray-300 font-semibold leading-4 text-gray-800">{Math.round(data.productPrice + 8)} €</p>
                 </div>
               </div>
               <div className="flex flex-col justify-center px-4 py-6 md:p-6 xl:p-8 w-full bg-gray-50 dark:bg-gray-800 space-y-6">
-                <h3 className="text-xl dark:text-white font-semibold leading-5 text-gray-800">Shipping</h3>
+                <h3 className="text-lg dark:text-white font-semibold leading-5 text-gray-800">Shipping</h3>
                 <div className="flex justify-between items-start w-full">
                   <div className="flex justify-center items-center space-x-4">
                     <div className="w-8 h-8">
                       <img className="w-full h-full" alt="logo" src="https://i.ibb.co/L8KSdNQ/image-3.png" />
                     </div>
                     <div className="flex flex-col justify-start items-center">
-                      <p className="text-base leading-6 dark:text-white font-semibold text-gray-800">DPD Delivery<br /><span className="text-base font-normal">Delivery with 24 Hours</span></p>
+                      <p className="text-sm leading-6 dark:text-white font-semibold text-gray-800">DPD Delivery<br />
+                        <span className="text-sm font-normal">Within 24 Hours</span>
+                      </p>
                     </div>
                   </div>
                   <p className="text-base font-semibold leading-6 dark:text-white text-gray-800">8.01 €</p>
@@ -139,7 +141,7 @@ export default function Confirmation() {
               </div>
             </div>
             </div>
-            <div className="bg-gray-50 dark:bg-gray-800 w-full xl:w-96 flex justify-between items-center md:items-start px-4 py-6 md:p-6 xl:p-8 flex-col">
+            <div className="bg-gray-50 dark:bg-gray-800 border rounded border-slate-200 w-full xl:w-96 flex justify-between items-center md:items-start px-4 py-6 md:p-6 xl:p-8 flex-col">
               <h3 className="text-xl dark:text-white font-semibold leading-5 text-gray-800">Customer</h3>
               <div className="flex flex-col md:flex-row xl:flex-col justify-start items-stretch h-full w-full md:space-x-6 lg:space-x-8 xl:space-x-0">
                 <div className="flex flex-col justify-start items-start flex-shrink-0">
