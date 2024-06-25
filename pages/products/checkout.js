@@ -109,7 +109,7 @@ return (
                     <label className="block text-grey-darker text-sm font-normal mb-2" htmlFor="email">
                       Email Address
                     </label>
-                    <input className="appearance-none border rounded w-full py-3 px-3 text-grey-darker" id="email" type="email" placeholder="Email address"/>
+                    <input className="appearance-none border rounded-2xl w-full py-4 px-4 text-grey-darker" id="email" type="email" placeholder="Email address"/>
                     <div className="flex mt-5 align-start text-sm leading-5">
                     <label>
                       <input className="mr-3" type="checkbox"/>
@@ -131,26 +131,26 @@ return (
                       <label className="block text-grey-darker text-sm font-normal mb-2" htmlFor="first_name">
                         First Name
                       </label>
-                      <input className="appearance-none border rounded w-full py-3 px-3 text-grey-darker" id="first_name" type="text" placeholder="First name"/>
+                      <input className="appearance-none border rounded-2xl w-full py-4 px-4 text-grey-darker" id="first_name" type="text" placeholder="First name"/>
                     </div>
                     <div className="w-1/2 ml-1">
                       <label className="block text-grey-darker text-sm font-normal mb-2" htmlFor="last_name">
                         Last Name
                       </label>
-                    <input className="appearance-none border rounded w-full py-3 px-3 text-grey-darker" id="last_name" type="text" placeholder="Last name"/>
+                    <input className="appearance-none border rounded-2xl w-full py-4 px-4 text-grey-darker" id="last_name" type="text" placeholder="Last name"/>
                     </div>
                   </div>
                   <div className="mb-4">
                     <label className="block text-grey-darker text-sm font-normal mb-2" htmlFor="phone">
                       Phone (optional)
                     </label>
-                    <input className="appearance-none border rounded w-full py-3 px-3 text-grey-darker" id="phone" type="phone" placeholder="Phone"/>
+                    <input className="appearance-none border rounded-2xl w-full py-4 px-4 text-grey-darker" id="phone" type="phone" placeholder="Phone"/>
                   </div>
                   <div className="mb-4">
                     <label className="block text-grey-darker text-sm font-normal mb-2" htmlFor="address">
                       Start typing your address
                     </label>
-                    <input className="appearance-none border rounded w-full py-3 px-3 text-grey-darker" id="address" type="address" placeholder="Start typing your address"/>
+                    <input className="appearance-none border rounded-2xl w-full py-4 px-4 text-grey-darker" id="address" type="address" placeholder="Start typing your address"/>
                   </div>
                   <div className="flex space-x-3 justify-start mt-7">
                     {paymentFeature1Click.getValue() === 'true' &&
@@ -213,7 +213,7 @@ return (
             <div className="flex flex-col w-full bg-gray-50 space-y-6 mt-6">
               <div className="flex border-gray-200">
                 <label className="block text-grey-darker text-sm font-normal mb-2" htmlFor="coupon"></label>
-                <input className="appearance-none border rounded-l-2xl w-full py-3 px-4 text-grey-darker" id="coupon" type="coupon" placeholder="Discount code"/>
+                <input className="appearance-none border rounded-l-2xl w-full py-4 px-4 text-grey-darker" id="coupon" type="coupon" placeholder="Discount code"/>
                 <button className="bg-black hover:bg-blue-dark text-white rounded-r-2xl text-sm font-medium px-7" type="submit">
                   Apply
                 </button>
