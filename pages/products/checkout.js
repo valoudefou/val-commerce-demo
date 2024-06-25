@@ -65,7 +65,7 @@ return (
           <svg xmlns="http://www.w3.org/2000/svg" className="mx-2" width="24" height="24" viewBox="0 0 24 24" fill="#1a1a1a">
             <path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"></path>
           </svg>
-          <span className="text-sm">
+          <span className="text-sm px-2 py-3">
             Secure checkout
           </span>
         </div>
@@ -251,7 +251,7 @@ return (
                       <img className="w-full h-full" alt="logo" src="https://i.ibb.co/L8KSdNQ/image-3.png" />
                     </div>
                     <div className="flex flex-col justify-start items-center">
-                      <p className="text-base leading-6 dark:text-white font-semibold text-gray-800">
+                      <p className="text-sm leading-6 dark:text-white font-semibold text-gray-800">
                         DPD Delivery<br />
                         <span className="text-sm font-normal">
                           within 24 Hours
