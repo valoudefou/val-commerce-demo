@@ -98,7 +98,7 @@ return (
       </div>
       <div className="mt-10 flex flex-col xl:flex-row jusitfy-center items-stretch w-full xl:space-x-8 space-y-4 md:space-y-6 xl:space-y-0">
         <div className="flex flex-col justify-start items-start w-full space-y-4 md:space-y-6 xl:space-y-8">
-          <div className="border rounded px-7 py-7 w-full">
+          <div className="border rounded px-5 py-7 w-full">
             <div className="flex flex-col justify-start items-start bg-gray-50  w-full">
               <div className="w-full">
                 <div className="text-xl md:text-1xl dark:text-white font-semibold leading-6 xl:leading-5 text-gray-800">
@@ -176,7 +176,7 @@ return (
           </div>
         </div>
         <div className="bg-gray-50 w-full flex justify-between items-center sm:items-end md:items-start flex-col">
-          <div className="border rounded flex flex-col justify-start items-start bg-gray-50 px-7 py-7 w-full">
+          <div className="border rounded flex flex-col justify-start items-start bg-gray-50 px-5 py-7 w-full">
             <p className="text-xl md:text-1xl dark:text-white font-semibold leading-6 xl:leading-5 text-gray-800">
               Order details
             </p>
@@ -212,7 +212,7 @@ return (
               </div>
             </div>
           </div>
-          <div className="border rounded px-7 py-7 flex flex-col-reverse md:flex-row xl:flex-col-reverse xl:justify-end justify-start items-stretch h-full w-full md:space-x-6 lg:space-x-8 xl:space-x-0 mt-6">
+          <div className="border rounded px-5 py-7 flex flex-col-reverse md:flex-row xl:flex-col-reverse xl:justify-end justify-start items-stretch h-full w-full md:space-x-6 lg:space-x-8 xl:space-x-0 mt-6">
             <div className="flex flex-col w-full bg-gray-50 space-y-6 mt-6">
               <div className="flex border-gray-200">
                 <label className="block text-grey-darker text-sm font-normal mb-2" htmlFor="coupon"></label>
