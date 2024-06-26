@@ -4,6 +4,7 @@ import Link from "next/link"
 
 export default function Checkout() {
 const [data, setData] = useState('')
+const [addressOn, setAddressOn] = useState(false)
 const sendBeginCheckout = useRef(0) // Prevent beginCheckout() from being called multiple times
 // Get flag 
 const paymentFeature1Click = useFsFlag("paymentFeature1Click", "false")
@@ -99,7 +100,7 @@ return (
       <div className="mt-10 flex flex-col xl:flex-row jusitfy-center items-stretch w-full xl:space-x-8 space-y-4 md:space-y-6 xl:space-y-0">
         <div className="flex flex-col justify-start items-start w-full space-y-4 md:space-y-6 xl:space-y-8">
           <div className="border rounded-2xl px-5 py-7 w-full">
-            <div className="flex flex-col justify-start items-start bg-gray-50  w-full">
+            <div className="flex flex-col justify-start items-start w-full">
               <div className="w-full">
                 <div className="text-xl md:text-1xl dark:text-white font-semibold leading-6 xl:leading-5 text-gray-800">
                   Email
@@ -109,7 +110,7 @@ return (
                     <label className="block text-grey-darker text-sm font-normal mb-2 ml-2" htmlFor="email">
                       Email Address
                     </label>
-                    <input className="appearance-none border rounded-2xl w-full py-4 px-4 text-grey-darker" id="email" type="email" placeholder="Email address"/>
+                    <input className="border rounded-2xl w-full py-4 px-4 text-grey-darker" id="email" type="email" placeholder="Email address"/>
                     <div className="flex mt-5 align-start text-sm leading-5">
                     <label>
                       <input className="mr-3" type="checkbox"/>
@@ -120,61 +121,158 @@ return (
                 </div>
               </div>
             </div>
-            <div className="flex flex-col justify-start items-start bg-gray-50 w-full mt-8">
-              <div className="w-full">
-                <div className="text-xl md:text-1xl dark:text-white font-semibold leading-6 xl:leading-5 text-gray-800">
-                  Delivery address
-                </div>
-                <div className="mt-6 w-full">
-                  <div className="flex mb-4">
-                    <div className="w-1/2 mr-1">
-                      <label className="block text-grey-darker text-sm font-normal mb-2 ml-2" htmlFor="first_name">
-                        First Name
-                      </label>
-                      <input className="appearance-none border rounded-2xl w-full py-4 px-4 text-grey-darker" id="first_name" type="text" placeholder="First name"/>
+            {!addressOn && (  
+              <div className="flex flex-col justify-start items-start w-full mt-8">
+                <div className="w-full">
+                  <div className="text-xl md:text-1xl dark:text-white font-semibold leading-6 xl:leading-5 text-gray-800">
+                    Delivery address
+                  </div>
+                  <div className="mt-6 w-full">
+                    <div className="flex mb-4">
+                      <div className="w-1/2 mr-1">
+                        <label className="block text-grey-darker text-sm font-normal mb-2 ml-2" htmlFor="first_name">
+                          First Name
+                        </label>
+                        <input className="border rounded-2xl w-full py-4 px-4 text-grey-darker" id="first_name" type="text" placeholder="First name"/>
+                      </div>
+                      <div className="w-1/2 ml-1">
+                        <label className="block text-grey-darker text-sm font-normal mb-2 ml-2" htmlFor="last_name">
+                          Last Name
+                        </label>
+                      <input className="border rounded-2xl w-full py-4 px-4 text-grey-darker" id="last_name" type="text" placeholder="Last name"/>
+                      </div>
                     </div>
-                    <div className="w-1/2 ml-1">
-                      <label className="block text-grey-darker text-sm font-normal mb-2 ml-2" htmlFor="last_name">
-                        Last Name
+                    <div className="mb-4">
+                      <label className="block text-grey-darker text-sm font-normal mb-2 ml-2" htmlFor="phone">
+                        Phone (optional)
                       </label>
-                    <input className="appearance-none border rounded-2xl w-full py-4 px-4 text-grey-darker" id="last_name" type="text" placeholder="Last name"/>
+                      <input className="border rounded-2xl w-full py-4 px-4 text-grey-darker" id="phone" type="phone" placeholder="Phone"/>
                     </div>
-                  </div>
-                  <div className="mb-4">
-                    <label className="block text-grey-darker text-sm font-normal mb-2 ml-2" htmlFor="phone">
-                      Phone (optional)
-                    </label>
-                    <input className="appearance-none border rounded-2xl w-full py-4 px-4 text-grey-darker" id="phone" type="phone" placeholder="Phone"/>
-                  </div>
-                  <div className="mb-4">
-                    <label className="block text-grey-darker text-sm font-normal mb-2 ml-2" htmlFor="address">
-                      Address
-                    </label>
-                    <input className="appearance-none border rounded-2xl w-full py-4 px-4 text-grey-darker" id="address" type="address" placeholder="Start typing your address"/>
-                  </div>
-                  <div className="flex sm:flex-row flex-col sm:space-x-3 mt-8">
-                    {paymentFeature1Click.getValue() === 'true' &&
-                    <Link href='/products/confirmation'>
-                      <button className="justify-center items-center w-full flex text-xl tracking-tight font-medium bg-black text-white text-extrabold py-4 px-14 rounded-full hover:bg-neutral-800">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="#FFFFFF" viewBox="0 0 24 24" width="20px" height="20px">    
-                          <path d="M 16.125 1 C 14.972 1.067 13.648328 1.7093438 12.861328 2.5273438 C 12.150328 3.2713438 11.589359 4.3763125 11.818359 5.4453125 C 13.071359 5.4783125 14.329031 4.8193281 15.082031 3.9863281 C 15.785031 3.2073281 16.318 2.12 16.125 1 z M 16.193359 5.4433594 C 14.384359 5.4433594 13.628 6.5546875 12.375 6.5546875 C 11.086 6.5546875 9.9076562 5.5136719 8.3476562 5.5136719 C 6.2256562 5.5146719 3 7.4803281 3 12.111328 C 3 16.324328 6.8176563 21 8.9726562 21 C 10.281656 21.013 10.599 20.176969 12.375 20.167969 C 14.153 20.154969 14.536656 21.011 15.847656 21 C 17.323656 20.989 18.476359 19.367031 19.318359 18.082031 C 19.922359 17.162031 20.170672 16.692344 20.638672 15.652344 C 17.165672 14.772344 16.474672 9.1716719 20.638672 8.0136719 C 19.852672 6.6726719 17.558359 5.4433594 16.193359 5.4433594 z"/>
-                        </svg>
-                        Pay
+                    <div className="mb-4">
+                      <label className="block text-grey-darker text-sm font-normal mb-2 ml-2" htmlFor="address">
+                        Address
+                      </label>
+                      <input className="border rounded-2xl w-full py-4 px-4 text-grey-darker" id="address" type="address" placeholder="Start typing your address"/>
+                    </div>
+                    <div className="flex">
+                      <button onClick={() => setAddressOn(!addressOn)} className="underline mt-2 font-base">
+                        Enter address manually
                       </button>
-                    </Link>
-                    }
-                    <span className="text-md p-1 flex items-center justify-center">or</span>
-                    <button onClick={() => [beginCheckout()]} className="justify-center items-center w-full flex py-4 px-7 bg-white border hover:bg-gray-50 border-slate-600 text-slate-600 text-semibold text-sm rounded-full font-medium">
-                      Continue To Delivery
-                    </button>
+                    </div>
+                    <div className="flex sm:flex-row flex-col sm:space-x-3 mt-8">
+                      {paymentFeature1Click.getValue() === 'true' &&
+                      <Link href='/products/confirmation'>
+                        <button className="justify-center items-center w-full flex text-xl tracking-tight font-medium bg-black text-white text-extrabold py-4 px-16 rounded-full hover:bg-neutral-800">
+                          <svg xmlns="http://www.w3.org/2000/svg" fill="#FFFFFF" viewBox="0 0 24 24" width="20px" height="20px">    
+                            <path d="M 16.125 1 C 14.972 1.067 13.648328 1.7093438 12.861328 2.5273438 C 12.150328 3.2713438 11.589359 4.3763125 11.818359 5.4453125 C 13.071359 5.4783125 14.329031 4.8193281 15.082031 3.9863281 C 15.785031 3.2073281 16.318 2.12 16.125 1 z M 16.193359 5.4433594 C 14.384359 5.4433594 13.628 6.5546875 12.375 6.5546875 C 11.086 6.5546875 9.9076562 5.5136719 8.3476562 5.5136719 C 6.2256562 5.5146719 3 7.4803281 3 12.111328 C 3 16.324328 6.8176563 21 8.9726562 21 C 10.281656 21.013 10.599 20.176969 12.375 20.167969 C 14.153 20.154969 14.536656 21.011 15.847656 21 C 17.323656 20.989 18.476359 19.367031 19.318359 18.082031 C 19.922359 17.162031 20.170672 16.692344 20.638672 15.652344 C 17.165672 14.772344 16.474672 9.1716719 20.638672 8.0136719 C 19.852672 6.6726719 17.558359 5.4433594 16.193359 5.4433594 z"/>
+                          </svg>
+                          Pay
+                        </button>
+                      </Link>
+                      }
+                      <span className="text-md p-1 flex items-center justify-center">or</span>
+                      <button onClick={() => [beginCheckout()]} className="justify-center items-center w-full flex py-4 px-7 bg-white border hover:bg-gray-50 border-slate-600 text-slate-600 text-semibold text-sm rounded-full font-medium">
+                        Continue To Delivery
+                      </button>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
+            )}
+            {addressOn && ( 
+              <div className="flex flex-col justify-start items-start w-full mt-8">
+                <div className="w-full">
+                  <div className="text-xl md:text-1xl dark:text-white font-semibold leading-6 xl:leading-5 text-gray-800">
+                    Delivery address
+                  </div>
+                  <div className="mt-6 w-full">
+                    <div className="flex mb-4">
+                      <div className="w-1/2 mr-1">
+                        <label className="block text-grey-darker text-sm font-normal mb-2 ml-2" htmlFor="first_name">
+                          First Name
+                        </label>
+                        <input className="border rounded-2xl w-full py-4 px-4 text-grey-darker" id="first_name" type="text" placeholder="First name"/>
+                      </div>
+                      <div className="w-1/2 ml-1">
+                        <label className="block text-grey-darker text-sm font-normal mb-2 ml-2" htmlFor="last_name">
+                          Last Name
+                        </label>
+                      <input className="border rounded-2xl w-full py-4 px-4 text-grey-darker" id="last_name" type="text" placeholder="Last name"/>
+                      </div>
+                    </div>
+                    <div className="mb-4">
+                      <label className="block text-grey-darker text-sm font-normal mb-2 ml-2" htmlFor="company">
+                        Company (optional)
+                      </label>
+                      <input className="border rounded-2xl w-full py-4 px-4 text-grey-darker" id="company" type="company" placeholder="Company"/>
+                    </div>
+                    <div className="mb-4">
+                      <label className="block text-grey-darker text-sm font-normal mb-2 ml-2" htmlFor="address line 1">
+                        Address line 1
+                      </label>
+                      <input className="border rounded-2xl w-full py-4 px-4 text-grey-darker" id="address line 1" type="address line 1" placeholder="Address line 1"/>
+                    </div>
+                    <div className="mb-4">
+                      <label className="block text-grey-darker text-sm font-normal mb-2 ml-2" htmlFor="address line 2">
+                        Address line 2 (optional)
+                      </label>
+                      <input className="border rounded-2xl w-full py-4 px-4 text-grey-darker" id="address line 2" type="address line 2" placeholder="Address line 2"/>
+                    </div>
+                    <div className="mb-4">
+                      <input className="border rounded-2xl w-full py-4 px-4 text-grey-darker" id="city" type="city" placeholder="City"/>
+                    </div>
+                    <div className="flex mb-4">
+                      <div className="flex-col">
+                        <label className="block text-grey-darker text-sm font-normal mb-2 ml-2" htmlFor="city">
+                          City
+                        </label>
+                        <select className="border rounded-2xl w-full py-4 px-4 text-grey-darker">
+                          <option>United Kingdom</option>
+                          <option>Isle of Man</option>
+                        </select>
+                      </div>
+                      <div className="w-1/2 ml-2">
+                        <label className="block text-grey-darker text-sm font-normal mb-2 ml-2" htmlFor="postcode">
+                          Postcode
+                        </label>
+                        <input className="border rounded-2xl w-full py-4 px-4 text-grey-darker" id="postcode" type="text" placeholder="Postcode"/>
+                      </div>
+                    </div>
+                    <div className="mb-4">
+                      <label className="block text-grey-darker text-sm font-normal mb-2 ml-2" htmlFor="phone">
+                        Phone (optional)
+                      </label>
+                      <input className="border rounded-2xl w-full py-4 px-4 text-grey-darker" id="phone" type="phone" placeholder="Phone"/>
+                    </div>
+                    <div className="flex">
+                      <button onClick={() => setAddressOn(!addressOn)} className="underline mt-2 font-base">
+                        Search again
+                      </button>
+                    </div>
+                    <div className="flex sm:flex-row flex-col sm:space-x-3 mt-8">
+                      {paymentFeature1Click.getValue() === 'true' &&
+                      <Link href='/products/confirmation'>
+                        <button className="justify-center items-center w-full flex text-xl tracking-tight font-medium bg-black text-white text-extrabold py-4 px-16 rounded-full hover:bg-neutral-800">
+                          <svg xmlns="http://www.w3.org/2000/svg" fill="#FFFFFF" viewBox="0 0 24 24" width="20px" height="20px">    
+                            <path d="M 16.125 1 C 14.972 1.067 13.648328 1.7093438 12.861328 2.5273438 C 12.150328 3.2713438 11.589359 4.3763125 11.818359 5.4453125 C 13.071359 5.4783125 14.329031 4.8193281 15.082031 3.9863281 C 15.785031 3.2073281 16.318 2.12 16.125 1 z M 16.193359 5.4433594 C 14.384359 5.4433594 13.628 6.5546875 12.375 6.5546875 C 11.086 6.5546875 9.9076562 5.5136719 8.3476562 5.5136719 C 6.2256562 5.5146719 3 7.4803281 3 12.111328 C 3 16.324328 6.8176563 21 8.9726562 21 C 10.281656 21.013 10.599 20.176969 12.375 20.167969 C 14.153 20.154969 14.536656 21.011 15.847656 21 C 17.323656 20.989 18.476359 19.367031 19.318359 18.082031 C 19.922359 17.162031 20.170672 16.692344 20.638672 15.652344 C 17.165672 14.772344 16.474672 9.1716719 20.638672 8.0136719 C 19.852672 6.6726719 17.558359 5.4433594 16.193359 5.4433594 z"/>
+                          </svg>
+                          Pay
+                        </button>
+                      </Link>
+                      }
+                      <span className="text-md p-1 flex items-center justify-center">or</span>
+                      <button onClick={() => [beginCheckout()]} className="justify-center items-center w-full flex py-4 px-7 bg-white border hover:bg-gray-50 border-slate-600 text-slate-600 text-semibold text-sm rounded-full font-medium">
+                        Continue To Delivery
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            )}
           </div>
         </div>
         <div className="flex flex-col justify-start items-start w-full space-y-4 md:space-y-6 xl:space-y-8">
-          <div className="border rounded-2xl flex flex-col justify-start items-start bg-gray-50 px-5 py-7 w-full">
+          <div className="border rounded-2xl flex flex-col justify-start items-start px-5 py-7 w-full">
             <p className="text-xl md:text-1xl dark:text-white font-semibold leading-6 xl:leading-5 text-gray-800">
               Order details
             </p>
@@ -211,9 +309,9 @@ return (
             </div>
           </div>
           <div className="border rounded-2xl px-5 py-7 flex flex-col-reverse md:flex-row xl:flex-col-reverse xl:justify-end justify-start items-stretch h-full w-full md:space-x-6 lg:space-x-8 xl:space-x-0">
-            <div className="flex flex-col w-full bg-gray-50 space-y-6 mt-6">
+            <div className="flex flex-col w-full space-y-6 mt-6 md:mt-0 lg:mt-0 xl:mt-6 sm:mt-6">
               <div className="flex border-gray-200">
-                <input className="appearance-none border rounded-l-2xl w-full py-4 px-4 text-grey-darker" id="coupon" type="coupon" placeholder="Discount code"/>
+                <input className="border rounded-l-2xl w-full py-4 px-4 text-grey-darker" id="coupon" type="coupon" placeholder="Discount code"/>
                 <button className="bg-black hover:bg-blue-dark text-white rounded-r-2xl text-sm font-medium px-7" type="submit">
                   Apply
                 </button>
@@ -242,7 +340,7 @@ return (
               </div>
             </div>
             <div className="flex xl:pb-0 lg:pb-6 md:pb-6 justify-center md:flex-row flex-col items-stretch w-full space-y-4 md:space-y-0 md:space-x-6 xl:space-x-8">
-              <div className="flex flex-col w-full bg-gray-50 space-y-6">
+              <div className="flex flex-col w-full space-y-6">
                 <h3 className="text-xl dark:text-white font-semibold leading-4 text-gray-800">
                   Shipping</h3>
                 <div className="flex justify-between items-start w-full pb-7 border-b mb-10">
