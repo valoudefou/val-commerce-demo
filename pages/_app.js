@@ -59,8 +59,8 @@ function MyApp({ Component, pageProps, initialFlagsData, initialVisitorData, OnV
 
     return (
         <>
-            <AppContext.Provider value={[isShown, setIsShown]}>
-                <FlagshipProvider
+            <AppContext.Provider suppressHydrationWarning={true} value={[isShown, setIsShown]}>
+                <FlagshipProvider suppressHydrationWarning={true}
                     envId={process.env.NEXT_PUBLIC_FS_ENV}
                     apiKey={process.env.NEXT_PUBLIC_FS_KEY}
                     visitorData={initialVisitorData}
@@ -71,9 +71,9 @@ function MyApp({ Component, pageProps, initialFlagsData, initialVisitorData, OnV
                         ...fromFlag.metadata
                     })}
                 >
-                    <Head />
+                    <Head suppressHydrationWarning={true} />
                     <title>{'The ' + flagIndustry.getValue() + ' House'}</title>
-                    <Component {...pageProps} />
+                    <Component suppressHydrationWarning={true} {...pageProps} />
                 </FlagshipProvider>
             </AppContext.Provider>
         </>

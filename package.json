@@ -1,5 +1,5 @@
 {
-  "name": "swell-nextjs-app",
+  "name": "val-commerce-demo",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -17,6 +17,7 @@
     "semver": "^6.3.1",
     "swr": "^2.0.3",
     "uuid": "^9.0.0",
+    "webpack-cli": "^4.10.0",
     "word-wrap": "^1.2.5"
   },
   "devDependencies": {

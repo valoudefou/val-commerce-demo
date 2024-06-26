@@ -16,12 +16,12 @@ const { hit: fsHit } = useFlagship()
 
   return (
     <header className="relative">
-      <Navbar />
+      <Navbar suppressHydrationWarning={true}/>
       <div className="absolute inset-x-0 bottom-0 h-1/2" />
         <div className="mx-auto">
           <div className="relative shadow-xl sm:overflow-hidden">
             <div className="absolute inset-0">
-              <Image
+              <Image suppressHydrationWarning={true}
                 priority
                 layout='fill'
                 className="h-full w-full object-cover"
@@ -39,7 +39,7 @@ const { hit: fsHit } = useFlagship()
             <span className="block" style={{color: flagBackgroundColor.getValue()}}>{flagIndustry.getValue()}</span>
             </h1>
             <div className="mt-10 flex justify-center">
-              <Link href="/products">
+              <Link suppressHydrationWarning={true} href="/products">
                 <button onClick={()=>{
                     fsHit.send({
                       type: HitType.EVENT,

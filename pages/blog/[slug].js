@@ -38,7 +38,7 @@ export default function Article({articles}) {
         <div className="flex flex-col p-4">
             <h1 className="text-4xl p-5 place-self-center font-semibold">{articles.fields.titleV2}</h1>
             <h2 className="text-2xl p-5 font-medium">{articles.fields.title}</h2>
-            <div className='flex '>
+            <div className='flex'>
                 <p className="p-5 text-justify">{articles.fields.content}</p>
                     <div className="divider divider-horizontal"></div>
                 <p className="p-5 text-justify">{articles.fields.content}</p>
