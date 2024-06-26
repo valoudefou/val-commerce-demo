@@ -30,22 +30,18 @@ function ProductCard( {product} ) {
                         onLoadingComplete={() => setLoading(false)}
                     />
                 </div>
-
                 <div className="mt-4 flex items-start justify-between text-base font-normal text-gray-900">
                     <h3>{product.title}</h3>
                     <p className='font-base font-bold text-slate-600 tracking-wide'>{product.price}€</p>
                 </div>
-
                 {viewDetailsPlp.getValue() === true &&
                     <button onClick={()=>{
-
                         fsHit.send({
                             type: HitType.EVENT,
                             category: "Action Tracking",
                             action: "Click View Details PLP",
                             label: "Engagement"
                         })
-
                     }} className="mt-5 py-4 bg-white border hover:bg-gray-50 border-slate-600 text-slate-600 text-semibold text-sm rounded-full font-medium w-full">
                     View details
                     </button>
