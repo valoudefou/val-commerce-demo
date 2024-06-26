@@ -45,7 +45,7 @@ export default function MiniCart() {
 
     useEffect(() => {
         const storedHtml = localStorage.getItem('currentProduct')
-        const cartContent = '<p>1 item in your basket</p>'
+        const cartContent = '<p className="font-medium">1 item in your basket</p>'
 
     if (storedHtml) {
         setHtmlContent(cartContent)
