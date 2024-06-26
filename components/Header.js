@@ -2,7 +2,6 @@ import Image from 'next/image'
 import { HitType, useFlagship, useFsFlag } from "@flagship.io/react-sdk"
 import Link from 'next/link'
 import Navbar from '../components/Navbar'
-import { useEffect } from 'react'
 
 export default function Header() {
 const fs = useFlagship()
@@ -16,12 +15,12 @@ const { hit: fsHit } = useFlagship()
 
   return (
     <header className="relative">
-      <Navbar suppressHydrationWarning={true}/>
+      <Navbar/>
       <div className="absolute inset-x-0 bottom-0 h-1/2" />
         <div className="mx-auto">
           <div className="relative shadow-xl sm:overflow-hidden">
             <div className="absolute inset-0">
-              <Image suppressHydrationWarning={true}
+              <Image
                 priority
                 layout='fill'
                 className="h-full w-full object-cover"
@@ -39,7 +38,7 @@ const { hit: fsHit } = useFlagship()
             <span className="block" style={{color: flagBackgroundColor.getValue()}}>{flagIndustry.getValue()}</span>
             </h1>
             <div className="mt-10 flex justify-center">
-              <Link suppressHydrationWarning={true} href="/products">
+              <Link href="/products">
                 <button onClick={()=>{
                     fsHit.send({
                       type: HitType.EVENT,
@@ -48,7 +47,7 @@ const { hit: fsHit } = useFlagship()
                       label: "Engagement"
                     })
                   }}
-                  className="flex items-center justify-center py-4 px-8 bg-white border hover:bg-gray-50 border-slate-600 text-slate-600 text-semibold text-sm rounded-full font-medium" id="ab-btn">
+                  className="flex items-center justify-center py-4 px-8 bg-white border hover:bg-gray-50 border-slate-600 text-slate-600 text-bold text-sm rounded-full font-medium" id="ab-btn">
                   {flagBtnText.getValue()}
                 </button>
               </Link>
