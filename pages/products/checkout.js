@@ -120,7 +120,7 @@ return (
                 </div>
               </div>
             </div>
-            <div className="flex flex-col justify-start items-start bg-gray-50 w-full mt-10">
+            <div className="flex flex-col justify-start items-start bg-gray-50 w-full mt-8">
               <div className="w-full">
                 <div className="text-xl md:text-1xl dark:text-white font-semibold leading-6 xl:leading-5 text-gray-800">
                   Delivery address
@@ -173,7 +173,7 @@ return (
             </div>
           </div>
         </div>
-        <div className="bg-gray-50 w-full flex justify-between items-center sm:items-end md:items-start flex-col">
+        <div className="flex flex-col justify-start items-start w-full space-y-4 md:space-y-6 xl:space-y-8">
           <div className="border rounded-2xl flex flex-col justify-start items-start bg-gray-50 px-5 py-7 w-full">
             <p className="text-xl md:text-1xl dark:text-white font-semibold leading-6 xl:leading-5 text-gray-800">
               Order details
@@ -210,7 +210,7 @@ return (
               </div>
             </div>
           </div>
-          <div className="border rounded-2xl px-5 py-7 flex flex-col-reverse md:flex-row xl:flex-col-reverse xl:justify-end justify-start items-stretch h-full w-full md:space-x-6 lg:space-x-8 xl:space-x-0 mt-6">
+          <div className="border rounded-2xl px-5 py-7 flex flex-col-reverse md:flex-row xl:flex-col-reverse xl:justify-end justify-start items-stretch h-full w-full md:space-x-6 lg:space-x-8 xl:space-x-0">
             <div className="flex flex-col w-full bg-gray-50 space-y-6 mt-6">
               <div className="flex border-gray-200">
                 <input className="appearance-none border rounded-l-2xl w-full py-4 px-4 text-grey-darker" id="coupon" type="coupon" placeholder="Discount code"/>

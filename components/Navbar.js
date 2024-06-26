@@ -41,7 +41,7 @@ export default function Navbar() {
                     </div>
                 </div>
             )}
-            <nav className="relative w-full z-20 flex flex-wrap items-center lg:justify-between px-5 py-2 bg-white border-b-[1px] border-gray-200">
+            <nav className="relative w-full z-20 flex flex-wrap items-center lg:justify-between sm:px-5 sm:py-2 px-2 py-2 bg-white border-b-[1px] border-gray-200">
                 <div className="flex flex-auto items-center justify-between">
                     <nav className="sm:px-0 lg:hidden relative flex lg:justify-between items-center bg-white">
                         <div className="lg:hidden">
@@ -80,7 +80,8 @@ export default function Navbar() {
                                         </li>
                                     </ul>
                                 </div>
-                            </nav>   
+                                <Footer />
+                            </nav> 
                         </div>
                     )} 
                     <div className="relative sm:left-[calc(-30%_+_185px)] left-[calc(-30%_+_75px)] flex justify-between lg:w-auto lg:static lg:block lg:justify-start">
@@ -137,7 +138,6 @@ export default function Navbar() {
                     </div>
                 </div>
             </nav>
-                <Footer />
             {isShown && flagCartFeature.getValue() === 'MiniCart' && (    
                 <MiniCart />
             )}
