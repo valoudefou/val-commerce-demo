@@ -50,20 +50,21 @@ function MyApp({ Component, pageProps, initialFlagsData, initialVisitorData }) {
                     visitorData={initialVisitorData}
                     initialFlagsData={initialFlagsData || {}}
                     onVisitorExposed={({ exposedVisitor, fromFlag }) => 
-                    dataLayer.push({
-                        'event': 'abtasty_flag',
-                        "campaignId": fromFlag.metadata.campaignId,
-                        "campaignType": fromFlag.metadata.campaignType,
-                        "isReference": fromFlag.metadata.isReference,
-                        "key": fromFlag.key,
-                        "slug": fromFlag.metadata.slug,
-                        "val": fromFlag.value,
-                        "variationGroupId": fromFlag.metadata.variationGroupId,
-                        "variationId": fromFlag.metadata.variationId,
-                        "variationGroupName": fromFlag.metadata.variationGroupName,
-                        "variationName": fromFlag.metadata.variationName,
-                        "defaultValue": fromFlag.defaultValue
-                    })}
+                        dataLayer.push({
+                            'event': 'abtasty_flag',
+                            "campaignId": fromFlag.metadata.campaignId,
+                            "campaignType": fromFlag.metadata.campaignType,
+                            "isReference": fromFlag.metadata.isReference,
+                            "key": fromFlag.key,
+                            "slug": fromFlag.metadata.slug,
+                            "val": fromFlag.value,
+                            "variationGroupId": fromFlag.metadata.variationGroupId,
+                            "variationId": fromFlag.metadata.variationId,
+                            "variationGroupName": fromFlag.metadata.variationGroupName,
+                            "variationName": fromFlag.metadata.variationName,
+                            "defaultValue": fromFlag.defaultValue
+                        })
+                    }
                 >
                     <Head/>
                     <title>{'The ' + flagIndustry.getValue() + ' House'}</title>
