@@ -57,6 +57,8 @@ function MyApp({ Component, pageProps, initialFlagsData, initialVisitorData, OnV
     // Get flag 
     const flagIndustry = useFsFlag("flagIndustry", "Product")
 
+    console.log(OnVisitorExposed) // Log here
+
     return (
         <>
             <AppContext.Provider suppressHydrationWarning={true} value={[isShown, setIsShown]}>
@@ -66,10 +68,7 @@ function MyApp({ Component, pageProps, initialFlagsData, initialVisitorData, OnV
                     visitorData={initialVisitorData}
                     initialFlagsData={initialFlagsData || {}}
                     onVisitorExposed={({ exposedVisitor, fromFlag }) => 
-                    console.log('flagship_event', {
-                        distinct_id: exposedVisitor.id,
-                        ...fromFlag.metadata
-                    })}
+                    console.log(exposedVisitor.id, fromFlag.metadata)}
                 >
                     <Head suppressHydrationWarning={true} />
                     <title>{'The ' + flagIndustry.getValue() + ' House'}</title>
