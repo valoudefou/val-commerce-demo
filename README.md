@@ -7,7 +7,8 @@ This AB Tasty demo environment provides real time technical insights around:
 - Bring Your Own ID (BYOID) ----> [Documentation](https://support.abtasty.com/hc/en-us/articles/14503207884700-Visitor-Identity-Management/)
 - Offline Data Import ----> [Documentation](https://developers.abtasty.com/docs/data/universal-data-connector/)
 - Search Recommendations ----> [Documentation](https://techdocs.get-potions.com/)
-- BigQuery / Third Party Data Warehouse Intergation ----> [Documentation](https://support.abtasty.com/hc/en-us/articles/12227118781084-Big-Query-Daily-exports-from-AB-Tasty-to-Big-Query/)
+- BigQuery Intergation ----> [Documentation](https://support.abtasty.com/hc/en-us/articles/12227118781084-Big-Query-Daily-exports-from-AB-Tasty-to-Big-Query/)
+- Flag Exposure Data Warehouse Push ----> [Documentation](https://docs.developers.flagship.io/docs/react-js-reference#onvisitorexposed)
 - Headless CMS Content Handling
 - Anti-Flicker Solution
   
