@@ -58,11 +58,8 @@ function MyApp({ Component, pageProps, initialFlagsData, initialVisitorData }) {
                             "key": fromFlag.key,
                             "slug": fromFlag.metadata.slug,
                             "val": fromFlag.value,
-                            "variationGroupId": fromFlag.metadata.variationGroupId,
                             "variationId": fromFlag.metadata.variationId,
-                            "variationGroupName": fromFlag.metadata.variationGroupName,
                             "variationName": fromFlag.metadata.variationName,
-                            "defaultValue": fromFlag.defaultValue
                         })
                     }
                 >
