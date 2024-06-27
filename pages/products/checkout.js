@@ -258,7 +258,6 @@ return (
                           </svg>
                           Pay
                         </button>
-                        <span className="text-md p-1 flex items-center justify-center">or</span>
                       </Link>
                       }
                       <button onClick={() => [beginCheckout()]} className="justify-center items-center w-full flex py-4 px-7 bg-white border hover:bg-gray-50 border-slate-600 text-slate-600 text-semibold text-sm rounded-full font-medium">
