@@ -3,32 +3,16 @@ import Head from 'next/head'
 import { Flagship, FlagshipProvider, useFsFlag } from "@flagship.io/react-sdk"
 import App from "next/app"
 import { v4 as uuidv4 } from 'uuid'
-import { createContext, useState, useEffect, useRef } from 'react'
+import { createContext, useState, useEffect } from 'react'
 
 export const AppContext = createContext()
 
 function MyApp({ Component, pageProps, initialFlagsData, initialVisitorData, OnVisitorExposed }) {
     const [isShown, setIsShown] = useState(false)
-    const sendData = useRef(0) // Prevent dataLayer to push duplicates of abtasty_flag event
 
     useEffect(() => {
         localStorage.setItem('FS_VISITOR', initialVisitorData.id) // BYOID in localStorage
         document.cookie = 'FS_VISITOR=' + initialVisitorData.id // BYOID in a cookie
-        sendData.current = sendData.current + 1
-
-        if (sendData.current === 1) {
-            initialFlagsData.map(items => dataLayer.push({
-                'event': 'abtasty_flag',
-                "campaignId": items.campaignId,
-                "campaignType": items.campaignType,
-                "isReference": items.isReference,
-                "key": items.key,
-                "slug": items.slug,
-                "val": items.value,
-                "variationGroupId": items.variationGroupId,
-                "variationId": items.variationId
-            }))
-        }
         
         if (typeof window !== 'undefined') {
             const antiFlicker = document.querySelector('#ab-tasty-anti-flicker')
@@ -59,21 +43,32 @@ function MyApp({ Component, pageProps, initialFlagsData, initialVisitorData, OnV
 
     return (
         <>
-            <AppContext.Provider suppressHydrationWarning={true} value={[isShown, setIsShown]}>
-                <FlagshipProvider suppressHydrationWarning={true}
+            <AppContext.Provider value={[isShown, setIsShown]}>
+                <FlagshipProvider
                     envId={process.env.NEXT_PUBLIC_FS_ENV}
                     apiKey={process.env.NEXT_PUBLIC_FS_KEY}
                     visitorData={initialVisitorData}
                     initialFlagsData={initialFlagsData || {}}
                     onVisitorExposed={({ exposedVisitor, fromFlag }) => 
-                    console.log('flagship_event', {
-                        distinct_id: exposedVisitor.id,
-                        ...fromFlag.metadata
-                    })}
+                        dataLayer.push({
+                            'event': 'abtasty_flag',
+                            "campaignId": fromFlag.metadata.campaignId,
+                            "campaignType": fromFlag.metadata.campaignType,
+                            "isReference": fromFlag.metadata.isReference,
+                            "key": fromFlag.key,
+                            "slug": fromFlag.metadata.slug,
+                            "val": fromFlag.value,
+                            "variationGroupId": fromFlag.metadata.variationGroupId,
+                            "variationId": fromFlag.metadata.variationId,
+                            "variationGroupName": fromFlag.metadata.variationGroupName,
+                            "variationName": fromFlag.metadata.variationName,
+                            "defaultValue": fromFlag.defaultValue
+                        })
+                    }
                 >
-                    <Head suppressHydrationWarning={true} />
+                    <Head/>
                     <title>{'The ' + flagIndustry.getValue() + ' House'}</title>
-                    <Component suppressHydrationWarning={true} {...pageProps} />
+                    <Component {...pageProps} />
                 </FlagshipProvider>
             </AppContext.Provider>
         </>
