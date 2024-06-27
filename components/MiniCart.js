@@ -66,9 +66,9 @@ export default function MiniCart() {
                         Cart
                     </div>
                     {cartContent ? (
-                        <div className="grid grid-cols-1 gap-3 font-medium" dangerouslySetInnerHTML={{ __html: cartContent }} />
+                        <div className="grid grid-cols-1 gap-3 font-normal" dangerouslySetInnerHTML={{ __html: cartContent }} />
                         ) : (
-                        <p className="grid grid-cols-1 gap-3 font-medium">
+                        <p className="grid grid-cols-1 gap-3 font-normal">
                             The cart is empty
                         </p>
                     )}
