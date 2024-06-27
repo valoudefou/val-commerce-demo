@@ -4,6 +4,15 @@
 
 * {
     font-family: "Montserrat";
+    user-select: none; /* standard syntax */
+    -webkit-user-select: none; /* webkit (safari, chrome) browsers */
+    -moz-user-select: none; /* mozilla browsers */
+    -khtml-user-select: none; /* webkit (konqueror) browsers */
+    -ms-user-select: none; /* IE10+ */
+}
+
+button {
+    border-radius: 0.10rem;
 }
 
 .epoq-rs-headline {
@@ -44,5 +53,3 @@
     50%  { opacity:0; }
     100% { opacity:1; }
 }
-
-
