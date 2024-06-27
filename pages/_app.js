@@ -15,7 +15,7 @@ function MyApp({ Component, pageProps, initialFlagsData, initialVisitorData, OnV
         localStorage.setItem('FS_VISITOR', initialVisitorData.id) // BYOID in localStorage
         document.cookie = 'FS_VISITOR=' + initialVisitorData.id // BYOID in a cookie
         sendData.current = sendData.current + 1
-
+        
         if (sendData.current === 1) {
             initialFlagsData.map(items => dataLayer.push({
                 'event': 'abtasty_flag',
@@ -57,12 +57,10 @@ function MyApp({ Component, pageProps, initialFlagsData, initialVisitorData, OnV
     // Get flag 
     const flagIndustry = useFsFlag("flagIndustry", "Product")
 
-    console.log(OnVisitorExposed) // Log here
-
     return (
         <>
-            <AppContext.Provider suppressHydrationWarning={true} value={[isShown, setIsShown]}>
-                <FlagshipProvider suppressHydrationWarning={true}
+            <AppContext.Provider value={[isShown, setIsShown]}>
+                <FlagshipProvider
                     envId={process.env.NEXT_PUBLIC_FS_ENV}
                     apiKey={process.env.NEXT_PUBLIC_FS_KEY}
                     visitorData={initialVisitorData}
@@ -70,9 +68,9 @@ function MyApp({ Component, pageProps, initialFlagsData, initialVisitorData, OnV
                     onVisitorExposed={({ exposedVisitor, fromFlag }) => 
                     console.log(exposedVisitor.id, fromFlag.metadata)}
                 >
-                    <Head suppressHydrationWarning={true} />
+                    <Head/>
                     <title>{'The ' + flagIndustry.getValue() + ' House'}</title>
-                    <Component suppressHydrationWarning={true} {...pageProps} />
+                    <Component {...pageProps} />
                 </FlagshipProvider>
             </AppContext.Provider>
         </>
