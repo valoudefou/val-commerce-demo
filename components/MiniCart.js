@@ -45,7 +45,7 @@ export default function MiniCart() {
 
     useEffect(() => {
         const storedHtml = localStorage.getItem('currentProduct')
-        const cartContent = '<p className="font-semibold">1 item in your basket</p>'
+        const cartContent = '<p>1 item in your basket</p>'
 
     if (storedHtml) {
         setHtmlContent(cartContent)
@@ -66,9 +66,9 @@ export default function MiniCart() {
                         Cart
                     </div>
                     {cartContent ? (
-                        <div className="grid grid-cols-1 gap-3" dangerouslySetInnerHTML={{ __html: cartContent }} />
+                        <div className="grid grid-cols-1 gap-3 font-medium" dangerouslySetInnerHTML={{ __html: cartContent }} />
                         ) : (
-                        <p className="grid grid-cols-1 gap-3">
+                        <p className="grid grid-cols-1 gap-3 font-medium">
                             The cart is empty
                         </p>
                     )}
