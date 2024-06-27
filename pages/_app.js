@@ -89,8 +89,8 @@ MyApp.getInitialProps = async (appContext) => {
     })
 
     const initialVisitorData = {
-        id: '3c970578-679d-49a6-81b9-cdad6960a63b',
-        // id: uuidv4(),
+        // id: '3c970578-679d-49a6-81b9-cdad6960a63b',
+        id: uuidv4(),
             context: {
             organisation: "whatever",
             device: 'mobile',
@@ -107,6 +107,7 @@ MyApp.getInitialProps = async (appContext) => {
             sku: '92842942398',
             ios: "true",
             regionId: 3,
+            ios: '0987942782'
         },
     }
     // Create a new visitor

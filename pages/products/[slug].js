@@ -11,7 +11,7 @@ export default function Product(props) {
 
     async function pushView() {
         sendData.current = sendData.current + 1
-        
+        console.log(sendData)
         if (sendData.current === 1) {
             window.dataLayer = window.dataLayer || []
 
