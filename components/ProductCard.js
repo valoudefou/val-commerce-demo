@@ -7,7 +7,7 @@ function ProductCard( {product} ) {
     const viewDetailsPlp = useFsFlag("viewDetailsPlp", false)
     const [isLoading, setLoading] = useState(true)
     const { hit: fsHit } = useFlagship()
-
+    const fs = useFlagship()
     function cn(...classes) {
         return classes.filter(Boolean).join(' ')
     }
