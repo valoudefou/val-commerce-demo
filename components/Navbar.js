@@ -85,10 +85,12 @@ export default function Navbar() {
                         </div>
                     )} 
                     <div className="relative mr-auto flex justify-start lg:w-auto lg:static lg:block lg:justify-start">
-                        <a className="text-2xl px-5 font-bold leading-relaxed inline-block py-3 whitespace-nowrap uppercase text-gray-900" href="/">
-                            {flagIndustry.getValue()}
-                            <span className="text-sm font-thin py-1 absolute">®</span>
-                        </a>
+                        <Link href='/'>
+                            <a className="text-2xl px-5 font-bold leading-relaxed inline-block py-3 whitespace-nowrap uppercase text-gray-900">
+                                {flagIndustry.getValue()}
+                                <span className="text-sm font-thin py-1 absolute">®</span>
+                            </a>
+                        </Link>
                     </div> 
                     <div className="mr-auto">
                         <div className="hidden sm:flex relative">
