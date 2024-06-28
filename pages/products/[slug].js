@@ -17,7 +17,7 @@ export default function Product(props) {
 
             window.dataLayer.push({
                 event: 'view_item',
-                info: '',
+                info: 'Last one',
                 ecommerce: {
                     'currency': 'EUR',
                     'value': props.product.price,
