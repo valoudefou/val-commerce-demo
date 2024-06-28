@@ -6,8 +6,9 @@ import { HitType, useFlagship, useFsFlag } from "@flagship.io/react-sdk"
 function ProductCard( {product} ) {
     const viewDetailsPlp = useFsFlag("viewDetailsPlp", false)
     const [isLoading, setLoading] = useState(true)
-    const { hit: fsHit } = useFlagship()
     const fs = useFlagship()
+    const { hit: fsHit } = useFlagship()
+    
     function cn(...classes) {
         return classes.filter(Boolean).join(' ')
     }
