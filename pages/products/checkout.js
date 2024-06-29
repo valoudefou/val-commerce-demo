@@ -225,18 +225,18 @@ return (
                       <input className="border rounded-2xl w-full py-4 px-4 text-grey-darker" id="city" type="city" placeholder="City"/>
                     </div>
                     <div className="flex mb-4">
-                      <div className="flex-col">
-                        <label className="block text-grey-darker text-sm font-normal mb-2 ml-2" htmlFor="city">
-                          City
+                      <div className="w-1/2 mr-1">
+                        <label className="block text-grey-darker text-sm font-normal mb-2 ml-2" htmlFor="country">
+                          Country
                         </label>
-                        <select className="border rounded-2xl w-full py-4 px-4 text-grey-darker">
+                        <select className="border rounded-2xl w-full py-4 px-4 text-grey-darker border-r-8 border-transparent outline outline-neutral-200">
                           <option>United Kingdom</option>
                           <option>Isle of Man</option>
                         </select>
                       </div>
-                      <div className="w-1/2 ml-2">
+                      <div className="w-1/2 ml-1">
                         <label className="block text-grey-darker text-sm font-normal mb-2 ml-2" htmlFor="postcode">
-                          Postcode
+                          Last Name
                         </label>
                         <input className="border rounded-2xl w-full py-4 px-4 text-grey-darker" id="postcode" type="text" placeholder="Postcode"/>
                       </div>
