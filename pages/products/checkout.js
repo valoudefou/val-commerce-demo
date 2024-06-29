@@ -13,7 +13,6 @@ const flagIndustry = useFsFlag("flagIndustry", "Product")
 const flagColorLine = useFsFlag("flagColorLine", "after:border-gray-600")
 const [searchAddress, setSearchAddress] = useState("")
 const API_KEY = process.env.NEXT_PUBLIC_GETADDRESS_KEY
-console.log(API_KEY)
 
 useEffect(() => {
   fetch(`https://api.getaddress.io/autocomplete/${searchAddress}?api-key=${API_KEY}`)
