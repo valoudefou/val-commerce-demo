@@ -1,6 +1,7 @@
 import { useEffect, useState, useRef } from "react"
 import { useFsFlag } from "@flagship.io/react-sdk"
 import Link from "next/link"
+import Product from "./[slug]"
 
 export default function Checkout() {
 const [data, setData] = useState('')
@@ -13,13 +14,16 @@ const flagIndustry = useFsFlag("flagIndustry", "Product")
 const flagColorLine = useFsFlag("flagColorLine", "after:border-gray-600")
 const [searchAddress, setSearchAddress] = useState("")
 const API_KEY = process.env.NEXT_PUBLIC_GETADDRESS_KEY
+const [addresses, setAddresses] = useState([]);
 
 useEffect(() => {
-  fetch(`https://api.getaddress.io/autocomplete/${searchAddress}?api-key=${API_KEY}`)
-  .then((res) => res.json())
-  .then((data) => {
-    console.log(data)
-  })
+  async function getData() {
+    let response
+    response = await fetch(`https://api.getaddress.io/autocomplete/${searchAddress}?api-key=${API_KEY}`)
+    const data = await response.text()
+    setAddresses(JSON.parse(data))
+  }
+  getData();
 }, [searchAddress])
 
 const handleOnChange = (e) => {
@@ -171,8 +175,21 @@ return (
                       </label>
                       <input onChange={(e) => handleOnChange(e)} className="border rounded-2xl w-full py-4 px-4 text-grey-darker" id="address" type="address" placeholder="Start typing your address"/>
                     </div>
+                    <div>
+                      {searchAddress ? (
+                        <ul className="border-x border-t rounded shadow-lg">
+                          {addresses.suggestions.map((item) => (
+                            <li className="py-3 px-5 border-b hover:bg-slate-100" key={item.id}>{item.address}</li> 
+                          ))}
+                        </ul>
+                        ) : (
+                        <p className="hidden">
+                          The search is empty
+                        </p>
+                      )}
+                    </div>
                     <div className="flex">
-                      <button onClick={() => setAddressOn(!addressOn)} className="underline mt-2 font-base">
+                      <button onClick={() => setAddressOn(!addressOn)} className="underline mt-7 font-base">
                         Enter address manually
                       </button>
                     </div>
