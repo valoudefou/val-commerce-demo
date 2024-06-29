@@ -91,11 +91,11 @@ export default function MiniCart() {
                             />
                         )}
                         {cartContent && (
-                            <span onClick={handleClick} className="text-gray-500 pl-5">
-                                <svg onClick={() => [handleRemoveItem()]} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1" stroke="currentColor" className="w-5 h-5 cursor-pointer">
-                                    <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+                            <button onClick={handleClick} class="navbar-close ml-5">
+                                <svg onClick={() => [handleRemoveItem()]} class="h-5 w-5 text-gray-400 cursor-pointer hover:text-gray-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
                                 </svg>
-                            </span>
+                            </button>
                         )}
                     </div>
                     {cartContent && (
