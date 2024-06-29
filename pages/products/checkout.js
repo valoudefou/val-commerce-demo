@@ -236,7 +236,7 @@ return (
                       </div>
                       <div className="w-1/2 ml-1">
                         <label className="block text-grey-darker text-sm font-normal mb-2 ml-2" htmlFor="postcode">
-                          Last Name
+                          Postcode
                         </label>
                         <input className="border rounded-2xl w-full py-4 px-4 text-grey-darker" id="postcode" type="text" placeholder="Postcode"/>
                       </div>
