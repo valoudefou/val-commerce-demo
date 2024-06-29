@@ -11,7 +11,22 @@ const paymentFeature1Click = useFsFlag("paymentFeature1Click", "false")
 const flagBackgroundColor = useFsFlag("flagBackgroundColor", "black")
 const flagIndustry = useFsFlag("flagIndustry", "Product")
 const flagColorLine = useFsFlag("flagColorLine", "after:border-gray-600")
+const [searchAddress, setSearchAddress] = useState("")
+const apiKey = process.env.NEXT_GETADDRESS_KEY
+console.log(apiKey)
 
+useEffect(() => {
+  fetch(`https://api.getaddress.io/autocomplete/${searchAddress}?api-key=${apiKey}`)
+  .then((res) => res.json())
+  .then((data) => {
+    console.log(data)
+  })
+}, [searchAddress])
+
+const handleOnChange = (e) => {
+  e.preventDefault()
+  setSearchAddress(e.target.value)
+}
 
 async function beginCheckout () {
   sendBeginCheckout.current = sendBeginCheckout.current + 1
@@ -114,11 +129,11 @@ return (
                       Email Address
                     </label>
                     <input className="border rounded-2xl w-full py-4 px-4 text-grey-darker" id="email" type="email" placeholder="Email address"/>
-                    <div className="flex mt-5 align-start text-sm leading-5">
-                    <label>
-                      <input className="mr-3" type="checkbox"/>
-                      Keep me up to date with the latest news, special offers and receive a welcome gift of 10% off your next order
-                    </label>
+                    <div className="flex items-center mt-5 text-sm leading-5 align-start">
+                      <input id="checked-checkbox" type="checkbox" value="" className="mr-2 w-5 h-5 border-gray-300 rounded"/>
+                      <label>
+                        Keep me up to date with the latest news, special offers and receive a welcome gift of 10% off your next order
+                      </label>
                     </div>
                   </div>
                 </div>
@@ -155,7 +170,7 @@ return (
                       <label className="block text-grey-darker text-sm font-normal mb-2 ml-2" htmlFor="address">
                         Address
                       </label>
-                      <input className="border rounded-2xl w-full py-4 px-4 text-grey-darker" id="address" type="address" placeholder="Start typing your address"/>
+                      <input onChange={(e) => handleOnChange(e)} className="border rounded-2xl w-full py-4 px-4 text-grey-darker" id="address" type="address" placeholder="Start typing your address"/>
                     </div>
                     <div className="flex">
                       <button onClick={() => setAddressOn(!addressOn)} className="underline mt-2 font-base">
