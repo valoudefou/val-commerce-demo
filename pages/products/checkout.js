@@ -23,7 +23,7 @@ useEffect(() => {
     const data = await response.text()
     setAddresses(JSON.parse(data))
   }
-  getData();
+  getData()
 }, [searchAddress])
 
 const handleOnChange = (e) => {
@@ -178,7 +178,7 @@ return (
                     <div>
                       {searchAddress ? (
                         <ul className="border-x border-t rounded shadow-lg">
-                          {addresses.suggestions.map((item) => (
+                          {addresses.suggestions?.map((item) => (
                             <li className="py-3 px-5 border-b hover:bg-slate-100" key={item.id}>{item.address}</li> 
                           ))}
                         </ul>
