@@ -102,7 +102,7 @@ function SlidingCart() {
             </div>
           )}
           {cartContent && (
-            <div className="flex space-x-3 justify-start mt-3">
+            <div className="flex justify-between mt-3">
               {paymentFeature1Click.getValue() === 'true' &&
                 <Link href='/products/confirmation'>
                   <button className="flex items-center justify-center text-base font-medium bg-black text-white text-bold py-3 px-6 rounded-full hover:bg-neutral-800">
