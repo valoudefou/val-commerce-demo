@@ -52,6 +52,7 @@ useEffect(() => {
     response = await fetch(`https://api.getaddress.io/get/${currentId.current}?api-key=${API_KEY}`)
     const data = await response.text()
     autoFill.current = [JSON.parse(data).line_1, JSON.parse(data).line_2, JSON.parse(data).town_or_city, JSON.parse(data).postcode]
+    autoFill.current = [' 3 Waterhouse Square', '138 Holborn', 'London', 'EC1N 2SW']
     console.log(autoFill.current)
   }
   getData()
@@ -271,19 +272,19 @@ return (
                       <label className="block text-grey-darker text-sm font-normal mb-2 ml-2" htmlFor="address line 1">
                         Address line 1
                       </label>
-                      <input onClick={inputChange} className="border rounded-2xl w-full py-4 px-4 text-grey-darker" value={autoFill.current[0]} id="address line 1" type="address line 1" placeholder="Address line 1"/>
+                      <input onClick={inputChange} className="border rounded-2xl w-full py-4 px-4 text-grey-darker" defaultValue={autoFill.current[0]} id="address line 1" type="address line 1" placeholder="Address line 1"/>
                     </div>
                     <div className="mb-4">
                       <label className="block text-grey-darker text-sm font-normal mb-2 ml-2" htmlFor="address line 2">
                         Address line 2 (optional)
                       </label>
-                      <input onClick={inputChange} className="border rounded-2xl w-full py-4 px-4 text-grey-darker" value={autoFill.current[1]} id="address line 2" type="address line 2" placeholder="Address line 2"/>
+                      <input onClick={inputChange} className="border rounded-2xl w-full py-4 px-4 text-grey-darker" defaultValue={autoFill.current[1]} id="address line 2" type="address line 2" placeholder="Address line 2"/>
                     </div>
                     <div className="mb-4">
                       <label className="block text-grey-darker text-sm font-normal mb-2 ml-2" htmlFor="city">
                         City
                       </label>
-                      <input onClick={inputChange} className="border rounded-2xl w-full py-4 px-4 text-grey-darker" value={autoFill.current[2]} id="city" type="city" placeholder="City"/>
+                      <input onClick={inputChange} className="border rounded-2xl w-full py-4 px-4 text-grey-darker" defaultValue={autoFill.current[2]} id="city" type="city" placeholder="City"/>
                     </div>
                     <div className="flex mb-4">
                       <div className="w-1/2 mr-1">
@@ -299,7 +300,7 @@ return (
                         <label className="block text-grey-darker text-sm font-normal mb-2 ml-2" htmlFor="postcode">
                           Postcode
                         </label>
-                        <input onClick={inputChange} className="border rounded-2xl w-full py-4 px-4 text-grey-darker" value={autoFill.current[4]} id="postcode" type="text" placeholder="Postcode"/>
+                        <input onClick={inputChange} className="border rounded-2xl w-full py-4 px-4 text-grey-darker" defaultValue={autoFill.current[3]} id="postcode" type="text" placeholder="Postcode"/>
                       </div>
                     </div>
                     <div className="mb-4">
