@@ -1,20 +1,23 @@
 import { useEffect, useState, useRef } from "react"
 import { useFsFlag } from "@flagship.io/react-sdk"
 import Link from "next/link"
-import Product from "./[slug]"
 
 export default function Checkout() {
-const [data, setData] = useState('')
-const [addressOn, setAddressOn] = useState(false)
-const sendBeginCheckout = useRef(0) // Prevent beginCheckout() from being called multiple times
 // Get flag 
 const paymentFeature1Click = useFsFlag("paymentFeature1Click", "false")
 const flagBackgroundColor = useFsFlag("flagBackgroundColor", "black")
 const flagIndustry = useFsFlag("flagIndustry", "Product")
 const flagColorLine = useFsFlag("flagColorLine", "after:border-gray-600")
+
+const [data, setData] = useState('') // LocalStorage product added to cart
+const [addressOn, setAddressOn] = useState(false) // Display full address block when needed
+const sendBeginCheckout = useRef(0) // Prevent beginCheckout() from being called multiple times
 const [searchAddress, setSearchAddress] = useState("")
 const API_KEY = process.env.NEXT_PUBLIC_GETADDRESS_KEY
-const [addresses, setAddresses] = useState([]);
+const [addresses, setAddresses] = useState([]) // State data autocomplete service for address typed
+const autoFill = useRef([]) // State address details to value inputs
+const [selectedAddress, setSelectedAddress] = useState(false) // State when address is selected from automplete
+const currentId = useRef() 
 
 useEffect(() => {
   async function getData() {
@@ -30,6 +33,32 @@ const handleOnChange = (e) => {
   e.preventDefault()
   setSearchAddress(e.target.value)
 }
+
+const inputChange = (e) => {
+  e.preventDefault()
+  console.log(e)
+}
+
+const handleClick = (e) => {
+  currentId.current = e.target.attributes[0].nodeValue
+  // console.log(currentId.current)
+  // console.log(autoFill.current)
+  setSelectedAddress(true)
+  // console.log(selectedAddress)
+}
+
+useEffect(() => {
+  async function getData() {
+    let response
+    response = await fetch(`https://api.getaddress.io/get/${currentId.current}?api-key=${API_KEY}`)
+    const data = await response.text()
+    autoFill.current = [JSON.parse(data).line_1, JSON.parse(data).line_2, JSON.parse(data).town_or_city, JSON.parse(data).postcode]
+    console.log(autoFill.current)
+  }
+  getData()
+  // console.log(currentId.current)
+  setAddressOn(!addressOn)
+}, [selectedAddress])
 
 async function beginCheckout () {
   sendBeginCheckout.current = sendBeginCheckout.current + 1
@@ -142,7 +171,7 @@ return (
                 </div>
               </div>
             </div>
-            {!addressOn && (  
+            {addressOn && (  
               <div className="flex flex-col justify-start items-start w-full mt-8">
                 <div className="w-full">
                   <div className="text-xl md:text-1xl dark:text-white font-semibold leading-6 xl:leading-5 text-gray-800">
@@ -176,16 +205,12 @@ return (
                       <input onChange={(e) => handleOnChange(e)} className="border rounded-2xl w-full py-4 px-4 text-grey-darker" id="address" type="address" placeholder="Start typing your address"/>
                     </div>
                     <div>
-                      {searchAddress ? (
+                      {searchAddress && (
                         <ul className="border-x border-t rounded shadow-lg">
                           {addresses.suggestions?.map((item) => (
-                            <li className="py-3 px-5 border-b hover:bg-slate-100" key={item.id}>{item.address}</li> 
+                            <li onClick={handleClick} data={item.id} key={item.id} className="cursor-pointer py-3 px-5 border-b hover:bg-slate-100">{item.address}</li>
                           ))}
                         </ul>
-                        ) : (
-                        <p className="hidden">
-                          The search is empty
-                        </p>
                       )}
                     </div>
                     <div className="flex">
@@ -216,7 +241,7 @@ return (
                 </div>
               </div>
             )}
-            {addressOn && ( 
+            {!addressOn && ( 
               <div className="flex flex-col justify-start items-start w-full mt-8">
                 <div className="w-full">
                   <div className="text-xl md:text-1xl dark:text-white font-semibold leading-6 xl:leading-5 text-gray-800">
@@ -247,16 +272,19 @@ return (
                       <label className="block text-grey-darker text-sm font-normal mb-2 ml-2" htmlFor="address line 1">
                         Address line 1
                       </label>
-                      <input className="border rounded-2xl w-full py-4 px-4 text-grey-darker" id="address line 1" type="address line 1" placeholder="Address line 1"/>
+                      <input onClick={inputChange} className="border rounded-2xl w-full py-4 px-4 text-grey-darker" value={autoFill.current[0]} id="address line 1" type="address line 1" placeholder="Address line 1"/>
                     </div>
                     <div className="mb-4">
                       <label className="block text-grey-darker text-sm font-normal mb-2 ml-2" htmlFor="address line 2">
                         Address line 2 (optional)
                       </label>
-                      <input className="border rounded-2xl w-full py-4 px-4 text-grey-darker" id="address line 2" type="address line 2" placeholder="Address line 2"/>
+                      <input onClick={inputChange} className="border rounded-2xl w-full py-4 px-4 text-grey-darker" value={autoFill.current[1]} id="address line 2" type="address line 2" placeholder="Address line 2"/>
                     </div>
                     <div className="mb-4">
-                      <input className="border rounded-2xl w-full py-4 px-4 text-grey-darker" id="city" type="city" placeholder="City"/>
+                      <label className="block text-grey-darker text-sm font-normal mb-2 ml-2" htmlFor="city">
+                        City
+                      </label>
+                      <input onClick={inputChange} className="border rounded-2xl w-full py-4 px-4 text-grey-darker" value={autoFill.current[2]} id="city" type="city" placeholder="City"/>
                     </div>
                     <div className="flex mb-4">
                       <div className="w-1/2 mr-1">
@@ -272,7 +300,7 @@ return (
                         <label className="block text-grey-darker text-sm font-normal mb-2 ml-2" htmlFor="postcode">
                           Postcode
                         </label>
-                        <input className="border rounded-2xl w-full py-4 px-4 text-grey-darker" id="postcode" type="text" placeholder="Postcode"/>
+                        <input onClick={inputChange} className="border rounded-2xl w-full py-4 px-4 text-grey-darker" value={autoFill.current[4]} id="postcode" type="text" placeholder="Postcode"/>
                       </div>
                     </div>
                     <div className="mb-4">
