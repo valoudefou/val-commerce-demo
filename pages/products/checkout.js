@@ -5,7 +5,6 @@ import Link from "next/link"
 export default function Checkout() {
 // Get flag 
 const paymentFeature1Click = useFsFlag("paymentFeature1Click", "false")
-const flagBackgroundColor = useFsFlag("flagBackgroundColor", "black")
 const flagIndustry = useFsFlag("flagIndustry", "Product")
 const flagColorLine = useFsFlag("flagColorLine", "after:border-slate-950")
 
@@ -124,14 +123,14 @@ return (
       <div className="mt-8 px-3">
         <ol className="flex items-center w-full">
           <li className={"flex w-full items-center text-blue-600 dark:text-blue-500 after:content-[''] after:w-full after:h-1 after:border-b " + flagColorLine.getValue() + " after:border-4 after:inline-block dark:after:border-blue-800"}>
-            <span style={{backgroundColor: flagBackgroundColor.getValue()}} className="flex items-center justify-center w-10 h-10 bg-blue-600 rounded-full lg:h-12 lg:w-12 dark:bg-blue-800 shrink-0">
+            <span className="flex items-center justify-center w-10 h-10 bg-blue-600 rounded-full lg:h-12 lg:w-12 dark:bg-blue-800 shrink-0">
               <svg className="w-3.5 h-3.5 text-white lg:w-4 lg:h-4 dark:text-blue-300" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 12">
                 <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M1 5.917 5.724 10.5 15 1.5"/>
               </svg>
             </span>
           </li>
           <li className="flex w-full items-center after:content-[''] after:w-full after:h-1 after:border-b after:border-gray-100 after:border-4 after:inline-block dark:after:border-gray-700">
-            <span style={{backgroundColor: flagBackgroundColor.getValue()}} className="text-white text-sm font-semibold flex items-center justify-center w-10 h-10 bg-blue-600 rounded-full lg:h-12 lg:w-12 dark:bg-blue-800 shrink-0">
+            <span className="text-white text-sm font-semibold flex items-center justify-center w-10 h-10 bg-blue-600 rounded-full lg:h-12 lg:w-12 dark:bg-blue-800 shrink-0">
               2
             </span>
           </li>
