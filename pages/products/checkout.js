@@ -7,7 +7,7 @@ export default function Checkout() {
 const paymentFeature1Click = useFsFlag("paymentFeature1Click", "false")
 const flagBackgroundColor = useFsFlag("flagBackgroundColor", "black")
 const flagIndustry = useFsFlag("flagIndustry", "Product")
-const flagColorLine = useFsFlag("flagColorLine", "after:border-gray-600")
+const flagColorLine = useFsFlag("flagColorLine", "after:border-slate-950")
 
 const [data, setData] = useState('') // LocalStorage product added to cart
 const [addressOn, setAddressOn] = useState(false) // Display full address block when needed
