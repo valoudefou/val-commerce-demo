@@ -422,7 +422,7 @@ return (
                           <label className="block text-grey-darker text-sm font-normal mb-2 ml-2" htmlFor="country">
                             Country
                           </label>
-                          <select className="rounded-2xl w-full py-4 px-4 text-grey-darker border-r-8 border-transparent outline-none">
+                          <select className="w-full py-4 px-4 text-grey-darker border-r-8 border-transparent outline-slate-100">
                             <option value=">United Kingdom">United Kingdom</option>
                             <option value=">Isle of Man">Isle of Man</option>
                           </select>
