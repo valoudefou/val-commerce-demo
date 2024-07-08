@@ -670,17 +670,17 @@ return (
                           </svg>
                         </div>
                       </label>
-                      <form className="w-full my-6">
-                        <input type="text" className="border-slate-400 border text-slate-500 rounded-2xl w-full py-4 px-4 text-grey-darker" placeholder="1111 1111 1111 1110" value={cardNumber[0]} />
+                      <div className="w-full my-6">
+                        <input onChange={generateCard} type="text" className="border-slate-400 border text-slate-500 rounded-2xl w-full py-4 px-4 text-grey-darker" placeholder="1111 1111 1111 1110" value={cardNumber[0]} />
                         <div className="flex gap-x-2 my-4">
                           <div className="flex-1">
-                            <input type="text" className="border-slate-400 border text-slate-500 rounded-2xl w-full py-4 px-4 text-grey-darker" placeholder="01/26" value={cardNumber[2]} />
+                            <input onChange={generateCard} type="text" className="border-slate-400 border text-slate-500 rounded-2xl w-full py-4 px-4 text-grey-darker" placeholder="01/26" value={cardNumber[2]} />
                           </div>
                           <div className="flex-1">
-                            <input type="text" className="border-slate-400 border text-slate-500 rounded-2xl w-full py-4 px-4 text-grey-darker" placeholder="123" value={cardNumber[1]} />
+                            <input onChange={generateCard} type="text" className="border-slate-400 border text-slate-500 rounded-2xl w-full py-4 px-4 text-grey-darker" placeholder="123" value={cardNumber[1]} />
                           </div>
                         </div>
-                        <input type="text" className="border-slate-400 border text-slate-500 rounded-2xl w-full py-4 px-4 text-grey-darker" placeholder="MIKE BEE" value={first_name + ' ' + last_name} />
+                        <input onChange={generateCard} type="text" className="border-slate-400 border text-slate-500 rounded-2xl w-full py-4 px-4 text-grey-darker" placeholder="MIKE BEE" value={first_name + ' ' + last_name} />
                         <div className="flex mt-7 justify-between">
                           <div>
                             <h3 className="text-lg dark:text-white font-semibold leading-5 text-gray-800">Billing address</h3>
@@ -703,7 +703,7 @@ return (
                           Use a different billing address
                         </label>
                       </div>
-                      </form>
+                      </div>
                     </div>
                     <div className="flex flex-col items-center w-full justify-center">
                     <p className="mb-8 text-center leading-6">
