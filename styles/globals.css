@@ -15,7 +15,7 @@ button {
     border-radius: 0.10rem;
 }
 
-select{
+select {
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
@@ -24,6 +24,11 @@ select{
     border-radius: 1rem !important;
     border: 1px solid #e5e7eb !important;
 }
+
+/* 
+input:focus {
+    outline: #e2e8f0 solid 2px;
+  } */
 
 .epoq-rs-headline {
     text-align: center;

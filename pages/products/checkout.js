@@ -28,6 +28,7 @@ const [address_2, setAddress2] = useState("")
 const [city, setCity] = useState("")
 const [postcode, setPostCode] = useState("")
 const [phone, setPhone] = useState("")
+const [country, setCountry] = useState('United Kingdom')
 
 // const [inputs, setInputs] = useState(initialValues)
 // const handleChange = useCallback(
@@ -36,7 +37,7 @@ const [phone, setPhone] = useState("")
 
 useEffect(() => {
   const errorList = []
-console.log(email)
+
   if (!email) {
     errorList.push("email")
   }
@@ -48,6 +49,9 @@ console.log(email)
   }
   if (!address_1) {
     errorList.push("address_1")
+  }
+  if (!country) {
+    errorList.push("country")
   }
   if (!city) {
     errorList.push("city")
@@ -78,7 +82,9 @@ useEffect(() => {
       let response
       response = await fetch(`https://api.getaddress.io/autocomplete/${autoCompleteDropdown}?api-key=${API_KEY}`)
       const data = await response.text()
-      setDropdownAddresses(JSON.parse(data))
+      if (document.activeElement.value.length > 1) {
+        setDropdownAddresses(JSON.parse(data))
+      }
     }
     getData()
   }
@@ -222,7 +228,7 @@ return (
                       <input 
                         name="email" 
                         value={email} 
-                        autocomplete="on"
+                        autoComplete="email"
                         onChange={(e) => setEmail(e.target.value)} 
                         className={error.includes("email") && fullAddressComponent ? "border-red-400 border-2 rounded-2xl w-full py-4 px-4 text-grey-darker focus:outline-none" : "border rounded-2xl w-full py-4 px-4 text-grey-darker"} 
                         id="email" type="email" 
@@ -291,15 +297,15 @@ return (
                           placeholder="Start typing your address"
                         />
                       </div>
-                      <div>
-                        {autoCompleteDropdown && (
+                      {autoCompleteDropdown && (
+                        <div>
                           <ul className="border-x border-t rounded shadow-lg">
                             {dropDownAddresses.suggestions?.map((item) => (
                               <li onClick={handleClick} data={item.id} key={item.id} className="cursor-pointer py-3 px-5 border-b hover:bg-slate-100">{item.address}</li>
                             ))}
                           </ul>
-                        )}
-                      </div>
+                        </div>
+                      )}
                       <div className="flex">
                         <button onClick={() => [autoCompleteDropdownManually()]} className="underline mt-7 font-base">
                           Enter address manually
@@ -422,7 +428,10 @@ return (
                           <label className="block text-grey-darker text-sm font-normal mb-2 ml-2" htmlFor="country">
                             Country
                           </label>
-                          <select className="w-full py-4 px-4 text-grey-darker border-r-8 border-transparent outline-slate-100">
+                          <select 
+                            value={country}
+                            onChange={e => setCountry(e.target.value)}
+                            className="flex w-full py-4 px-4 text-grey-darker border-r-8 border-transparent outline-slate-100">
                             <option value=">United Kingdom">United Kingdom</option>
                             <option value=">Isle of Man">Isle of Man</option>
                           </select>
@@ -501,7 +510,7 @@ return (
                             <span className="text-base dark:text-white leading-4 text-gray-800">{email}</span>
                           </p>
                         </div>
-                        <p className="text-base leading-6 dark:text-white text-gray-800">
+                        <p onClick={handleSubmit} className="cursor-pointer text-base leading-6 dark:text-white text-gray-800">
                           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" height="24" width="24" fill="#111111"><path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"></path></svg>
                         </p>
                       </div>
@@ -511,10 +520,10 @@ return (
                             <span className="text-xl md:text-1xl dark:text-white font-semibold leading-6 xl:leading-5 text-gray-800">Deliver to</span>
                           </p>
                           <p className="text-sm dark:text-white leading-6 text-gray-700 mt-2">
-                            <span className="text-base dark:text-white leading-4 text-gray-800">{first_name + ' ' + last_name + ', ' + address_1 + ', ' + city + ', ' + postcode}</span>
+                            <span className="text-base dark:text-white leading-4 text-gray-800">{first_name + ' ' + last_name + ', ' + address_1 + ', ' + city + ', ' + country + ', ' + postcode}</span>
                           </p>
                         </div>
-                        <p className="text-base leading-6 dark:text-white text-gray-800">
+                        <p onClick={handleSubmit} className="cursor-pointer text-base leading-6 dark:text-white text-gray-800">
                           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" height="24" width="24" fill="#111111"><path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"></path></svg>
                         </p>
                       </div>
@@ -524,7 +533,7 @@ return (
                 <div className="flex justify-center md:flex-row border rounded-2xl flex-col items-stretch w-full space-y-4 md:space-y-0 md:space-x-6 xl:space-x-8">
                   <div className="flex flex-col justify-start px-5 py-7 w-full dark:bg-gray-800 space-y-6">
                     <h3 className="text-lg dark:text-white font-semibold leading-5 text-gray-800">Delivery options</h3>
-                    <div className="bg-amber-50 py-8 sm:px-8 px-4 border-amber-200 border-2 rounded-2xl">
+                    <div className="bg-[#fffdf7] py-5 sm:px-8 px-4 border-amber-200 border-2 rounded-2xl">
                       <div className="flex items-center">
                         <input checked type="radio" value="" name="delivery" className="sm:mr-8 mr-4 align-center w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"/>
                         <div className="flex justify-center items-center space-x-4">
@@ -532,7 +541,7 @@ return (
                             <img className="w-full h-full" alt="logo" src="https://i.ibb.co/L8KSdNQ/image-3.png" />
                           </div>
                           <div className="flex flex-col justify-start items-center">
-                            <p className="text-sm leading-6 dark:text-white font-semibold text-gray-800">DPD Delivery<br />
+                            <p className="leading-6 dark:text-white font-semibold text-gray-800">DPD Delivery<br />
                               <span className="text-sm font-normal">within 24 Hours</span>
                             </p>
                           </div>
@@ -547,12 +556,12 @@ return (
                 <div className="flex justify-center md:flex-row border rounded-2xl flex-col items-stretch w-full space-y-4 md:space-y-0 md:space-x-6 xl:space-x-8">
                   <div className="flex flex-col justify-start px-5 py-7 w-full dark:bg-gray-800 space-y-6">
                     <h3 className="text-lg dark:text-white font-semibold leading-5 text-gray-800">Select payment method</h3>
-                    <div className="bg-amber-50 p-8 sm:px-8 px-4 border-amber-200 border-2 rounded-2xl">
+                    <div className="bg-[#fffdf7] py-5 sm:px-8 px-4 border-amber-200 border-2 rounded-2xl">
                       <div className="flex items-center">
                         <input checked type="radio" value="" name="payment" className="sm:mr-8 mr-4 align-center w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"/>
                         <div className="flex justify-center items-center space-x-4">
                           <div className="flex flex-col justify-start items-center">
-                            <p className="text-sm leading-6 dark:text-white font-semibold text-gray-800">Credit or debit card<br /></p>
+                            <p className="leading-6 dark:text-white font-semibold text-gray-800">Credit or debit card<br /></p>
                           </div>
                         </div>
                         <div className="flex ml-auto">
@@ -580,10 +589,25 @@ return (
                           </div>
                         </div>
                         <input type="text" class="border-slate-400 border rounded-2xl w-full py-4 px-4 text-grey-darker" placeholder="MR MIKE BEE" />
+                        <h3 class="text-lg dark:text-white font-semibold leading-5 text-gray-800 mt-7">Billing address</h3>
+                        <ul className="my-3">
+                          <li>{first_name + ' ' + last_name}</li>
+                          <li>{address_1}</li>
+                          <li>{address_2}</li>
+                          <li>{city}</li>
+                          <li>{country}</li>
+                          <li>{postcode}</li>
+                        </ul>
+                        <div className="flex items-center mt-6 text-sm leading-5 align-start">
+                        <input type="checkbox" value="" className="mb-auto mr-2 w-5 h-5 border-gray-300 rounded"/>
+                        <label>
+                          Use a different billing address
+                        </label>
+                      </div>
                       </form>
                     </div>
                     <div className="flex flex-col items-center w-full justify-center">
-                    <p className="mb-8 text-center leading-6 text-sm">
+                    <p className="mb-8 text-center leading-6">
                       By submitting this order you are accepting our <br/>
                       <a className="cursor-pointer underline text-amber-500" rel="noopener noreferrer" target="_blank">
                         Terms and Conditions
@@ -591,6 +615,9 @@ return (
                     </p>
                       <Link href='/products/confirmation'>
                         <button className="w-full flex font-medium bg-black text-white py-4 px-16 rounded-full hover:bg-neutral-800">
+                          <svg xmlns="http://www.w3.org/2000/svg" class="mx-2" width="20" height="20" viewBox="0 0 24 24" fill="#ffffff">
+                            <path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"></path>
+                          </svg>
                           Pay Now
                         </button>
                       </Link>
