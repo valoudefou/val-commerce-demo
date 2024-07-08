@@ -583,7 +583,7 @@ return (
                       </form>
                     </div>
                     <div className="flex flex-col items-center w-full justify-center">
-                    <p className="mb-8 text-center leading-6 text-sm">
+                    <p className="mb-8 text-center leading-6 text-base">
                       By submitting this order you are accepting our <br/>
                       <a className="cursor-pointer underline text-amber-500" rel="noopener noreferrer" target="_blank">
                         Terms and Conditions
