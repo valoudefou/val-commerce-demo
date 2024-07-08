@@ -18,7 +18,7 @@ const { hit: fsHit } = useFlagship()
       <Navbar/>
       <div className="absolute inset-x-0 bottom-0 h-1/2" />
         <div className="mx-auto">
-          <div className="relative shadow-xl sm:overflow-hidden">
+          <div className="relative sm:overflow-hidden">
             <div className="absolute inset-0">
               <Image
                 priority

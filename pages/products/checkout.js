@@ -29,6 +29,7 @@ const [city, setCity] = useState("")
 const [postcode, setPostCode] = useState("")
 const [phone, setPhone] = useState("")
 const [country, setCountry] = useState('United Kingdom')
+const [delivery, setDelivery] = useState("")
 
 // const [inputs, setInputs] = useState(initialValues)
 // const handleChange = useCallback(
@@ -109,6 +110,26 @@ const handleOnChange = (e) => {
 const handleClick = (e) => {
   addressId.current = e.target.attributes[0].nodeValue
   autoPopulateAddress()
+}
+
+const addShipping = (e) => {
+  setDelivery(e.target.id)
+
+  window.dataLayer.push({
+    event: 'add_shipping_info',
+    shipping_tier: e.target.id,
+    ecommerce: {
+      'currency': 'EUR',
+      'value': data.productPrice,
+      item: [{
+        'item_id': data.productId,
+        'item_name': data.productTitle,
+        'item_category': data.productCategory,
+        'price': data.productPrice,
+        'quantity': data.productQuantity
+      }]
+    }
+  })
 }
 
 async function beginCheckout () {
@@ -563,9 +584,9 @@ return (
                 <div className="flex justify-center md:flex-row border rounded-2xl flex-col items-stretch w-full space-y-4 md:space-y-0 md:space-x-6 xl:space-x-8">
                   <div className="flex flex-col justify-start px-5 py-7 w-full dark:bg-gray-800 space-y-6">
                     <h3 className="text-lg dark:text-white font-semibold leading-5 text-gray-800">Delivery options</h3>
-                    <div className="bg-[#fffdf7] py-6 sm:px-8 px-4 border-amber-400 border rounded-2xl">
+                    <label htmlFor="dpd" className="bg-[#fffdf7] cursor-pointer py-6 sm:px-8 px-4 border-amber-400 border-2 rounded-2xl">
                       <div className="flex items-center">
-                        <input checked type="radio" value="" name="delivery" className="sm:mr-8 mr-4 align-center w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"/>
+                        <input onChange={(e) => addShipping(e)} name="delivery" type="radio" value="" id="dpd" className="sm:mr-8 mr-4 align-center w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 dark:ring-offset-gray-800 dark:bg-gray-700 dark:border-gray-600"/>
                         <div className="flex justify-center items-center space-x-4">
                           <div className="w-8 h-8">
                             <img className="w-full h-full" alt="logo" src="/dpd.png" />
@@ -580,17 +601,17 @@ return (
                           <p className="text-base font-semibold leading-6 dark:text-white text-gray-800">8.01 €</p>
                         </div>
                       </div>
-                    </div>
-                    <div className="bg-[#fffdf7] py-6 sm:px-8 px-4 border-amber-400 border rounded-2xl">
+                    </label>
+                    <label htmlFor="evri" className="bg-[#fffdf7] cursor-pointer py-6 sm:px-8 px-4 border-amber-400 border-2 rounded-2xl">
                       <div className="flex items-center">
-                        <input type="radio" value="" name="delivery" className="sm:mr-8 mr-4 align-center w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"/>
+                        <input onChange={(e) => addShipping(e)} name="delivery" type="radio" value="" id="evri" className="sm:mr-8 mr-4 align-center w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 dark:ring-offset-gray-800 dark:bg-gray-700 dark:border-gray-600"/>
                         <div className="flex justify-center items-center space-x-4">
                           <div className="w-8 h-8">
                             <img className="w-full h-full" alt="logo" src="/evri.png" />
                           </div>
                           <div className="flex flex-col justify-start items-center">
                             <p className="leading-6 dark:text-white font-semibold text-gray-800">Evri<br />
-                              <span className="text-sm font-normal">within 2 Days</span>
+                              <span className="text-sm font-normal">within 3 Days</span>
                             </p>
                           </div>
                         </div>
@@ -598,15 +619,15 @@ return (
                           <p className="text-base font-semibold leading-6 dark:text-white text-gray-800">4.01 €</p>
                         </div>
                       </div>
-                    </div>
+                    </label>
                   </div>
                 </div>
                 <div className="flex justify-center md:flex-row border rounded-2xl flex-col items-stretch w-full space-y-4 md:space-y-0 md:space-x-6 xl:space-x-8">
                   <div className="flex flex-col justify-start px-5 py-7 w-full dark:bg-gray-800 space-y-6">
                     <h3 className="text-lg dark:text-white font-semibold leading-5 text-gray-800">Select payment method</h3>
-                    <div className="bg-[#fffdf7] py-6 sm:px-8 px-4 border-amber-400 border rounded-2xl">
-                      <div className="flex items-center">
-                        <input checked type="radio" value="" name="payment" className="sm:mr-8 mr-4 align-center w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"/>
+                    <div className="bg-[#fffdf7] py-6 sm:px-8 px-4 border-amber-400 border-2 rounded-2xl">
+                      <label for='card' className="flex items-center">
+                        <input onChange={(e) => addShipping(e)} checked type="radio" value="" name="payment" id="card" className="sm:mr-8 mr-4 align-center w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 dark:ring-offset-gray-800 dark:bg-gray-700 dark:border-gray-600"/>
                         <div className="flex justify-center items-center space-x-4">
                           <div className="flex flex-col justify-start items-center">
                             <p className="leading-6 dark:text-white font-semibold text-gray-800">Credit or debit card<br /></p>
@@ -625,19 +646,19 @@ return (
                             <path d="M28.3 10.1H28c-.4 1-.7 1.5-1 3h1.9c-.3-1.5-.3-2.2-.6-3zm2.9 5.9h-1.7c-.1 0-.1 0-.2-.1l-.2-.9-.1-.2h-2.4c-.1 0-.2 0-.2.2l-.3.9c0 .1-.1.1-.1.1h-2.1l.2-.5L27 8.7c0-.5.3-.7.8-.7h1.5c.1 0 .2 0 .2.2l1.4 6.5c.1.4.2.7.2 1.1.1.1.1.1.1.2zm-13.4-.3l.4-1.8c.1 0 .2.1.2.1.7.3 1.4.5 2.1.4.2 0 .5-.1.7-.2.5-.2.5-.7.1-1.1-.2-.2-.5-.3-.8-.5-.4-.2-.8-.4-1.1-.7-1.2-1-.8-2.4-.1-3.1.6-.4.9-.8 1.7-.8 1.2 0 2.5 0 3.1.2h.1c-.1.6-.2 1.1-.4 1.7-.5-.2-1-.4-1.5-.4-.3 0-.6 0-.9.1-.2 0-.3.1-.4.2-.2.2-.2.5 0 .7l.5.4c.4.2.8.4 1.1.6.5.3 1 .8 1.1 1.4.2.9-.1 1.7-.9 2.3-.5.4-.7.6-1.4.6-1.4 0-2.5.1-3.4-.2-.1.2-.1.2-.2.1zm-3.5.3c.1-.7.1-.7.2-1 .5-2.2 1-4.5 1.4-6.7.1-.2.1-.3.3-.3H18c-.2 1.2-.4 2.1-.7 3.2-.3 1.5-.6 3-1 4.5 0 .2-.1.2-.3.2M5 8.2c0-.1.2-.2.3-.2h3.4c.5 0 .9.3 1 .8l.9 4.4c0 .1 0 .1.1.2 0-.1.1-.1.1-.1l2.1-5.1c-.1-.1 0-.2.1-.2h2.1c0 .1 0 .1-.1.2l-3.1 7.3c-.1.2-.1.3-.2.4-.1.1-.3 0-.5 0H9.7c-.1 0-.2 0-.2-.2L7.9 9.5c-.2-.2-.5-.5-.9-.6-.6-.3-1.7-.5-1.9-.5L5 8.2z" fill="#142688"></path>
                           </svg>
                         </div>
-                      </div>
-                      <form class="w-full my-6">
-                        <input type="text" class="border-slate-400 border rounded-2xl w-full py-4 px-4 text-grey-darker" placeholder="1111 1111 1111 1110" />
-                        <div class="flex gap-x-2 my-4">
-                          <div class="flex-1">
-                            <input type="text" class="border-slate-400 border rounded-2xl w-full py-4 px-4 text-grey-darker" placeholder="01/26" />
+                      </label>
+                      <form className="w-full my-6">
+                        <input type="text" className="border-slate-400 border rounded-2xl w-full py-4 px-4 text-grey-darker" placeholder="1111 1111 1111 1110" />
+                        <div className="flex gap-x-2 my-4">
+                          <div className="flex-1">
+                            <input type="text" className="border-slate-400 border rounded-2xl w-full py-4 px-4 text-grey-darker" placeholder="01/26" />
                           </div>
-                          <div class="flex-1">
-                            <input type="text" class="border-slate-400 border rounded-2xl w-full py-4 px-4 text-grey-darker" placeholder="123" />
+                          <div className="flex-1">
+                            <input type="text" className="border-slate-400 border rounded-2xl w-full py-4 px-4 text-grey-darker" placeholder="123" />
                           </div>
                         </div>
-                        <input type="text" class="border-slate-400 border rounded-2xl w-full py-4 px-4 text-grey-darker" placeholder="MR MIKE BEE" />
-                        <h3 class="text-lg dark:text-white font-semibold leading-5 text-gray-800 mt-7">Billing address</h3>
+                        <input type="text" className="border-slate-400 border rounded-2xl w-full py-4 px-4 text-grey-darker" placeholder="MR MIKE BEE" />
+                        <h3 className="text-lg dark:text-white font-semibold leading-5 text-gray-800 mt-7">Billing address</h3>
                         <ul className="my-3">
                           <li>{first_name + ' ' + last_name}</li>
                           <li>{address_1}</li>
@@ -663,7 +684,7 @@ return (
                     </p>
                       <Link href='/products/confirmation'>
                         <button className="w-full flex font-medium bg-black text-white py-4 px-16 rounded-full hover:bg-neutral-800">
-                          <svg xmlns="http://www.w3.org/2000/svg" class="mx-2" width="20" height="20" viewBox="0 0 24 24" fill="#ffffff">
+                          <svg xmlns="http://www.w3.org/2000/svg" className="mx-2" width="20" height="20" viewBox="0 0 24 24" fill="#ffffff">
                             <path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"></path>
                           </svg>
                           Pay Now
