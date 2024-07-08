@@ -36,7 +36,7 @@ const [phone, setPhone] = useState("")
 
 useEffect(() => {
   const errorList = []
-console.log(email)
+
   if (!email) {
     errorList.push("email")
   }
@@ -421,9 +421,9 @@ return (
                         <div className="w-1/2 mr-1">
                           <label className="block text-grey-darker text-sm font-normal mb-2 ml-2" htmlFor="country">
                             Country
-                            <select className="border rounded-2xl w-full py-4 px-4 text-grey-darker border-r-8 border-transparent outline outline-neutral-200">
-                              <option value=">United Kingdom">United Kingdom</option>
-                              <option value=">Isle of Man">Isle of Man</option>
+                            <select className="border rounded-2xl w-full py-4 px-4 text-grey-darker border-r-8 border-transparent outline outline-none">
+                              <option className="border rounded-2xl w-full py-4 px-4 text-grey-darker border-r-8 border-transparent outline outline-none" value=">United Kingdom">United Kingdom</option>
+                              <option className="border rounded-2xl w-full py-4 px-4 text-grey-darker border-r-8 border-transparent outline outline-none" value=">Isle of Man">Isle of Man</option>
                             </select>
                           </label>
                         </div>
