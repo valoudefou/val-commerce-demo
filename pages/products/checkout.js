@@ -82,9 +82,7 @@ useEffect(() => {
       let response
       response = await fetch(`https://api.getaddress.io/autocomplete/${autoCompleteDropdown}?api-key=${API_KEY}`)
       const data = await response.text()
-      if (document.activeElement.value.length > 1) {
-        setDropdownAddresses(JSON.parse(data))
-      }
+      setDropdownAddresses(JSON.parse(data))
     }
     getData()
   }
@@ -536,7 +534,7 @@ return (
                             <img className="w-full h-full" alt="logo" src="https://i.ibb.co/L8KSdNQ/image-3.png" />
                           </div>
                           <div className="flex flex-col justify-start items-center">
-                            <p className="leading-6 dark:text-white font-semibold text-gray-800">DPD Delivery<br />
+                            <p className="leading-6 dark:text-white font-semibold text-gray-800">DPD<br />
                               <span className="text-sm font-normal">within 24 Hours</span>
                             </p>
                           </div>
