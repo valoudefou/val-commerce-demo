@@ -1,11 +1,12 @@
 import { useEffect, useState, useRef } from "react"
-import { HitType, useFlagship } from "@flagship.io/react-sdk"
+import { HitType, useFlagship, useFsFlag } from "@flagship.io/react-sdk"
 
 export default function Confirmation() {
   const [data, setData] = useState('')
   const sendItemView = useRef(0) // Prevent pushTransaction() from being called multiple times
   const fs = useFlagship()
   const { hit: fsHit } = useFlagship()
+  const flagColorLine = useFsFlag("flagColorLine", "after:border-[#5bb543]")
 
   async function pushTransaction() {
     sendItemView.current = sendItemView.current + 1
@@ -128,7 +129,7 @@ export default function Confirmation() {
                 <div className="flex justify-between items-start w-full">
                   <div className="flex justify-center items-center space-x-4">
                     <div className="w-8 h-8">
-                      <img className="w-full h-full" alt="logo" src="https://i.ibb.co/L8KSdNQ/image-3.png" />
+                      <img className="w-full h-full" alt="logo" src="/dpd.png" />
                     </div>
                     <div className="flex flex-col justify-start items-center">
                       <p className="text-sm leading-6 dark:text-white font-semibold text-gray-800">DPD Delivery<br />

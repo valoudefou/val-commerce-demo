@@ -71,6 +71,7 @@ const handleSubmit = (e) => {
   if (error.length === 0) {
     setPaymentStep(!paymentStep)
     setFullAddressComponent(fullAddressComponent)
+    window.scrollTo(0, 0)
   } else {
     alert('Information required')
   }
@@ -182,27 +183,64 @@ return (
             </span>
           </div>
         </div>
-        <div className="mt-8 px-3">
-          <ol className="flex items-center w-full">
-            <li className={"flex w-full items-center text-blue-600 dark:text-blue-500 after:content-[''] after:w-full after:h-1 after:border-b " + flagColorLine.getValue() + " after:border-4 after:inline-block dark:after:border-blue-800"}>
-              <span className="flex items-center justify-center w-10 h-10 bg-black rounded-full lg:h-12 lg:w-12 dark:bg-blue-800 shrink-0">
-                <svg className="w-3.5 h-3.5 text-white lg:w-4 lg:h-4 dark:text-blue-300" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 12">
-                  <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M1 5.917 5.724 10.5 15 1.5"/>
-                </svg>
-              </span>
-            </li>
-            <li className="flex w-full items-center after:content-[''] after:w-full after:h-1 after:border-b after:border-gray-100 after:border-4 after:inline-block dark:after:border-gray-700">
-              <span className="text-white text-sm font-semibold flex items-center justify-center w-10 h-10 bg-black rounded-full lg:h-12 lg:w-12 dark:bg-blue-800 shrink-0">
-                2
-              </span>
-            </li>
-            <li className="flex items-center w-full">
-              <span className="text-gray-400 text-sm font-semibold flex items-center justify-center w-10 h-10 bg-gray-100 rounded-full lg:h-12 lg:w-12 dark:bg-gray-700 shrink-0">
-                3
-              </span>
-            </li>
-          </ol>
-        </div>
+        {!paymentStep && (
+          <div className="mt-8 px-3">
+            <ol className="flex items-center w-full">
+              <li className={"flex w-full items-center text-blue-600 dark:text-blue-500 after:content-[''] after:w-full after:h-1 after:border-b " + flagColorLine.getValue() + " after:border-4 after:inline-block dark:after:border-blue-800"}>
+                <span className="flex items-center justify-center w-10 h-10 bg-black rounded-full lg:h-12 lg:w-12 dark:bg-blue-800 shrink-0">
+                  <svg className="w-3.5 h-3.5 text-white lg:w-4 lg:h-4 dark:text-blue-300" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 12">
+                    <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M1 5.917 5.724 10.5 15 1.5"/>
+                  </svg>
+                </span>
+              </li>
+              <li className="flex w-full items-center after:content-[''] after:w-full after:h-1 after:border-b after:border-gray-100 after:border-4 after:inline-block dark:after:border-gray-700">
+                <span className="text-white text-sm font-semibold flex items-center justify-center w-10 h-10 bg-black rounded-full lg:h-12 lg:w-12 dark:bg-blue-800 shrink-0">
+                  2
+                </span>
+              </li>
+              <li className="flex w-full items-center after:content-[''] after:w-full after:h-1 after:border-b after:border-gray-100 after:border-4 after:inline-block dark:after:border-gray-700">
+                <span className="text-gray-400 text-sm font-semibold flex items-center justify-center w-10 h-10 bg-gray-100 rounded-full lg:h-12 lg:w-12 dark:bg-gray-700 shrink-0">
+                  3
+                </span>
+              </li>
+              <li className="flex items-center w-full">
+                <span className="text-gray-400 text-sm font-semibold flex items-center justify-center w-10 h-10 bg-gray-100 rounded-full lg:h-12 lg:w-12 dark:bg-gray-700 shrink-0">
+                  4
+                </span>
+              </li>
+            </ol>
+          </div>
+        )}
+        {paymentStep && (
+          <div className="mt-8 px-3">
+            <ol className="flex items-center w-full">
+              <li className={"flex w-full items-center text-blue-600 dark:text-blue-500 after:content-[''] after:w-full after:h-1 after:border-b " + flagColorLine.getValue() + " after:border-4 after:inline-block dark:after:border-blue-800"}>
+                <span className="flex items-center justify-center w-10 h-10 bg-black rounded-full lg:h-12 lg:w-12 dark:bg-blue-800 shrink-0">
+                  <svg className="w-3.5 h-3.5 text-white lg:w-4 lg:h-4 dark:text-blue-300" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 12">
+                    <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M1 5.917 5.724 10.5 15 1.5"/>
+                  </svg>
+                </span>
+              </li>
+              <li className={"flex w-full items-center text-blue-600 dark:text-blue-500 after:content-[''] after:w-full after:h-1 after:border-b " + flagColorLine.getValue() + " after:border-4 after:inline-block dark:after:border-blue-800"}>
+                <span className="text-white text-sm font-semibold flex items-center justify-center w-10 h-10 bg-black rounded-full lg:h-12 lg:w-12 dark:bg-blue-800 shrink-0">
+                  <svg className="w-3.5 h-3.5 text-white lg:w-4 lg:h-4 dark:text-blue-300" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 12">
+                    <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M1 5.917 5.724 10.5 15 1.5"/>
+                  </svg>
+                </span>
+              </li>
+              <li className="flex w-full items-center after:content-[''] after:w-full after:h-1 after:border-b after:border-gray-100 after:border-4 after:inline-block dark:after:border-gray-700">
+                <span className="text-white text-sm font-semibold flex items-center justify-center w-10 h-10 bg-black rounded-full lg:h-12 lg:w-12 dark:bg-gray-700 shrink-0">
+                  3
+                </span>
+              </li>
+              <li className="flex items-center w-full">
+                <span className="text-gray-400 text-sm font-semibold flex items-center justify-center w-10 h-10 bg-gray-100 rounded-full lg:h-12 lg:w-12 dark:bg-gray-700 shrink-0">
+                  4
+                </span>
+              </li>
+            </ol>
+          </div>
+        )}
         <div className="mt-10 flex flex-col xl:flex-row jusitfy-center items-stretch w-full xl:space-x-8 space-y-4 md:space-y-6 xl:space-y-0">
           <div className="flex flex-col justify-start items-start w-full space-y-4 md:space-y-6 xl:space-y-8">
           {!paymentStep && (
@@ -525,12 +563,12 @@ return (
                 <div className="flex justify-center md:flex-row border rounded-2xl flex-col items-stretch w-full space-y-4 md:space-y-0 md:space-x-6 xl:space-x-8">
                   <div className="flex flex-col justify-start px-5 py-7 w-full dark:bg-gray-800 space-y-6">
                     <h3 className="text-lg dark:text-white font-semibold leading-5 text-gray-800">Delivery options</h3>
-                    <div className="bg-[#fffdf7] py-6 sm:px-8 px-4 border-amber-200 border-2 rounded-2xl">
+                    <div className="bg-[#fffdf7] py-6 sm:px-8 px-4 border-amber-400 border rounded-2xl">
                       <div className="flex items-center">
                         <input checked type="radio" value="" name="delivery" className="sm:mr-8 mr-4 align-center w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"/>
                         <div className="flex justify-center items-center space-x-4">
                           <div className="w-8 h-8">
-                            <img className="w-full h-full" alt="logo" src="https://i.ibb.co/L8KSdNQ/image-3.png" />
+                            <img className="w-full h-full" alt="logo" src="/dpd.png" />
                           </div>
                           <div className="flex flex-col justify-start items-center">
                             <p className="leading-6 dark:text-white font-semibold text-gray-800">DPD<br />
@@ -543,12 +581,30 @@ return (
                         </div>
                       </div>
                     </div>
+                    <div className="bg-[#fffdf7] py-6 sm:px-8 px-4 border-amber-400 border rounded-2xl">
+                      <div className="flex items-center">
+                        <input type="radio" value="" name="delivery" className="sm:mr-8 mr-4 align-center w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"/>
+                        <div className="flex justify-center items-center space-x-4">
+                          <div className="w-8 h-8">
+                            <img className="w-full h-full" alt="logo" src="/evri.png" />
+                          </div>
+                          <div className="flex flex-col justify-start items-center">
+                            <p className="leading-6 dark:text-white font-semibold text-gray-800">Evri<br />
+                              <span className="text-sm font-normal">within 2 Days</span>
+                            </p>
+                          </div>
+                        </div>
+                        <div className="flex ml-auto">
+                          <p className="text-base font-semibold leading-6 dark:text-white text-gray-800">4.01 €</p>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
                 <div className="flex justify-center md:flex-row border rounded-2xl flex-col items-stretch w-full space-y-4 md:space-y-0 md:space-x-6 xl:space-x-8">
                   <div className="flex flex-col justify-start px-5 py-7 w-full dark:bg-gray-800 space-y-6">
                     <h3 className="text-lg dark:text-white font-semibold leading-5 text-gray-800">Select payment method</h3>
-                    <div className="bg-[#fffdf7] py-6 sm:px-8 px-4 border-amber-200 border-2 rounded-2xl">
+                    <div className="bg-[#fffdf7] py-6 sm:px-8 px-4 border-amber-400 border rounded-2xl">
                       <div className="flex items-center">
                         <input checked type="radio" value="" name="payment" className="sm:mr-8 mr-4 align-center w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"/>
                         <div className="flex justify-center items-center space-x-4">
