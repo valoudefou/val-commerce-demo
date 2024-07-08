@@ -26,7 +26,6 @@ const [email, setEmail] = useState("")
 const [address_1, setAddress1] = useState("")
 const [address_2, setAddress2] = useState("")
 const [city, setCity] = useState("")
-const [country, setCountry] = useState('United Kingdom')
 const [postcode, setPostCode] = useState("")
 const [phone, setPhone] = useState("")
 
@@ -37,7 +36,7 @@ const [phone, setPhone] = useState("")
 
 useEffect(() => {
   const errorList = []
-
+console.log(email)
   if (!email) {
     errorList.push("email")
   }
@@ -52,9 +51,6 @@ useEffect(() => {
   }
   if (!city) {
     errorList.push("city")
-  }
-  if (!country) {
-    errorList.push("country")
   }
   if (!postcode) {
     errorList.push("postcode")
@@ -226,7 +222,7 @@ return (
                       <input 
                         name="email" 
                         value={email} 
-                        autoComplete="on"
+                        autocomplete="on"
                         onChange={(e) => setEmail(e.target.value)} 
                         className={error.includes("email") && fullAddressComponent ? "border-red-400 border-2 rounded-2xl w-full py-4 px-4 text-grey-darker focus:outline-none" : "border rounded-2xl w-full py-4 px-4 text-grey-darker"} 
                         id="email" type="email" 
@@ -426,13 +422,9 @@ return (
                           <label className="block text-grey-darker text-sm font-normal mb-2 ml-2" htmlFor="country">
                             Country
                           </label>
-                          <select
-                            className="py-4 px-4 bg-slate-400"
-                            value={country}
-                            onChange={(e) => setCountry(e.target.value)}
-                          >
-                            <option value="United Kingdom">United Kingdom</option>
-                            <option value="Isle Of Man">Isle Of Man</option>
+                          <select className="rounded-2xl w-full py-4 px-4 text-grey-darker border-r-8 border-transparent outline-none">
+                            <option value=">United Kingdom">United Kingdom</option>
+                            <option value=">Isle of Man">Isle of Man</option>
                           </select>
                         </div>
                         <div className="w-1/2 ml-1">
@@ -591,7 +583,7 @@ return (
                       </form>
                     </div>
                     <div className="flex flex-col items-center w-full justify-center">
-                    <p className="mb-8 text-center leading-6 text-base">
+                    <p className="mb-8 text-center leading-6 text-sm">
                       By submitting this order you are accepting our <br/>
                       <a className="cursor-pointer underline text-amber-500" rel="noopener noreferrer" target="_blank">
                         Terms and Conditions
