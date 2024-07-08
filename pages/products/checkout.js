@@ -1,7 +1,6 @@
 import { useEffect, useState, useRef } from "react"
 import { useFsFlag } from "@flagship.io/react-sdk"
 import Link from "next/link"
-import { Select, Option } from "@material-tailwind/react"
 
 export default function Checkout() {
 // Get flag 
@@ -423,10 +422,10 @@ return (
                           <label className="block text-grey-darker text-sm font-normal mb-2 ml-2" htmlFor="country">
                             Country
                           </label>
-                          <Select className="border rounded-2xl w-full py-4 px-4 text-grey-darker border-r-8 border-transparent outline outline-neutral-200">
-                            <Option>United Kingdom</Option>
-                            <Option>Isle of Man</Option>
-                          </Select>
+                          <select className="border rounded-2xl w-full py-4 px-4 text-grey-darker border-r-8 border-transparent outline outline-neutral-200">
+                            <option>United Kingdom</option>
+                            <option>Isle of Man</option>
+                          </select>
                         </div>
                         <div className="w-1/2 ml-1">
                           <label className="block text-grey-darker text-sm font-normal mb-2 ml-2" htmlFor="postcode">
