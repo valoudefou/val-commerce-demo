@@ -26,6 +26,7 @@ const [email, setEmail] = useState("")
 const [address_1, setAddress1] = useState("")
 const [address_2, setAddress2] = useState("")
 const [city, setCity] = useState("")
+const [country, setCountry] = useState('United Kingdom')
 const [postcode, setPostCode] = useState("")
 const [phone, setPhone] = useState("")
 
@@ -51,6 +52,9 @@ useEffect(() => {
   }
   if (!city) {
     errorList.push("city")
+  }
+  if (!country) {
+    errorList.push("country")
   }
   if (!postcode) {
     errorList.push("postcode")
@@ -421,11 +425,15 @@ return (
                         <div className="w-1/2 mr-1">
                           <label className="block text-grey-darker text-sm font-normal mb-2 ml-2" htmlFor="country">
                             Country
-                            <select className="border rounded-2xl w-full py-4 px-4 text-grey-darker border-r-8 border-transparent outline outline-none">
-                              <option className="border rounded-2xl w-full py-4 px-4 text-grey-darker border-r-8 border-transparent outline outline-none" value=">United Kingdom">United Kingdom</option>
-                              <option className="border rounded-2xl w-full py-4 px-4 text-grey-darker border-r-8 border-transparent outline outline-none" value=">Isle of Man">Isle of Man</option>
-                            </select>
                           </label>
+                          <select
+                            className="py-4 px-4 bg-slate-400"
+                            value={country}
+                            onChange={(e) => setCountry(e.target.value)}
+                          >
+                            <option value="United Kingdom">United Kingdom</option>
+                            <option value="Isle Of Man">Isle Of Man</option>
+                          </select>
                         </div>
                         <div className="w-1/2 ml-1">
                           <label className="block text-grey-darker text-sm font-normal mb-2 ml-2" htmlFor="postcode">
