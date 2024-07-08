@@ -1,7 +1,7 @@
 import { useEffect, useState, useRef } from "react"
 import { useFsFlag } from "@flagship.io/react-sdk"
 import Link from "next/link"
-import { Select, Option } from "@material-tailwind/react";
+import { Select, Option } from "@material-tailwind/react"
 
 export default function Checkout() {
 // Get flag 
