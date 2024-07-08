@@ -70,7 +70,6 @@ const handleSubmit = (e) => {
   } else {
     alert('Information required')
   }
-  console.log('test')
 }
 
 useEffect(() => {
