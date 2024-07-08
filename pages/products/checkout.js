@@ -79,26 +79,26 @@ const handleSubmit = (e) => {
   }
 }
 
-const generateCard = (e) => {
-  e.preventDefault()
-  setCardNumber([Math.floor(1000 + Math.random() * 9000) + ' ' + Math.floor(1000 + Math.random() * 9000) + ' ' + Math.floor(1000 + Math.random() * 9000) + ' ' + Math.floor(1000 + Math.random() * 9000), Math.floor(100 + Math.random() * 900), Math.floor(Math.random() * 30) + 1 + '/' + Math.floor(5 + Math.random() * 8), first_name + ' ' + last_name])
-  window.dataLayer = window.dataLayer || []
-  window.dataLayer.push({
-    event: 'add_payment_info',
-    ecommerce: {
-      'currency': 'EUR',
-      'value': data.productPrice,
-      'payment_type': "Credit Card",
-      item: [{
-        'item_id': data.productId,
-        'item_name': data.productTitle,
-        'item_category': data.productCategory,
-        'price': data.productPrice,
-        'quantity': data.productQuantity
-      }]
-    }
-  })
-}
+// const generateCard = (e) => {
+//   e.preventDefault()
+//   setCardNumber([Math.floor(1000 + Math.random() * 9000) + ' ' + Math.floor(1000 + Math.random() * 9000) + ' ' + Math.floor(1000 + Math.random() * 9000) + ' ' + Math.floor(1000 + Math.random() * 9000), Math.floor(100 + Math.random() * 900), Math.floor(Math.random() * 30) + 1 + '/' + Math.floor(5 + Math.random() * 8), first_name + ' ' + last_name])
+//   window.dataLayer = window.dataLayer || []
+//   window.dataLayer.push({
+//     event: 'add_payment_info',
+//     ecommerce: {
+//       'currency': 'EUR',
+//       'value': data.productPrice,
+//       'payment_type': "Credit Card",
+//       item: [{
+//         'item_id': data.productId,
+//         'item_name': data.productTitle,
+//         'item_category': data.productCategory,
+//         'price': data.productPrice,
+//         'quantity': data.productQuantity
+//       }]
+//     }
+//   })
+// }
 
 useEffect(() => {
   if (document.activeElement === searchInput.current) {
@@ -671,16 +671,16 @@ return (
                         </div>
                       </label>
                       <div className="w-full my-6">
-                        <input type="text" className="border-slate-400 border text-slate-500 rounded-2xl w-full py-4 px-4 text-grey-darker" placeholder="1111 1111 1111 1110" value="" />
+                        <input type="text" className="border-slate-400 border text-slate-500 rounded-2xl w-full py-4 px-4 text-grey-darker" placeholder="1111 1111 1111 1110" />
                         <div className="flex gap-x-2 my-4">
                           <div className="flex-1">
-                            <input type="text" className="border-slate-400 border text-slate-500 rounded-2xl w-full py-4 px-4 text-grey-darker" placeholder="01/26"  value="" />
+                            <input type="text" className="border-slate-400 border text-slate-500 rounded-2xl w-full py-4 px-4 text-grey-darker" placeholder="01/26" />
                           </div>
                           <div className="flex-1">
-                            <input type="text" className="border-slate-400 border text-slate-500 rounded-2xl w-full py-4 px-4 text-grey-darker" placeholder="123"  value="" />
+                            <input type="text" className="border-slate-400 border text-slate-500 rounded-2xl w-full py-4 px-4 text-grey-darker" placeholder="123" />
                           </div>
                         </div>
-                        <input type="text" className="border-slate-400 border text-slate-500 rounded-2xl w-full py-4 px-4 text-grey-darker" placeholder="MIKE BEE" v value="" />
+                        <input type="text" className="border-slate-400 border text-slate-500 rounded-2xl w-full py-4 px-4 text-grey-darker" placeholder="MIKE BEE" />
                         <div className="flex mt-7 justify-between">
                           <div>
                             <h3 className="text-lg dark:text-white font-semibold leading-5 text-gray-800">Billing address</h3>
@@ -694,7 +694,7 @@ return (
                             </ul>
                           </div>
                           <div>
-                            <button onClick={(e) => generateCard(e)} className="bg-slate-500 px-4 py-2 text-white rounded-xl text-xs font-medium">Generate Card Details</button>
+                            <button className="bg-slate-500 px-4 py-2 text-white rounded-xl text-xs font-medium">Generate Card Details</button>
                           </div>
                         </div>
                         <div className="flex items-center mt-6 text-sm leading-5 align-start">
