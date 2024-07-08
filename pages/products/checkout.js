@@ -222,7 +222,7 @@ return (
                       <input 
                         name="email" 
                         value={email} 
-                        autocomplete="on"
+                        autoComplete="on"
                         onChange={(e) => setEmail(e.target.value)} 
                         className={error.includes("email") && fullAddressComponent ? "border-red-400 border-2 rounded-2xl w-full py-4 px-4 text-grey-darker focus:outline-none" : "border rounded-2xl w-full py-4 px-4 text-grey-darker"} 
                         id="email" type="email" 
