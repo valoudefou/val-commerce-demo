@@ -30,6 +30,7 @@ const [postcode, setPostCode] = useState("")
 const [phone, setPhone] = useState("")
 const [country, setCountry] = useState('United Kingdom')
 const [delivery, setDelivery] = useState("")
+const [cardNumber, setCardNumber] = useState("")
 
 // const [inputs, setInputs] = useState(initialValues)
 // const handleChange = useCallback(
@@ -78,6 +79,27 @@ const handleSubmit = (e) => {
   }
 }
 
+const generateCard = (e) => {
+  e.preventDefault()
+  setCardNumber([Math.floor(1000 + Math.random() * 9000) + ' ' + Math.floor(1000 + Math.random() * 9000) + ' ' + Math.floor(1000 + Math.random() * 9000) + ' ' + Math.floor(1000 + Math.random() * 9000), Math.floor(100 + Math.random() * 900), Math.floor(Math.random() * 30) + 1 + '/' + Math.floor(5 + Math.random() * 8)])
+  window.dataLayer = window.dataLayer || []
+  window.dataLayer.push({
+    event: 'add_payment_info',
+    ecommerce: {
+      'currency': 'EUR',
+      'value': data.productPrice,
+      'payment_type': "Credit Card",
+      item: [{
+        'item_id': data.productId,
+        'item_name': data.productTitle,
+        'item_category': data.productCategory,
+        'price': data.productPrice,
+        'quantity': data.productQuantity
+      }]
+    }
+  })
+}
+
 useEffect(() => {
   if (document.activeElement === searchInput.current) {
     async function getData() {
@@ -115,12 +137,13 @@ const handleClick = (e) => {
 const addShipping = (e) => {
   setDelivery(e.target.id)
 
+  window.dataLayer = window.dataLayer || []
   window.dataLayer.push({
     event: 'add_shipping_info',
-    shipping_tier: e.target.id,
     ecommerce: {
       'currency': 'EUR',
       'value': data.productPrice,
+      'shipping_tier': e.target.id,
       item: [{
         'item_id': data.productId,
         'item_name': data.productTitle,
@@ -626,7 +649,7 @@ return (
                   <div className="flex flex-col justify-start px-5 py-7 w-full dark:bg-gray-800 space-y-6">
                     <h3 className="text-lg dark:text-white font-semibold leading-5 text-gray-800">Select payment method</h3>
                     <div className="bg-[#fffdf7] py-6 sm:px-8 px-4 border-amber-400 border-2 rounded-2xl">
-                      <label for='card' className="flex items-center">
+                      <label htmlFor='card' className="flex items-center">
                         <input onChange={(e) => addShipping(e)} checked type="radio" value="" name="payment" id="card" className="sm:mr-8 mr-4 align-center w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 dark:ring-offset-gray-800 dark:bg-gray-700 dark:border-gray-600"/>
                         <div className="flex justify-center items-center space-x-4">
                           <div className="flex flex-col justify-start items-center">
@@ -648,25 +671,32 @@ return (
                         </div>
                       </label>
                       <form className="w-full my-6">
-                        <input type="text" className="border-slate-400 border rounded-2xl w-full py-4 px-4 text-grey-darker" placeholder="1111 1111 1111 1110" />
+                        <input type="text" className="border-slate-400 border text-slate-500 rounded-2xl w-full py-4 px-4 text-grey-darker" placeholder="1111 1111 1111 1110" value={cardNumber[0]} />
                         <div className="flex gap-x-2 my-4">
                           <div className="flex-1">
-                            <input type="text" className="border-slate-400 border rounded-2xl w-full py-4 px-4 text-grey-darker" placeholder="01/26" />
+                            <input type="text" className="border-slate-400 border text-slate-500 rounded-2xl w-full py-4 px-4 text-grey-darker" placeholder="01/26" value={cardNumber[2]} />
                           </div>
                           <div className="flex-1">
-                            <input type="text" className="border-slate-400 border rounded-2xl w-full py-4 px-4 text-grey-darker" placeholder="123" />
+                            <input type="text" className="border-slate-400 border text-slate-500 rounded-2xl w-full py-4 px-4 text-grey-darker" placeholder="123" value={cardNumber[1]} />
                           </div>
                         </div>
-                        <input type="text" className="border-slate-400 border rounded-2xl w-full py-4 px-4 text-grey-darker" placeholder="MR MIKE BEE" />
-                        <h3 className="text-lg dark:text-white font-semibold leading-5 text-gray-800 mt-7">Billing address</h3>
-                        <ul className="my-3">
-                          <li>{first_name + ' ' + last_name}</li>
-                          <li>{address_1}</li>
-                          <li>{address_2}</li>
-                          <li>{city}</li>
-                          <li>{country}</li>
-                          <li>{postcode}</li>
-                        </ul>
+                        <input type="text" className="border-slate-400 border text-slate-500 rounded-2xl w-full py-4 px-4 text-grey-darker" placeholder="MIKE BEE" value={first_name + ' ' + last_name} />
+                        <div className="flex mt-7 justify-between">
+                          <div>
+                            <h3 className="text-lg dark:text-white font-semibold leading-5 text-gray-800">Billing address</h3>
+                            <ul className="my-3">
+                              <li>{first_name + ' ' + last_name}</li>
+                              <li>{address_1}</li>
+                              <li>{address_2}</li>
+                              <li>{city}</li>
+                              <li>{country}</li>
+                              <li>{postcode}</li>
+                            </ul>
+                          </div>
+                          <div>
+                            <button onClick={generateCard} className="bg-slate-500 px-4 py-2 text-white rounded-xl text-xs font-medium">Generate Card Details</button>
+                          </div>
+                        </div>
                         <div className="flex items-center mt-6 text-sm leading-5 align-start">
                         <input type="checkbox" value="" className="mb-auto mr-2 w-5 h-5 border-gray-300 rounded"/>
                         <label>
