@@ -671,16 +671,16 @@ return (
                         </div>
                       </label>
                       <div className="w-full my-6">
-                        <input onChange={(e) => setCardNumber([0].e.target.value)} type="text" className="border-slate-400 border text-slate-500 rounded-2xl w-full py-4 px-4 text-grey-darker" placeholder="1111 1111 1111 1110" value={cardNumber[0]} />
+                        <input type="text" className="border-slate-400 border text-slate-500 rounded-2xl w-full py-4 px-4 text-grey-darker" placeholder="1111 1111 1111 1110" value="" />
                         <div className="flex gap-x-2 my-4">
                           <div className="flex-1">
-                            <input onChange={(e) => setCardNumber([2].e.target.value)} type="text" className="border-slate-400 border text-slate-500 rounded-2xl w-full py-4 px-4 text-grey-darker" placeholder="01/26" value={cardNumber[2]} />
+                            <input type="text" className="border-slate-400 border text-slate-500 rounded-2xl w-full py-4 px-4 text-grey-darker" placeholder="01/26"  value="" />
                           </div>
                           <div className="flex-1">
-                            <input onChange={(e) => setCardNumber([1].e.target.value)} type="text" className="border-slate-400 border text-slate-500 rounded-2xl w-full py-4 px-4 text-grey-darker" placeholder="123" value={cardNumber[1]} />
+                            <input type="text" className="border-slate-400 border text-slate-500 rounded-2xl w-full py-4 px-4 text-grey-darker" placeholder="123"  value="" />
                           </div>
                         </div>
-                        <input onChange={(e) => setCardNumber([3].e.target.value)} type="text" className="border-slate-400 border text-slate-500 rounded-2xl w-full py-4 px-4 text-grey-darker" placeholder="MIKE BEE" value={cardNumber[3]} />
+                        <input type="text" className="border-slate-400 border text-slate-500 rounded-2xl w-full py-4 px-4 text-grey-darker" placeholder="MIKE BEE" v value="" />
                         <div className="flex mt-7 justify-between">
                           <div>
                             <h3 className="text-lg dark:text-white font-semibold leading-5 text-gray-800">Billing address</h3>
@@ -694,7 +694,7 @@ return (
                             </ul>
                           </div>
                           <div>
-                            <button onClick={(e) => setCardNumber(e.target.value)} className="bg-slate-500 px-4 py-2 text-white rounded-xl text-xs font-medium">Generate Card Details</button>
+                            <button onClick={(e) => generateCard(e)} className="bg-slate-500 px-4 py-2 text-white rounded-xl text-xs font-medium">Generate Card Details</button>
                           </div>
                         </div>
                         <div className="flex items-center mt-6 text-sm leading-5 align-start">
