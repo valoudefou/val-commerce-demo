@@ -524,9 +524,9 @@ return (
                 <div className="flex justify-center md:flex-row border rounded-2xl flex-col items-stretch w-full space-y-4 md:space-y-0 md:space-x-6 xl:space-x-8">
                   <div className="flex flex-col justify-start px-5 py-7 w-full dark:bg-gray-800 space-y-6">
                     <h3 className="text-lg dark:text-white font-semibold leading-5 text-gray-800">Delivery options</h3>
-                    <div className="bg-amber-50 p-8 border-amber-200 border-2 rounded-2xl">
+                    <div className="bg-amber-50 py-8 sm:px-8 px-4 border-amber-200 border-2 rounded-2xl">
                       <div className="flex items-center">
-                        <input checked type="radio" value="" name="delivery" className="mr-8 align-center w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"/>
+                        <input checked type="radio" value="" name="delivery" className="sm:mr-8 mr-4 align-center w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"/>
                         <div className="flex justify-center items-center space-x-4">
                           <div className="w-8 h-8">
                             <img className="w-full h-full" alt="logo" src="https://i.ibb.co/L8KSdNQ/image-3.png" />
@@ -547,9 +547,9 @@ return (
                 <div className="flex justify-center md:flex-row border rounded-2xl flex-col items-stretch w-full space-y-4 md:space-y-0 md:space-x-6 xl:space-x-8">
                   <div className="flex flex-col justify-start px-5 py-7 w-full dark:bg-gray-800 space-y-6">
                     <h3 className="text-lg dark:text-white font-semibold leading-5 text-gray-800">Select payment method</h3>
-                    <div className="bg-amber-50 p-8 border-amber-200 border-2 rounded-2xl">
+                    <div className="bg-amber-50 p-8 sm:px-8 px-4 border-amber-200 border-2 rounded-2xl">
                       <div className="flex items-center">
-                        <input checked type="radio" value="" name="payment" className="mr-8 align-center w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"/>
+                        <input checked type="radio" value="" name="payment" className="sm:mr-8 mr-4 align-center w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"/>
                         <div className="flex justify-center items-center space-x-4">
                           <div className="flex flex-col justify-start items-center">
                             <p className="text-sm leading-6 dark:text-white font-semibold text-gray-800">Credit or debit card<br /></p>
