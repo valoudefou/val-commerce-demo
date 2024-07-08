@@ -19,6 +19,7 @@ select{
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
+    background-color: #ffffff !important;
     padding: 1rem 1rem !important;
     border-radius: 1rem !important;
     border: 1px solid #e5e7eb !important;
