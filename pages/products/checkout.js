@@ -38,13 +38,11 @@ const [cardNumber, setCardNumber] = useState("")
 // )
 
 const sendOrder = (e) => {
-  e.preventDefault()
-
   if (cardNumber && delivery) {
-    console.log('Order can be submitted!')
+    console.log('Order confirmed!')
   } else {
     e.preventDefault()
-    alert('Missing information')
+    alert('Delivery / Card details missing')
   }
 }
 
