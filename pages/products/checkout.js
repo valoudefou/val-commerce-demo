@@ -273,7 +273,7 @@ return (
                   </div>
                   <div className="mt-6 w-full">
                     <div className="mb-4">
-                      <label className="block text-grey-darker text-sm font-normal mb-2 ml-2" htmlFor="email">
+                      <label className="block text-grey-darker text-sm font-normal mb-2 ml-2" for="email">
                         Email Address
                       </label>
                       <input 
@@ -307,7 +307,7 @@ return (
                       <div className="mt-6 w-full">
                         <div className="flex mb-4">
                         <div className="w-1/2 mr-1">
-                          <label className="block text-grey-darker text-sm font-normal mb-2 ml-2" htmlFor="first_name">
+                          <label className="block text-grey-darker text-sm font-normal mb-2 ml-2" for="first_name">
                             First Name
                           </label>
                           <input 
@@ -321,7 +321,7 @@ return (
                           />
                         </div>
                         <div className="w-1/2 ml-1">
-                          <label className="block text-grey-darker text-sm font-normal mb-2 ml-2" htmlFor="last_name">
+                          <label className="block text-grey-darker text-sm font-normal mb-2 ml-2" for="last_name">
                             Last Name
                           </label>
                         <input 
@@ -336,7 +336,7 @@ return (
                         </div>
                       </div>
                       <div className="mb-4">
-                        <label className="block text-grey-darker text-sm font-normal mb-2 ml-2" htmlFor="address">
+                        <label className="block text-grey-darker text-sm font-normal mb-2 ml-2" for="address">
                           Address
                         </label>
                         <input 
@@ -394,7 +394,7 @@ return (
                     <div className="mt-6 w-full">
                       <div className="flex mb-4">
                         <div className="w-1/2 mr-1">
-                          <label className="block text-grey-darker text-sm font-normal mb-2 ml-2" htmlFor="first_name">
+                          <label className="block text-grey-darker text-sm font-normal mb-2 ml-2" for="first_name">
                             First Name
                           </label>
                           <input 
@@ -409,7 +409,7 @@ return (
                           <div className={error.includes("first_name") ? "text-red-400 text-sm py-1 px-1 font-medium" : "hidden"}>Please enter your first name</div>
                         </div>
                         <div className="w-1/2 ml-1">
-                          <label className="block text-grey-darker text-sm font-normal mb-2 ml-2" htmlFor="last_name">
+                          <label className="block text-grey-darker text-sm font-normal mb-2 ml-2" for="last_name">
                             Last Name
                           </label>
                           <input 
@@ -425,13 +425,13 @@ return (
                         </div>
                       </div>
                       <div className="mb-4">
-                        <label className="block text-grey-darker text-sm font-normal mb-2 ml-2" htmlFor="company">
+                        <label className="block text-grey-darker text-sm font-normal mb-2 ml-2" for="company">
                           Company (optional)
                         </label>
                         <input className="border rounded-2xl w-full py-4 px-4 text-grey-darker" id="company" type="company" placeholder="Company"/>
                       </div>
                       <div className="mb-4">
-                        <label className="block text-grey-darker text-sm font-normal mb-2 ml-2" htmlFor="address line 1">
+                        <label className="block text-grey-darker text-sm font-normal mb-2 ml-2" for="address line 1">
                           Address line 1
                         </label>
                         <input 
@@ -446,7 +446,7 @@ return (
                         <div className={error.includes("address_1") ? "text-red-400 text-sm py-1 px-1 font-medium" : "hidden"}>Please enter your address</div>
                       </div>
                       <div className="mb-4">
-                        <label className="block text-grey-darker text-sm font-normal mb-2 ml-2" htmlFor="address line 2">
+                        <label className="block text-grey-darker text-sm font-normal mb-2 ml-2" for="address line 2">
                           Address line 2 (optional)
                         </label>
                         <input 
@@ -460,7 +460,7 @@ return (
                         />
                       </div>
                       <div className="mb-4">
-                        <label className="block text-grey-darker text-sm font-normal mb-2 ml-2" htmlFor="city">
+                        <label className="block text-grey-darker text-sm font-normal mb-2 ml-2" for="city">
                           City
                         </label>
                         <input 
@@ -476,7 +476,7 @@ return (
                       </div>
                       <div className="flex mb-4">
                         <div className="w-1/2 mr-1">
-                          <label className="block text-grey-darker text-sm font-normal mb-2 ml-2" htmlFor="country">
+                          <label className="block text-grey-darker text-sm font-normal mb-2 ml-2" for="country">
                             Country
                           </label>
                           <select 
@@ -488,7 +488,7 @@ return (
                           </select>
                         </div>
                         <div className="w-1/2 ml-1">
-                          <label className="block text-grey-darker text-sm font-normal mb-2 ml-2" htmlFor="postcode">
+                          <label className="block text-grey-darker text-sm font-normal mb-2 ml-2" for="postcode">
                             Postcode
                           </label>
                           <input 
@@ -504,7 +504,7 @@ return (
                         </div>
                       </div>
                       <div className="mb-4">
-                        <label className="block text-grey-darker text-sm font-normal mb-2 ml-2" htmlFor="phone">
+                        <label className="block text-grey-darker text-sm font-normal mb-2 ml-2" for="phone">
                           Phone (optional)
                         </label>
                         <input 
