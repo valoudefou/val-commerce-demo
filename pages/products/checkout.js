@@ -584,7 +584,7 @@ return (
                 <div className="flex justify-center md:flex-row border rounded-2xl flex-col items-stretch w-full space-y-4 md:space-y-0 md:space-x-6 xl:space-x-8">
                   <div className="flex flex-col justify-start px-5 py-7 w-full dark:bg-gray-800 space-y-6">
                     <h3 className="text-lg dark:text-white font-semibold leading-5 text-gray-800">Delivery options</h3>
-                    <label htmlFor="dpd" className="bg-[#fffdf7] cursor-pointer py-6 sm:px-8 px-4 border-amber-400 border-2 rounded-2xl">
+                    <label for="dpd" className="bg-[#fffdf7] cursor-pointer py-6 sm:px-8 px-4 border-amber-400 border-2 rounded-2xl">
                       <div className="flex items-center">
                         <input onChange={(e) => addShipping(e)} name="delivery" type="radio" value="" id="dpd" className="sm:mr-8 mr-4 align-center w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 dark:ring-offset-gray-800 dark:bg-gray-700 dark:border-gray-600"/>
                         <div className="flex justify-center items-center space-x-4">
@@ -602,7 +602,7 @@ return (
                         </div>
                       </div>
                     </label>
-                    <label htmlFor="evri" className="bg-[#fffdf7] cursor-pointer py-6 sm:px-8 px-4 border-amber-400 border-2 rounded-2xl">
+                    <label for="evri" className="bg-[#fffdf7] cursor-pointer py-6 sm:px-8 px-4 border-amber-400 border-2 rounded-2xl">
                       <div className="flex items-center">
                         <input onChange={(e) => addShipping(e)} name="delivery" type="radio" value="" id="evri" className="sm:mr-8 mr-4 align-center w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 dark:ring-offset-gray-800 dark:bg-gray-700 dark:border-gray-600"/>
                         <div className="flex justify-center items-center space-x-4">
@@ -626,7 +626,7 @@ return (
                   <div className="flex flex-col justify-start px-5 py-7 w-full dark:bg-gray-800 space-y-6">
                     <h3 className="text-lg dark:text-white font-semibold leading-5 text-gray-800">Select payment method</h3>
                     <div className="bg-[#fffdf7] py-6 sm:px-8 px-4 border-amber-400 border-2 rounded-2xl">
-                      <label forHtml='card' className="flex items-center">
+                      <label for='card' className="flex items-center">
                         <input onChange={(e) => addShipping(e)} checked type="radio" value="" name="payment" id="card" className="sm:mr-8 mr-4 align-center w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 dark:ring-offset-gray-800 dark:bg-gray-700 dark:border-gray-600"/>
                         <div className="flex justify-center items-center space-x-4">
                           <div className="flex flex-col justify-start items-center">
