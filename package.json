@@ -8,14 +8,11 @@
     "server-json": "json-server --watch db.json"
   },
   "dependencies": {
-    "@bloomreach/react-sdk": "^23.3.0",
     "@flagship.io/react-sdk": "^3.3.2",
     "contentful": "^10.2.2",
     "googleapis": "^118.0.0",
-    "json-server": "^0.17.4",
     "latest": "^0.2.0",
     "lru-cache": "^11.0.0",
-    "lru-cache-fs": "^2.0.1",
     "react-ga4": "^2.1.0",
     "semver": "^6.3.1",
     "swr": "^2.0.3",
