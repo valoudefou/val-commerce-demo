@@ -39,7 +39,7 @@ const [cardNumber, setCardNumber] = useState("")
 
 const generateCard = (e) => {
   e.preventDefault()
-  setCardNumber([Math.floor(1000 + Math.random() * 9000) + ' ' + Math.floor(1000 + Math.random() * 9000) + ' ' + Math.floor(1000 + Math.random() * 9000) + ' ' + Math.floor(1000 + Math.random() * 9000), Math.floor(100 + Math.random() * 900), Math.floor(Math.random() * 30) + 1 + '/' + Math.floor(5 + Math.random() * 8), first_name + ' ' + last_name])
+  setCardNumber([Math.floor(1000 + Math.random() * 9000) + ' ' + Math.floor(1000 + Math.random() * 9000) + ' ' + Math.floor(1000 + Math.random() * 9000) + ' ' + Math.floor(1000 + Math.random() * 9000), Math.floor(100 + Math.random() * 900), '1' + Math.floor(Math.random() * 9) + '/' + '1' + Math.floor(Math.random() * 3), first_name + ' ' + last_name])
   console.log(cardNumber)
   window.dataLayer = window.dataLayer || []
   window.dataLayer.push({
@@ -671,16 +671,16 @@ return (
                         </div>
                       </label>
                       <div className="w-full my-6">
-                        <input type="text" className="border-slate-400 border rounded-2xl w-full py-4 px-4 text-grey-darker" placeholder="1111 1111 1111 1110" />
+                        <input type="text" className="border-slate-400 border rounded-2xl w-full py-4 px-4 text-slate-500" defaultValue={cardNumber[0]} placeholder="1111 1111 1111 1110" />
                         <div className="flex gap-x-2 my-4">
                           <div className="flex-1">
-                            <input type="text" className="border-slate-400 border rounded-2xl w-full py-4 px-4 text-grey-darker" placeholder="01/26" />
+                            <input type="text" className="border-slate-400 border rounded-2xl w-full py-4 px-4 text-slate-500" defaultValue={cardNumber[2]} placeholder="01/26" />
                           </div>
                           <div className="flex-1">
-                            <input type="text" className="border-slate-400 border rounded-2xl w-full py-4 px-4 text-grey-darker" placeholder="123" />
+                            <input type="text" className="border-slate-400 border rounded-2xl w-full py-4 px-4 text-slate-500" defaultValue={cardNumber[1]} placeholder="123" />
                           </div>
                         </div>
-                        <input type="text" className="border-slate-400 border rounded-2xl w-full py-4 px-4 text-grey-darker" placeholder="MR MIKE BEE" />
+                        <input type="text" className="border-slate-400 border rounded-2xl w-full py-4 px-4 text-slate-500" defaultValue={cardNumber[3]} placeholder="MR MIKE BEE" />
                         <div className="flex mt-7 justify-between">
                           <div>  
                             <h3 className="text-lg dark:text-white font-semibold leading-5 text-gray-800">Billing address</h3>
