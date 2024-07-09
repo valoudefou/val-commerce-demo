@@ -114,7 +114,7 @@ const handleClick = (e) => {
 
 const addShipping = (e) => {
   setDelivery(e.target.id)
-
+  window.dataLayer = window.dataLayer || []
   window.dataLayer.push({
     event: 'add_shipping_info',
     ecommerce: {
