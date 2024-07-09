@@ -7,6 +7,9 @@ export default function Checkout() {
 const paymentFeature1Click = useFsFlag("paymentFeature1Click", "false")
 const flagIndustry = useFsFlag("flagIndustry", "Product")
 const flagColorLine = useFsFlag("flagColorLine", "after:border-black")
+const flagDeliveryFeeDpd = useFsFlag("flagDeliveryFeeDpd", 7.99)
+const flagDeliveryFeeEvri = useFsFlag("flagDeliveryFeeEvri", 3.99)
+// KEY
 const API_KEY = process.env.NEXT_PUBLIC_GETADDRESS_KEY
 // STATES
 const [data, setData] = useState('') // LocalStorage product added to cart
@@ -146,6 +149,7 @@ const handleClick = (e) => {
 }
 
 const addShipping = (e) => {
+  console.log('SPA component reload')
   setDelivery([e.target.id, e.target.value])
   window.dataLayer = window.dataLayer || []
   window.dataLayer.push({
@@ -615,11 +619,11 @@ return (
                   </div>
                 </div>
                 <div className="flex justify-center md:flex-row border rounded-2xl flex-col items-stretch w-full space-y-4 md:space-y-0 md:space-x-6 xl:space-x-8">
-                  <div className="flex flex-col justify-start px-5 py-7 w-full dark:bg-gray-800 space-y-6">
+                  <div className="flex flex-col justify-start px-5 py-7 w-full dark:bg-gray-800 space-y-4">
                     <h3 className="text-lg dark:text-white font-semibold leading-5 text-gray-800">Delivery options</h3>
-                    <label htmlFor="dpd" className={delivery.includes("dpd") ? "cursor-pointer py-6 sm:px-8 px-4 border-amber-400 border-2 rounded-2xl" : "border-slate-300 cursor-pointer py-6 sm:px-8 px-4 border rounded-2xl"}>
+                    <label htmlFor="dpd" className={delivery.includes("dpd") ? "relative cursor-pointer py-6 sm:px-8 px-4 border-amber-400 bg-[#fffaf9] border-2 rounded-2xl" : "relative border-slate-300 cursor-pointer py-6 sm:px-8 px-4 border rounded-2xl"}>
                       <div className="flex items-center">
-                        <input onChange={(e) => addShipping(e)} name="delivery" type="radio" value="7.99" id="dpd" className="sm:mr-8 mr-4 align-center w-5 h-5 text-blue-600 bg-gray-100 dark:ring-offset-gray-800 dark:bg-gray-700 dark:border-gray-600"/>
+                        <input onChange={(e) => addShipping(e)} name="delivery" type="radio" value={flagDeliveryFeeDpd.getValue()} id="dpd" className="sm:mr-8 mr-4 align-center w-5 h-5 text-blue-600 bg-gray-100 dark:ring-offset-gray-800 dark:bg-gray-700 dark:border-gray-600"/>
                         <div className="flex justify-center items-center space-x-4">
                           <div className="w-8 h-8">
                             <img className="w-full h-full" alt="logo" src="/dpd.png" />
@@ -631,13 +635,13 @@ return (
                           </div>
                         </div>
                         <div className="flex ml-auto">
-                          <p className="text-base font-semibold leading-6 dark:text-white text-gray-800">7.99 €</p>
+                          <p className="text-base font-semibold leading-6 dark:text-white text-gray-800">{flagDeliveryFeeDpd.getValue()} €</p>
                         </div>
                       </div>
                     </label>
-                    <label htmlFor="evri" className={delivery.includes("evri") ? "cursor-pointer py-6 sm:px-8 px-4 border-amber-400 border-2 rounded-2xl" : "border-slate-300 cursor-pointer py-6 sm:px-8 px-4 border rounded-2xl"}>
+                    <label htmlFor="evri" className={delivery.includes("evri") ? "relative cursor-pointer py-6 sm:px-8 px-4 border-amber-400 bg-[#fffaf9] border-2 rounded-2xl" : "relative border-slate-300 cursor-pointer py-6 sm:px-8 px-4 border rounded-2xl"}>
                       <div className="flex items-center">
-                        <input onChange={(e) => addShipping(e)} name="delivery" type="radio" value="3.99" id="evri" className="label-checked:border-amber-400 sm:mr-8 mr-4 align-center w-5 h-5 text-blue-600 bg-gray-100 dark:ring-offset-gray-800 dark:bg-gray-700 dark:border-gray-600"/>
+                        <input onChange={(e) => addShipping(e)} name="delivery" type="radio" value={flagDeliveryFeeEvri.getValue()} id="evri" className="label-checked:border-amber-400 sm:mr-8 mr-4 align-center w-5 h-5 text-blue-600 bg-gray-100 dark:ring-offset-gray-800 dark:bg-gray-700 dark:border-gray-600"/>
                         <div className="flex justify-center items-center space-x-4">
                           <div className="w-8 h-8">
                             <img className="w-full h-full" alt="logo" src="/evri.png" />
@@ -649,16 +653,16 @@ return (
                           </div>
                         </div>
                         <div className="flex ml-auto">
-                          <p className="text-base font-semibold leading-6 dark:text-white text-gray-800">3.99 €</p>
+                          <p className="text-base font-semibold leading-6 dark:text-white text-gray-800">{flagDeliveryFeeEvri.getValue()} €</p>
                         </div>
                       </div>
                     </label>
                   </div>
                 </div>
                 <div className="flex justify-center md:flex-row border rounded-2xl flex-col items-stretch w-full space-y-4 md:space-y-0 md:space-x-6 xl:space-x-8">
-                  <div className="flex flex-col justify-start px-5 py-7 w-full dark:bg-gray-800 space-y-6">
+                  <div className="flex flex-col justify-start px-5 py-7 w-full dark:bg-gray-800 space-y-4">
                     <h3 className="text-lg dark:text-white font-semibold leading-5 text-gray-800">Select payment method</h3>
-                    <div className="bg-[#fffdf7] py-6 sm:px-8 px-4 border-amber-400 border-2 rounded-2xl">
+                    <div className="bg-[#fffaf9] py-6 sm:px-8 px-4 border-amber-400 border-2 rounded-2xl">
                       <label htmlFor='card' className="flex items-center">
                         <input onChange={(e) => addShipping(e)} checked type="radio" value="" name="payment" id="card" className="sm:mr-8 mr-4 align-center w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 dark:ring-offset-gray-800 dark:bg-gray-700 dark:border-gray-600"/>
                         <div className="flex justify-center items-center space-x-4">
