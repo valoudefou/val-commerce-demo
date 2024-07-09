@@ -400,6 +400,13 @@ return (
                         </button>
                       </div>
                       <div className="flex sm:flex-row flex-col sm:space-x-3 mt-8">
+                        <button type="submit" onClick={() => [beginCheckout()]} className="justify-center items-center w-full flex py-4 px-7 bg-white border hover:bg-gray-50 border-slate-600 text-slate-600 text-semibold text-sm rounded-full font-medium">
+                          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1" stroke="currentColor" className="w-6 h-6 py-1">
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3"/>
+                          </svg>
+                          Continue To Delivery
+                        </button>
+                        <span className="text-md p-1 flex items-center justify-center">or</span>
                         {paymentFeature1Click.getValue() === 'true' &&
                         <Link href='/products/confirmation'>
                           <button className="justify-center items-center w-full flex text-xl tracking-tight font-medium bg-black text-white text-extrabold py-4 px-16 rounded-full hover:bg-neutral-800">
@@ -410,13 +417,6 @@ return (
                           </button>
                         </Link>
                         }
-                        <span className="text-md p-1 flex items-center justify-center">or</span>
-                        <button type="submit" onClick={() => [beginCheckout()]} className="justify-center items-center w-full flex py-4 px-7 bg-white border hover:bg-gray-50 border-slate-600 text-slate-600 text-semibold text-sm rounded-full font-medium">
-                          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1" stroke="currentColor" className="w-6 h-6 py-1">
-                            <path strokeLinecap="round" strokeLinejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3"/>
-                          </svg>
-                          Continue To Delivery
-                        </button>
                       </div>
                     </div>
                   </div>
