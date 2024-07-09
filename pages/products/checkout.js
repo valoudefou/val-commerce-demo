@@ -38,7 +38,7 @@ const [delivery, setDelivery] = useState("")
 
 useEffect(() => {
   const errorList = []
-console.log('test')
+console.log('tesft')
   if (!email) {
     errorList.push("email")
   }
