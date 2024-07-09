@@ -40,7 +40,6 @@ const [cardNumber, setCardNumber] = useState("")
 const generateCard = (e) => {
   e.preventDefault()
   setCardNumber([Math.floor(1000 + Math.random() * 9000) + ' ' + Math.floor(1000 + Math.random() * 9000) + ' ' + Math.floor(1000 + Math.random() * 9000) + ' ' + Math.floor(1000 + Math.random() * 9000), Math.floor(100 + Math.random() * 900), '1' + Math.floor(Math.random() * 9) + '/' + '1' + Math.floor(Math.random() * 3), first_name + ' ' + last_name])
-  console.log(cardNumber)
   window.dataLayer = window.dataLayer || []
   window.dataLayer.push({
     event: 'add_payment_info',
