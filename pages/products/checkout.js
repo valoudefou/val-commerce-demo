@@ -37,25 +37,38 @@ const [cardNumber, setCardNumber] = useState("")
 //   ({target:{name,value}}) => setInputs(state => ({ ...state, [name]:value }), [setError('')])
 // )
 
+const sendOrder = (e) => {
+  e.preventDefault()
+
+  if (cardNumber && delivery) {
+    console.log('Order can be submitted!')
+  } else {
+    e.preventDefault()
+    alert('Missing information')
+  }
+}
+
 const generateCard = (e) => {
   e.preventDefault()
-  setCardNumber([Math.floor(1000 + Math.random() * 9000) + ' ' + Math.floor(1000 + Math.random() * 9000) + ' ' + Math.floor(1000 + Math.random() * 9000) + ' ' + Math.floor(1000 + Math.random() * 9000), Math.floor(100 + Math.random() * 900), '1' + Math.floor(Math.random() * 9) + '/' + '1' + Math.floor(Math.random() * 3), first_name + ' ' + last_name])
-  window.dataLayer = window.dataLayer || []
-  window.dataLayer.push({
-    event: 'add_payment_info',
-    ecommerce: {
-      'currency': 'EUR',
-      'value': data.productPrice,
-      'payment_type': "Credit Card",
-      item: [{
-        'item_id': data.productId,
-        'item_name': data.productTitle,
-        'item_category': data.productCategory,
-        'price': data.productPrice,
-        'quantity': data.productQuantity
-      }]
-    }
-  })
+    if (!cardNumber) {
+    setCardNumber([Math.floor(1000 + Math.random() * 9000) + ' ' + Math.floor(1000 + Math.random() * 9000) + ' ' + Math.floor(1000 + Math.random() * 9000) + ' ' + Math.floor(1000 + Math.random() * 9000), Math.floor(100 + Math.random() * 900), '1' + Math.floor(Math.random() * 9) + '/' + '1' + Math.floor(Math.random() * 3), first_name + ' ' + last_name])
+    window.dataLayer = window.dataLayer || []
+    window.dataLayer.push({
+      event: 'add_payment_info',
+      ecommerce: {
+        'currency': 'EUR',
+        'value': data.productPrice,
+        'payment_type': "Credit Card",
+        item: [{
+          'item_id': data.productId,
+          'item_name': data.productTitle,
+          'item_category': data.productCategory,
+          'price': data.productPrice,
+          'quantity': data.productQuantity
+        }]
+      }
+    })
+  }
 }
 
 useEffect(() => {
@@ -699,7 +712,7 @@ return (
                             </div>
                           </div>
                           <div>
-                            <button onClick={(e) => generateCard(e)} className="bg-slate-500 px-4 py-2 text-white rounded-xl text-xs font-medium">Generate Card Details</button>
+                            <button onClick={(e) => generateCard(e)} className="bg-slate-500 px-4 py-2 text-white rounded-lg text-xs font-medium">Generate Card Details</button>
                           </div>
                         </div>
                       </div>
@@ -712,7 +725,7 @@ return (
                       </a>
                     </p>
                       <Link href='/products/confirmation'>
-                        <button className="w-full flex font-medium bg-black text-white py-4 px-16 rounded-full hover:bg-neutral-800">
+                        <button onClick={(e) => sendOrder(e)} className="w-full flex font-medium bg-black text-white py-4 px-16 rounded-full hover:bg-neutral-800">
                           <svg xmlns="http://www.w3.org/2000/svg" className="mx-2" width="20" height="20" viewBox="0 0 24 24" fill="#ffffff">
                             <path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"></path>
                           </svg>
