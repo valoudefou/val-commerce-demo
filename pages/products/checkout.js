@@ -273,7 +273,7 @@ return (
                   </div>
                   <div className="mt-6 w-full">
                     <div className="mb-4">
-                      <label className="block text-grey-darker text-sm font-normal mb-2 ml-2" for="email">
+                      <label className="block text-grey-darker text-sm font-normal mb-2 ml-2" htmlFor="email">
                         Email Address
                       </label>
                       <input 
@@ -307,7 +307,7 @@ return (
                       <div className="mt-6 w-full">
                         <div className="flex mb-4">
                         <div className="w-1/2 mr-1">
-                          <label className="block text-grey-darker text-sm font-normal mb-2 ml-2" for="first_name">
+                          <label className="block text-grey-darker text-sm font-normal mb-2 ml-2" htmlFor="first_name">
                             First Name
                           </label>
                           <input 
@@ -321,7 +321,7 @@ return (
                           />
                         </div>
                         <div className="w-1/2 ml-1">
-                          <label className="block text-grey-darker text-sm font-normal mb-2 ml-2" for="last_name">
+                          <label className="block text-grey-darker text-sm font-normal mb-2 ml-2" htmlFor="last_name">
                             Last Name
                           </label>
                         <input 
@@ -336,7 +336,7 @@ return (
                         </div>
                       </div>
                       <div className="mb-4">
-                        <label className="block text-grey-darker text-sm font-normal mb-2 ml-2" for="address">
+                        <label className="block text-grey-darker text-sm font-normal mb-2 ml-2" htmlFor="address">
                           Address
                         </label>
                         <input 
@@ -394,7 +394,7 @@ return (
                     <div className="mt-6 w-full">
                       <div className="flex mb-4">
                         <div className="w-1/2 mr-1">
-                          <label className="block text-grey-darker text-sm font-normal mb-2 ml-2" for="first_name">
+                          <label className="block text-grey-darker text-sm font-normal mb-2 ml-2" htmlFor="first_name">
                             First Name
                           </label>
                           <input 
@@ -409,7 +409,7 @@ return (
                           <div className={error.includes("first_name") ? "text-red-400 text-sm py-1 px-1 font-medium" : "hidden"}>Please enter your first name</div>
                         </div>
                         <div className="w-1/2 ml-1">
-                          <label className="block text-grey-darker text-sm font-normal mb-2 ml-2" for="last_name">
+                          <label className="block text-grey-darker text-sm font-normal mb-2 ml-2" htmlFor="last_name">
                             Last Name
                           </label>
                           <input 
@@ -425,13 +425,13 @@ return (
                         </div>
                       </div>
                       <div className="mb-4">
-                        <label className="block text-grey-darker text-sm font-normal mb-2 ml-2" for="company">
+                        <label className="block text-grey-darker text-sm font-normal mb-2 ml-2" htmlFor="company">
                           Company (optional)
                         </label>
                         <input className="border rounded-2xl w-full py-4 px-4 text-grey-darker" id="company" type="company" placeholder="Company"/>
                       </div>
                       <div className="mb-4">
-                        <label className="block text-grey-darker text-sm font-normal mb-2 ml-2" for="address line 1">
+                        <label className="block text-grey-darker text-sm font-normal mb-2 ml-2" htmlFor="address line 1">
                           Address line 1
                         </label>
                         <input 
@@ -446,7 +446,7 @@ return (
                         <div className={error.includes("address_1") ? "text-red-400 text-sm py-1 px-1 font-medium" : "hidden"}>Please enter your address</div>
                       </div>
                       <div className="mb-4">
-                        <label className="block text-grey-darker text-sm font-normal mb-2 ml-2" for="address line 2">
+                        <label className="block text-grey-darker text-sm font-normal mb-2 ml-2" htmlFor="address line 2">
                           Address line 2 (optional)
                         </label>
                         <input 
@@ -460,7 +460,7 @@ return (
                         />
                       </div>
                       <div className="mb-4">
-                        <label className="block text-grey-darker text-sm font-normal mb-2 ml-2" for="city">
+                        <label className="block text-grey-darker text-sm font-normal mb-2 ml-2" htmlFor="city">
                           City
                         </label>
                         <input 
@@ -476,7 +476,7 @@ return (
                       </div>
                       <div className="flex mb-4">
                         <div className="w-1/2 mr-1">
-                          <label className="block text-grey-darker text-sm font-normal mb-2 ml-2" for="country">
+                          <label className="block text-grey-darker text-sm font-normal mb-2 ml-2" htmlFor="country">
                             Country
                           </label>
                           <select 
@@ -488,7 +488,7 @@ return (
                           </select>
                         </div>
                         <div className="w-1/2 ml-1">
-                          <label className="block text-grey-darker text-sm font-normal mb-2 ml-2" for="postcode">
+                          <label className="block text-grey-darker text-sm font-normal mb-2 ml-2" htmlFor="postcode">
                             Postcode
                           </label>
                           <input 
@@ -504,7 +504,7 @@ return (
                         </div>
                       </div>
                       <div className="mb-4">
-                        <label className="block text-grey-darker text-sm font-normal mb-2 ml-2" for="phone">
+                        <label className="block text-grey-darker text-sm font-normal mb-2 ml-2" htmlFor="phone">
                           Phone (optional)
                         </label>
                         <input 
@@ -584,7 +584,7 @@ return (
                 <div className="flex justify-center md:flex-row border rounded-2xl flex-col items-stretch w-full space-y-4 md:space-y-0 md:space-x-6 xl:space-x-8">
                   <div className="flex flex-col justify-start px-5 py-7 w-full dark:bg-gray-800 space-y-6">
                     <h3 className="text-lg dark:text-white font-semibold leading-5 text-gray-800">Delivery options</h3>
-                    <label for="dpd" className="bg-[#fffdf7] cursor-pointer py-6 sm:px-8 px-4 border-amber-400 border-2 rounded-2xl">
+                    <label htmlFor="dpd" className="bg-[#fffdf7] cursor-pointer py-6 sm:px-8 px-4 border-amber-400 border-2 rounded-2xl">
                       <div className="flex items-center">
                         <input onChange={(e) => addShipping(e)} name="delivery" type="radio" value="" id="dpd" className="sm:mr-8 mr-4 align-center w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 dark:ring-offset-gray-800 dark:bg-gray-700 dark:border-gray-600"/>
                         <div className="flex justify-center items-center space-x-4">
@@ -602,7 +602,7 @@ return (
                         </div>
                       </div>
                     </label>
-                    <label for="evri" className="bg-[#fffdf7] cursor-pointer py-6 sm:px-8 px-4 border-amber-400 border-2 rounded-2xl">
+                    <label htmlFor="evri" className="bg-[#fffdf7] cursor-pointer py-6 sm:px-8 px-4 border-amber-400 border-2 rounded-2xl">
                       <div className="flex items-center">
                         <input onChange={(e) => addShipping(e)} name="delivery" type="radio" value="" id="evri" className="sm:mr-8 mr-4 align-center w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 dark:ring-offset-gray-800 dark:bg-gray-700 dark:border-gray-600"/>
                         <div className="flex justify-center items-center space-x-4">
