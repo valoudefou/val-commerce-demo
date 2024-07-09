@@ -647,7 +647,7 @@ return (
                           </svg>
                         </div>
                       </label>
-                      <form className="w-full my-6">
+                      <div className="w-full my-6">
                         <input type="text" className="border-slate-400 border rounded-2xl w-full py-4 px-4 text-grey-darker" placeholder="1111 1111 1111 1110" />
                         <div className="flex gap-x-2 my-4">
                           <div className="flex-1">
@@ -673,7 +673,7 @@ return (
                           Use a different billing address
                         </label>
                       </div>
-                      </form>
+                      </div>
                     </div>
                     <div className="flex flex-col items-center w-full justify-center">
                     <p className="mb-8 text-center leading-6">
