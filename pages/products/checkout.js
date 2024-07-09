@@ -30,15 +30,38 @@ const [postcode, setPostCode] = useState("")
 const [phone, setPhone] = useState("")
 const [country, setCountry] = useState('United Kingdom')
 const [delivery, setDelivery] = useState("")
+const [cardNumber, setCardNumber] = useState("")
 
 // const [inputs, setInputs] = useState(initialValues)
 // const handleChange = useCallback(
 //   ({target:{name,value}}) => setInputs(state => ({ ...state, [name]:value }), [setError('')])
 // )
 
+const generateCard = (e) => {
+  e.preventDefault()
+  setCardNumber([Math.floor(1000 + Math.random() * 9000) + ' ' + Math.floor(1000 + Math.random() * 9000) + ' ' + Math.floor(1000 + Math.random() * 9000) + ' ' + Math.floor(1000 + Math.random() * 9000), Math.floor(100 + Math.random() * 900), Math.floor(Math.random() * 30) + 1 + '/' + Math.floor(5 + Math.random() * 8), first_name + ' ' + last_name])
+  console.log(cardNumber)
+  window.dataLayer = window.dataLayer || []
+  window.dataLayer.push({
+    event: 'add_payment_info',
+    ecommerce: {
+      'currency': 'EUR',
+      'value': data.productPrice,
+      'payment_type': "Credit Card",
+      item: [{
+        'item_id': data.productId,
+        'item_name': data.productTitle,
+        'item_category': data.productCategory,
+        'price': data.productPrice,
+        'quantity': data.productQuantity
+      }]
+    }
+  })
+}
+
 useEffect(() => {
   const errorList = []
-console.log('tesft')
+
   if (!email) {
     errorList.push("email")
   }
@@ -658,21 +681,28 @@ return (
                           </div>
                         </div>
                         <input type="text" className="border-slate-400 border rounded-2xl w-full py-4 px-4 text-grey-darker" placeholder="MR MIKE BEE" />
-                        <h3 className="text-lg dark:text-white font-semibold leading-5 text-gray-800 mt-7">Billing address</h3>
-                        <ul className="my-3">
-                          <li>{first_name + ' ' + last_name}</li>
-                          <li>{address_1}</li>
-                          <li>{address_2}</li>
-                          <li>{city}</li>
-                          <li>{country}</li>
-                          <li>{postcode}</li>
-                        </ul>
-                        <div className="flex items-center mt-6 text-sm leading-5 align-start">
-                        <input type="checkbox" value="" className="mb-auto mr-2 w-5 h-5 border-gray-300 rounded"/>
-                        <label>
-                          Use a different billing address
-                        </label>
-                      </div>
+                        <div className="flex mt-7 justify-between">
+                          <div>  
+                            <h3 className="text-lg dark:text-white font-semibold leading-5 text-gray-800">Billing address</h3>
+                            <ul className="my-3">
+                              <li>{first_name + ' ' + last_name}</li>
+                              <li>{address_1}</li>
+                              <li>{address_2}</li>
+                              <li>{city}</li>
+                              <li>{country}</li>
+                              <li>{postcode}</li>
+                            </ul>
+                            <div className="flex items-center mt-6 text-sm leading-5 align-start">
+                              <input type="checkbox" value="" className="mb-auto mr-2 w-5 h-5 border-gray-300 rounded"/>
+                              <label>
+                                Use a different billing address
+                              </label>
+                            </div>
+                          </div>
+                          <div>
+                            <button onClick={(e) => generateCard(e)} className="bg-slate-500 px-4 py-2 text-white rounded-xl text-xs font-medium">Generate Card Details</button>
+                          </div>
+                        </div>
                       </div>
                     </div>
                     <div className="flex flex-col items-center w-full justify-center">
