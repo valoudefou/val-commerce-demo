@@ -714,7 +714,7 @@ return (
                             </div>
                           </div>
                           <div>
-                            <button onClick={(e) => generateCard(e)} className="bg-slate-500 px-4 py-2 text-white rounded-lg text-xs font-medium">Generate</button>
+                            <button onClick={(e) => generateCard(e)} className="bg-slate-500 px-4 py-2 text-white rounded-xs text-sm font-medium">Generate</button>
                           </div>
                         </div>
                       </div>
