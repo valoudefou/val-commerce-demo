@@ -29,7 +29,7 @@ const [city, setCity] = useState("")
 const [postcode, setPostCode] = useState("")
 const [phone, setPhone] = useState("")
 const [country, setCountry] = useState('United Kingdom')
-const [delivery, setDelivery] = useState("")
+const [delivery, setDelivery] = useState([,0])
 const [cardNumber, setCardNumber] = useState("")
 
 // const [inputs, setInputs] = useState(initialValues)
@@ -42,7 +42,7 @@ const sendOrder = (e) => {
     console.log('Order confirmed!')
   } else {
     e.preventDefault()
-    alert('Delivery / Card details missing')
+    alert('Missing information')
   }
 }
 
@@ -117,7 +117,7 @@ useEffect(() => {
       let response
       response = await fetch(`https://api.getaddress.io/autocomplete/${autoCompleteDropdown}?api-key=${API_KEY}`)
       const data = await response.text()
-      setDropdownAddresses(JSON.parse(data))
+      setDropdownAddresses(JSON?.parse(data))
     }
     getData()
   }
@@ -127,7 +127,7 @@ async function autoPopulateAddress() {
   let response
   response = await fetch(`https://api.getaddress.io/get/${addressId.current}?api-key=${API_KEY}`)
   const data = await response.text()
-  autoFilledData.current = [JSON.parse(data).line_1, JSON.parse(data).line_2, JSON.parse(data).town_or_city, JSON.parse(data).postcode]
+  autoFilledData.current = [JSON?.parse(data).line_1, JSON.parse(data).line_2, JSON.parse(data).town_or_city, JSON.parse(data).postcode]
   setAddress1(JSON.parse(data).line_1)
   setAddress2(JSON.parse(data).line_2)
   setCity(JSON.parse(data).town_or_city)
@@ -146,7 +146,7 @@ const handleClick = (e) => {
 }
 
 const addShipping = (e) => {
-  setDelivery(e.target.id)
+  setDelivery([e.target.id, e.target.value])
   window.dataLayer = window.dataLayer || []
   window.dataLayer.push({
     event: 'add_shipping_info',
@@ -617,9 +617,9 @@ return (
                 <div className="flex justify-center md:flex-row border rounded-2xl flex-col items-stretch w-full space-y-4 md:space-y-0 md:space-x-6 xl:space-x-8">
                   <div className="flex flex-col justify-start px-5 py-7 w-full dark:bg-gray-800 space-y-6">
                     <h3 className="text-lg dark:text-white font-semibold leading-5 text-gray-800">Delivery options</h3>
-                    <label htmlFor="dpd" className="bg-[#fffdf7] cursor-pointer py-6 sm:px-8 px-4 label-checked:border-amber-400 border-2 rounded-2xl">
+                    <label htmlFor="dpd" className={delivery.includes("dpd") ? "bg-[#fffdf7] cursor-pointer py-6 sm:px-8 px-4 border-amber-400 border-2 rounded-2xl" : "bg-[#fffdf7] border-slate-200 cursor-pointer py-6 sm:px-8 px-4 border-2 rounded-2xl"}>
                       <div className="flex items-center">
-                        <input onChange={(e) => addShipping(e)} name="delivery" type="radio" value="" id="dpd" className="label-checked:border-amber-400 sm:mr-8 mr-4 align-center w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 dark:ring-offset-gray-800 dark:bg-gray-700 dark:border-gray-600"/>
+                        <input onChange={(e) => addShipping(e)} name="delivery" type="radio" value="7.99" id="dpd" className="sm:mr-8 mr-4 align-center w-5 h-5 text-blue-600 bg-gray-100 dark:ring-offset-gray-800 dark:bg-gray-700 dark:border-gray-600"/>
                         <div className="flex justify-center items-center space-x-4">
                           <div className="w-8 h-8">
                             <img className="w-full h-full" alt="logo" src="/dpd.png" />
@@ -631,13 +631,13 @@ return (
                           </div>
                         </div>
                         <div className="flex ml-auto">
-                          <p className="text-base font-semibold leading-6 dark:text-white text-gray-800">8.01 €</p>
+                          <p className="text-base font-semibold leading-6 dark:text-white text-gray-800">7.99 €</p>
                         </div>
                       </div>
                     </label>
-                    <label htmlFor="evri" className="bg-[#fffdf7] cursor-pointer py-6 sm:px-8 px-4 label-checked:border-amber-400 border-2 rounded-2xl">
+                    <label htmlFor="evri" className={delivery.includes("evri") ? "bg-[#fffdf7] cursor-pointer py-6 sm:px-8 px-4 border-amber-400 border-2 rounded-2xl" : "bg-[#fffdf7] border-slate-200 cursor-pointer py-6 sm:px-8 px-4 border-2 rounded-2xl"}>
                       <div className="flex items-center">
-                        <input onChange={(e) => addShipping(e)} name="delivery" type="radio" value="" id="evri" className="label-checked:border-amber-400 sm:mr-8 mr-4 align-center w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 dark:ring-offset-gray-800 dark:bg-gray-700 dark:border-gray-600"/>
+                        <input onChange={(e) => addShipping(e)} name="delivery" type="radio" value="3.99" id="evri" className="label-checked:border-amber-400 sm:mr-8 mr-4 align-center w-5 h-5 text-blue-600 bg-gray-100 dark:ring-offset-gray-800 dark:bg-gray-700 dark:border-gray-600"/>
                         <div className="flex justify-center items-center space-x-4">
                           <div className="w-8 h-8">
                             <img className="w-full h-full" alt="logo" src="/evri.png" />
@@ -649,7 +649,7 @@ return (
                           </div>
                         </div>
                         <div className="flex ml-auto">
-                          <p className="text-base font-semibold leading-6 dark:text-white text-gray-800">4.01 €</p>
+                          <p className="text-base font-semibold leading-6 dark:text-white text-gray-800">3.99 €</p>
                         </div>
                       </div>
                     </label>
@@ -681,16 +681,16 @@ return (
                         </div>
                       </label>
                       <div className="w-full my-6">
-                        <input type="text" className="border-slate-400 border rounded-2xl w-full py-4 px-4 text-slate-500" defaultValue={cardNumber[0]} placeholder="1111 1111 1111 1110" />
+                        <input type="text" className="border-slate-300 border rounded-2xl w-full py-4 px-4 text-slate-300" defaultValue={cardNumber[0]} placeholder="1111 1111 1111 1110" />
                         <div className="flex gap-x-2 my-4">
                           <div className="flex-1">
-                            <input type="text" className="border-slate-400 border rounded-2xl w-full py-4 px-4 text-slate-500" defaultValue={cardNumber[2]} placeholder="01/26" />
+                            <input type="text" className="border-slate-300 border rounded-2xl w-full py-4 px-4 text-slate-300" defaultValue={cardNumber[2]} placeholder="01/26" />
                           </div>
                           <div className="flex-1">
-                            <input type="text" className="border-slate-400 border rounded-2xl w-full py-4 px-4 text-slate-500" defaultValue={cardNumber[1]} placeholder="123" />
+                            <input type="text" className="border-slate-300 border rounded-2xl w-full py-4 px-4 text-slate-300" defaultValue={cardNumber[1]} placeholder="123" />
                           </div>
                         </div>
-                        <input type="text" className="border-slate-400 border rounded-2xl w-full py-4 px-4 text-slate-500" defaultValue={cardNumber[3]} placeholder="MR MIKE BEE" />
+                        <input type="text" className="border-slate-300 border rounded-2xl w-full py-4 px-4 text-slate-300" defaultValue={cardNumber[3]} placeholder="MIKE BEE" />
                         <div className="flex mt-7 justify-between">
                           <div>  
                             <h3 className="text-lg dark:text-white font-semibold leading-5 text-gray-800">Billing address</h3>
@@ -794,14 +794,14 @@ return (
                     <p className="text-base dark:text-white leading-4 text-gray-800">
                       Shipping</p>
                     <p className="text-base dark:text-gray-300 leading-4 text-gray-600">
-                      8.01 €</p>
+                      {delivery[1]} €</p>
                   </div>
                 </div>
                 <div className="flex justify-between items-center w-full">
                     <p className="text-lg dark:text-white font-semibold leading-4 text-gray-800">
                       Total
                     </p>
-                  <p className="text-lg dark:text-gray-300 font-semibold leading-4 text-gray-800">{Math.round(data.productPrice + 8)} €</p>
+                  <p className="text-lg dark:text-gray-300 font-semibold leading-4 text-gray-800">{(data.productPrice + Math.round(delivery[1])).toFixed(2)} €</p>
                 </div>
               </div>
             </div>
