@@ -617,7 +617,7 @@ return (
                 <div className="flex justify-center md:flex-row border rounded-2xl flex-col items-stretch w-full space-y-4 md:space-y-0 md:space-x-6 xl:space-x-8">
                   <div className="flex flex-col justify-start px-5 py-7 w-full dark:bg-gray-800 space-y-6">
                     <h3 className="text-lg dark:text-white font-semibold leading-5 text-gray-800">Delivery options</h3>
-                    <label htmlFor="dpd" className={delivery.includes("dpd") ? "bg-[#fffdf7] cursor-pointer py-6 sm:px-8 px-4 border-amber-400 border-2 rounded-2xl" : "bg-[#fffdf7] border-slate-200 cursor-pointer py-6 sm:px-8 px-4 border-2 rounded-2xl"}>
+                    <label htmlFor="dpd" className={delivery.includes("dpd") ? "cursor-pointer py-6 sm:px-8 px-4 border-amber-400 border-2 rounded-2xl" : "border-slate-300 cursor-pointer py-6 sm:px-8 px-4 border rounded-2xl"}>
                       <div className="flex items-center">
                         <input onChange={(e) => addShipping(e)} name="delivery" type="radio" value="7.99" id="dpd" className="sm:mr-8 mr-4 align-center w-5 h-5 text-blue-600 bg-gray-100 dark:ring-offset-gray-800 dark:bg-gray-700 dark:border-gray-600"/>
                         <div className="flex justify-center items-center space-x-4">
@@ -635,7 +635,7 @@ return (
                         </div>
                       </div>
                     </label>
-                    <label htmlFor="evri" className={delivery.includes("evri") ? "bg-[#fffdf7] cursor-pointer py-6 sm:px-8 px-4 border-amber-400 border-2 rounded-2xl" : "bg-[#fffdf7] border-slate-200 cursor-pointer py-6 sm:px-8 px-4 border-2 rounded-2xl"}>
+                    <label htmlFor="evri" className={delivery.includes("evri") ? "cursor-pointer py-6 sm:px-8 px-4 border-amber-400 border-2 rounded-2xl" : "border-slate-300 cursor-pointer py-6 sm:px-8 px-4 border rounded-2xl"}>
                       <div className="flex items-center">
                         <input onChange={(e) => addShipping(e)} name="delivery" type="radio" value="3.99" id="evri" className="label-checked:border-amber-400 sm:mr-8 mr-4 align-center w-5 h-5 text-blue-600 bg-gray-100 dark:ring-offset-gray-800 dark:bg-gray-700 dark:border-gray-600"/>
                         <div className="flex justify-center items-center space-x-4">
@@ -710,7 +710,7 @@ return (
                             </div>
                           </div>
                           <div>
-                            <button onClick={(e) => generateCard(e)} className="bg-slate-500 px-4 py-2 text-white rounded-lg text-xs font-medium">Generate Card Details</button>
+                            <button onClick={(e) => generateCard(e)} className="bg-slate-500 px-4 py-2 text-white rounded-lg text-xs font-medium">Generate</button>
                           </div>
                         </div>
                       </div>
