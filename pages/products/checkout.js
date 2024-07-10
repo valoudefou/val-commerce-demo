@@ -648,8 +648,8 @@ export default function Checkout() {
                               <img className="w-full h-full" alt="logo" src="/dpd.png" />
                             </div>
                             <div className="flex flex-col justify-start items-center">
-                              <p className="leading-6 dark:text-white font-semibold text-gray-800">DPD<br />
-                                <span className="text-sm font-normal">delivery tomorrow</span>
+                              <p className="dark:text-white font-semibold text-gray-800">DPD<br />
+                                <span className="text-sm font-normal leading-4">delivery tomorrow</span>
                               </p>
                             </div>
                           </div>
@@ -666,8 +666,8 @@ export default function Checkout() {
                               <img className="w-full h-full" alt="logo" src="/evri.png" />
                             </div>
                             <div className="flex flex-col justify-start items-center">
-                              <p className="leading-6 dark:text-white font-semibold text-gray-800">Evri<br />
-                                <span className="text-sm font-normal">delivery up to 3 days</span>
+                              <p className=" dark:text-white font-semibold text-gray-800">Evri<br />
+                                <span className="text-sm font-normal leading-4">72-h delivery</span>
                               </p>
                             </div>
                           </div>
