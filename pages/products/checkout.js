@@ -729,12 +729,12 @@ export default function Checkout() {
                                 <li>{country}</li>
                                 <li>{postcode}</li>
                               </ul>
-                              <div className="flex items-center mt-6 text-sm leading-5 align-start">
+                              {/* <div className="flex items-center mt-6 text-sm leading-5 align-start">
                                 <input type="checkbox" value="" className="mb-auto mr-2 w-5 h-5 border-gray-300 rounded"/>
                                 <label>
                                   Use a different billing address
                                 </label>
-                              </div>
+                              </div> */}
                             </div>
                           </div>
                         </div>
