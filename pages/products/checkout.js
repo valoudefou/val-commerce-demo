@@ -12,14 +12,14 @@ export default function Checkout() {
   // KEY
   const API_KEY = process.env.NEXT_PUBLIC_GETADDRESS_KEY
   // STATES
-  const [data, setData] = useState('') // LocalStorage product added to cart
-  const [fullAddressComponent, setFullAddressComponent] = useState(false) // Display full address component
-  const sendBeginCheckout = useRef(0) // Prevent beginCheckout() from being called multiple times
-  const [autoCompleteDropdown, setAutocompleteDropdown] = useState("") // Dropdown list with dropDownAddresses as the user types
-  const [dropDownAddresses, setDropdownAddresses] = useState([]) // Store data from autocomplete service to display in dropdown
-  const autoFilledData = useRef([]) // Get address details populate inputs
-  const addressId = useRef() // Address ID to retrieve address details in second fetching
-  const searchInput = useRef(null) // Start typing address input focus status
+  const [data, setData] = useState('')
+  const [fullAddressComponent, setFullAddressComponent] = useState(false)
+  const sendBeginCheckout = useRef(0)
+  const [autoCompleteDropdown, setAutocompleteDropdown] = useState("")
+  const [dropDownAddresses, setDropdownAddresses] = useState([])
+  const autoFilledData = useRef([])
+  const addressId = useRef()
+  const searchInput = useRef(null)
   const [error, setError] = useState([])
   const [paymentStep, setPaymentStep] = useState(false)
   // CUSTOMER DATA
