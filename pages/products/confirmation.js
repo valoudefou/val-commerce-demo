@@ -18,7 +18,7 @@ export default function Confirmation() {
         totalRevenue: data.productPrice,
         affiliation: 'Purchase',
         currency: 'EUR',
-        shippingCosts: 8.01
+        shippingCosts: confirmation.delivery_fee
       })
     }
   }
@@ -54,7 +54,7 @@ export default function Confirmation() {
       ecommerce: {
         'transaction_id': data.transactionId,
         'value': data.productPrice,
-        'shipping': 8.01,
+        'shipping': confirmation.delivery_fee,
         'currency': 'EUR',
         items: [{
           'item_id': data.productId,
