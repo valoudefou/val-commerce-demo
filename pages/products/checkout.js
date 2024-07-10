@@ -75,7 +75,7 @@ export default function Checkout() {
           'currency': 'EUR',
           'value': data.productPrice,
           'payment_type': "Credit Card",
-          item: [{
+          items: [{
             'item_id': data.productId,
             'item_name': data.productTitle,
             'item_category': data.productCategory,
@@ -175,7 +175,7 @@ export default function Checkout() {
         'currency': 'EUR',
         'value': data.productPrice,
         'shipping_tier': e.target.id,
-        item: [{
+        items: [{
           'item_id': data.productId,
           'item_name': data.productTitle,
           'item_category': data.productCategory,
@@ -197,7 +197,7 @@ export default function Checkout() {
         ecommerce: {
           'currency': 'EUR',
           'value': data.productPrice,
-          item: [{
+          items: [{
             'item_id': data.productId,
             'item_name': data.productTitle,
             'item_category': data.productCategory,
