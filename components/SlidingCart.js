@@ -18,7 +18,7 @@ function SlidingCart() {
       ecommerce: {
         'currency': 'EUR',
         'value': data.productPrice,
-        item: [{
+        items: [{
           'item_id': data.productId,
           'item_name': data.productTitle,
           'item_category': data.productCategory,
