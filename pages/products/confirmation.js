@@ -140,7 +140,7 @@ export default function Confirmation() {
                       <img className="w-full h-full" alt="logo" src={confirmation.delivery_src ? confirmation.delivery_src : "/evri.png"}/>
                     </div>
                     <div className="flex flex-col justify-start items-center">
-                      <p className="text-sm leading-6 dark:text-white font-semibold text-gray-800">{confirmation.delivery ? confirmation.delivery : "evri"}<br/>
+                      <p className="dark:text-white font-semibold text-gray-800">{confirmation.delivery ? confirmation.delivery : "evri"}<br/>
                         <span className="text-sm font-normal">{confirmation.delivery_info ? confirmation.delivery_info : "delivery up to 3 days"}</span>
                       </p>
                     </div>
@@ -155,7 +155,7 @@ export default function Confirmation() {
               <div className="flex flex-col md:flex-row xl:flex-col justify-start items-stretch h-full w-full md:space-x-6 lg:space-x-8 xl:space-x-0">
                 <div className="flex flex-col justify-start items-start flex-shrink-0">
                   <div className="flex justify-center w-full md:justify-start items-center space-x-4 py-8 border-b border-gray-200">
-                    <div className="flex justify-start items-start flex-col space-y-2">
+                    <div className="flex justify-start sm:items-start items-center flex-col space-y-2">
                       <p className="text-base dark:text-white font-semibold leading-4 text-left text-gray-800">{confirmation.first_name ? confirmation.first_name : "Mystery"} {confirmation.last_name ? confirmation.last_name : "Client"}</p>
                       <p className="text-sm dark:text-gray-300 leading-5 text-gray-600">1 previous order</p>
                     </div>
