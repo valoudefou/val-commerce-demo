@@ -316,6 +316,7 @@ export default function Checkout() {
               </ol>
             </div>
           )}
+          {data ?
           <div className="mt-10 flex flex-col xl:flex-row jusitfy-center items-stretch w-full xl:space-x-8 space-y-4 md:space-y-6 xl:space-y-0">
             <div className="flex flex-col justify-start items-start w-full space-y-4 md:space-y-6 xl:space-y-8">
             {!paymentStep && (
@@ -828,6 +829,26 @@ export default function Checkout() {
               </div>
             </div>
           </div>
+          : 
+          <div class="w-72">
+            <div class="grid grid-cols-1 gap-4 py-10 px-4">
+              <div class="pt-2 text-3xl font-semibold text-gray-900">Cart</div>
+                <p class="grid grid-cols-1 gap-3">
+                  The cart is empty
+                </p>
+              <div>
+                <Link href="/products">
+                  <button class="flex items-center justify-center bg-white text-slate-600 text-bold text-sm font-medium">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1" stroke="currentColor" class="w-6 h-6 py-1">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3"></path>
+                    </svg>
+                    Browse products
+                  </button>
+                </Link>
+              </div>
+            </div>
+          </div>
+        }
         </div>
       </form>
     </>
