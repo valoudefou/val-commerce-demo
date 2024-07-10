@@ -166,9 +166,7 @@ export default function Checkout() {
 
   const addShipping = (e) => {
     console.log('SPA component reload')
-    if (typeof window === "undefined") {
-      window.ABTastyReload()
-    }
+    window?.ABTastyReload()
     setDelivery([e.target.id, e.target.value, e.target.nextElementSibling.firstChild.firstChild.src, e.target.nextElementSibling.lastChild.firstChild.lastChild.innerText])
     window.dataLayer = window.dataLayer || []
     window.dataLayer.push({

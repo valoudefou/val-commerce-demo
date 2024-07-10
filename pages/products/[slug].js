@@ -14,9 +14,7 @@ export default function Product(props) {
 
         if (sendData.current === 1) {
             window.dataLayer = window.dataLayer || []
-            if (typeof window === "undefined") {
-                window.ABTastyReload()
-            }
+            window?.ABTastyReload()
             window.dataLayer.push({
                 event: 'view_item',
                 info: 'Last one',
