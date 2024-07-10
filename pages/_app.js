@@ -7,7 +7,7 @@ import { createContext, useState, useEffect } from 'react'
 
 export const AppContext = createContext()
 
-function MyApp({ Component, pageProps, initialFlagsData, initialVisitorData, OnVisitorExposed }) {
+function MyApp({ Component, pageProps, initialFlagsData, initialVisitorData }) {
     const [isShown, setIsShown] = useState(false)
 
     useEffect(() => {
@@ -81,8 +81,8 @@ MyApp.getInitialProps = async (appContext) => {
     })
 
     const initialVisitorData = {
-        // id: '3c970578-679d-49a6-81b9-cdad6960a63b',
-        id: uuidv4(),
+        id: '3c970578-679d-49a6-81b9-cdad6960a63b',
+        // id: uuidv4(),
             context: {
             organisation: "whatever",
             device: 'mobile',
