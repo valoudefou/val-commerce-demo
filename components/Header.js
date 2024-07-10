@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import { HitType, useFlagship, useFsFlag } from "@flagship.io/react-sdk"
+import { HitType, useFlagship, useFsFlag, useCon } from "@flagship.io/react-sdk"
 import Link from 'next/link'
 import Navbar from '../components/Navbar'
 
