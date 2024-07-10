@@ -125,8 +125,8 @@ export default function Checkout() {
       setFullAddressComponent(fullAddressComponent)
       window.scrollTo(0, 0)
     } else {
-      window.scrollTo(0, 0)
       alert('Information required')
+      window.scrollTo(0, 0)
     }
   }
 
