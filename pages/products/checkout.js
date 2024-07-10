@@ -212,6 +212,7 @@ export default function Checkout() {
     setFullAddressComponent(!fullAddressComponent)
     setAutocompleteDropdown('')
     setError('')
+    window.scrollTo(0, 0)
   }
 
   async function autoCompleteDropdownManually () {
@@ -730,7 +731,7 @@ export default function Checkout() {
                               </div>
                             </div>
                             <div>
-                              <button onClick={(e) => generateCard(e)} className="bg-slate-500 px-4 py-2 text-white rounded-xs text-sm font-medium">Generate</button>
+                              <button onClick={(e) => generateCard(e)} className="bg-slate-500 px-4 py-2 rounded text-white text-sm font-medium">Generate</button>
                             </div>
                           </div>
                         </div>
