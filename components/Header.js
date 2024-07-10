@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import { HitType, useFlagship, useFsFlag } from "@flagship.io/react-sdk"
+import { HitType, useFlagship, useFsFlag, useCon } from "@flagship.io/react-sdk"
 import Link from 'next/link'
 import Navbar from '../components/Navbar'
 
@@ -18,7 +18,7 @@ const { hit: fsHit } = useFlagship()
       <Navbar/>
       <div className="absolute inset-x-0 bottom-0 h-1/2" />
         <div className="mx-auto">
-          <div className="relative shadow-xl sm:overflow-hidden">
+          <div className="relative sm:overflow-hidden">
             <div className="absolute inset-0">
               <Image
                 priority
@@ -48,6 +48,9 @@ const { hit: fsHit } = useFlagship()
                     })
                   }}
                   className="flex items-center justify-center py-4 px-8 bg-white border hover:bg-gray-50 border-slate-600 text-slate-600 text-bold text-sm rounded-full font-medium" id="ab-btn">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1" stroke="currentColor" className="w-6 h-6 py-1">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3"/>
+                  </svg>
                   {flagBtnText.getValue()}
                 </button>
               </Link>

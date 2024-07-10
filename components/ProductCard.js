@@ -8,7 +8,7 @@ function ProductCard( {product} ) {
     const [isLoading, setLoading] = useState(true)
     const fs = useFlagship()
     const { hit: fsHit } = useFlagship()
-
+    
     function cn(...classes) {
         return classes.filter(Boolean).join(' ')
     }
@@ -43,7 +43,10 @@ function ProductCard( {product} ) {
                             action: "Click View Details PLP",
                             label: "Engagement"
                         })
-                    }} className="mt-5 py-4 bg-white border hover:bg-gray-50 border-slate-600 text-slate-600 text-semibold text-sm rounded-full font-medium w-full">
+                    }} className="flex items-center justify-center mt-5 py-4 bg-white border hover:bg-gray-50 border-slate-600 text-slate-600 text-semibold text-sm rounded-full font-medium w-full">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1" stroke="currentColor" className="w-6 h-6 py-1">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3"/>
+                    </svg>
                     View details
                     </button>
                 }
