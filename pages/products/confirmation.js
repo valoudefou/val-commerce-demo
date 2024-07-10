@@ -1,6 +1,5 @@
 import { useEffect, useState, useRef } from "react"
 import { HitType, useFlagship } from "@flagship.io/react-sdk"
-import Emotion from "../../components/Emotion"
 
 export default function Confirmation() {
   const [data, setData] = useState('')
