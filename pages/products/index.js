@@ -1,7 +1,7 @@
 import ProductCard from '../../components/ProductCard'
 import Navbar from '../../components/Navbar'
 
-export default function Index( {products} ) {
+export default function Index({ products }) {
     return (
         <>
             <Navbar />

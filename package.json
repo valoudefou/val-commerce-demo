@@ -9,9 +9,12 @@
   },
   "dependencies": {
     "@flagship.io/react-sdk": "^3.3.2",
+    "@types/react-slick": "^0.23.13",
     "contentful": "^10.2.2",
     "googleapis": "^118.0.0",
     "react-ga4": "^2.1.0",
+    "react-slick": "^0.30.2",
+    "slick-carousel": "^1.8.1",
     "uuid": "^10.0.0"
   },
   "devDependencies": {
