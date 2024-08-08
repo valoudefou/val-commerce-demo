@@ -167,7 +167,7 @@ export default function Product(props) {
                 <h2 className='text-3xl font-medium flex justify-center'>{rec.name}</h2>
                 <ul id='abtasty-recs' className='scroll-smooth overflow-hidden flex justify-center' ref={ref}>
                     {rec.products?.map((item) => (
-                        <li key={item.id} className="justify-between flex px-8 py-5 m-2 mt-10 border shadow-lg flex-col">
+                        <li key={item.id} className="justify-between flex px-8 py-5 m-2 mb-6 mt-10 border shadow-lg flex-col">
                            <div className='w-56 text-xl flex-col flex font-medium text-gray-900 sm:tracking-tight'>
                                 <Image
                                     alt="product picture"
@@ -189,7 +189,7 @@ export default function Product(props) {
                         </li>
                     ))}
                 </ul>
-                <div className='flex justify-center m-6 items-center'>
+                <div className='flex justify-center items-center'>
                 <span className='m-2 border border-slate-600 justify-center flex'>
                         <button onClick={() => scroll(-307)} className='p-3 w-full'>
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1" stroke="currentColor" className="w-7 h-7 py-1 rotate-180"><path strokeLinecap="round" strokeLinejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3"></path></svg> 
