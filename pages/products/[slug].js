@@ -41,7 +41,7 @@ export default function Product(props) {
             }
             window.dataLayer.push({
                 event: 'view_item',
-                info: possibleLabel[(Math.floor(Math.random() * arr.length))],
+                info: possibleLabel[(Math.floor(Math.random() * possibleLabel.length))],
                 ecommerce: {
                     'currency': 'EUR',
                     'value': props.product.price,
