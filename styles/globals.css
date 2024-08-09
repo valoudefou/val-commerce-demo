@@ -9,16 +9,7 @@
     -moz-user-select: none; /* mozilla browsers */
     -khtml-user-select: none; /* webkit (konqueror) browsers */
     -ms-user-select: none; /* IE10+ */
-}
-
-select {
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-    background-color: #ffffff !important;
-    padding: 1rem 1rem !important;
-    border-radius: 1rem !important;
-    border: 1px solid rgb(203 213 225) !important;
+    cursor: pointer;
 }
 
 #ab-tasty-anti-flicker {
