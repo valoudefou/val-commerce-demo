@@ -5,7 +5,6 @@ import { useFsFlag } from "@flagship.io/react-sdk"
 import { useState, useEffect, useRef } from 'react'
 import Navbar from '../../components/Navbar'
 import Emotion from '../../components/Emotion'
-import Footer from '../../components/Footer'
 
 export default function Product(props) {
     const [data, setData] = useState('')
@@ -169,18 +168,20 @@ export default function Product(props) {
                 <ul id='abtasty-recs' className='scroll-smooth overflow-hidden flex justify-center' ref={ref}>
                     {rec.products?.map((item) => (
                         <li key={item.id} className="justify-between flex px-8 py-5 m-2 mb-6 mt-10 border shadow-lg flex-col">
-                           <div className='w-56 text-xl flex-col flex font-medium text-gray-900 sm:tracking-tight'>
-                                <Image
-                                    alt="product picture"
-                                    src={item.img_link}
-                                    width={400}
-                                    height={400}
-                                />
-                                {item.title}
-                            <span className='text-lg font-semibold text-slate-500'>{item.price} €</span>
-                            </div>
                             <Link href={item.link}>
-                                <button className="my-4 w-full flex items-center justify-center py-4 px-8 bg-slate-950 border border-slate-600 text-white text-bold text-sm rounded-full font-medium">
+                                <div className='w-56 text-xl flex-col flex font-medium text-gray-900 sm:tracking-tight'>
+                                    <Image
+                                        alt="product picture"
+                                        src={item.img_link}
+                                        width={400}
+                                        height={400}
+                                    />
+                                    {item.title}
+                                <span className='text-lg font-semibold text-slate-500'>{item.price} €</span>
+                                </div>
+                            </Link>
+                            <Link href={item.link}>
+                                <button href='/' className="my-4 w-full flex items-center justify-center py-4 px-8 bg-slate-950 border border-slate-600 text-white text-bold text-sm rounded-full font-medium">
                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1" stroke="currentColor" className="w-6 h-6 py-1">
                                         <path strokeLinecap="round" strokeLinejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3"/>
                                     </svg>
