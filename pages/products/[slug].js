@@ -5,6 +5,7 @@ import { useFsFlag } from "@flagship.io/react-sdk"
 import { useState, useEffect, useRef } from 'react'
 import Navbar from '../../components/Navbar'
 import Emotion from '../../components/Emotion'
+import Footer from '../../components/Footer'
 
 export default function Product(props) {
     const [data, setData] = useState('')
@@ -164,7 +165,7 @@ export default function Product(props) {
                 </div>
             </div>
             <div className='flex-col m-10'>
-                <h2 className='text-3xl font-medium flex justify-center'>{rec.name}</h2>
+                <h2 className='mt-1 text-3xl font-bold uppercase text-gray-900 sm:text-3xl sm:tracking-tight lg:text-3xl flex justify-center'>{rec.name}</h2>
                 <ul id='abtasty-recs' className='scroll-smooth overflow-hidden flex justify-center' ref={ref}>
                     {rec.products?.map((item) => (
                         <li key={item.id} className="justify-between flex px-8 py-5 m-2 mb-6 mt-10 border shadow-lg flex-col">
