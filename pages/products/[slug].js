@@ -10,7 +10,13 @@ export default function Product(props) {
     const [data, setData] = useState('')
     const sendData = useRef(0) // Prevent pushView() from being called multiple times
     const [rec, setRec] = useState('')
-    const ref = useRef(null);
+    const ref = useRef(null)
+
+    const possibleLabel = [
+        "Last one", 
+        "Popular",
+        "2 in stock"
+    ]
 
     useEffect(() => {
         async function getRecs() {
@@ -35,7 +41,7 @@ export default function Product(props) {
             }
             window.dataLayer.push({
                 event: 'view_item',
-                info: 'Last one',
+                info: possibleLabel[(Math.floor(Math.random() * arr.length))],
                 ecommerce: {
                     'currency': 'EUR',
                     'value': props.product.price,
