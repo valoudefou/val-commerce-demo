@@ -21,24 +21,6 @@ select {
     border: 1px solid rgb(203 213 225) !important;
 }
 
-.epoq-rs-headline {
-    text-align: center;
-    font-size: 1.875rem;
-    line-height: 2.25rem;
-    text-transform: uppercase;
-    font-weight: 700;
-    padding: 4rem;
-}
-
-.epoq-recommendations-widget {
-    margin-bottom: 7rem;
-}
-
-.epoq_speech_button {
-    padding: 13px !important;
-    display: none;
-}
-
 #ab-tasty-anti-flicker {
     position: fixed;
     z-index: 9999;
