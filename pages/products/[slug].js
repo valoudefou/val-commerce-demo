@@ -18,14 +18,14 @@ export default function Product(props) {
         "2 in stock"
     ]
 
-    useEffect(() => {
-        async function getRecs() {
-            const res = await fetch("https://client.experiences.get-potions.com/v1/715/experience/22316fa2-b18c-43b0-a77f-a4bc8c1af5c1")
-            const data = await res.json()
-            setRec(data)
-        }
-        getRecs()
-    }, [])
+    // useEffect(() => {
+    //     async function getRecs() {
+    //         const res = await fetch("https://client.experiences.get-potions.com/v1/715/experience/22316fa2-b18c-43b0-a77f-a4bc8c1af5c1")
+    //         const data = await res.json()
+    //         setRec(data)
+    //     }
+    //     getRecs()
+    // }, [])
 
     const scroll = (scrollOffset) => {
         ref.current.scrollLeft += scrollOffset
@@ -169,7 +169,7 @@ export default function Product(props) {
                     </div>
                 </div>
             </div>
-            <div className='flex-col m-10'>
+            {/* <div className='flex-col m-10'>
                 <h2 className='mt-1 text-3xl font-bold uppercase text-gray-900 sm:text-3xl sm:tracking-tight lg:text-3xl flex justify-center'>{rec.name}</h2>
                 <ul id='abtasty-recs' className='scroll-smooth overflow-hidden flex justify-center' ref={ref}>
                     {rec.products?.map((item) => (
@@ -209,7 +209,7 @@ export default function Product(props) {
                         </button>
                     </span>
                 </div>
-            </div>
+            </div> */}
         </div>
     )
 }
