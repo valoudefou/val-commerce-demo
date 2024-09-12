@@ -7,7 +7,7 @@ export default function Header() {
 const fs = useFlagship()
 
 // Get flag 
-const flagImageSrc = useFsFlag("flagImageSrc", "/coffee.jpg")
+const flagImageSrc = useFsFlag("flagImageSrc", "/jewelry.jpg")
 const flagBtnText = useFsFlag("flagBtnText", "Shop")
 const flagIndustry = useFsFlag("flagIndustry", "Product")
 const flagBackgroundColor = useFsFlag("flagBackgroundColor", "black")
