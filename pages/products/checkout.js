@@ -68,7 +68,7 @@ export default function Checkout() {
     e.preventDefault()
     if (!cardNumber) {
       setCardNumber([Math.floor(1000 + Math.random() * 9000) + ' ' + Math.floor(1000 + Math.random() * 9000) + ' ' + Math.floor(1000 + Math.random() * 9000) + ' ' + Math.floor(1000 + Math.random() * 9000), Math.floor(100 + Math.random() * 900), '1' + Math.floor(Math.random() * 9) + '/' + '1' + Math.floor(Math.random() * 3), first_name + ' ' + last_name])
-      window.dataLayer = []
+      window.dataLayer = window.dataLayer || []
       window.dataLayer.push({
         event: 'add_payment_info',
         ecommerce: {
@@ -170,7 +170,7 @@ export default function Checkout() {
       window?.ABTastyReload()
     }
     setDelivery([e.target.id, e.target.value, e.target.nextElementSibling.firstChild.firstChild.src, e.target.nextElementSibling.lastChild.firstChild.lastChild.innerText])
-    window.dataLayer = []
+    window.dataLayer = window.dataLayer || []
     window.dataLayer.push({
       event: 'add_shipping_info',
       ecommerce: {
@@ -192,7 +192,7 @@ export default function Checkout() {
     sendBeginCheckout.current = sendBeginCheckout.current + 1
 
       if (sendBeginCheckout.current === 1) {
-      window.dataLayer = []
+      window.dataLayer = window.dataLayer || []
 
       window.dataLayer.push({
         event: 'begin_checkout',

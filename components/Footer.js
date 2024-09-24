@@ -3,7 +3,7 @@ import Link from 'next/link'
 
 export default function Footer({ children }) {
     const flagBackgroundColor = useFsFlag("flagBackgroundColor", "black")
-
+    // console.log('test')
     return (
         <>
             <main>

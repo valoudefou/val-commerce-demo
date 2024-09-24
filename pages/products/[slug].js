@@ -35,7 +35,7 @@ export default function Product(props) {
         sendData.current = sendData.current + 1
 
         if (sendData.current === 1) {
-            window.dataLayer = []
+            window.dataLayer = window.dataLayer || []
             if (window.ABTasty !== undefined) {
                 window?.ABTastyReload()
             }
@@ -78,7 +78,7 @@ export default function Product(props) {
         }
 
         localStorage.setItem('currentProduct', JSON.stringify(product))
-        window.dataLayer = []
+        window.dataLayer = window.dataLayer || []
 
         window.dataLayer.push({
             event: 'add_to_cart',
