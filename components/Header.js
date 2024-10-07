@@ -14,7 +14,8 @@ const flagBtnTextVal = getFlag("flagBtnText", "Shop")
 const flagBtnText = flagBtnTextVal.getValue()
 const flagIndustryVal = getFlag("flagIndustry", "Product")
 const flagIndustry = flagIndustryVal.getValue()
-const flagBackgroundColor = getFlag("flagBackgroundColor", "black")
+const flagBackgroundColorVal = getFlag("flagBackgroundColor")
+const flagBackgroundColor = flagBackgroundColorVal.getValue("black")
 
   return (
     <header className="relative">
