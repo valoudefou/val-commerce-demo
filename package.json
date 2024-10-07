@@ -8,6 +8,7 @@
     "server-json": "json-server --watch db.json"
   },
   "dependencies": {
+    "@flagship.io/js-sdk": "^4.0.4",
     "@flagship.io/react-sdk": "^3.3.2",
     "@types/react-slick": "^0.23.13",
     "contentful": "^10.2.2",

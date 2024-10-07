@@ -45,6 +45,16 @@
     node-abort-controller "^3.1.1"
     node-fetch "^2.6.7"
 
+"@flagship.io/js-sdk@^4.0.4":
+  version "4.0.4"
+  resolved "https://registry.npmjs.org/@flagship.io/js-sdk/-/js-sdk-4.0.4.tgz"
+  integrity sha512-mwwi7rLhnJs5tSyA00E3sFQk55CNPnWM3m34USLZ4Cj8VIUeDIvitAbfQebB7tt41qGl/S2RBOxF7JViCtTJIA==
+  dependencies:
+    events "^3.3.0"
+    follow-redirects "^1.15.2"
+    node-abort-controller "^3.1.1"
+    node-fetch "^2.6.7"
+
 "@flagship.io/react-sdk@^3.3.2":
   version "3.3.2"
   resolved "https://registry.npmjs.org/@flagship.io/react-sdk/-/react-sdk-3.3.2.tgz"
