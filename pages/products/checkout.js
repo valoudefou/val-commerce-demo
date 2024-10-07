@@ -7,9 +7,7 @@ export default function Checkout() {
   const paymentFeature1Click = useFsFlag("paymentFeature1Click", "false")
   const flagIndustry = useFsFlag("flagIndustry", "Product")
   const flagDeliveryFeeDpd = useFsFlag("flagDeliveryFeeDpd", 7.99)
-  // const flagDeliveryFeeEvri = useFsFlag("flagDeliveryFeeEvri", 3.99)
-  const flag = useFsFlag("flagDeliveryFeeEvri")
-  const flagValue = flag.getValue("1.00")
+  const flagDeliveryFeeEvri = useFsFlag("flagDeliveryFeeEvri", 3.99)
   // KEY
   const API_KEY = process.env.NEXT_PUBLIC_GETADDRESS_KEY
   // STATES
@@ -33,7 +31,7 @@ export default function Checkout() {
   const [postcode, setPostCode] = useState("")
   const [phone, setPhone] = useState("")
   const [country, setCountry] = useState('United Kingdom')
-  const [delivery, setDelivery] = useState([flagValue])
+  const [delivery, setDelivery] = useState([,flagDeliveryFeeEvri.getValue()])
   const [cardNumber, setCardNumber] = useState("")
 
   // const [inputs, setInputs] = useState(initialValues)
@@ -667,7 +665,7 @@ export default function Checkout() {
                       </label>
                       <label htmlFor="evri" className={delivery.includes("evri") ? "relative cursor-pointer py-6 sm:px-8 px-4 border-amber-400 bg-[#fffaf9] border-2 rounded-2xl" : "relative border-slate-300 cursor-pointer py-6 sm:px-8 px-4 border rounded-2xl"}>
                         <div className="flex items-center">
-                          <input onChange={(e) => addShipping(e)} name="delivery" type="radio" value={flagValue} id="evri" className="label-checked:border-amber-400 sm:mr-8 mr-4 align-center w-5 h-5 text-blue-600 bg-gray-100 dark:ring-offset-gray-800 dark:bg-gray-700 dark:border-gray-600"/>
+                          <input onChange={(e) => addShipping(e)} name="delivery" type="radio" value={flagDeliveryFeeEvri.getValue()} id="evri" className="label-checked:border-amber-400 sm:mr-8 mr-4 align-center w-5 h-5 text-blue-600 bg-gray-100 dark:ring-offset-gray-800 dark:bg-gray-700 dark:border-gray-600"/>
                           <div className="flex justify-center items-center space-x-4">
                             <div className="w-8 h-8">
                               <img className="w-full h-full" alt="logo" src="/evri.png" />
@@ -679,7 +677,7 @@ export default function Checkout() {
                             </div>
                           </div>
                           <div className="flex ml-auto">
-                            <p className="text-base font-semibold leading-6 dark:text-white text-gray-800">{flagValue} €</p>
+                            <p className="text-base font-semibold leading-6 dark:text-white text-gray-800">{flagDeliveryFeeEvri.getValue()} €</p>
                           </div>
                         </div>
                       </label>
