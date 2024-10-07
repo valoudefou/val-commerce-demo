@@ -38,7 +38,7 @@ const flagBackgroundColor = getFlag("flagBackgroundColor", "black")
             </p>
             <h1 className="mt-1 text-center font-semibold text-gray-900 text-4xl sm:text-5xl">
             <span className="block text-white">Life is better with</span>
-            <span className="block" style={{color: flagBackgroundColor}}>{flagIndustry}</span>
+            <span className="block" style={{color: flagBackgroundColor.getValue()}}>{flagIndustry}</span>
             </h1>
             <div className="mt-10 flex justify-center">
               <Link href="/products">
