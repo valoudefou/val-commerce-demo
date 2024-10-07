@@ -35,22 +35,22 @@
     minimatch "^3.1.2"
     strip-json-comments "^3.1.1"
 
-"@flagship.io/js-sdk@^3.3.2":
-  version "3.3.2"
-  resolved "https://registry.npmjs.org/@flagship.io/js-sdk/-/js-sdk-3.3.2.tgz"
-  integrity sha512-AakGIo/RFXAfi3o6ukD+CgdgBaDUSncMBd24SEAcmNXrzrVNQzgcKlk8wAOSlGCh5LBCY0hEb0Y9vuj8n/867A==
+"@flagship.io/js-sdk@^4.0.2":
+  version "4.0.4"
+  resolved "https://registry.npmjs.org/@flagship.io/js-sdk/-/js-sdk-4.0.4.tgz"
+  integrity sha512-mwwi7rLhnJs5tSyA00E3sFQk55CNPnWM3m34USLZ4Cj8VIUeDIvitAbfQebB7tt41qGl/S2RBOxF7JViCtTJIA==
   dependencies:
     events "^3.3.0"
     follow-redirects "^1.15.2"
     node-abort-controller "^3.1.1"
     node-fetch "^2.6.7"
 
-"@flagship.io/react-sdk@^3.3.2":
-  version "3.3.2"
-  resolved "https://registry.npmjs.org/@flagship.io/react-sdk/-/react-sdk-3.3.2.tgz"
-  integrity sha512-JwvTr5JYy7EFLTaLTkDi+OQhIjg7KFxL8whg3/YbWtRxTs7SUkUqVg/oj8Cl1ZjbSR3tM3Us04DBJDtht1gmeA==
+"@flagship.io/react-sdk@^4.0.1":
+  version "4.0.1"
+  resolved "https://registry.npmjs.org/@flagship.io/react-sdk/-/react-sdk-4.0.1.tgz"
+  integrity sha512-xKmt28NchLLMzKwHE/Wx1qqMokI60512vK7Cmt9uPzpzM5C6cAk+rBKRBLY7ajj+5xMQErraaGouKaIpuPIShA==
   dependencies:
-    "@flagship.io/js-sdk" "^3.3.2"
+    "@flagship.io/js-sdk" "^4.0.2"
     encoding "^0.1.13"
 
 "@humanwhocodes/config-array@^0.9.2":

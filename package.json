@@ -8,7 +8,7 @@
     "server-json": "json-server --watch db.json"
   },
   "dependencies": {
-    "@flagship.io/react-sdk": "^3.3.2",
+    "@flagship.io/react-sdk": "^4.0.1",
     "contentful": "^10.2.2",
     "googleapis": "^118.0.0",
     "react-ga4": "^2.1.0",

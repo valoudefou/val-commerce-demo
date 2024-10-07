@@ -115,7 +115,7 @@ MyApp.getInitialProps = async (appContext) => {
     // Pass data to the page via props
     return {
         ...appProps,
-        initialFlagsData: visitor?.getFlagsDataArray(),
+        // initialFlagsData: visitor?.getFlagsDataArray(),
         initialVisitorData,
     }
 }
