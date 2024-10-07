@@ -12,7 +12,7 @@ export default function Confirmation() {
     sendItemView.current = sendItemView.current + 1
     
     if (sendItemView.current === 1) {
-      fsHit.send({
+      fs.sendHits({
         type: HitType.TRANSACTION,
         transactionId: data.transactionId,
         totalRevenue: data.productPrice,
