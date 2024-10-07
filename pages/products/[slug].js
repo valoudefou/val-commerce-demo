@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { useFsFlag } from "@flagship.io/react-sdk"
 import { useState, useEffect, useRef } from 'react'
@@ -8,6 +9,27 @@ import Emotion from '../../components/Emotion'
 export default function Product(props) {
     const [data, setData] = useState('')
     const sendData = useRef(0) // Prevent pushView() from being called multiple times
+    const [rec, setRec] = useState('')
+    const ref = useRef(null)
+
+    const possibleLabel = [
+        "Last one", 
+        "Popular",
+        "2 in stock"
+    ]
+
+    // useEffect(() => {
+    //     async function getRecs() {
+    //         const res = await fetch("https://client.experiences.get-potions.com/v1/715/experience/22316fa2-b18c-43b0-a77f-a4bc8c1af5c1")
+    //         const data = await res.json()
+    //         setRec(data)
+    //     }
+    //     getRecs()
+    // }, [])
+
+    const scroll = (scrollOffset) => {
+        ref.current.scrollLeft += scrollOffset
+    }
 
     async function pushView() {
         sendData.current = sendData.current + 1
@@ -19,7 +41,7 @@ export default function Product(props) {
             }
             window.dataLayer.push({
                 event: 'view_item',
-                info: 'Last one',
+                info: possibleLabel[(Math.floor(Math.random() * possibleLabel.length))],
                 ecommerce: {
                     'currency': 'EUR',
                     'value': props.product.price,
@@ -109,9 +131,9 @@ export default function Product(props) {
     return (
         <div onLoad={() => [pushView()]} className="flex h-auto flex-col justify-between">
             <Navbar />
-            <div className="mx-auto mb-24 max-w-1xl px-4 sm:px-6 lg:max-w-7xl lg:px-8">
+            <div className="mx-auto max-w-1xl px-4 sm:px-6 lg:max-w-7xl lg:px-8">
                 <div className="relative mx-auto items-center flex flex-col lg:flex-row">
-                    <div id='ab-product'>
+                    <div id='ab-product' className='relative'>
                         <Image
                             alt="coffee"
                             className="rounded-lg object-contain self-center px-8"
@@ -147,6 +169,47 @@ export default function Product(props) {
                     </div>
                 </div>
             </div>
+            {/* <div className='flex-col m-10'>
+                <h2 className='mt-1 text-3xl font-bold uppercase text-gray-900 sm:text-3xl sm:tracking-tight lg:text-3xl flex justify-center'>{rec.name}</h2>
+                <ul id='abtasty-recs' className='scroll-smooth overflow-hidden flex justify-center' ref={ref}>
+                    {rec.products?.map((item) => (
+                        <li key={item.id} className="justify-between flex px-8 py-5 m-2 mb-6 mt-10 border shadow-lg flex-col">
+                            <Link href={item.link}>
+                                <div className='w-56 text-xl flex-col flex font-medium text-gray-900 sm:tracking-tight'>
+                                    <Image
+                                        alt="product picture"
+                                        src={item.img_link}
+                                        width={400}
+                                        height={400}
+                                    />
+                                    {item.title}
+                                <span className='text-lg font-semibold text-slate-500'>{item.price} €</span>
+                                </div>
+                            </Link>
+                            <Link href={item.link}>
+                                <button href='/' className="my-4 w-full flex items-center justify-center py-4 px-8 bg-slate-950 border border-slate-600 text-white text-bold text-sm rounded-full font-medium">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1" stroke="currentColor" className="w-6 h-6 py-1">
+                                        <path strokeLinecap="round" strokeLinejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3"/>
+                                    </svg>
+                                    Discover
+                                </button>
+                            </Link>
+                        </li>
+                    ))}
+                </ul>
+                <div className='flex justify-center items-center'>
+                <span className='m-2 border border-slate-600 justify-center flex'>
+                        <button onClick={() => scroll(-307)} className='p-3 w-full'>
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1" stroke="currentColor" className="w-7 h-7 py-1 rotate-180"><path strokeLinecap="round" strokeLinejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3"></path></svg> 
+                        </button>
+                    </span>
+                    <span className='m-2 border border-slate-600 justify-center flex'>
+                        <button onClick={() => scroll(307)} className='p-3 w-full'>
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1" stroke="currentColor" className="w-7 h-7 py-1"><path strokeLinecap="round" strokeLinejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3"></path></svg>
+                        </button>
+                    </span>
+                </div>
+            </div> */}
         </div>
     )
 }
