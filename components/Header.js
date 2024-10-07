@@ -38,16 +38,17 @@ const flagBackgroundColor = getFlag("flagBackgroundColor", "black")
             </p>
             <h1 className="mt-1 text-center font-semibold text-gray-900 text-4xl sm:text-5xl">
             <span className="block text-white">Life is better with</span>
-            <span className="block" style={{color: flagBackgroundColor.getValue()}}>{flagIndustry}</span>
+            <span className="block" style={{color: flagBackgroundColor}}>{flagIndustry}</span>
             </h1>
             <div className="mt-10 flex justify-center">
               <Link href="/products">
                 <button onClick={()=>{
                     fs.sendHits({
-                      type: HitType.EVENT,
-                      category: "Action Tracking",
-                      action: "Click Discover",
-                      label: "Engagement"
+                      type: HitType.EVENT, 
+                      category: EventCategory.USER_ENGAGEMENT,
+                      action: "click",
+                      label: "label",
+                      value: 100
                     })
                   }}
                   className="flex items-center justify-center py-4 px-8 bg-white border hover:bg-gray-50 border-slate-600 text-slate-600 text-bold text-sm rounded-full font-medium" id="ab-btn">
