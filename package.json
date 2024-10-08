@@ -9,7 +9,6 @@
   },
   "dependencies": {
     "@flagship.io/react-sdk": "^4.0.1",
-    "@types/react-slick": "^0.23.13",
     "contentful": "^10.2.2",
     "googleapis": "^118.0.0",
     "react-ga4": "^2.1.0",
