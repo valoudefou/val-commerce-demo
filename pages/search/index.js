@@ -1,23 +1,28 @@
 import ProductCard from '../../components/ProductCard'
 import Navbar from '../../components/Navbar'
 import { useSearchParams } from 'next/navigation'
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useRef } from 'react'
 
 export default function Page() {
     const search = useSearchParams()
     const searchQuery = search ? search?.get('q') : null
     // const encodedSearchQuery = encodeURI(searchQuery || "")
     const [data, useData] = useState([])
+    const getSearch = useRef(0)
 
     useEffect(() => {
+        // getSearch.current = getSearch.current + 1
+
         async function getData() {
-            let response
-            response = await fetch(`https://dummyjson.com/products/search?q=${searchQuery}`)
-            const data = await response.text()
-            useData(JSON?.parse(data))
+
+                let response
+                response = await fetch(`https://dummyjson.com/products/search?q=${searchQuery}`)
+                const data = await response.text()
+                useData(JSON?.parse(data))
+            
         }
         getData()
-    }, [data])
+    }, [])
 
     return (
         <>
@@ -25,7 +30,7 @@ export default function Page() {
             <div className="mx-auto max-w-2xl px-4 sm:px-6 lg:max-w-7xl lg:px-8 mb-24">
                 <div className="sm:py-15 mx-auto max-w-7xl py-16 px-4 sm:px-6 lg:px-8">
                     <div className="text-center">
-                        <p className="mt-1 font-medium text-3xl leading-9 text-gray-900 sm:text-3xl sm:tracking-tight lg:text-3xl">
+                        <p className="mt-1 font-medium text-2xl leading-9 text-gray-900 sm:text-2xl sm:tracking-tight lg:text-2xl">
                             Search results "{searchQuery}"
                         </p>
                     </div>
