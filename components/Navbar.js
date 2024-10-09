@@ -21,6 +21,14 @@ export default function Navbar() {
         router.push(`/search?q=${encodedSearchQuery}`)
     }
 
+    const handleKeyDown = (e) => {
+        if (e.key === 'Enter') {
+            e.preventDefault()
+            const encodedSearchQuery = encodeURI(searchQuery)
+            router.push(`/search?q=${encodedSearchQuery}`)
+        }
+    }
+
     useEffect(() => {
         const storedHtml = localStorage.getItem('currentProduct')
         if (storedHtml) {
@@ -46,8 +54,9 @@ export default function Navbar() {
                     <input 
                         onChange={(e) => setSearchQuery(e.target.value)}
                         type="text" 
-                        className="w-full block p-4 font-light pl-10 text-gray-900 bg-gray-50 border rounded-2xl border-gray-200 focus:pl-10" 
+                        className="w-full block p-4 font-light pl-12 text-gray-900 bg-gray-50 border rounded-2xl border-gray-200 focus:pl-10" 
                         placeholder='Search term ...' 
+                        onKeyDown={handleKeyDown}
                     />
                     <div className="absolute top-11 left-9 items-center">
                         <svg onClick={(e) => onSearch(e)} className="w-5 h-5 text-gray-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clipRule="evenodd"></path></svg>
@@ -107,14 +116,17 @@ export default function Navbar() {
                     </div> 
                     <div className="mr-auto">
                         <form className="hidden sm:flex relative">
-                            <div className="absolute top-3 left-3 items-center">
-                                <svg onClick={(e) => onSearch(e)} className="w-5 h-5 text-gray-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clipRule="evenodd"></path></svg>
+                            <div className="absolute top-4 left-4 items-center">
+                                <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                                    <path onClick={(e) => onSearch(e)} stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
+                                </svg>
                             </div>
                             <input 
                                 onChange={(e) => setSearchQuery(e.target.value)}
                                 type="text" 
-                                className="w-96 block p-2 font-light pl-10 text-gray-900 bg-gray-50 rounded-2xl border border-gray-200 focus:pl-10" 
+                                className="w-96 block p-3 font-light pl-12 text-gray-900 bg-gray-50 rounded-lg border border-gray-200" 
                                 placeholder='Search term ...'
+                                onKeyDown={handleKeyDown}
                             />
                         </form>
                     </div>
