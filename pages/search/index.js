@@ -1,11 +1,23 @@
 import ProductCard from '../../components/ProductCard'
 import Navbar from '../../components/Navbar'
 import { useSearchParams } from 'next/navigation'
+import { useEffect, useState } from 'react'
 
-export default function Index({ products }) {
+export default function Page() {
     const search = useSearchParams()
     const searchQuery = search ? search?.get('q') : null
     // const encodedSearchQuery = encodeURI(searchQuery || "")
+    const [data, useData] = useState([])
+
+    useEffect(() => {
+        async function getData() {
+            let response
+            response = await fetch(`https://dummyjson.com/products/search?q=${searchQuery}`)
+            const data = await response.text()
+            useData(JSON?.parse(data))
+        }
+        getData()
+    }, [data])
 
     return (
         <>
@@ -20,34 +32,12 @@ export default function Index({ products }) {
                 </div>
                 <div className="grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
                     <>
-                        {products.products.map((product) => (
-                            <ProductCard product={product} key={product.id} /> 
-                        ))}
+                    {data.products?.map((product) => (
+                        <ProductCard product={product} key={product.id} className="cursor-pointer py-3 px-5 border-b hover:bg-slate-100" />
+                    ))}
                     </>
                 </div>
             </div>
         </>
     )
 }
-
-export async function getStaticProps() {
-    const res = await fetch(`https://dummyjson.com/products/search?q=phone`)
-    // const res = await fetch(`https://dummyjson.com/products/search?q=${params.slug}`)
-    const data = await res.json()
-
-    return {
-        props: {
-            products: data,
-        },
-    }
-}
-
-
-// export async function getStaticPaths() {
-//     return {
-//         paths: [{ 
-//             params: { slug: 'phone'} 
-//         }],
-//         fallback: true
-//     }
-// }
