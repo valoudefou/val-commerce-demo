@@ -16,20 +16,22 @@ function ProductCard( {product} ) {
     return (
         <Link href={`/products/${product.id}`} className="group">
             <div className='cursor-pointer flex flex-col'>
-                <div className="rounded flex-1 aspect-w-1 aspect-h-1 w-full overflow-hidden bg-gray-200 xl:aspect-w-7 xl:aspect-h-8">
-                    <Image
-                        alt=""
-                        src={product.images[0]}
-                        layout='fill'
-                        objectFit="cover"
-                        className={cn(
-                            'duration-700 ease-in-out group-hover:opacity-75',
-                            isLoading
-                            ? 'scale-110 blur-2xl grayscale'
-                            : 'scale-100 blur-0 grayscale-0'
-                        )}
-                        onLoadingComplete={() => setLoading(false)}
-                    />
+                <div className='py-6 px-6 rounded-md border border-gray-300'>
+                    <div className="rounded flex-1 aspect-w-1 aspect-h-1 w-full overflow-hidden bg-gray-200 xl:aspect-w-7 xl:aspect-h-8">
+                        <Image
+                            alt=""
+                            src={product.images[0]}
+                            layout='fill'
+                            objectFit="cover"
+                            className={cn(
+                                'duration-700 ease-in-out group-hover:opacity-75',
+                                isLoading
+                                ? 'scale-110 blur-2xl grayscale'
+                                : 'scale-100 blur-0 grayscale-0'
+                            )}
+                            onLoadingComplete={() => setLoading(false)}
+                        />
+                    </div>
                 </div>
                 <div className="mt-4 flex items-start justify-between text-base font-normal text-gray-900">
                     <h3>{product.title}</h3>
