@@ -39,7 +39,7 @@ function ProductCard( {product} ) {
                 </div>
                 {viewDetailsPlp.getValue() === true &&
                     <button onClick={()=>{
-                        fsHit.send({
+                        fs.sendHits({
                             type: HitType.EVENT,
                             category: "Action Tracking",
                             action: "Click View Details PLP",
