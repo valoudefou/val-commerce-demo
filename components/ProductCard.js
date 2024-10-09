@@ -16,7 +16,7 @@ function ProductCard( {product} ) {
     return (
         <Link href={`/products/${product.id}`} className="group">
             <div className='cursor-pointer flex flex-col'>
-                <div className='py-6 px-6 rounded-lg border border-gray-300'>
+                <div className='py-6 px-6 rounded-lg border border-gray-200'>
                     <div className="rounded flex-1 aspect-w-1 aspect-h-1 w-full overflow-hidden bg-gray-200 xl:aspect-w-7 xl:aspect-h-8">
                         <Image
                             alt=""
