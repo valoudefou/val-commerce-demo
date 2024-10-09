@@ -149,7 +149,7 @@ export default function Product(props) {
                         <h1 className="mt-3 text-2xl font-semibold text-slate-500">
                             {props.product.price}€
                         </h1>
-                        <button onClick={() => [pushCart()]} className="mt-5 bg-white border hover:bg-gray-50 border-slate-600 text-slate-600 text-semibold text-sm rounded-full font-medium w-full">
+                        <button onClick={() => [pushCart()]} className="mt-5 bg-white border hover:bg-gray-50 border-gray-300 text-slate-600 text-semibold text-sm rounded-full font-medium w-full">
                             <Emotion />
                         </button>
                         {paymentFeature1Click.getValue() === 'true' &&
