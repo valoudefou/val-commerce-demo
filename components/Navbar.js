@@ -1,5 +1,6 @@
-import { useState, useEffect, useContext } from "react"
+import { useState, useEffect, useContext, useRef } from "react"
 import { AppContext } from "../pages/_app"
+import { useRouter } from "next/navigation"
 import { useFsFlag } from "@flagship.io/react-sdk"
 import SlidingCart from "./SlidingCart"
 import MiniCart from "./MiniCart"
@@ -11,15 +12,22 @@ export default function Navbar() {
     const [cartContent, setHtmlContent] = useState(true)
     const [burgerOn, setBurgerOn] = useState(false)
     const [searchOpen, setSearchOpen] = useState(false)
+    const [searchQuery, setSearchQuery] = useState("")
+    const router = useRouter()
+
+    const onSearch = (e) => {
+        e.preventDefault()
+        const encodedSearchQuery = encodeURI(searchQuery)
+        router.push(`/search?q=${encodedSearchQuery}`)
+    }
 
     useEffect(() => {
         const storedHtml = localStorage.getItem('currentProduct')
         if (storedHtml) {
             setHtmlContent(true)
         } 
-        else  if (!storedHtml) {
+        else if (!storedHtml) {
             setHtmlContent(false)
-  
         }
     }, [isShown])
 
@@ -34,12 +42,17 @@ export default function Navbar() {
                 <div onClick={() => setSearchOpen(!searchOpen)} className="h-screen w-screen top-0 z-20 bg-gray-800 fixed opacity-25"></div>
             )}
             {searchOpen && (
-                <div className="sm:hidden bg-white fixed w-full px-6 py-6 z-30 border-b-[1px] border-gray-200">
-                    <input type="text" className="epoq_search_box w-full ui-autocomplete-input block p-4 font-light pl-10 text-gray-900 bg-gray-50 border rounded-2xl border-gray-200 focus:pl-10" placeholder='Search term ...' />
+                <form className="sm:hidden bg-white fixed w-full px-6 py-6 z-30 border-b-[1px] border-gray-200">
+                    <input 
+                        onChange={(e) => setSearchQuery(e.target.value)}
+                        type="text" 
+                        className="w-full block p-4 font-light pl-10 text-gray-900 bg-gray-50 border rounded-2xl border-gray-200 focus:pl-10" 
+                        placeholder='Search term ...' 
+                    />
                     <div className="absolute top-11 left-9 items-center">
-                        <svg className="w-5 h-5 text-gray-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clipRule="evenodd"></path></svg>
+                        <svg onClick={(e) => onSearch(e)} className="w-5 h-5 text-gray-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clipRule="evenodd"></path></svg>
                     </div>
-                </div>
+                </form>
             )}
             <nav className="relative w-full z-20 flex flex-wrap items-center lg:justify-between sm:px-5 sm:py-2 px-2 py-2 bg-white border-b-[1px] border-gray-200">
                 <div className="flex flex-auto items-center justify-between">
@@ -93,12 +106,17 @@ export default function Navbar() {
                         </Link>
                     </div> 
                     <div className="mr-auto">
-                        <div className="hidden sm:flex relative">
+                        <form className="hidden sm:flex relative">
                             <div className="absolute top-3 left-3 items-center">
-                                <svg className="w-5 h-5 text-gray-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clipRule="evenodd"></path></svg>
+                                <svg onClick={(e) => onSearch(e)} className="w-5 h-5 text-gray-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clipRule="evenodd"></path></svg>
                             </div>
-                            <input type="text" className="epoq_search_box w-96 ui-autocomplete-input block p-2 font-light pl-10 text-gray-900 bg-gray-50 rounded-2xl border border-gray-200 focus:pl-10" placeholder='Search term ...' />
-                        </div>
+                            <input 
+                                onChange={(e) => setSearchQuery(e.target.value)}
+                                type="text" 
+                                className="w-96 block p-2 font-light pl-10 text-gray-900 bg-gray-50 rounded-2xl border border-gray-200 focus:pl-10" 
+                                placeholder='Search term ...'
+                            />
+                        </form>
                     </div>
                         <div className="md:px-5 md:py-0 xl:py-0 px-3 lg:py-0 py-3 lg:flex items-center">
                             <ul className="hidden flex-col lg:flex lg:flex-row list-none">
