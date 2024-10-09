@@ -26,7 +26,7 @@ export default function Page() {
                 <div className="sm:py-15 mx-auto max-w-7xl py-16 px-4 sm:px-6 lg:px-8">
                     <div className="text-center">
                         <p className="mt-1 font-medium text-3xl leading-9 text-gray-900 sm:text-3xl sm:tracking-tight lg:text-3xl">
-                            search results for {searchQuery}
+                            Search results "{searchQuery}"
                         </p>
                     </div>
                 </div>
