@@ -5,7 +5,7 @@ import { useSearchParams } from 'next/navigation'
 export default function Index({ products }) {
     const search = useSearchParams()
     const searchQuery = search ? search?.get('q') : null
-    const encodedSearchQuery = encodeURI(searchQuery || "")
+    // const encodedSearchQuery = encodeURI(searchQuery || "")
 
     return (
         <>
@@ -13,8 +13,8 @@ export default function Index({ products }) {
             <div className="mx-auto max-w-2xl px-4 sm:px-6 lg:max-w-7xl lg:px-8 mb-24">
                 <div className="sm:py-15 mx-auto max-w-7xl py-16 px-4 sm:px-6 lg:px-8">
                     <div className="text-center">
-                        <p className="mt-1 text-3xl leading-9 font-bold uppercase text-gray-900 sm:text-3xl sm:tracking-tight lg:text-3xl">
-                            Results for {encodedSearchQuery}
+                        <p className="mt-1 font-medium text-3xl leading-9 text-gray-900 sm:text-3xl sm:tracking-tight lg:text-3xl">
+                            search results for {searchQuery}
                         </p>
                     </div>
                 </div>
