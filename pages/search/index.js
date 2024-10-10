@@ -26,7 +26,8 @@ export default function Page() {
                 <div className="sm:py-15 mx-auto max-w-7xl py-16 px-4 sm:px-6 lg:px-8">
                     <div className="text-center">
                         <div className="mt-1 flex justify-center font-medium text-2xl leading-9 text-gray-900 sm:text-2xl sm:tracking-tight lg:text-2xl">
-                            <span>{'search results ' + '"' + searchQuery + '"'}</span>
+                            <span className='mr-2'>search results</span>
+                            <p>{'"' + searchQuery + '"'}</p>
                         </div>
                     </div>
                 </div>
