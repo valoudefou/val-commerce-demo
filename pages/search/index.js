@@ -27,12 +27,7 @@ export default function Page() {
                     <div className="text-center">
                         <div className="mt-1 flex justify-center font-medium text-2xl leading-9 text-gray-900 sm:text-2xl sm:tracking-tight lg:text-2xl">
                             <p>search results</p>
-                            <input 
-                            name="text" 
-                            value={searchQuery}
-                            onClick={(e) => setTest(e)} 
-                            id='searchQuery'
-                        />
+                            <span>{searchQuery}</span>
                         </div>
                     </div>
                 </div>
