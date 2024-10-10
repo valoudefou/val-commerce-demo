@@ -23,18 +23,12 @@ export default function Navbar() {
     }
 
     const handleKeyDown = (e) => {
-
         if (e.key === 'Enter') {
             e.preventDefault()
             const encodedSearchQuery = encodeURI(searchQuery)
             router.push(`/search?q=${encodedSearchQuery}`)
-            setTest(test)
-            setIsShown(isShown)
-            console.log(test)
         }
-
     }
-
 
     useEffect(() => {
         const storedHtml = localStorage.getItem('currentProduct')
