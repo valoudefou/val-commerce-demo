@@ -1,24 +1,7 @@
-import ProductCard from '../../components/ProductCard'
 import Navbar from '../../components/Navbar'
-import { useSearchParams } from 'next/navigation'
-import { useEffect, useState } from 'react'
+import Results from '../../components/Results'
 
 export default function Page() {
-    const search = useSearchParams()
-    const searchQuery = search ? search?.get('q') : null
-    // const encodedSearchQuery = encodeURI(searchQuery || "")
-    const [searchResults, useData] = useState([])
-
-    useEffect(() => {
-        async function getData() {
-            let response
-            response = await fetch(`https://dummyjson.com/products/search?q=${searchQuery}`)
-            const data = await response.json()
-            useData(data)
-        }
-        getData()
-    }, [])
-
     return (
         <>
             <Navbar />
@@ -27,17 +10,10 @@ export default function Page() {
                     <div className="text-center">
                         <div className="mt-1 flex justify-center font-medium text-2xl leading-9 text-gray-900 sm:text-2xl sm:tracking-tight lg:text-2xl">
                             <span className='mr-2'>search results</span>
-                            <p>{'"' + searchQuery + '"'}</p>
                         </div>
                     </div>
                 </div>
-                <div className="grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
-                    <>
-                    {searchResults.products?.map((product) => (
-                        <ProductCard product={product} key={product.id} className="cursor-pointer py-3 px-5 border-b hover:bg-slate-100" />
-                    ))}
-                    </>
-                </div>
+            <Results />
             </div>
         </>
     )

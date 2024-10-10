@@ -1,5 +1,5 @@
 import { useEffect, useState, useRef } from "react"
-import { HitType, useFsFlag, useFlagship } from "@flagship.io/react-sdk"
+import { useFsFlag, useFlagship } from "@flagship.io/react-sdk"
 import Link from "next/link"
 
 export default function Checkout() {

@@ -9,6 +9,7 @@ export const AppContext = createContext()
 
 function MyApp({ Component, pageProps, initialFlagsData, initialVisitorData }) {
     const [isShown, setIsShown] = useState(false)
+    const [test, setTest] = useState(false)
 
     useEffect(() => {
         localStorage.setItem('FS_VISITOR', initialVisitorData.id) // BYOID in localStorage
@@ -43,7 +44,7 @@ function MyApp({ Component, pageProps, initialFlagsData, initialVisitorData }) {
 
     return (
         <>
-            <AppContext.Provider value={[isShown, setIsShown]}>
+            <AppContext.Provider value={[isShown, setIsShown, test, setTest]}>
                 <FlagshipProvider
                     envId={process.env.NEXT_PUBLIC_FS_ENV}
                     apiKey={process.env.NEXT_PUBLIC_FS_KEY}

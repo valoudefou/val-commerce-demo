@@ -1,5 +1,4 @@
 import Image from 'next/image'
-import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { useFsFlag } from "@flagship.io/react-sdk"
 import { useState, useEffect, useRef } from 'react'

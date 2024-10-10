@@ -9,6 +9,7 @@ import Footer from "./Footer"
 
 export default function Navbar() {
     const [isShown, setIsShown] = useContext(AppContext)
+    const [test, setTest] = useContext(AppContext)
     const [cartContent, setHtmlContent] = useState(true)
     const [burgerOn, setBurgerOn] = useState(false)
     const [searchOpen, setSearchOpen] = useState(false)
@@ -22,12 +23,18 @@ export default function Navbar() {
     }
 
     const handleKeyDown = (e) => {
+
         if (e.key === 'Enter') {
             e.preventDefault()
             const encodedSearchQuery = encodeURI(searchQuery)
             router.push(`/search?q=${encodedSearchQuery}`)
+            setTest(test)
+            setIsShown(isShown)
+            console.log(test)
         }
+
     }
+
 
     useEffect(() => {
         const storedHtml = localStorage.getItem('currentProduct')
