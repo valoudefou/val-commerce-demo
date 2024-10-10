@@ -1,7 +1,7 @@
 import ProductCard from '../../components/ProductCard'
 import Navbar from '../../components/Navbar'
 import { useSearchParams } from 'next/navigation'
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useState } from 'react'
 
 export default function Page() {
     const search = useSearchParams()
