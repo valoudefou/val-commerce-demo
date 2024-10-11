@@ -3,17 +3,12 @@ import { useState, useEffect } from "react"
 import ProductCard from '/components/ProductCard'
 import { useSearchParams } from 'next/navigation'
 
-
 export default function Page() {
     const [searchResults, useData] = useState([])
 
     const search = useSearchParams()
     const searchQuery = search ? search?.get('q') : null
     // const encodedSearchQuery = encodeURI(searchQuery || "")
-
-
-
-
 
     useEffect(() => {
         async function getData() {

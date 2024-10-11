@@ -14,55 +14,6 @@ function MyApp({ Component, pageProps, initialFlagsData, initialVisitorData }) {
     useEffect(() => {
         localStorage.setItem('FS_VISITOR', initialVisitorData.id) // BYOID in localStorage
         document.cookie = 'FS_VISITOR=' + initialVisitorData.id // BYOID in a cookie
-        
-        var PARAMS = {
-            TIMEOUT: 1000, // number of ms to wait before removing the anti-flicker
-            ASYNC_CAMPAIGNS: false, // boolean to wait for async campaigns before removing the anti flicker
-        };
-        var CAMPAIGNS_ASYNC_STATUS = [
-            'pending',
-            'currently_checking',
-            'other_subsegment_is_checking',
-            'target_by_event_pending',
-            'waiting_code_resolution'
-        ];
-        function isACampaignPending() {
-            return Object.keys(window.ABTasty.results).some(function(key) {
-                var data = window.ABTasty.results[key];
-                var status = data.status;
-                return CAMPAIGNS_ASYNC_STATUS.indexOf(status) !== -1;
-            });
-        }
-        function onExecutedCampaign() {
-            if (
-                !PARAMS.ASYNC_CAMPAIGNS ||
-                (PARAMS.ASYNC_CAMPAIGNS && !isACampaignPending())
-            ) {
-                removeAntiFlicker();
-            }
-        }
-        function createAntiFlicker() {
-            return '<div class="abAntiFlicker" style="width: 100vw; height: 100vh; position: fixed; top: 0; left: 0; z-index: 2147483647; pointer-events: none; background-color: rgba(255, 255, 255, 1);"></div>';
-        }
-        function getAntiFlicker() {
-            return document.querySelector('.abAntiFlicker');
-        }
-        function injectAntiFlicker() {
-            if (getAntiFlicker()) return;
-            var antiFlicker = createAntiFlicker();
-            document.querySelector('body').insertAdjacentHTML('beforeend', antiFlicker);
-        }
-        function removeAntiFlicker() {
-            var antiFlicker = getAntiFlicker();
-            if (antiFlicker) antiFlicker.parentNode.removeChild(antiFlicker);
-            window.removeEventListener('abtasty_executedCampaign', onExecutedCampaign);
-            if (timeout) clearTimeout(timeout);
-        }
-        injectAntiFlicker();
-        var timeout = setTimeout(function() {
-            removeAntiFlicker();
-        }, PARAMS.TIMEOUT);
-        window.addEventListener('abtasty_executedCampaign', onExecutedCampaign);
     }, [])
 
     // Get flag 
