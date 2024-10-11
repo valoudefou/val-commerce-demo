@@ -13,7 +13,6 @@ const Navbar = () => {
     const [burgerOn, setBurgerOn] = useState(false)
     const [searchOpen, setSearchOpen] = useState(false)
     const [searchQuery, setSearchQuery] = useState("")
-    const [navbarState, setNavbarState] = useState("")
     const router = useRouter()
 
     const onSearch = (e) => {
