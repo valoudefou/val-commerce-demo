@@ -7,13 +7,13 @@ import MiniCart from "./MiniCart"
 import Link from 'next/link'
 import Footer from "./Footer"
 
-export default function Navbar() {
+const Navbar = () => {
     const [isShown, setIsShown] = useContext(AppContext)
-    const [test, setTest] = useContext(AppContext)
     const [cartContent, setHtmlContent] = useState(true)
     const [burgerOn, setBurgerOn] = useState(false)
     const [searchOpen, setSearchOpen] = useState(false)
     const [searchQuery, setSearchQuery] = useState("")
+    const [navbarState, setNavbarState] = useState("")
     const router = useRouter()
 
     const onSearch = (e) => {
@@ -57,7 +57,7 @@ export default function Navbar() {
                         type="search" 
                         className="w-full block p-4 font-light pl-12 text-gray-900 bg-gray-50 border rounded-2xl border-gray-200" 
                         placeholder='Search term ...' 
-                        onKeyDown={handleKeyDown}
+                        onKeyDown={(e) => handleKeyDown(e)}
                     />
                     <div className="absolute top-11 left-10 items-center">
                         <svg className="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
@@ -129,7 +129,7 @@ export default function Navbar() {
                                 type="search" 
                                 className="w-96 block p-3 font-light pl-12 text-gray-900 bg-gray-50 rounded-lg border border-gray-200" 
                                 placeholder='Search term ...'
-                                onKeyDown={handleKeyDown}
+                                onKeyDown={(e) => handleKeyDown(e)}
                             />
                         </form>
                     </div>
@@ -182,3 +182,5 @@ export default function Navbar() {
         </>
     )
 }
+
+export default Navbar;
