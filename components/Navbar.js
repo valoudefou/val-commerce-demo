@@ -1,4 +1,4 @@
-import { useState, useEffect, useContext, useRef } from "react"
+import { useState, useEffect, useContext } from "react"
 import { AppContext } from "../pages/_app"
 import { useRouter } from "next/navigation"
 import { useFsFlag } from "@flagship.io/react-sdk"
