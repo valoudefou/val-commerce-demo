@@ -2,7 +2,7 @@ import { useContext } from "react"
 import { AppContext } from "../pages/_app"
 
 export default function Emotion() {
-    const [isShown, setIsShown] = useContext(AppContext)
+    const { isShown, setIsShown, sub, setSearch } = useContext(AppContext)
 
     return (
         <div className="add-to-cart px-4 py-4 flex items-center justify-center text-sm font-base" onClick={() => setIsShown(!isShown)}>

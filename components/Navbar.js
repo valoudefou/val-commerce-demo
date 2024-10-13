@@ -9,6 +9,7 @@ import Footer from "./Footer"
 
 const Navbar = () => {
     const [isShown, setIsShown] = useContext(AppContext)
+    const [sub, setSearch] = useContext(AppContext)
     const [cartContent, setHtmlContent] = useState(true)
     const [burgerOn, setBurgerOn] = useState(false)
     const [searchOpen, setSearchOpen] = useState(false)
@@ -19,6 +20,7 @@ const Navbar = () => {
         e.preventDefault()
         const encodedSearchQuery = encodeURI(searchQuery)
         router.push(`/search?q=${encodedSearchQuery}`)
+        setSearch(true)
     }
 
     const handleKeyDown = (e) => {
@@ -26,6 +28,7 @@ const Navbar = () => {
             e.preventDefault()
             const encodedSearchQuery = encodeURI(searchQuery)
             router.push(`/search?q=${encodedSearchQuery}`)
+            setSearch(true)
         }
     }
 
@@ -119,8 +122,8 @@ const Navbar = () => {
                     <div className="mr-auto">
                         <form className="hidden sm:flex relative">
                             <div className="absolute top-4 left-4 items-center">
-                                <svg className="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
-                                    <path onClick={(e) => onSearch(e)} stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
+                                <svg onClick={(e) => onSearch(e)} className="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                                    <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
                                 </svg>
                             </div>
                             <input 
