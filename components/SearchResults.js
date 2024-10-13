@@ -6,7 +6,6 @@ import { AppContext } from "../pages/_app"
 
 export default function SearchResults() {
     const [searchResults, useData] = useState([])
-    const [isShown, setIsShown] = useContext(AppContext)
     const [sub, setSearch] = useContext(AppContext)
     const search = useSearchParams()
     const searchQuery = search ? search?.get('q') : null
