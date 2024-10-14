@@ -16,7 +16,7 @@ const Navbar = () => {
     const [searchOpen, setSearchOpen] = useState(false)
     const [searchQuery, setSearchQuery] = useState("")
     const router = useRouter()
-    const [theme, setTheme] = useAtom(themeAtom)
+    const [search, setSearch] = useAtom(themeAtom)
 
     const onSearch = (e) => {
         e.preventDefault()
@@ -29,8 +29,8 @@ const Navbar = () => {
             e.preventDefault()
             const encodedSearchQuery = encodeURI(searchQuery)
             router.push(`/search?q=${encodedSearchQuery}`)
-            const newTheme = theme === true ? false : true
-            setTheme(newTheme)
+            const newSearch = search === true ? false : true
+            setSearch(newSearch)
         }
     }
 

@@ -11,7 +11,7 @@ export default function SearchResults() {
     const search = useSearchParams()
     const searchQuery = search ? search?.get('q') : null
     // const encodedSearchQuery = encodeURI(searchQuery || "")
-    const [newTheme, setTheme] = useAtom(themeAtom)
+    const [newSearch, setSearch] = useAtom(themeAtom)
 
     useEffect(() => {
         const getData = async () => {
@@ -20,10 +20,10 @@ export default function SearchResults() {
             const data = await response.json()
             totalCount.current = data.total
             useData(data)
-            setTheme(true)
+            setSearch(true)
         }
         getData()
-    }, [newTheme])
+    }, [newSearch])
 
     return (
         <>
