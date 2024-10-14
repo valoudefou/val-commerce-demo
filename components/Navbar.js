@@ -29,7 +29,7 @@ const Navbar = () => {
             e.preventDefault()
             const encodedSearchQuery = encodeURI(searchQuery)
             router.push(`/search?q=${encodedSearchQuery}`)
-            const newTheme = theme === false ? true : false
+            const newTheme = theme === true ? false : true
             setTheme(newTheme)
         }
     }

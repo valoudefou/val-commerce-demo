@@ -20,7 +20,7 @@ export default function SearchResults() {
             const data = await response.json()
             totalCount.current = data.total
             useData(data)
-            console.log(newTheme)
+            setTheme(true)
         }
         getData()
     }, [newTheme])
