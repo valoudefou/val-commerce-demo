@@ -4,12 +4,13 @@ import { Flagship, FlagshipProvider, useFsFlag } from "@flagship.io/react-sdk"
 import App from "next/app"
 import { v4 as uuidv4 } from 'uuid'
 import { createContext, useState, useEffect } from 'react'
+import { atom } from 'jotai'
 
 export const AppContext = createContext()
+export const themeAtom = atom(false)
 
 function MyApp({ Component, pageProps, initialFlagsData, initialVisitorData }) {
     const [isShown, setIsShown] = useState(false)
-    const [sub, setSearch] = useState(false)
 
     useEffect(() => {
         localStorage.setItem('FS_VISITOR', initialVisitorData.id) // BYOID in localStorage
@@ -21,7 +22,7 @@ function MyApp({ Component, pageProps, initialFlagsData, initialVisitorData }) {
 
     return (
         <>
-            <AppContext.Provider value={[isShown, setIsShown, sub, setSearch]}>
+            <AppContext.Provider value={[isShown, setIsShown]}>
                 <FlagshipProvider
                     envId={process.env.NEXT_PUBLIC_FS_ENV}
                     apiKey={process.env.NEXT_PUBLIC_FS_KEY}

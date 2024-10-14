@@ -1,25 +1,29 @@
 import Navbar from '/components/Navbar'
-import { useState, useEffect, useContext } from "react"
+import { useState, useEffect, useRef } from "react"
 import ProductCard from '/components/ProductCard'
 import { useSearchParams } from 'next/navigation'
-import { AppContext } from "../pages/_app"
+import { themeAtom } from "../pages/_app"
+import { useAtom } from "jotai"
 
 export default function SearchResults() {
     const [searchResults, useData] = useState([])
-    const [sub, setSearch] = useContext(AppContext)
+    const totalCount = useRef(0)
     const search = useSearchParams()
     const searchQuery = search ? search?.get('q') : null
     // const encodedSearchQuery = encodeURI(searchQuery || "")
+    const [newTheme, setTheme] = useAtom(themeAtom)
 
     useEffect(() => {
         const getData = async () => {
             let response
             response = await fetch(`https://dummyjson.com/products/search?q=${searchQuery}`)
             const data = await response.json()
+            totalCount.current = data.total
             useData(data)
+            console.log(newTheme)
         }
         getData()
-    }, [sub])
+    }, [newTheme])
 
     return (
         <>
@@ -28,7 +32,7 @@ export default function SearchResults() {
                 <div className="sm:py-15 mx-auto max-w-7xl py-16 px-4 sm:px-6 lg:px-8">
                     <div className="text-center">
                         <div className="mt-1 flex justify-center font-medium text-2xl leading-9 text-gray-900 sm:text-2xl sm:tracking-tight lg:text-2xl">
-                            <span>search results '{searchQuery}'</span>
+                            <span>{totalCount.current > 0 ? 'search results ' + '"' + searchQuery + '"' : 'No results'}</span>
                         </div>
                     </div>
                 </div>

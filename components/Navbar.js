@@ -6,21 +6,22 @@ import SlidingCart from "./SlidingCart"
 import MiniCart from "./MiniCart"
 import Link from 'next/link'
 import Footer from "./Footer"
+import { themeAtom } from "../pages/_app"
+import { useAtom } from "jotai"
 
 const Navbar = () => {
     const [isShown, setIsShown] = useContext(AppContext)
-    const [sub, setSearch] = useContext(AppContext)
     const [cartContent, setHtmlContent] = useState(true)
     const [burgerOn, setBurgerOn] = useState(false)
     const [searchOpen, setSearchOpen] = useState(false)
     const [searchQuery, setSearchQuery] = useState("")
     const router = useRouter()
+    const [theme, setTheme] = useAtom(themeAtom)
 
     const onSearch = (e) => {
         e.preventDefault()
         const encodedSearchQuery = encodeURI(searchQuery)
         router.push(`/search?q=${encodedSearchQuery}`)
-        setSearch(true)
     }
 
     const handleKeyDown = (e) => {
@@ -28,7 +29,8 @@ const Navbar = () => {
             e.preventDefault()
             const encodedSearchQuery = encodeURI(searchQuery)
             router.push(`/search?q=${encodedSearchQuery}`)
-            setSearch(true)
+            const newTheme = theme === false ? true : false
+            setTheme(newTheme)
         }
     }
 
