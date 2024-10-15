@@ -32,7 +32,7 @@ export default function SearchResults() {
                 <div className="sm:py-12 mx-auto max-w-7xl py-12 px-4 sm:px-6 lg:px-8">
                     <div className="text-center">
                         <div className="flex justify-center font-medium text-2xl leading-9 text-gray-900 sm:text-2xl sm:tracking-tight lg:text-2xl">
-                            <span>{totalCount.current > 0 ? ' ' : 'No results'}</span>
+                            <span>{totalCount.current > 0 ? '' : 'Searching...'}</span>
                         </div>
                     </div>
                 </div>
