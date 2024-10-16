@@ -820,14 +820,14 @@ export default function Checkout() {
                       <p className="text-base dark:text-white leading-4 text-gray-800">
                         Shipping</p>
                       <p className="text-base dark:text-gray-300 leading-4 text-gray-600">
-                        {delivery[1]} €</p>
+                        {delivery[1] ? delivery[1] : 0} €</p>
                     </div>
                   </div>
                   <div className="flex justify-between items-center w-full">
                       <p className="text-lg dark:text-white font-semibold leading-4 text-gray-800">
                         Total
                       </p>
-                    <p className="text-lg dark:text-gray-300 font-semibold leading-4 text-gray-800">{(data.productPrice + Math.round(delivery[1])).toFixed(2)} €</p>
+                    <p className="text-lg dark:text-gray-300 font-semibold leading-4 text-gray-800">{data.productPrice + delivery[1]} €</p>
                   </div>
                 </div>
               </div>

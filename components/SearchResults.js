@@ -12,6 +12,15 @@ export default function SearchResults() {
     const searchQuery = search ? search?.get('q') : null
     // const encodedSearchQuery = encodeURI(searchQuery || "")
     const [newSearch, setSearch] = useAtom(themeAtom)
+    const [message, setMessage] = useState('Searching products...')
+      
+    useEffect(() => {
+        const timeoutId = setTimeout(() => {
+            setMessage('No products found')
+        }, 2000)
+
+        return () => clearTimeout(timeoutId)
+    }, [])
 
     useEffect(() => {
         const getData = async () => {
@@ -32,7 +41,7 @@ export default function SearchResults() {
                 <div className="sm:py-12 mx-auto max-w-7xl py-12 px-4 sm:px-6 lg:px-8">
                     <div className="text-center">
                         <div className="flex justify-center font-medium text-2xl leading-9 text-gray-900 sm:text-2xl sm:tracking-tight lg:text-2xl">
-                            <span>{totalCount.current > 0 ? '' : 'Searching products...'}</span>
+                            <span>{totalCount.current > 0 ? '' : message}</span>
                         </div>
                     </div>
                 </div>
