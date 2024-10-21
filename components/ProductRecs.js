@@ -7,7 +7,12 @@ export default function ProductRecs() {
     const [rec, setRec] = useState('')
     const ref = useRef(null)
     const flagEpoqIdVal = useFsFlag("flagEpoqId")
+    const [isLoading, setLoading] = useState(true)
     const flagEpoqId = flagEpoqIdVal.getValue('2dd95ccd-103c-4633-bca6-0c25a272096d')
+
+    function cn(...classes) {
+        return classes.filter(Boolean).join(' ')
+    }
 
     useEffect(() => {
         async function getRecs() {
@@ -36,6 +41,13 @@ export default function ProductRecs() {
                                     width={400}
                                     height={400}
                                     style={{height: 'inherit'}}
+                                    className={cn(
+                                        'duration-700 ease-in-out group-hover:opacity-75',
+                                        isLoading
+                                        ? 'scale-110 blur-2xl grayscale'
+                                        : 'scale-100 blur-0 grayscale-0'
+                                    )}
+                                    onLoadingComplete={() => setLoading(false)}
                                 />
                             </div>
                         </Link>
