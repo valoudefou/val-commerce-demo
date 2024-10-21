@@ -1,14 +1,17 @@
 import Image from 'next/image'
 import { useState, useEffect, useRef } from 'react'
 import Link from 'next/link'
+import { useFsFlag } from "@flagship.io/react-sdk"
 
 export default function ProductRecs() {
     const [rec, setRec] = useState('')
     const ref = useRef(null)
+    const flagEpoqIdVal = useFsFlag("flagEpoqId")
+    const flagEpoqId = flagEpoqIdVal.getValue('2dd95ccd-103c-4633-bca6-0c25a272096d')
 
     useEffect(() => {
         async function getRecs() {
-            const res = await fetch("https://client.experiences.get-potions.com/v1/715/experience/2dd95ccd-103c-4633-bca6-0c25a272096d")
+            const res = await fetch(`https://client.experiences.get-potions.com/v1/715/experience/` + flagEpoqId)
             const data = await res.json()
             setRec(data)
         }
