@@ -159,18 +159,6 @@ export default function Product(props) {
                 </div>
             </div>
             <ProductRecs />
-            <div className='flex justify-center items-center'>
-            <span className='m-2 border border-slate-600 justify-center flex'>
-                    <button onClick={() => scroll(-307)} className='p-3 w-full'>
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1" stroke="currentColor" className="w-7 h-7 py-1 rotate-180"><path strokeLinecap="round" strokeLinejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3"></path></svg> 
-                    </button>
-                </span>
-                <span className='m-2 border border-slate-600 justify-center flex'>
-                    <button onClick={() => scroll(307)} className='p-3 w-full'>
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1" stroke="currentColor" className="w-7 h-7 py-1"><path strokeLinecap="round" strokeLinejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3"></path></svg>
-                    </button>
-                </span>
-            </div>
         </div>
     )
 }

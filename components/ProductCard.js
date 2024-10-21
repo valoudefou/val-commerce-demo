@@ -18,7 +18,7 @@ function ProductCard( {product} ) {
             <div className='cursor-pointer flex flex-col'>
                 <div className="rounded-xl flex-1 aspect-w-1 aspect-h-1 w-full overflow-hidden bg-gray-200 xl:aspect-w-7 xl:aspect-h-8">
                     <Image
-                        alt=""
+                        alt={product.title}
                         src={product.images[0]}
                         layout='fill'
                         objectFit="cover"
