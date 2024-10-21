@@ -33,8 +33,9 @@ export default function ProductRecs() {
                                 <Image
                                     alt={item.title}
                                     src={item.img_link}
-                                    width={700}
+                                    width={400}
                                     height={400}
+                                    style={{height: 'inherit'}}
                                 />
                             </div>
                         </Link>
