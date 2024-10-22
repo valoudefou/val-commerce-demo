@@ -4,13 +4,18 @@ import { Flagship, FlagshipProvider, useFsFlag } from "@flagship.io/react-sdk"
 import App from "next/app"
 import { v4 as uuidv4 } from 'uuid'
 import { createContext, useState, useEffect } from 'react'
-import { atom } from 'jotai'
+import { Provider, atom, useAtom } from 'jotai'
+import { usePathname } from "next/navigation"
 
 export const AppContext = createContext()
 export const themeAtom = atom(false)
+export const pagePath = atom('')
 
 function MyApp({ Component, pageProps, initialFlagsData, initialVisitorData }) {
     const [isShown, setIsShown] = useState(false)
+    const pathname = usePathname()
+    const [path, setPath] = useAtom(pagePath)
+    setPath(pathname)
 
     useEffect(() => {
         localStorage.setItem('FS_VISITOR', initialVisitorData.id) // BYOID in localStorage
@@ -22,7 +27,8 @@ function MyApp({ Component, pageProps, initialFlagsData, initialVisitorData }) {
 
     return (
         <>
-            <AppContext.Provider value={[isShown, setIsShown]}>
+        <Provider test={pagePath}>
+            <AppContext.Provider onLoad={console.log(path) }value={[isShown, setIsShown]}>
                 <FlagshipProvider
                     envId={process.env.NEXT_PUBLIC_FS_ENV}
                     apiKey={process.env.NEXT_PUBLIC_FS_KEY}
@@ -47,6 +53,7 @@ function MyApp({ Component, pageProps, initialFlagsData, initialVisitorData }) {
                     <Component {...pageProps} />
                 </FlagshipProvider>
             </AppContext.Provider>
+            </Provider>
         </>
     )
 }
@@ -66,6 +73,7 @@ MyApp.getInitialProps = async (appContext) => {
             organisation: "whatever",
             device: 'mobile',
             store: 'US',
+            pagePath: 'pagePath',
             subscription: 'true',
             segment: 'cosmetic',
             store: '1',
@@ -73,7 +81,7 @@ MyApp.getInitialProps = async (appContext) => {
             positioning: 'terrace',
             member: 'true',
             beta: 'test',
-            product: '20948209482098490284',
+            product: uuidv4(),
             login: 'true',
             book: 'test',
             sku: '92842942398',

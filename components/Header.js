@@ -6,6 +6,7 @@ import Navbar from '../components/Navbar'
 export default function Header() {
 const fs = useFsFlag()
 const { getFlag } = useFlagship()
+const fsHit = useFlagship()
 
 // Get flag 
 const flagImageSrcVal = getFlag("flagImageSrc")
@@ -44,9 +45,9 @@ const flagBackgroundColor = flagBackgroundColorVal.getValue("black")
             <div className="mt-10 flex justify-center">
               <Link href="/products">
                 <button onClick={()=>{
-                    fs.sendHits({
+                    fsHit.sendHits({
                       type: HitType.EVENT, 
-                      category: EventCategory.USER_ENGAGEMENT,
+                      category: "Action Tracking",
                       action: "click",
                       label: "label",
                       value: 100
