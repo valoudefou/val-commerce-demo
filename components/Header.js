@@ -1,12 +1,11 @@
 import Image from 'next/image'
-import { HitType, useFsFlag, useFlagship } from "@flagship.io/react-sdk"
+import { HitType, useFlagship } from "@flagship.io/react-sdk"
 import Link from 'next/link'
 import Navbar from '../components/Navbar'
 
 export default function Header() {
-const fs = useFsFlag()
 const { getFlag } = useFlagship()
-const fsHit = useFlagship()
+const fs = useFlagship()
 
 // Get flag 
 const flagImageSrcVal = getFlag("flagImageSrc")
@@ -45,7 +44,7 @@ const flagBackgroundColor = flagBackgroundColorVal.getValue("black")
             <div className="mt-10 flex justify-center">
               <Link href="/products">
                 <button onClick={()=>{
-                    fsHit.sendHits({
+                    fs.sendHits({
                       type: HitType.EVENT, 
                       category: "Action Tracking",
                       action: "click",
