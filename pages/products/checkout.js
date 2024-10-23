@@ -6,11 +6,11 @@ import { useAtom } from "jotai"
 import { usePathname } from "next/navigation"
 
 export default function Checkout() {
+  // AB TASTY UPDATECONTEXT
   const { updateContext } = useFlagship()
   const pathname = usePathname()
   const [path, setPath] = useAtom(pagePath)
   setPath(pathname)
-
   // Get flag 
   const paymentFeature1Click = useFsFlag("paymentFeature1Click", "false")
   const flagIndustry = useFsFlag("flagIndustry", "Product")

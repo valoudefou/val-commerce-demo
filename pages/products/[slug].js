@@ -22,7 +22,6 @@ export default function Product(props) {
 
     useEffect(() => {
         updateContext({['route']: path})
-        console.log('runs')
     }, [path])
 
     async function pushView() {
