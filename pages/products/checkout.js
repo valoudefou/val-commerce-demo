@@ -1,10 +1,15 @@
 import { useEffect, useState, useRef } from "react"
 import { useFsFlag, useFlagship } from "@flagship.io/react-sdk"
 import Link from "next/link"
+import { pagePath } from "/pages/_app"
+import { useAtom } from "jotai"
+import { usePathname } from "next/navigation"
 
 export default function Checkout() {
-  const fs = useFsFlag()
-  const { getFlag } = useFlagship()
+  const { updateContext } = useFlagship()
+  const pathname = usePathname()
+  const [path, setPath] = useAtom(pagePath)
+  setPath(pathname)
 
   // Get flag 
   const paymentFeature1Click = useFsFlag("paymentFeature1Click", "false")
@@ -803,7 +808,7 @@ export default function Checkout() {
                 <div className="flex flex-col w-full space-y-6">
                   <div className="flex border-gray-200">
                     <input className="border border-slate-300 rounded-l-2xl w-full py-4 px-4 text-grey-darker" id="coupon" type="coupon" placeholder="Discount code"/>
-                    <button className="bg-black hover:bg-blue-dark text-white rounded-r-2xl text-sm font-medium px-7" type="submit">
+                    <button onClick={()=>{updateContext({['route']: path})}} className="bg-black hover:bg-blue-dark text-white rounded-r-2xl text-sm font-medium px-7" type="submit">
                       Apply
                     </button>
                   </div>

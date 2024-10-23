@@ -9,7 +9,7 @@ const fs = useFlagship()
 
 // Get flag 
 const flagImageSrcVal = getFlag("flagImageSrc")
-const flagImageSrc = flagImageSrcVal.getValue("/jewelry.jpg")
+const flagImageSrc = flagImageSrcVal.getValue("/cosmetic.jpg")
 const flagBtnTextVal = getFlag("flagBtnText", "Shop")
 const flagBtnText = flagBtnTextVal.getValue()
 const flagIndustryVal = getFlag("flagIndustry", "Product")

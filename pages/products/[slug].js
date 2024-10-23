@@ -1,15 +1,22 @@
 import Image from 'next/image'
 import { useRouter } from 'next/router'
-import { useFsFlag } from "@flagship.io/react-sdk"
+import { useFsFlag, useFlagship } from "@flagship.io/react-sdk"
 import { useState, useEffect, useRef } from 'react'
 import Navbar from '../../components/Navbar'
 import Emotion from '../../components/Emotion'
 import ProductRecs from '../../components/ProductRecs'
+import { useAtom } from 'jotai'
+import { usePathname } from "next/navigation"
+import { pagePath } from "/pages/_app"
 
 export default function Product(props) {
     const [data, setData] = useState('')
     const sendData = useRef(0) // Prevent pushView() from being called multiple times
     const ref = useRef(null)
+    const { updateContext } = useFlagship()
+    const pathname = usePathname()
+    const [path, setPath] = useAtom(pagePath)
+    setPath(pathname)
 
     const possibleLabel = [
         "Last one", 
@@ -17,18 +24,16 @@ export default function Product(props) {
         "2 in stock"
     ]
 
-    const scroll = (scrollOffset) => {
-        ref.current.scrollLeft += scrollOffset
-    }
-
     async function pushView() {
         sendData.current = sendData.current + 1
 
         if (sendData.current === 1) {
             window.dataLayer = window.dataLayer || []
+            
             if (window.ABTasty !== undefined) {
                 window?.ABTastyReload()
             }
+
             window.dataLayer.push({
                 event: 'view_item',
                 info: possibleLabel[(Math.floor(Math.random() * possibleLabel.length))],
@@ -120,7 +125,7 @@ export default function Product(props) {
     return (
         <div onLoad={() => [pushView()]} className="flex h-auto flex-col justify-between">
             <Navbar />
-            <div className="mx-auto max-w-1xl px-4 sm:px-6 lg:max-w-7xl lg:px-8">
+            <div onLoad={()=>{updateContext({['route']: path})}} className="mx-auto max-w-1xl px-4 sm:px-6 lg:max-w-7xl lg:px-8">
                 <div className="relative mx-auto items-center flex flex-col lg:flex-row">
                     <div id='ab-product' className='relative'>
                         <Image
