@@ -253,7 +253,7 @@ export default function Checkout() {
   return (
     <>
       <form noValidate onSubmit={handleSubmit}>
-        <div className="mx-auto max-w-2xl px-4 sm:px-6 lg:max-w-7xl lg:px-8 mb-10 mt-10">
+        <div onClick={()=>{updateContext({['route']: path})}} className="mx-auto max-w-2xl px-4 sm:px-6 lg:max-w-7xl lg:px-8 mb-10 mt-10">
           <div className="flex justify-between">
             <div className="relative flex justify-between lg:w-auto lg:static lg:block lg:justify-start">
               <a className="text-2xl px-2 font-bold leading-relaxed inline-block py-3 whitespace-nowrap uppercase text-gray-900" href="/">
@@ -808,7 +808,7 @@ export default function Checkout() {
                 <div className="flex flex-col w-full space-y-6">
                   <div className="flex border-gray-200">
                     <input className="border border-slate-300 rounded-l-2xl w-full py-4 px-4 text-grey-darker" id="coupon" type="coupon" placeholder="Discount code"/>
-                    <button onClick={()=>{updateContext({['route']: path})}} className="bg-black hover:bg-blue-dark text-white rounded-r-2xl text-sm font-medium px-7" type="submit">
+                    <button className="bg-black hover:bg-blue-dark text-white rounded-r-2xl text-sm font-medium px-7" type="submit">
                       Apply
                     </button>
                   </div>

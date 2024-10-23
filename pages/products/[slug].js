@@ -6,16 +6,13 @@ import Navbar from '../../components/Navbar'
 import Emotion from '../../components/Emotion'
 import ProductRecs from '../../components/ProductRecs'
 import { useAtom } from 'jotai'
-import { usePathname } from "next/navigation"
 import { pagePath } from "/pages/_app"
 
 export default function Product(props) {
     const [data, setData] = useState('')
     const sendData = useRef(0) // Prevent pushView() from being called multiple times
     const { updateContext } = useFlagship()
-    const pathname = usePathname()
     const [path, setPath] = useAtom(pagePath)
-    setPath(pathname)
 
     const possibleLabel = [
         "Last one", 
@@ -25,6 +22,7 @@ export default function Product(props) {
 
     useEffect(() => {
         updateContext({['route']: path})
+        console.log('runs')
     }, [path])
 
     async function pushView() {
