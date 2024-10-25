@@ -6,7 +6,7 @@ This AB Tasty demo environment provides real time technical insights around:
 - SPA / React / NextJS compatibility ----> [Documentation](https://support.abtasty.com/hc/en-us/articles/14427828636572-How-the-AB-Tasty-tag-is-designed-to-handle-Single-Page-Apps-SPA)
 - Bring Your Own ID (BYOID) ----> [Documentation](https://support.abtasty.com/hc/en-us/articles/14503207884700-Visitor-Identity-Management)
 - Offline Data Import ----> [Documentation](https://developers.abtasty.com/docs/data/universal-data-connector)
-- Search Recommendations ----> [Documentation](https://techdocs.get-potions.com)
+- Search Recommendations ----> [Documentation](https://recos.docs.get-potions.com)
 - BigQuery Intergation ----> [Documentation](https://support.abtasty.com/hc/en-us/articles/12227118781084-Big-Query-Daily-exports-from-AB-Tasty-to-Big-Query)
 - Flag Exposure Data Warehouse Push ----> [Documentation](https://docs.developers.flagship.io/docs/react-js-reference#onvisitorexposed)
 - Flag Polling Config Update NextJS ----> [Documentation](https://docs.developers.flagship.io/docs/react-js-reference#updatecontext-method)
