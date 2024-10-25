@@ -10,6 +10,8 @@ This AB Tasty demo environment provides real time technical insights around:
 - BigQuery Intergation ----> [Documentation](https://support.abtasty.com/hc/en-us/articles/12227118781084-Big-Query-Daily-exports-from-AB-Tasty-to-Big-Query)
 - Flag Exposure Data Warehouse Push ----> [Documentation](https://docs.developers.flagship.io/docs/react-js-reference#onvisitorexposed)
 - Flag Polling Config Update NextJS ----> [Documentation](https://docs.developers.flagship.io/docs/react-js-reference#updatecontext-method)
+- Flag QA mode ----> [Documentation](https://docs.developers.flagship.io/docs/qa-assistant)
+- Server side rendering vs client side React ----> [Documentation](https://docs.developers.flagship.io/docs/nextjs-13)
 - Headless CMS Content Handling
 - Anti-Flicker Solution
     
