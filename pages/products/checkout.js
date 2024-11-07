@@ -13,7 +13,7 @@ export default function Checkout() {
   setPath(pathname)
   // Get flag 
   const paymentFeature1ClickVal = useFsFlag("paymentFeature1Click")
-  const paymentFeature1Click = paymentFeature1ClickVal.getValue("false")
+  const paymentFeature1Click = paymentFeature1ClickVal.getValue(false)
   const flagIndustryVal = useFsFlag("flagIndustry")
   const flagIndustry = flagIndustryVal.getValue("Product")
   const flagDeliveryFeeDpdVal = useFsFlag("flagDeliveryFeeDpd")
@@ -434,7 +434,7 @@ export default function Checkout() {
                             </svg>
                             Continue To Delivery
                           </button>
-                          {paymentFeature1Click === 'true' &&
+                          {paymentFeature1Click === true &&
                             <div className="flex sm:flex-row flex-col">
                               <span className="text-md px-3 py-1 mr-3 flex items-center justify-center">or</span>
                               <Link href='/products/confirmation'>
@@ -596,7 +596,7 @@ export default function Checkout() {
                             </svg>
                             Continue To Delivery
                           </button>
-                          {paymentFeature1Click === 'true' &&
+                          {paymentFeature1Click === true &&
                             <div className="flex sm:flex-row flex-col">
                               <span className="text-md px-3 py-1 mr-3 flex items-center justify-center">or</span>
                               <Link href='/products/confirmation'>
