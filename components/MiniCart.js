@@ -54,8 +54,9 @@ export default function MiniCart() {
     }
   }, [])
 
-  // Get flag 
-  const paymentFeature1Click = useFsFlag("paymentFeature1Click", "false")
+    // Get flag 
+    const paymentFeature1ClickVal = useFsFlag("paymentFeature1Click")
+    const paymentFeature1Click = paymentFeature1ClickVal.getValue(false)
 
     return (
         <div>
@@ -109,7 +110,7 @@ export default function MiniCart() {
                         )}
                         {cartContent && (
                                 <div className="flex justify-between mt-3">
-                                {paymentFeature1Click.getValue() === 'true' &&
+                                {paymentFeature1Click === true &&
                                 <Link href='/products/confirmation'>
                                     <button className="w-[130px] flex items-center justify-center text-base font-medium bg-black text-white text-bold py-3 rounded-full hover:bg-neutral-800">
                                         <svg xmlns="http://www.w3.org/2000/svg" fill="#FFFFFF" viewBox="0 0 24 24" width="18px" height="18px">    
