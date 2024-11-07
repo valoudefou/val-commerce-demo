@@ -47,9 +47,12 @@ const Navbar = () => {
     }, [isShown])
 
     // Get flag 
-    const flagIndustry = useFsFlag("flagIndustry", "Product")
-    const flagCartFeature = useFsFlag("flagCartFeature", "MiniCart")
-    const flagBackgroundColor = useFsFlag("flagBackgroundColor", "black")
+    const flagIndustryVal = useFsFlag("flagIndustry")
+    const flagIndustry = flagIndustryVal.getValue("Product")
+    const flagCartFeatureVal = useFsFlag("flagCartFeature")
+    const flagCartFeature = flagCartFeatureVal.getValue("MiniCart")
+    const flagBackgroundColorVal = useFsFlag("flagBackgroundColor")
+    const flagBackgroundColor = flagBackgroundColorVal.getValue("black")
 
     return (
         <>
@@ -89,7 +92,7 @@ const Navbar = () => {
                             <nav className="fixed top-0 left-0 bottom-0 flex flex-col w-5/6 max-w-sm py-6 px-6 bg-white border-r overflow-y-auto">
                                 <div className="flex justify-between items-center mb-6">
                                     <div className="text-2xl px-4 font-bold leading-relaxed inline-block py-3 whitespace-nowrap uppercase text-gray-900">
-                                        {flagIndustry.getValue()}
+                                        {flagIndustry}
                                         <span className="text-sm font-thin py-1 absolute">®</span>
                                     </div>
                                     <button onClick={() => setBurgerOn(!burgerOn)} className="navbar-close pr-3">
@@ -118,7 +121,7 @@ const Navbar = () => {
                     <div className="relative mr-auto flex justify-start lg:w-auto lg:static lg:block lg:justify-start">
                         <Link href='/'>
                             <div className="text-2xl px-5 font-bold leading-relaxed inline-block py-3 whitespace-nowrap uppercase text-gray-900">
-                                {flagIndustry.getValue()}
+                                {flagIndustry}
                                 <span className="text-sm font-thin py-1 absolute">®</span>
                             </div>
                         </Link>
@@ -171,7 +174,7 @@ const Navbar = () => {
                                         <path d="M3 3H5L5.4 5M7 13H17L21 5H5.4M7 13L5.4 5M7 13L4.70711 15.2929C4.07714 15.9229 4.52331 17 5.41421 17H17M17 17C15.8954 17 15 17.8954 15 19C15 20.1046 15.8954 21 17 21C18.1046 21 19 20.1046 19 19C19 17.8954 18.1046 17 17 17ZM9 19C9 20.1046 8.10457 21 7 21C5.89543 21 5 20.1046 5 19C5 17.8954 5.89543 17 7 17C8.10457 17 9 17.8954 9 19Z" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"></path>
                                     </svg>
                                     {cartContent && (
-                                        <span style={{backgroundColor: flagBackgroundColor.getValue()}} className="absolute top-0 left-0 rounded-full bg-indigo-100 text-gray-900 p-1 text-sm"></span>
+                                        <span style={{backgroundColor: flagBackgroundColor}} className="absolute top-0 left-0 rounded-full bg-indigo-100 text-gray-900 p-1 text-sm"></span>
                                     )}
                                 </p>
                             </div>
@@ -179,10 +182,10 @@ const Navbar = () => {
                     </div>
                 </div>
             </nav>
-            {isShown && flagCartFeature.getValue() === 'MiniCart' && (    
+            {isShown && flagCartFeature === 'MiniCart' && (    
                 <MiniCart />
             )}
-            {isShown && flagCartFeature.getValue() === 'SlidingCart' && (    
+            {isShown && flagCartFeature === 'SlidingCart' && (    
                 <SlidingCart />
             )}
         </>
