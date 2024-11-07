@@ -12,8 +12,10 @@ export default function Checkout() {
   const [path, setPath] = useAtom(pagePath)
   setPath(pathname)
   // Get flag 
-  const paymentFeature1Click = useFsFlag("paymentFeature1Click", "false")
-  const flagIndustry = useFsFlag("flagIndustry", "Product")
+  const paymentFeature1ClickVal = useFsFlag("paymentFeature1Click")
+  const paymentFeature1Click = paymentFeature1ClickVal.getValue("false")
+  const flagIndustryVal = useFsFlag("flagIndustry")
+  const flagIndustry = flagIndustryVal.getValue("Product")
   const flagDeliveryFeeDpdVal = useFsFlag("flagDeliveryFeeDpd")
   const flagDeliveryFeeDpd = flagDeliveryFeeDpdVal.getValue(7.99)
   const flagDeliveryFeeEvriVal = useFsFlag("flagDeliveryFeeEvri")
@@ -257,7 +259,7 @@ export default function Checkout() {
           <div className="flex justify-between">
             <div className="relative flex justify-between lg:w-auto lg:static lg:block lg:justify-start">
               <a className="text-2xl px-2 font-bold leading-relaxed inline-block py-3 whitespace-nowrap uppercase text-gray-900" href="/">
-                {flagIndustry.getValue()}
+                {flagIndustry}
                 <span className="text-sm font-thin py-1 absolute">®</span>
               </a>
             </div> 
@@ -432,7 +434,7 @@ export default function Checkout() {
                             </svg>
                             Continue To Delivery
                           </button>
-                          {paymentFeature1Click.getValue() === 'true' &&
+                          {paymentFeature1Click === 'true' &&
                             <div className="flex sm:flex-row flex-col">
                               <span className="text-md px-3 py-1 mr-3 flex items-center justify-center">or</span>
                               <Link href='/products/confirmation'>
@@ -594,7 +596,7 @@ export default function Checkout() {
                             </svg>
                             Continue To Delivery
                           </button>
-                          {paymentFeature1Click.getValue() === 'true' &&
+                          {paymentFeature1Click === 'true' &&
                             <div className="flex sm:flex-row flex-col">
                               <span className="text-md px-3 py-1 mr-3 flex items-center justify-center">or</span>
                               <Link href='/products/confirmation'>
