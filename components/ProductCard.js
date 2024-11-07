@@ -16,9 +16,9 @@ function ProductCard( {product} ) {
     return (
         <Link href={`/products/${product.id}`} className="group">
             <div className='cursor-pointer flex flex-col'>
-                <div className="rounded flex-1 aspect-w-1 aspect-h-1 w-full overflow-hidden bg-gray-200 xl:aspect-w-7 xl:aspect-h-8">
+                <div className="rounded-xl flex-1 aspect-w-1 aspect-h-1 w-full overflow-hidden bg-gray-200 xl:aspect-w-7 xl:aspect-h-8">
                     <Image
-                        alt=""
+                        alt={product.title}
                         src={product.images[0]}
                         layout='fill'
                         objectFit="cover"
@@ -37,17 +37,17 @@ function ProductCard( {product} ) {
                 </div>
                 {viewDetailsPlp.getValue() === true &&
                     <button onClick={()=>{
-                        fsHit.send({
+                        fs.sendHits({
                             type: HitType.EVENT,
                             category: "Action Tracking",
                             action: "Click View Details PLP",
                             label: "Engagement"
                         })
-                    }} className="flex items-center justify-center mt-5 py-4 bg-white border hover:bg-gray-50 border-slate-600 text-slate-600 text-semibold text-sm rounded-full font-medium w-full">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1" stroke="currentColor" className="w-6 h-6 py-1">
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3"/>
-                    </svg>
-                    View details
+                        }} className="flex items-center justify-center mt-5 py-4 bg-white border-2 hover:bg-gray-50 border-gray-300 text-slate-600 text-semibold text-sm rounded-full font-medium w-full">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1" stroke="currentColor" className="w-6 h-6 py-1">
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3"/>
+                        </svg>
+                        View details
                     </button>
                 }
             </div>

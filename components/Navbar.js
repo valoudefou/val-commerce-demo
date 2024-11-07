@@ -1,45 +1,79 @@
 import { useState, useEffect, useContext } from "react"
 import { AppContext } from "../pages/_app"
+import { useRouter } from "next/navigation"
 import { useFsFlag } from "@flagship.io/react-sdk"
 import SlidingCart from "./SlidingCart"
 import MiniCart from "./MiniCart"
 import Link from 'next/link'
 import Footer from "./Footer"
+import { themeAtom } from "../pages/_app"
+import { useAtom } from "jotai"
 
-export default function Navbar() {
+const Navbar = () => {
     const [isShown, setIsShown] = useContext(AppContext)
     const [cartContent, setHtmlContent] = useState(true)
     const [burgerOn, setBurgerOn] = useState(false)
     const [searchOpen, setSearchOpen] = useState(false)
+    const [searchQuery, setSearchQuery] = useState("")
+    const router = useRouter()
+    const [search, setSearch] = useAtom(themeAtom)
+
+    const onSearch = (e) => {
+        e.preventDefault()
+        const encodedSearchQuery = encodeURI(searchQuery)
+        router.push(`/search?q=${encodedSearchQuery}`)
+        const newSearch = search === true ? false : true
+        setSearch(newSearch)
+    }
+
+    const handleKeyDown = (e) => {
+        if (e.key === 'Enter') {
+            e.preventDefault()
+            const encodedSearchQuery = encodeURI(searchQuery)
+            router.push(`/search?q=${encodedSearchQuery}`)
+            const newSearch = search === true ? false : true
+            setSearch(newSearch)
+        }
+    }
 
     useEffect(() => {
         const storedHtml = localStorage.getItem('currentProduct')
         if (storedHtml) {
             setHtmlContent(true)
         } 
-        else  if (!storedHtml) {
+        else if (!storedHtml) {
             setHtmlContent(false)
-  
         }
     }, [isShown])
 
     // Get flag 
-    const flagIndustry = useFsFlag("flagIndustry", "Product")
-    const flagCartFeature = useFsFlag("flagCartFeature", "MiniCart")
-    const flagBackgroundColor = useFsFlag("flagBackgroundColor", "black")
+    const flagIndustryVal = useFsFlag("flagIndustry")
+    const flagIndustry = flagIndustryVal.getValue("Product")
+    const flagCartFeatureVal = useFsFlag("flagCartFeature")
+    const flagCartFeature = flagCartFeatureVal.getValue("MiniCart")
+    const flagBackgroundColorVal = useFsFlag("flagBackgroundColor")
+    const flagBackgroundColor = flagBackgroundColorVal.getValue("black")
 
     return (
         <>
             {searchOpen && (
-                <div onClick={() => setSearchOpen(!searchOpen)} className="h-screen w-screen top-0 z-20 bg-gray-800 fixed opacity-25"></div>
+                <div onClick={() => setSearchOpen(!searchOpen)} className="h-screen w-screen top-0 z-20 bg-gray-800 fixed opacity-0"></div>
             )}
             {searchOpen && (
-                <div className="sm:hidden bg-white fixed w-full px-6 py-6 z-30 border-b-[1px] border-gray-200">
-                    <input type="text" className="epoq_search_box w-full ui-autocomplete-input block p-4 font-light pl-10 text-gray-900 bg-gray-50 border rounded-2xl border-gray-200 focus:pl-10" placeholder='Search term ...' />
-                    <div className="absolute top-11 left-9 items-center">
-                        <svg className="w-5 h-5 text-gray-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clipRule="evenodd"></path></svg>
+                <form className="sm:hidden bg-white fixed w-full px-6 py-6 z-30 border-b-[1px] border-gray-200">
+                    <input 
+                        onChange={(e) => setSearchQuery(e.target.value)}
+                        type="search" 
+                        className="w-full block p-4 font-light pl-12 text-gray-900 bg-gray-50 border rounded-2xl border-gray-200" 
+                        placeholder='Search term ...' 
+                        onKeyDown={(e) => handleKeyDown(e)}
+                    />
+                    <div className="absolute top-11 left-10 items-center">
+                        <svg onClick={(e) => onSearch(e)} className="cursor-pointer w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                            <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
+                        </svg>
                     </div>
-                </div>
+                </form>
             )}
             <nav className="relative w-full z-20 flex flex-wrap items-center lg:justify-between sm:px-5 sm:py-2 px-2 py-2 bg-white border-b-[1px] border-gray-200">
                 <div className="flex flex-auto items-center justify-between">
@@ -58,7 +92,7 @@ export default function Navbar() {
                             <nav className="fixed top-0 left-0 bottom-0 flex flex-col w-5/6 max-w-sm py-6 px-6 bg-white border-r overflow-y-auto">
                                 <div className="flex justify-between items-center mb-6">
                                     <div className="text-2xl px-4 font-bold leading-relaxed inline-block py-3 whitespace-nowrap uppercase text-gray-900">
-                                        {flagIndustry.getValue()}
+                                        {flagIndustry}
                                         <span className="text-sm font-thin py-1 absolute">®</span>
                                     </div>
                                     <button onClick={() => setBurgerOn(!burgerOn)} className="navbar-close pr-3">
@@ -87,18 +121,26 @@ export default function Navbar() {
                     <div className="relative mr-auto flex justify-start lg:w-auto lg:static lg:block lg:justify-start">
                         <Link href='/'>
                             <div className="text-2xl px-5 font-bold leading-relaxed inline-block py-3 whitespace-nowrap uppercase text-gray-900">
-                                {flagIndustry.getValue()}
+                                {flagIndustry}
                                 <span className="text-sm font-thin py-1 absolute">®</span>
                             </div>
                         </Link>
                     </div> 
                     <div className="mr-auto">
-                        <div className="hidden sm:flex relative">
-                            <div className="absolute top-3 left-3 items-center">
-                                <svg className="w-5 h-5 text-gray-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clipRule="evenodd"></path></svg>
+                        <form className="hidden sm:flex relative">
+                            <div className="absolute top-4 left-4 items-center">
+                                <svg onClick={(e) => onSearch(e)} className="cursor-pointer w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                                    <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
+                                </svg>
                             </div>
-                            <input type="text" className="epoq_search_box w-96 ui-autocomplete-input block p-2 font-light pl-10 text-gray-900 bg-gray-50 rounded-2xl border border-gray-200 focus:pl-10" placeholder='Search term ...' />
-                        </div>
+                            <input 
+                                onChange={(e) => setSearchQuery(e.target.value)}
+                                type="search" 
+                                className="w-96 block p-3 font-light pl-12 text-gray-900 bg-gray-50 rounded-lg border border-gray-200" 
+                                placeholder='Search term ...'
+                                onKeyDown={(e) => handleKeyDown(e)}
+                            />
+                        </form>
                     </div>
                         <div className="md:px-5 md:py-0 xl:py-0 px-3 lg:py-0 py-3 lg:flex items-center">
                             <ul className="hidden flex-col lg:flex lg:flex-row list-none">
@@ -132,7 +174,7 @@ export default function Navbar() {
                                         <path d="M3 3H5L5.4 5M7 13H17L21 5H5.4M7 13L5.4 5M7 13L4.70711 15.2929C4.07714 15.9229 4.52331 17 5.41421 17H17M17 17C15.8954 17 15 17.8954 15 19C15 20.1046 15.8954 21 17 21C18.1046 21 19 20.1046 19 19C19 17.8954 18.1046 17 17 17ZM9 19C9 20.1046 8.10457 21 7 21C5.89543 21 5 20.1046 5 19C5 17.8954 5.89543 17 7 17C8.10457 17 9 17.8954 9 19Z" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"></path>
                                     </svg>
                                     {cartContent && (
-                                    <span style={{backgroundColor: flagBackgroundColor.getValue()}} className="absolute top-0 left-0 rounded-full bg-indigo-100 text-gray-900 p-1 text-sm"></span>
+                                        <span style={{backgroundColor: flagBackgroundColor}} className="absolute top-0 left-0 rounded-full bg-indigo-100 text-gray-900 p-1 text-sm"></span>
                                     )}
                                 </p>
                             </div>
@@ -140,12 +182,14 @@ export default function Navbar() {
                     </div>
                 </div>
             </nav>
-            {isShown && flagCartFeature.getValue() === 'MiniCart' && (    
+            {isShown && flagCartFeature === 'MiniCart' && (    
                 <MiniCart />
             )}
-            {isShown && flagCartFeature.getValue() === 'SlidingCart' && (    
+            {isShown && flagCartFeature === 'SlidingCart' && (    
                 <SlidingCart />
             )}
         </>
     )
 }
+
+export default Navbar

@@ -1,14 +1,21 @@
 import { useEffect, useState, useRef } from "react"
-import { HitType, useFsFlag, useFlagship } from "@flagship.io/react-sdk"
+import { useFsFlag, useFlagship } from "@flagship.io/react-sdk"
 import Link from "next/link"
+import { pagePath } from "/pages/_app"
+import { useAtom } from "jotai"
+import { usePathname } from "next/navigation"
 
 export default function Checkout() {
-  const fs = useFsFlag()
-  const { getFlag } = useFlagship()
-
+  // AB TASTY UPDATECONTEXT
+  const { updateContext } = useFlagship()
+  const pathname = usePathname()
+  const [path, setPath] = useAtom(pagePath)
+  setPath(pathname)
   // Get flag 
-  const paymentFeature1Click = useFsFlag("paymentFeature1Click", "false")
-  const flagIndustry = useFsFlag("flagIndustry", "Product")
+  const paymentFeature1ClickVal = useFsFlag("paymentFeature1Click")
+  const paymentFeature1Click = paymentFeature1ClickVal.getValue("false")
+  const flagIndustryVal = useFsFlag("flagIndustry")
+  const flagIndustry = flagIndustryVal.getValue("Product")
   const flagDeliveryFeeDpdVal = useFsFlag("flagDeliveryFeeDpd")
   const flagDeliveryFeeDpd = flagDeliveryFeeDpdVal.getValue(7.99)
   const flagDeliveryFeeEvriVal = useFsFlag("flagDeliveryFeeEvri")
@@ -248,11 +255,11 @@ export default function Checkout() {
   return (
     <>
       <form noValidate onSubmit={handleSubmit}>
-        <div className="mx-auto max-w-2xl px-4 sm:px-6 lg:max-w-7xl lg:px-8 mb-10 mt-10">
+        <div onClick={()=>{updateContext({['route']: path})}} className="mx-auto max-w-2xl px-4 sm:px-6 lg:max-w-7xl lg:px-8 mb-10 mt-10">
           <div className="flex justify-between">
             <div className="relative flex justify-between lg:w-auto lg:static lg:block lg:justify-start">
               <a className="text-2xl px-2 font-bold leading-relaxed inline-block py-3 whitespace-nowrap uppercase text-gray-900" href="/">
-                {flagIndustry.getValue()}
+                {flagIndustry}
                 <span className="text-sm font-thin py-1 absolute">®</span>
               </a>
             </div> 
@@ -421,13 +428,13 @@ export default function Checkout() {
                           </button>
                         </div>
                         <div className="flex sm:flex-row flex-col sm:space-x-3 mt-8">
-                          <button type="submit" onClick={() => [beginCheckout()]} className="justify-center items-center w-full flex py-4 px-7 bg-white border hover:bg-gray-50 border-slate-600 text-slate-600 text-semibold text-sm rounded-full font-medium">
+                          <button type="submit" onClick={() => [beginCheckout()]} className="justify-center items-center w-full flex py-4 px-7 bg-white border-2 hover:bg-gray-50 border-gray-300 text-slate-600 text-semibold text-sm rounded-full font-medium">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1" stroke="currentColor" className="w-6 h-6 py-1">
                               <path strokeLinecap="round" strokeLinejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3"/>
                             </svg>
                             Continue To Delivery
                           </button>
-                          {paymentFeature1Click.getValue() === 'true' &&
+                          {paymentFeature1Click === 'true' &&
                             <div className="flex sm:flex-row flex-col">
                               <span className="text-md px-3 py-1 mr-3 flex items-center justify-center">or</span>
                               <Link href='/products/confirmation'>
@@ -583,13 +590,13 @@ export default function Checkout() {
                           </button>
                         </div>
                         <div className="flex sm:flex-row flex-col sm:space-x-3 mt-8">
-                          <button type="submit" onClick={() => [beginCheckout()]} className="justify-center items-center w-full flex py-4 px-7 bg-white border hover:bg-gray-50 border-slate-600 text-slate-600 text-semibold text-sm rounded-full font-medium">
+                          <button type="submit" onClick={() => [beginCheckout()]} className="justify-center items-center w-full flex py-4 px-7 bg-white border hover:bg-gray-50 border-gray-300 text-slate-600 text-semibold text-sm rounded-full font-medium">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1" stroke="currentColor" className="w-6 h-6 py-1">
                               <path strokeLinecap="round" strokeLinejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3"/>
                             </svg>
                             Continue To Delivery
                           </button>
-                          {paymentFeature1Click.getValue() === 'true' &&
+                          {paymentFeature1Click === 'true' &&
                             <div className="flex sm:flex-row flex-col">
                               <span className="text-md px-3 py-1 mr-3 flex items-center justify-center">or</span>
                               <Link href='/products/confirmation'>
@@ -820,14 +827,14 @@ export default function Checkout() {
                       <p className="text-base dark:text-white leading-4 text-gray-800">
                         Shipping</p>
                       <p className="text-base dark:text-gray-300 leading-4 text-gray-600">
-                        {delivery[1]} €</p>
+                        {delivery[1] ? delivery[1] : 0} €</p>
                     </div>
                   </div>
                   <div className="flex justify-between items-center w-full">
                       <p className="text-lg dark:text-white font-semibold leading-4 text-gray-800">
                         Total
                       </p>
-                    <p className="text-lg dark:text-gray-300 font-semibold leading-4 text-gray-800">{(data.productPrice + Math.round(delivery[1])).toFixed(2)} €</p>
+                    <p className="text-lg dark:text-gray-300 font-semibold leading-4 text-gray-800">{data.productPrice + delivery[1]} €</p>
                   </div>
                 </div>
               </div>

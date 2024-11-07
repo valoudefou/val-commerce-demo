@@ -120,7 +120,7 @@ export default function MiniCart() {
                                 </Link>
                                 }
                                 <Link href='/products/checkout'>
-                                    <button className="flex items-center justify-center py-3 px-6 bg-white border hover:bg-gray-50 border-slate-600 text-slate-600 text-semibold text-sm rounded-full font-medium">
+                                    <button className="flex items-center justify-center py-3 px-6 bg-white border-2 hover:bg-gray-50 border-gray-300 text-slate-600 text-semibold text-sm rounded-full font-medium">
                                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1" stroke="currentColor" className="w-6 h-6 py-1">
                                             <path strokeLinecap="round" strokeLinejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3"/>
                                         </svg>

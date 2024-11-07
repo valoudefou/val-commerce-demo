@@ -1,21 +1,20 @@
 import Image from 'next/image'
-import { HitType, useFsFlag, useFlagship } from "@flagship.io/react-sdk"
+import { HitType, useFlagship, useFsFlag } from "@flagship.io/react-sdk"
 import Link from 'next/link'
 import Navbar from '../components/Navbar'
 
 export default function Header() {
-const fs = useFsFlag()
-const { getFlag } = useFlagship()
+  const fs = useFlagship()
 
-// Get flag 
-const flagImageSrcVal = getFlag("flagImageSrc")
-const flagImageSrc = flagImageSrcVal.getValue("/jewelry.jpg")
-const flagBtnTextVal = getFlag("flagBtnText", "Shop")
-const flagBtnText = flagBtnTextVal.getValue()
-const flagIndustryVal = getFlag("flagIndustry", "Product")
-const flagIndustry = flagIndustryVal.getValue()
-const flagBackgroundColorVal = getFlag("flagBackgroundColor")
-const flagBackgroundColor = flagBackgroundColorVal.getValue("black")
+  // Get flag 
+  const flagImageSrcVal = useFsFlag("flagImageSrc")
+  const flagImageSrc = flagImageSrcVal.getValue("/cosmetic.jpg")
+  const flagBtnTextVal = useFsFlag("flagBtnText")
+  const flagBtnText = flagBtnTextVal.getValue("Shop")
+  const flagIndustryVal = useFsFlag("flagIndustry")
+  const flagIndustry = flagIndustryVal.getValue("Product")
+  const flagBackgroundColorVal = useFsFlag("flagBackgroundColor")
+  const flagBackgroundColor = flagBackgroundColorVal.getValue("black")
 
   return (
     <header className="relative">
@@ -46,13 +45,13 @@ const flagBackgroundColor = flagBackgroundColorVal.getValue("black")
                 <button onClick={()=>{
                     fs.sendHits({
                       type: HitType.EVENT, 
-                      category: EventCategory.USER_ENGAGEMENT,
+                      category: "Action Tracking",
                       action: "click",
                       label: "label",
                       value: 100
                     })
                   }}
-                  className="flex items-center justify-center py-4 px-8 bg-white border hover:bg-gray-50 border-slate-600 text-slate-600 text-bold text-sm rounded-full font-medium" id="ab-btn">
+                  className="flex items-center justify-center py-4 px-8 bg-white border hover:bg-gray-50 border-gray-300 text-slate-600 text-bold text-sm rounded-full font-medium" id="ab-btn">
                   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1" stroke="currentColor" className="w-6 h-6 py-1">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3"/>
                   </svg>
