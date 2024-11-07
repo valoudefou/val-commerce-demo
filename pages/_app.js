@@ -24,7 +24,8 @@ function MyApp({ Component, pageProps, initialFlagsData, initialVisitorData }) {
     }, [])
 
     // Get flag 
-    const flagIndustry = useFsFlag("flagIndustry", "Product")
+    const flagIndustryVal = useFsFlag("flagIndustry")
+    const flagIndustry = flagIndustryVal.getValue("Product")
 
     return (
         <>
@@ -49,7 +50,7 @@ function MyApp({ Component, pageProps, initialFlagsData, initialVisitorData }) {
                     }
                 >
                     <Head/>
-                    <title>{'The ' + flagIndustry.getValue() + ' House'}</title>
+                    <title>{'The ' + flagIndustry + ' House'}</title>
                     <Component {...pageProps} />
                 </FlagshipProvider>
             </AppContext.Provider>
