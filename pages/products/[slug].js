@@ -116,7 +116,7 @@ export default function Product(props) {
 
     // Get flag 
     const paymentFeature1ClickVal = useFsFlag("paymentFeature1Click")
-    const paymentFeature1Click = paymentFeature1ClickVal.getValue(true)
+    const paymentFeature1Click = paymentFeature1ClickVal.getValue(false)
     const router = useRouter()
 
     if (router.isFallback) {
