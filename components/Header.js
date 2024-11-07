@@ -14,7 +14,7 @@ export default function Header() {
   const flagIndustryVal = useFsFlag("//flagIndustry")
   const flagIndustry = flagIndustryVal.getValue("Product")
   const flagBackgroundColorVal = useFsFlag("flagBackgroundColor")
-  const flagBackgroundColor = flagBackgroundColorVal.getValue("black")
+  const flagBackgroundColor = flagBackgroundColorVal.getValue("white")
 
   return (
     <header className="relative">
