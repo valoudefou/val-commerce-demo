@@ -47,7 +47,8 @@ const Navbar = () => {
     }, [isShown])
 
     // Get flag 
-    const flagIndustry = useFsFlag("flagIndustry", "Product")
+    const flagIndustryVal = useFsFlag("flagIndustry")
+    const flagIndustry = flagIndustryVal.getValue("Product")
     const flagCartFeature = useFsFlag("flagCartFeature", "MiniCart")
     const flagBackgroundColor = useFsFlag("flagBackgroundColor", "black")
 
