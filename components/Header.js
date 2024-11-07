@@ -11,7 +11,7 @@ export default function Header() {
   const flagImageSrc = flagImageSrcVal.getValue("/cosmetic.jpg")
   const flagBtnTextVal = useFsFlag("flagBtnText")
   const flagBtnText = flagBtnTextVal.getValue("Shop")
-  const flagIndustryVal = useFsFlag("flagIndustry")
+  const flagIndustryVal = useFsFlag("//flagIndustry")
   const flagIndustry = flagIndustryVal.getValue("Product")
   const flagBackgroundColorVal = useFsFlag("flagBackgroundColor")
   const flagBackgroundColor = flagBackgroundColorVal.getValue("black")
