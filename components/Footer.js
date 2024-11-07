@@ -2,7 +2,8 @@ import { useFsFlag } from "@flagship.io/react-sdk"
 import Link from 'next/link'
 
 export default function Footer({ children }) {
-    const flagBackgroundColor = useFsFlag("flagBackgroundColor", "black")
+    const flagBackgroundColorVal = useFsFlag("flagBackgroundColor")
+    const flagBackgroundColor = flagBackgroundColorVal.getValue("white")
 
     return (
         <>
@@ -13,7 +14,7 @@ export default function Footer({ children }) {
                     <span>
                         &copy; AB Tasty / Next.js / Tailwind
                     </span>
-                <Link href="https://github.com/valoudefou/commerce-demo" style={{color: flagBackgroundColor.getValue()}} className="py-1 px-2 font-medium text-xs bg-[#111827] rounded-[5px]">
+                <Link href="https://github.com/valoudefou/commerce-demo" style={{color: flagBackgroundColor}} className="py-1 px-2 font-medium text-xs bg-[#111827] rounded-[5px]">
                     GitHub
                 </Link>
             </footer>
