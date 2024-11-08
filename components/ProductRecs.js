@@ -6,9 +6,9 @@ import { useFsFlag } from "@flagship.io/react-sdk"
 export default function ProductRecs() {
     const [rec, setRec] = useState('')
     const ref = useRef(null)
-    const flagEpoqIdVal = useFsFlag("flagEpoqId")
     const [isLoading, setLoading] = useState(true)
-    const flagEpoqId = flagEpoqIdVal.getValue('2dd95ccd-103c-4633-bca6-0c25a272096d')
+    const flagProductRecsVal = useFsFlag("flagProductRecs")
+    const flagProductRecs = flagProductRecsVal.getValue('2dd95ccd-103c-4633-bca6-0c25a272096d')
 
     function cn(...classes) {
         return classes.filter(Boolean).join(' ')
@@ -16,7 +16,7 @@ export default function ProductRecs() {
 
     useEffect(() => {
         async function getRecs() {
-            const res = await fetch(`https://client.experiences.get-potions.com/v1/715/experience/` + flagEpoqId)
+            const res = await fetch(`https://client.experiences.get-potions.com/v1/715/experience/` + flagProductRecs)
             const data = await res.json()
             setRec(data)
         }
@@ -69,12 +69,12 @@ export default function ProductRecs() {
             <div className='flex justify-center items-center'>
                 <span className='m-2 border-2 border-slate-600 justify-center flex'>
                     <button onClick={() => scroll(-307)} className='p-3 w-full'>
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1" stroke="currentColor" className="w-9 h-9 py-1 rotate-180"><path strokeLinecap="round" strokeLinejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3"></path></svg> 
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1" stroke="currentColor" className="w-7 h-7 py-1 rotate-180"><path strokeLinecap="round" strokeLinejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3"></path></svg> 
                     </button>
                 </span>
                 <span className='m-2 border-2 border-slate-600 justify-center flex'>
                     <button onClick={() => scroll(307)} className='p-3 w-full'>
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1" stroke="currentColor" className="w-9 h-9 py-1"><path strokeLinecap="round" strokeLinejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3"></path></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1" stroke="currentColor" className="w-7 h-7 py-1"><path strokeLinecap="round" strokeLinejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3"></path></svg>
                     </button>
                 </span>
             </div>
