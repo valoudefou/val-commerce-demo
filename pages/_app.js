@@ -70,22 +70,11 @@ MyApp.getInitialProps = async (AppContext) => {
         id: '4c970578-679d-49a6-81b9-cdad6960a63b',
         // id: uuidv4(),
             context: {
-            organisation: "whatever",
             device: 'mobile',
-            store: 'US',
             route: '',
-            subscription: 'true',
             segment: 'cosmetic',
-            store: '1',
-            profile: 'something',
-            positioning: 'terrace',
-            member: 'true',
-            login: 'true',
-            book: 'test',
-            sku: '92842942398',
-            ios: "true",
-            regionId: 3,
-            ios: '16'
+            login: true,
+            region: 3
         },
     }
     // Create a new visitor
