@@ -15,7 +15,9 @@ export default function Product(props) {
     const [path, setPath] = useAtom(pagePath)
 
     const possibleLabel = [
-        "Last one", 
+        "4 in stock", 
+        "3 in stock", 
+        "5 in stock", 
         "Popular",
         "2 in stock"
     ]
