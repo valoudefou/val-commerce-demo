@@ -13,7 +13,6 @@ export const pagePath = atom('')
 
 function MyApp({ Component, pageProps, initialFlagsData, initialVisitorData }) {
     const [isShown, setIsShown] = useState(false)
-    const { updateContext } = useFlagship()
     const pathname = usePathname()
     const [path, setPath] = useAtom(pagePath)
     setPath(pathname)
@@ -60,15 +59,13 @@ function MyApp({ Component, pageProps, initialFlagsData, initialVisitorData }) {
 
 MyApp.getInitialProps = async (AppContext) => {
     const appProps = await App.getInitialProps(AppContext)
-
-    // Start the Flagship SDK
     const flagship = Flagship.start(process.env.NEXT_PUBLIC_FS_ENV, process.env.NEXT_PUBLIC_FS_KEY, {
         fetchNow: false,
     })
 
     const initialVisitorData = {
-        id: '4c970578-679d-49a6-81b9-cdad6960a63b',
-        // id: uuidv4(),
+        // id: '4c970578-679d-49a6-81b9-cdad6960a63b',
+        id: uuidv4(),
             context: {
             device: 'mobile',
             route: '',
@@ -77,19 +74,16 @@ MyApp.getInitialProps = async (AppContext) => {
             region: 3
         },
     }
-    // Create a new visitor
+
     const visitor = flagship?.newVisitor({
         visitorId: initialVisitorData.id,
         context: initialVisitorData.context,
     })
 
-    // Fetch flags
     await visitor?.fetchFlags()
 
-    // Pass data to the page via props
     return {
         ...appProps,
-        // initialFlagsData: visitor?.getFlagsDataArray(),
         initialVisitorData,
     }
 }
