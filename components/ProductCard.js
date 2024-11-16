@@ -14,6 +14,8 @@ function ProductCard( {product} ) {
         return classes.filter(Boolean).join(' ')
     }
 
+    console.log('TEST')
+
     return (
         <Link href={`/products/${product.id}`} className="group">
             <div className='cursor-pointer flex flex-col'>
