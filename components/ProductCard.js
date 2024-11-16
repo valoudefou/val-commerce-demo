@@ -14,7 +14,7 @@ function ProductCard( {product} ) {
         return classes.filter(Boolean).join(' ')
     }
 
-    console.log('TEST')
+    console.log('TEST1')
 
     return (
         <Link href={`/products/${product.id}`} className="group">
