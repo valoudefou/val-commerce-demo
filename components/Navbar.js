@@ -36,6 +36,8 @@ const Navbar = () => {
         }
     }
 
+    console.log('works')
+
     useEffect(() => {
         const storedHtml = localStorage.getItem('currentProduct')
         if (storedHtml) {
