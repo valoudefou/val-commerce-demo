@@ -5,7 +5,8 @@ import { HitType, useFlagship, useFsFlag } from "@flagship.io/react-sdk"
 
 function ProductCard( {product} ) {
     const fs = useFlagship()
-    const viewDetailsPlp = useFsFlag("viewDetailsPlp", false)
+    const viewDetailsPlpVal = useFsFlag("viewDetailsPlp")
+    const viewDetailsPlp = viewDetailsPlpVal.getValue(false)
     const [isLoading, setLoading] = useState(true)
     const { hit: fsHit } = useFlagship()
     
@@ -35,7 +36,7 @@ function ProductCard( {product} ) {
                     <h3>{product.title}</h3>
                     <p className='font-base font-bold text-slate-600 tracking-wide'>{product.price}€</p>
                 </div>
-                {viewDetailsPlp.getValue() === true &&
+                {viewDetailsPlp === true &&
                     <button onClick={()=>{
                         fs.sendHits({
                             type: HitType.EVENT,
