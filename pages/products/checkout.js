@@ -203,7 +203,7 @@ export default function Checkout() {
   async function beginCheckout () {
     sendBeginCheckout.current = sendBeginCheckout.current + 1
 
-      if (sendBeginCheckout.current === 1) {
+    if (sendBeginCheckout.current === 1) {
       window.dataLayer = window.dataLayer || []
 
       window.dataLayer.push({
@@ -256,7 +256,7 @@ export default function Checkout() {
   return (
     <>
       <form noValidate onSubmit={handleSubmit}>
-        <div onClick={()=>{updateContext({['route']: path})}} className="mx-auto max-w-2xl px-4 sm:px-6 lg:max-w-7xl lg:px-8 mb-10 mt-10">
+        <div onClick={()=>{updateContext({['route']: path})}} className="mx-auto max-w-2xl px-4 sm:px-6 lg:max-w-7xl lg:px-8 mb-10 py-2">
           <div className="flex justify-between">
             <div className="relative flex justify-between lg:w-auto lg:static lg:block lg:justify-start">
               <a className="text-2xl px-2 font-bold leading-relaxed inline-block py-3 whitespace-nowrap uppercase text-gray-900" href="/">
