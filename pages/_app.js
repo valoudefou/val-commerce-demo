@@ -37,7 +37,6 @@ function MyApp({ Component, pageProps, initialFlagsData, initialVisitorData }) {
                     envId={process.env.NEXT_PUBLIC_FS_ENV}
                     apiKey={process.env.NEXT_PUBLIC_FS_KEY}
                     visitorData={initialVisitorData}
-                    initialFlagsData={initialFlagsData || {}}
                     onVisitorExposed={({ exposedVisitor, fromFlag }) => 
                         dataLayer.push({
                             'event': 'abtasty_flag',
@@ -65,6 +64,8 @@ MyApp.getInitialProps = async (AppContext) => {
     const appProps = await App.getInitialProps(AppContext)
     const flagship = Flagship.start(process.env.NEXT_PUBLIC_FS_ENV, process.env.NEXT_PUBLIC_FS_KEY, {
         fetchNow: false,
+        disableDeveloperUsageTracking: undefined,
+        logManager: undefined
     })
 
     const initialVisitorData = {
