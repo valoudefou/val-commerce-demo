@@ -8,14 +8,14 @@
     "server-json": "json-server --watch db.json"
   },
   "dependencies": {
-    "@flagship.io/js-sdk": "^4.0.4",
     "@flagship.io/react-sdk": "^4.0.1",
     "contentful": "^10.2.2",
     "googleapis": "^118.0.0",
     "jotai": "^2.10.0",
     "react-ga4": "^2.1.0",
     "swr": "^2.2.5",
-    "uuid": "^10.0.0"
+    "uuid": "^10.0.0",
+    "yarn": "^1.22.22"
   },
   "devDependencies": {
     "@tailwindcss/aspect-ratio": "^0.4.0",
