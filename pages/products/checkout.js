@@ -1,7 +1,7 @@
 import { useEffect, useState, useRef } from "react"
 import { useFsFlag, useFlagship } from "@flagship.io/react-sdk"
 import Link from "next/link"
-import { pagePath } from "/pages/_app"
+import { pagePath, userId } from "/pages/_app"
 import { useAtom } from "jotai"
 import { usePathname } from "next/navigation"
 
@@ -10,6 +10,7 @@ export default function Checkout() {
   const { updateContext } = useFlagship()
   const pathname = usePathname()
   const [path, setPath] = useAtom(pagePath)
+  const [userTest, setUserTest] = useAtom(userId)
   setPath(pathname)
   // Get flag 
   const paymentFeature1ClickVal = useFsFlag("paymentFeature1Click")
@@ -141,6 +142,12 @@ export default function Checkout() {
     }
   }
 
+  const handleApply = (e) => {
+    e.preventDefault()
+    setUserTest(e.target.previousSibling.value)
+    updateContext({['update']: userTest})
+  }
+
   useEffect(() => {
     if (document.activeElement === searchInput.current) {
       async function getData() {
@@ -256,7 +263,7 @@ export default function Checkout() {
   return (
     <>
       <form noValidate onSubmit={handleSubmit}>
-        <div onClick={()=>{updateContext({['route']: path})}} className="mx-auto max-w-2xl px-4 sm:px-6 lg:max-w-7xl lg:px-8 mb-10 py-2">
+        <div className="mx-auto max-w-2xl px-4 sm:px-6 lg:max-w-7xl lg:px-8 mb-10 py-2">
           <div className="flex justify-between">
             <div className="relative flex justify-between lg:w-auto lg:static lg:block lg:justify-start">
               <a className="text-2xl px-2 font-bold leading-relaxed inline-block py-3 whitespace-nowrap uppercase text-gray-900" href="/">
@@ -809,12 +816,14 @@ export default function Checkout() {
               </div>
               <div className="border rounded-2xl px-5 py-7 flex flex-col-reverse md:flex-row xl:flex-col-reverse xl:justify-end justify-start items-stretch h-full w-full md:space-x-6 lg:space-x-8 xl:space-x-0">
                 <div className="flex flex-col w-full space-y-6">
-                  <div className="flex border-gray-200">
-                    <input className="border border-slate-300 rounded-l-2xl w-full py-4 px-4 text-grey-darker" id="coupon" type="coupon" placeholder="Discount code"/>
-                    <button className="bg-black hover:bg-blue-dark text-white rounded-r-2xl text-sm font-medium px-7" type="submit">
-                      Apply
-                    </button>
-                  </div>
+                  <form>
+                    <div className="flex border-gray-200">
+                      <input className="border border-slate-300 rounded-l-2xl w-full py-4 px-4 text-grey-darker" id="coupon" type="coupon" placeholder="Update user ID here"/>
+                      <button onClick={handleApply} className="bg-black hover:bg-blue-dark text-white rounded-r-2xl text-sm font-medium px-7" type="submit">
+                        Apply
+                      </button>
+                    </div>
+                  </form>
                   <h3 className="text-xl dark:text-white font-semibold leading-5 text-gray-800">
                     Summary
                   </h3>

@@ -10,17 +10,21 @@ import { usePathname } from "next/navigation"
 export const AppContext = createContext()
 export const themeAtom = atom(false)
 export const pagePath = atom('')
+export const userId = atom(uuidv4())
 
 function MyApp({ Component, pageProps, initialFlagsData, initialVisitorData }) {
     const [isShown, setIsShown] = useState(false)
     const pathname = usePathname()
     const [path, setPath] = useAtom(pagePath)
+    const [userTest, setUserTest] = useAtom(userId)
+    const { updateContext } = useFlagship()
     setPath(pathname)
 
     useEffect(() => {
+        console.log('user ID is now: ' + userTest)
         localStorage.setItem('FS_VISITOR', initialVisitorData.id) // BYOID in localStorage
         document.cookie = 'FS_VISITOR=' + initialVisitorData.id // BYOID in a cookie
-    }, [])
+    }, [userTest])
 
     // Get flag 
     const flagIndustryVal = useFsFlag("flagIndustry")
@@ -64,8 +68,7 @@ MyApp.getInitialProps = async (AppContext) => {
     })
 
     const initialVisitorData = {
-        // id: '4c970578-679d-49a6-81b9-cdad6960a63b',
-        id: uuidv4(),
+        id: userId.init,
             context: {
             device: 'mobile',
             route: '',
