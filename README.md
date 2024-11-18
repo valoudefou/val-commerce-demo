@@ -8,7 +8,6 @@ Ask Customer Success or dedicated Solutions Consultant for AB Tasty UI access to
 
 Access code using command ```npm clone https://github.com/valoudefou/trial.git``` from local folder
 
-This AB Tasty demo environment provides real time technical insights around:
 - Install Technology ----> [Documentation](https://docs.developers.flagship.io/docs/react-js-installation)
 - SPA / React / Next.js compatibility ----> [Documentation](https://support.abtasty.com/hc/en-us/articles/14427828636572-How-the-AB-Tasty-tag-is-designed-to-handle-Single-Page-Apps-SPA)
 - Bring Your Own ID (BYOID) ----> [Documentation](https://support.abtasty.com/hc/en-us/articles/14503207884700-Visitor-Identity-Management)
