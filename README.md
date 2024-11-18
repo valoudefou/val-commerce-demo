@@ -4,9 +4,9 @@
 
 AB Tasty React Next.js SPA App
 
-Ask CSM for AB Tasty UI access to flags, config and data
+Ask Customer Success or dedicated Solutions Consultant for AB Tasty UI access to flags, config and data
 
-Access codebase using command ```npm clone https://github.com/valoudefou/trial.git``` from local folder
+Access code using command ```npm clone https://github.com/valoudefou/trial.git``` from local folder
 
 This AB Tasty demo environment provides real time technical insights around:
 - SPA / React / NextJS compatibility ----> [Documentation](https://support.abtasty.com/hc/en-us/articles/14427828636572-How-the-AB-Tasty-tag-is-designed-to-handle-Single-Page-Apps-SPA)
@@ -25,11 +25,11 @@ This AB Tasty demo environment provides real time technical insights around:
 
 | Flag | Details    | Key    | Type | Value    | Targeting    |
 | :---:   | :---: | :---: | :---:   | :---: | :---: |
-| Price Calculation | This is an A/B test to validate the best delivery cost for DPD and Evri, the flag is located in the checkout after the customer information.   | flagDeliveryFeeDpd, flagDeliveryFeeEvri   | NUMBER | 7.99 or ANY NUMBER   | All users   |
-| Simple Text | This is a personalisation to gain control on the text located top left corner of the web/mobile application with default value "Product".    | flagIndustry    | TEXT | Trial or ANY TEXT    | All users    |
-| Color | This is a flag to control the color of the trolley dot located top right corner that appears when an item is in the basket.    | flagBackgroundColor    | TEXT | #ff0000 or ANY COLOR    | All users    |
-| Apple Pay | This is a flag to A/B test the Apple Pay payment method that located on the Product Page, Sliding Cart, Mini Cart and Checkout.   | paymentFeature1Click   | BOLEAN | TRUE or FALSE   | All users   |
-| Sliding Cart | This is a release to validate the impact of a Sliding Cart vs Mini Cart, the feature is located clicking the trolley on the top right corner of the web/mobile appliation.    | flagCartFeature    | TEXT | MiniCart, SlidingCart    | All users    |
+| Price Calculation | This is an A/B test to validate the best delivery cost for DPD and Evri, the flag is located in the checkout after the customer information.   | flagDeliveryFeeDpd, flagDeliveryFeeEvri   | NUMBER | 7.99 or ANY NUMBER   | All users or ANY   |
+| Simple Text | This is a personalisation to gain control on the text located top left corner of the web/mobile application with default value "Product".    | flagIndustry    | TEXT | Trial or ANY TEXT    | All users or ANY    |
+| Color | This is a flag to control the color of the trolley dot located top right corner that appears when an item is in the basket.    | flagBackgroundColor    | TEXT | #ff0000 or ANY COLOR    | All users or ANY    |
+| Apple Pay | This is a flag to A/B test the Apple Pay payment method that located on the Product Page, Sliding Cart, Mini Cart and Checkout.   | paymentFeature1Click   | BOLEAN | TRUE or FALSE   | All users or ANY   |
+| Sliding Cart | This is a release to validate the impact of a Sliding Cart vs Mini Cart, the feature is located clicking the trolley on the top right corner of the web/mobile appliation.    | flagCartFeature    | TEXT | MiniCart, SlidingCart    | All users or ANY   |
 
 ## Built With
 
