@@ -23,7 +23,7 @@ Access code using command ```npm clone https://github.com/valoudefou/trial.git``
 
 ## Features
 
-| Flag | Details    | Key    | Type | Value    | Targeting    |
+| Flag | Details    | Key    | Type | Value    | User Context    |
 | :---:   | :---: | :---: | :---:   | :---: | :---: |
 | Price Calculation | This is an A/B test to validate the best delivery cost for DPD and Evri, the flag is located in the checkout after the customer information.   | flagDeliveryFeeDpd, flagDeliveryFeeEvri   | NUMBER | 7.99 or ANY NUMBER   | All users or ANY   |
 | Simple Text | This is a personalisation to gain control on the text located top left corner of the web/mobile application with default value "Product".    | flagIndustry    | TEXT | Trial or ANY TEXT    | All users or ANY    |
