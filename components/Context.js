@@ -10,7 +10,7 @@ export default function Context() {
 
     return (
         <>
-        <div className="border flex flex-col border-gray-200 my-10 mx-10 py-7 px-9 fixed bottom-0 z-10 sm:w-2/3 md:w-2/3 lg:w-2/4 xl:w-2/6 w-auto bg-white rounded-3xl shadow-xl">
+        <div className="border flex flex-col border-gray-200 my-10 mx-10 py-7 px-9 fixed bottom-0 right-0 z-10 sm:w-2/3 md:w-2/3 lg:w-2/4 xl:w-2/6 w-auto bg-white rounded-3xl shadow-xl">
             <h3 className="flex flex-col text-md dark:text-white font-semibold leading-5 text-gray-800 px-2 mb-4">
                 AB Tasty user context to activate flag
             </h3>
