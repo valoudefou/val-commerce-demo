@@ -24,7 +24,6 @@ Access code using command ```npm clone https://github.com/valoudefou/trial.git``
 ## Targeting
 
 ![Alt Text](https://assets-manager.abtasty.com/1ceff369b6cd9aceaa9ee318e6498167/screenshot-2024-11-18-at-202739.png)
-![Alt Text](https://assets-manager.abtasty.com/1ceff369b6cd9aceaa9ee318e6498167/screenshot-2024-11-18-at-204213.png)
 
 ## Features
 
