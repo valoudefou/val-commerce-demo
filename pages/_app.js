@@ -6,6 +6,7 @@ import { v4 as uuidv4 } from 'uuid'
 import { createContext, useState, useEffect } from 'react'
 import { atom, useAtom } from 'jotai'
 import { usePathname } from "next/navigation"
+import Context from '../components/Context'
 
 export const AppContext = createContext()
 export const themeAtom = atom(false)
@@ -52,7 +53,8 @@ function MyApp({ Component, pageProps, initialFlagsData, initialVisitorData }) {
                         })
                     }
                 >
-                    <Head/>
+                    <Head />
+                    <Context />
                     <title>{'The ' + flagIndustry + ' House'}</title>
                     <Component {...pageProps} />
                 </FlagshipProvider>
