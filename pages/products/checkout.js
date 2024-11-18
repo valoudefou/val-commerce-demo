@@ -816,14 +816,12 @@ export default function Checkout() {
               </div>
               <div className="border rounded-2xl px-5 py-7 flex flex-col-reverse md:flex-row xl:flex-col-reverse xl:justify-end justify-start items-stretch h-full w-full md:space-x-6 lg:space-x-8 xl:space-x-0">
                 <div className="flex flex-col w-full space-y-6">
-                  <form>
-                    <div className="flex border-gray-200">
-                      <input className="border border-slate-300 rounded-l-2xl w-full py-4 px-4 text-grey-darker" id="coupon" type="coupon" placeholder="Coupon code"/>
-                      <button onClick={handleApply} className="bg-black hover:bg-blue-dark text-white rounded-r-2xl text-sm font-medium px-7" type="submit">
-                        Apply
-                      </button>
-                    </div>
-                  </form>
+                  <div className="flex border-gray-200">
+                    <input className="border border-slate-300 rounded-l-2xl w-full py-4 px-4 text-grey-darker" id="coupon" type="coupon" placeholder="Coupon code"/>
+                    <button onClick={handleApply} className="bg-black hover:bg-blue-dark text-white rounded-r-2xl text-sm font-medium px-7" type="submit">
+                      Apply
+                    </button>
+                  </div>
                   <h3 className="text-xl dark:text-white font-semibold leading-5 text-gray-800">
                     Summary
                   </h3>
