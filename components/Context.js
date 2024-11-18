@@ -5,7 +5,7 @@ export default function Context() {
     const handleApply = (e) => {
         e.preventDefault()
         updateContext({[e.target.previousSibling.previousSibling.value]: e.target.previousSibling.value})
-        alert('key: ' + e.target.previousSibling.previousSibling.value + ' and ' + 'value: ' + e.target.previousSibling.value + ' added!')
+        alert('key: ' + e.target.previousSibling.previousSibling.value + ' and ' + 'value: ' + e.target.previousSibling.value + ' added to the user!')
     }
 
     return (
