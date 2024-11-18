@@ -21,6 +21,10 @@ Access code using command ```npm clone https://github.com/valoudefou/trial.git``
 - State Management ----> [Documentation](https://jotai.org/docs/introduction)
 - Update Context Method ----> [Documentation](https://jotai.org/docs/introduction)
 
+## Targeting
+
+![Alt Text](https://assets-manager.abtasty.com/1ceff369b6cd9aceaa9ee318e6498167/screen-recording-2024-11-18-at-1952.gif)
+
 ## Features
 
 | Flag | Details    | Key    | Type | Value    | User Context    |
