@@ -10,7 +10,7 @@ import { usePathname } from "next/navigation"
 export const AppContext = createContext()
 export const themeAtom = atom(false)
 export const pagePath = atom('')
-export const userId = atom(uuidv4())
+export const userId = atom('test')
 
 function MyApp({ Component, pageProps, initialFlagsData, initialVisitorData }) {
     const [isShown, setIsShown] = useState(false)
@@ -22,8 +22,6 @@ function MyApp({ Component, pageProps, initialFlagsData, initialVisitorData }) {
 
     useEffect(() => {
         console.log('user ID is now: ' + userTest)
-        localStorage.setItem('FS_VISITOR', initialVisitorData.id) // BYOID in localStorage
-        document.cookie = 'FS_VISITOR=' + initialVisitorData.id // BYOID in a cookie
     }, [userTest])
 
     // Get flag 
@@ -37,6 +35,7 @@ function MyApp({ Component, pageProps, initialFlagsData, initialVisitorData }) {
                     envId={process.env.NEXT_PUBLIC_FS_ENV}
                     apiKey={process.env.NEXT_PUBLIC_FS_KEY}
                     visitorData={initialVisitorData}
+                    initialFlagsData={initialFlagsData || {}}
                     onVisitorExposed={({ exposedVisitor, fromFlag }) => 
                         dataLayer.push({
                             'event': 'abtasty_flag',
@@ -64,8 +63,6 @@ MyApp.getInitialProps = async (AppContext) => {
     const appProps = await App.getInitialProps(AppContext)
     const flagship = Flagship.start(process.env.NEXT_PUBLIC_FS_ENV, process.env.NEXT_PUBLIC_FS_KEY, {
         fetchNow: false,
-        disableDeveloperUsageTracking: undefined,
-        logManager: undefined
     })
 
     const initialVisitorData = {
@@ -76,7 +73,7 @@ MyApp.getInitialProps = async (AppContext) => {
             segment: 'cosmetic',
             login: true,
             region: 3
-        },
+        }
     }
 
     const visitor = flagship?.newVisitor({
