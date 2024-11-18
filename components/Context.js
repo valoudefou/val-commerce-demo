@@ -14,13 +14,15 @@ export default function Context() {
             <h3 className="flex flex-col text-md dark:text-white font-semibold leading-5 text-gray-800 px-2 mb-4">
                 AB Tasty user context to activate flag
             </h3>
-            <div className="flex">
-                <input className="focus:outline-none border border-slate-300 text-sm text-gray-800 rounded-l-2xl w-full py-4 px-4 text-grey-darker" id="coupon" type="coupon" placeholder="key (eg. geolocation)"/>
-                <input className="focus:outline-none border border-slate-300 text-sm text-gray-800 border-l-0 w-full py-4 px-4 text-grey-darker" id="coupon" type="coupon" placeholder="value (eg. uk)"/>
-                <button onClick={handleApply} className="bg-black hover:bg-blue-dark text-white rounded-r-2xl text-sm font-medium px-7" type="submit">
-                    Apply
-                </button>
-            </div>
+            <form>
+                <div className="flex">
+                    <input className="focus:outline-none border border-slate-300 text-sm text-gray-800 rounded-l-2xl w-full py-4 px-4 text-grey-darker" id="coupon" type="coupon" placeholder="key (eg. geolocation)"/>
+                    <input className="focus:outline-none border border-slate-300 text-sm text-gray-800 border-l-0 w-full py-4 px-4 text-grey-darker" id="coupon" type="coupon" placeholder="value (eg. uk)"/>
+                    <button onClick={handleApply} className="bg-black hover:bg-blue-dark text-white rounded-r-2xl text-sm font-medium px-7" type="submit">
+                        Apply
+                    </button>
+                </div>
+            </form>
         </div>        
         </>
     )
