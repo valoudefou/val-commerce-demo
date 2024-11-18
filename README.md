@@ -2,6 +2,10 @@
 
 AB Tasty React Next.js SPA App
 
+Ask CSM for AB Tasty UI access to flags, config and data.
+
+Access the codebase locally ```npm clone https://github.com/valoudefou/trial.git'```
+
 This AB Tasty demo environment provides real time technical insights around:
 - SPA / React / NextJS compatibility ----> [Documentation](https://support.abtasty.com/hc/en-us/articles/14427828636572-How-the-AB-Tasty-tag-is-designed-to-handle-Single-Page-Apps-SPA)
 - Bring Your Own ID (BYOID) ----> [Documentation](https://support.abtasty.com/hc/en-us/articles/14503207884700-Visitor-Identity-Management)
