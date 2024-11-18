@@ -10,19 +10,21 @@ import { usePathname } from "next/navigation"
 export const AppContext = createContext()
 export const themeAtom = atom(false)
 export const pagePath = atom('')
-export const userId = atom('test')
+export const userId = atom('')
 
 function MyApp({ Component, pageProps, initialFlagsData, initialVisitorData }) {
     const [isShown, setIsShown] = useState(false)
     const pathname = usePathname()
     const [path, setPath] = useAtom(pagePath)
     const [userTest, setUserTest] = useAtom(userId)
-    const { updateContext } = useFlagship()
     setPath(pathname)
 
     useEffect(() => {
-        console.log('user ID is now: ' + userTest)
+        if (userTest !== '') {
+            alert('Coupon ' + userTest + ' does not exist')
+        }
     }, [userTest])
+
 
     // Get flag 
     const flagIndustryVal = useFsFlag("flagIndustry")
@@ -66,7 +68,7 @@ MyApp.getInitialProps = async (AppContext) => {
     })
 
     const initialVisitorData = {
-        id: userId.init,
+        id: '',
             context: {
             device: 'mobile',
             route: '',

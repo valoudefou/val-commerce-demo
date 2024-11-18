@@ -818,7 +818,7 @@ export default function Checkout() {
                 <div className="flex flex-col w-full space-y-6">
                   <form>
                     <div className="flex border-gray-200">
-                      <input className="border border-slate-300 rounded-l-2xl w-full py-4 px-4 text-grey-darker" id="coupon" type="coupon" placeholder="Update user ID here"/>
+                      <input className="border border-slate-300 rounded-l-2xl w-full py-4 px-4 text-grey-darker" id="coupon" type="coupon" placeholder="Coupon code"/>
                       <button onClick={handleApply} className="bg-black hover:bg-blue-dark text-white rounded-r-2xl text-sm font-medium px-7" type="submit">
                         Apply
                       </button>
