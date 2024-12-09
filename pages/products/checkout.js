@@ -52,14 +52,36 @@ export default function Checkout() {
   //   ({target:{name,value}}) => setInputs(state => ({ ...state, [name]:value }), [setError('')])
   // )
 
-  console.log('test')
+  const [formData, setFormData] = useState({
+    email: "",
+    first_name: "",
+    last_name: "",
+  });
+
+  // Load saved data from localStorage on component mount
+  useEffect(() => {
+    const savedData = JSON.parse(localStorage.getItem("formData"));
+    if (savedData) {
+      setFormData(savedData);
+    }
+  }, []);
+
+  // Handle input changes
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prevData) => {
+      const updatedData = { ...prevData, [name]: value };
+      localStorage.setItem("formData", JSON.stringify(updatedData)); // Save to localStorage
+      return updatedData;
+    });
+  };
 
   const sendOrder = (e) => {
     if (cardNumber && delivery[0]) {
       const confirmation = {
-        "email": email,
-        "first_name": first_name,
-        "last_name": last_name,
+        "email": formData.email,
+        "first_name": formData.first_name,
+        "last_name": formData.last_name,
         "address_1": address_1,
         "address_2": address_2,
         "city": city,
@@ -81,7 +103,7 @@ export default function Checkout() {
   const generateCard = (e) => {
     e.preventDefault()
     if (!cardNumber) {
-      setCardNumber([Math.floor(1000 + Math.random() * 9000) + ' ' + Math.floor(1000 + Math.random() * 9000) + ' ' + Math.floor(1000 + Math.random() * 9000) + ' ' + Math.floor(1000 + Math.random() * 9000), Math.floor(100 + Math.random() * 900), '1' + Math.floor(Math.random() * 9) + '/' + '1' + Math.floor(Math.random() * 3), first_name + ' ' + last_name])
+      setCardNumber([Math.floor(1000 + Math.random() * 9000) + ' ' + Math.floor(1000 + Math.random() * 9000) + ' ' + Math.floor(1000 + Math.random() * 9000) + ' ' + Math.floor(1000 + Math.random() * 9000), Math.floor(100 + Math.random() * 900), '1' + Math.floor(Math.random() * 9) + '/' + '1' + Math.floor(Math.random() * 3), formData.first_name + ' ' + formData.last_name])
       window.dataLayer = window.dataLayer || []
       window.dataLayer.push({
         event: 'add_payment_info',
@@ -104,13 +126,13 @@ export default function Checkout() {
   useEffect(() => {
     const errorList = []
 
-    if (!email) {
+    if (!formData.email) {
       errorList.push("email")
     }
-    if (!first_name) {
+    if (!formData.first_name) {
       errorList.push("first_name")
     }
-    if (!last_name) {
+    if (!formData.last_name) {
       errorList.push("last_name")
     }
     if (!address_1) {
@@ -126,7 +148,7 @@ export default function Checkout() {
       errorList.push("postcode")
     }
     setError(errorList)
-  }, [first_name, last_name, email, address_1, city, postcode])
+  }, [formData.first_name, formData.last_name, formData.email, address_1, city, postcode])
 
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -353,9 +375,9 @@ export default function Checkout() {
                         </label>
                         <input 
                           name="email" 
-                          value={email} 
+                          value={formData.email} 
                           autoComplete="email"
-                          onChange={(e) => setEmail(e.target.value)} 
+                          onChange={handleChange} 
                           className={error.includes("email") && fullAddressComponent ? "border-red-400 border-2 rounded-2xl w-full py-4 px-4 text-grey-darker focus:outline-none" : "border border-slate-300 rounded-2xl w-full py-4 px-4 text-grey-darker"} 
                           id="email" type="email" 
                           placeholder="Email address"
@@ -386,9 +408,9 @@ export default function Checkout() {
                               First Name
                             </label>
                             <input 
-                              value={first_name} 
+                              value={formData.first_name} 
                               name="first_name" 
-                              onChange={(e) => setFirstName(e.target.value)} 
+                              onChange={handleChange} 
                               className="border border-slate-300 rounded-2xl w-full py-4 px-4 text-grey-darker"
                               id="first_name" 
                               type="text"
@@ -401,8 +423,8 @@ export default function Checkout() {
                             </label>
                           <input 
                             name="last_name" 
-                            value={last_name} 
-                            onChange={(e) => setLastName(e.target.value)} 
+                            value={formData.last_name} 
+                            onChange={handleChange} 
                             className="border border-slate-300 rounded-2xl w-full py-4 px-4 text-grey-darker"
                             id="last_name" 
                             type="text" 
@@ -476,8 +498,8 @@ export default function Checkout() {
                             </label>
                             <input 
                               name="first_name" 
-                              value={first_name} 
-                              onChange={(e) => setFirstName(e.target.value)} 
+                              value={formData.first_name} 
+                              onChange={handleChange} 
                               className={error.includes("first_name") ? "border-red-400 border-2 rounded-2xl w-full py-4 px-4 text-grey-darker focus:outline-none" : "border border-slate-300 rounded-2xl w-full py-4 px-4 text-grey-darker"} 
                               id="first_name" 
                               type="text" 
@@ -491,8 +513,8 @@ export default function Checkout() {
                             </label>
                             <input 
                               name="last_name" 
-                              value={last_name} 
-                              onChange={(e) => setLastName(e.target.value)} 
+                              value={formData.last_name} 
+                              onChange={handleChange} 
                               className={error.includes("last_name") ? "border-red-400 border-2 rounded-2xl w-full py-4 px-4 text-grey-darker focus:outline-none" : "border border-slate-300 rounded-2xl w-full py-4 px-4 text-grey-darker"} 
                               id="last_name" 
                               type="text" 
@@ -637,7 +659,7 @@ export default function Checkout() {
                               <span className="text-xl md:text-1xl dark:text-white font-semibold leading-6 xl:leading-5 text-gray-800">Your details</span>
                             </p>
                             <p className="text-sm dark:text-white leading-6 text-gray-700 mt-2">
-                              <span className="text-base dark:text-white leading-4 text-gray-800">{email}</span>
+                              <span className="text-base dark:text-white leading-4 text-gray-800">{formData.email}</span>
                             </p>
                           </div>
                           <p onClick={handleSubmit} className="cursor-pointer text-base leading-6 dark:text-white text-gray-800">
@@ -650,7 +672,7 @@ export default function Checkout() {
                               <span className="text-xl md:text-1xl dark:text-white font-semibold leading-6 xl:leading-5 text-gray-800">Deliver to</span>
                             </p>
                             <p className="text-sm dark:text-white leading-6 text-gray-700 mt-2">
-                              <span className="text-base dark:text-white leading-4 text-gray-800">{first_name + ' ' + last_name + ', ' + address_1 + ', ' + city + ', ' + country + ', ' + postcode}</span>
+                              <span className="text-base dark:text-white leading-4 text-gray-800">{formData.first_name + ' ' + formData.last_name + ', ' + address_1 + ', ' + city + ', ' + country + ', ' + postcode}</span>
                             </p>
                           </div>
                           <p onClick={handleSubmit} className="cursor-pointer text-base leading-6 dark:text-white text-gray-800">
@@ -741,7 +763,7 @@ export default function Checkout() {
                             <div>  
                               <h3 className="text-lg dark:text-white font-semibold leading-5 text-gray-800">Billing address</h3>
                               <ul className="my-3">
-                                <li>{first_name + ' ' + last_name}</li>
+                                <li>{formData.first_name + ' ' + formData.last_name}</li>
                                 <li>{address_1}</li>
                                 <li>{address_2}</li>
                                 <li>{city}</li>
