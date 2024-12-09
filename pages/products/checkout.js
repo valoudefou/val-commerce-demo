@@ -52,6 +52,8 @@ export default function Checkout() {
   //   ({target:{name,value}}) => setInputs(state => ({ ...state, [name]:value }), [setError('')])
   // )
 
+  console.log('test')
+
   const sendOrder = (e) => {
     if (cardNumber && delivery[0]) {
       const confirmation = {
