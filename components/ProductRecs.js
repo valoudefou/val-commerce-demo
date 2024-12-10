@@ -110,7 +110,7 @@ export default function ProductRecs() {
     };
 
     return (
-        <div className="flex-col mt-10 mb-60 relative">
+        <div className="flex-col pt-10 pb-60 relative px-4 sm:px-6 lg:px-8">
             <h2 className="mt-1 flex justify-center text-3xl font-bold uppercase text-gray-900 sm:text-3xl sm:tracking-tight lg:text-3xl">
                 {rec.name}
             </h2>
