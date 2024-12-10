@@ -6,6 +6,54 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
+function NextArrow({ onClick }) {
+    return (
+        <div
+            className="absolute top-1/3 right-0 transform -translate-y-1/2 bg-gray-200 p-2 rounded-full shadow-md cursor-pointer z-10"
+            onClick={onClick}
+        >
+            <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth="1.5"
+                stroke="currentColor"
+                className="w-6 h-6 text-gray-700"
+            >
+                <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M8.25 4.5l7.5 7.5-7.5 7.5"
+                />
+            </svg>
+        </div>
+    );
+}
+
+function PrevArrow({ onClick }) {
+    return (
+        <div
+            className="absolute top-1/3 left-0 transform -translate-y-1/2 bg-gray-200 p-2 rounded-full shadow-md cursor-pointer z-10"
+            onClick={onClick}
+        >
+            <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth="1.5"
+                stroke="currentColor"
+                className="w-6 h-6 text-gray-700"
+            >
+                <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M15.75 19.5l-7.5-7.5 7.5-7.5"
+                />
+            </svg>
+        </div>
+    );
+}
+
 export default function ProductRecs() {
     const [rec, setRec] = useState("");
     const [isLoading, setLoading] = useState(true);
@@ -33,12 +81,21 @@ export default function ProductRecs() {
     const settings = {
         dots: true,
         infinite: true,
-        speed: 500,
-        slidesToShow: 4,
+        autoplay: false,
+        speed: 400,
+        slidesToShow: 5,
         slidesToScroll: 1,
+        nextArrow: <NextArrow />,
+        prevArrow: <PrevArrow />,
         responsive: [
             {
                 breakpoint: 1024,
+                settings: {
+                    slidesToShow: 3,
+                },
+            },
+            {
+                breakpoint: 768,
                 settings: {
                     slidesToShow: 2,
                 },
@@ -53,15 +110,15 @@ export default function ProductRecs() {
     };
 
     return (
-        <div className="flex-col m-10">
+        <div className="flex-col mt-10 mb-60 relative">
             <h2 className="mt-1 flex justify-center text-3xl font-bold uppercase text-gray-900 sm:text-3xl sm:tracking-tight lg:text-3xl">
                 {rec.name}
             </h2>
             <Slider {...settings} className="mt-6">
                 {rec.products?.map((item) => (
-                    <div key={item.id} className="px-4">
+                    <div key={item.id} className="px-4 h-full mb-6">
                         <Link href={item.link}>
-                            <div className="rounded-xl bg-gray-200 justify-center flex">
+                            <div className="flex rounded-xl bg-gray-200 justify-center">
                                 <Image
                                     alt={item.title}
                                     src={item.img_link}
@@ -69,7 +126,7 @@ export default function ProductRecs() {
                                     height={400}
                                     style={{ height: "inherit" }}
                                     className={cn(
-                                        "duration-700 ease-in-out group-hover:opacity-75",
+                                        "contain-strict duration-700 ease-in-out group-hover:opacity-75",
                                         isLoading
                                             ? "scale-110 blur-2xl grayscale"
                                             : "scale-100 blur-0 grayscale-0"
@@ -78,31 +135,33 @@ export default function ProductRecs() {
                                 />
                             </div>
                         </Link>
-                        <div className="flex items-start justify-between text-base font-normal text-gray-900 mt-4">
-                            <h3>{item.title}</h3>
-                            <p className="font-base font-bold text-slate-600 tracking-wide">
-                                {item.price}€
-                            </p>
+                        <div className="flex flex-col justify-between h-32 mt-4">
+                            <div className="flex justify-between text-base font-normal text-gray-900">
+                                <h3>{item.title}</h3>
+                                <p className="font-base font-bold text-slate-600 tracking-wide">
+                                    {item.price}€
+                                </p>
+                            </div>
+                            <Link href={item.link}>
+                                <button className="w-full flex items-center justify-center py-4 px-8 mt-4 bg-slate-950 border border-slate-600 text-white text-bold text-sm rounded-full font-medium">
+                                    <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        fill="none"
+                                        viewBox="0 0 24 24"
+                                        strokeWidth="1"
+                                        stroke="currentColor"
+                                        className="w-6 h-6 py-1"
+                                    >
+                                        <path
+                                            strokeLinecap="round"
+                                            strokeLinejoin="round"
+                                            d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3"
+                                        />
+                                    </svg>
+                                    Discover
+                                </button>
+                            </Link>
                         </div>
-                        <Link href={item.link}>
-                            <button className="my-4 w-full flex items-center justify-center py-4 px-8 bg-slate-950 border border-slate-600 text-white text-bold text-sm rounded-full font-medium">
-                                <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    fill="none"
-                                    viewBox="0 0 24 24"
-                                    strokeWidth="1"
-                                    stroke="currentColor"
-                                    className="w-6 h-6 py-1"
-                                >
-                                    <path
-                                        strokeLinecap="round"
-                                        strokeLinejoin="round"
-                                        d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3"
-                                    />
-                                </svg>
-                                Discover
-                            </button>
-                        </Link>
                     </div>
                 ))}
             </Slider>
