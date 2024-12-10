@@ -146,6 +146,26 @@ export default function Product(props) {
                         <h1 className="mt-3 text-2xl font-semibold text-slate-500">
                             {props.product.price}€
                         </h1>
+
+                        {/* Reviews Section */}
+                        <div className="mt-6">
+                            {props.product.reviews && props.product.reviews.length > 0 ? (
+                                props.product.reviews.map((review, index) => (
+                                    <div key={index} className="mb-4">
+                                        <div className="flex items-center">
+                                            <span className="text-yellow-500">
+                                                {'★'.repeat(review.rating)}{'☆'.repeat(5 - review.rating)}
+                                            </span>
+                                            <span className="ml-2 text-sm text-gray-500">{review.author}</span>
+                                        </div>
+                                        <p className="mt-1 text-sm text-gray-600">{review.comment}</p>
+                                    </div>
+                                ))
+                            ) : (
+                                <p className="text-sm text-gray-500">No reviews yet.</p>
+                            )}
+                        </div>
+
                         <button onClick={() => [pushCart()]} className="mt-5 bg-white border-2 hover:bg-gray-50 border-gray-300 text-slate-600 text-semibold text-sm rounded-full font-medium w-full">
                             <Emotion />
                         </button>
