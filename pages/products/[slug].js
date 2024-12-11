@@ -147,23 +147,51 @@ export default function Product(props) {
                             {props.product.price}€
                         </h1>
 
-                        {/* Reviews Section */}
-                        <div className="mt-6">
-                            {props.product.reviews && props.product.reviews.length > 0 ? (
-                                props.product.reviews.map((review, index) => (
-                                    <div key={index} className="mb-4">
-                                        <div className="flex items-center">
-                                            <span className="text-yellow-500">
-                                                {'★'.repeat(review.rating)}{'☆'.repeat(5 - review.rating)}
-                                            </span>
-                                            <span className="ml-2 text-sm text-gray-500">{review.author}</span>
-                                        </div>
-                                        <p className="mt-1 text-sm text-gray-600">{review.comment}</p>
-                                    </div>
-                                ))
-                            ) : (
-                                <p className="text-sm text-gray-500">No reviews yet.</p>
-                            )}
+                        <div className="flex items-center pt-3">
+                            {Array.from({ length: 5 }).map((_, index) => {
+                                const rating = props.product.reviews[0].rating;
+                                const isFullStar = index + 1 <= Math.floor(rating);
+                                const isHalfStar = index + 1 === Math.ceil(rating) && !Number.isInteger(rating);
+
+                                return isFullStar ? (
+                                // Full Star
+                                <svg
+                                    key={index}
+                                    className="w-6 h-6 text-yellow-400"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    viewBox="0 0 24 24"
+                                    fill="currentColor"
+                                >
+                                    <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
+                                </svg>
+                                ) : isHalfStar ? (
+                                // Half Star
+                                <svg
+                                    key={index}
+                                    className="w-6 h-6 text-yellow-400"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    viewBox="0 0 24 24"
+                                    fill="currentColor"
+                                >
+                                    <path d="M12 15.4l-3.76 2.27 1-4.28L5.47 10l4.38-.37L12 6l1.65 3.63 4.38.37-3.24 2.79 1 4.28z" />
+                                    <path
+                                    d="M22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21 12 17.27 18.18 21l-1.64-7.03L22 9.24z"
+                                    opacity=".3"
+                                    />
+                                </svg>
+                                ) : (
+                                // Empty Star
+                                <svg
+                                    key={index}
+                                    className="w-6 h-6 text-gray-300"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    viewBox="0 0 24 24"
+                                    fill="currentColor"
+                                >
+                                    <path d="M22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21 12 17.27 18.18 21l-1.64-7.03L22 9.24z" />
+                                </svg>
+                                );
+                            })}
                         </div>
 
                         <button onClick={() => [pushCart()]} className="mt-5 bg-white border-2 hover:bg-gray-50 border-gray-300 text-slate-600 text-semibold text-sm rounded-full font-medium w-full">

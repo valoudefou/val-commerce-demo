@@ -79,7 +79,7 @@ export default function ProductRecs() {
     }, []);
 
     const settings = {
-        dots: true,
+        dots: false,
         infinite: true,
         autoplay: false,
         speed: 400,
