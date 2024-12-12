@@ -104,13 +104,19 @@ const Navbar = () => {
                                 <div>
                                     <ul>
                                         <li className="mb-1">
-                                            <div className="block p-3 text-sm font-mormal text-gray-900 rounded">Documentation</div>
+                                            <div className="block p-3 text-sm font-mormal text-gray-900 rounded">Cosmetic</div>
                                         </li>
                                         <li className="mb-1">
-                                            <div className="block p-3 text-sm font-mormal text-gray-900 rounded">Contact</div>
+                                            <div className="block p-3 text-sm font-mormal text-gray-900 rounded">Food</div>
                                         </li>
                                         <li className="mb-1">
-                                            <div className="block p-3 text-sm font-mormal text-gray-900 rounded">About</div>
+                                            <div className="block p-3 text-sm font-mormal text-gray-900 rounded">Fashion</div>
+                                        </li>
+                                        <li className="mb-1">
+                                            <div className="block p-3 text-sm font-mormal text-gray-900 rounded">Tech</div>
+                                        </li>
+                                        <li className="mb-1">
+                                            <div className="block p-3 text-sm font-mormal text-gray-900 rounded">Motor</div>
                                         </li>
                                     </ul>
                                 </div>
@@ -143,23 +149,71 @@ const Navbar = () => {
                         </form>
                     </div>
                         <div className="md:px-5 md:py-0 xl:py-0 px-3 lg:py-0 py-3 lg:flex items-center">
-                            <ul className="hidden flex-col lg:flex lg:flex-row list-none">
-                                <li className="nav-item">
-                                    <p className="my-1 text-sm text-gray-900 hover:text-gray-700 font-mormal md:mx-4 md:my-0">
-                                        <Link href='/blog/content-1'><span className="ml-2">Documentation</span></Link>
+                            <ul className="hidden flex-col lg:flex lg:flex-row list-none relative">
+                                <li className="nav-item group relative">
+                                    <p className="my-1 text-sm text-gray-900 hover:text-gray-700 font-normal md:mx-3 md:my-0">
+                                    <Link href="/blog/content-1">
+                                        <span>Cosmetic</span>
+                                    </Link>
                                     </p>
+                                    <div className="mega-menu absolute -left-[20px] top-full hidden w-96 bg-white shadow-lg group-hover:block rounded-3xl">
+                                    <ul className="p-4">
+                                        <li className="py-2 text-sm text-gray-700"><Link href="/blog/cosmetic-1">Cosmetic Item 1</Link></li>
+                                        <li className="py-2 text-sm text-gray-700"><Link href="/blog/cosmetic-2">Cosmetic Item 2</Link></li>
+                                        <li className="py-2 text-sm text-gray-700"><Link href="/blog/cosmetic-3">Cosmetic Item 3</Link></li>
+                                    </ul>
+                                    </div>
                                 </li>
-                                <li className="nav-item">
-                                    <p className="my-1 text-sm text-gray-900 hover:text-gray-700 font-mormal md:mx-4 md:my-0">
-                                        <span className="ml-2">Contact</span>
+                                <li className="nav-item group relative">
+                                    <p className="my-1 text-sm text-gray-900 hover:text-gray-700 font-normal md:mx-3 md:my-0">
+                                    <span>Food</span>
                                     </p>
+                                    <div className="mega-menu absolute -left-[110px] top-full hidden w-96 bg-white shadow-lg group-hover:block rounded-3xl">
+                                    <ul className="p-4">
+                                        <li className="py-2 text-sm text-gray-700"><Link href="/blog/food-1">Food Item 1</Link></li>
+                                        <li className="py-2 text-sm text-gray-700"><Link href="/blog/food-2">Food Item 2</Link></li>
+                                        <li className="py-2 text-sm text-gray-700"><Link href="/blog/food-3">Food Item 3</Link></li>
+                                    </ul>
+                                    </div>
                                 </li>
-                                <li className="nav-item">
-                                    <p className="my-1 text-sm text-gray-900 hover:text-gray-700 font-mormal md:mx-4 md:my-0">
-                                        <span className="ml-2">About</span>
+                                <li className="nav-item group relative">
+                                    <p className="my-1 text-sm text-gray-900 hover:text-gray-700 font-normal md:mx-3 md:my-0">
+                                    <span>Fashion</span>
                                     </p>
+                                    <div className="mega-menu absolute -left-[170px] top-full hidden w-96 bg-white shadow-lg group-hover:block rounded-3xl">
+                                    <ul className="p-4">
+                                        <li className="py-2 text-sm text-gray-700"><Link href="/blog/fashion-1">Fashion Item 1</Link></li>
+                                        <li className="py-2 text-sm text-gray-700"><Link href="/blog/fashion-2">Fashion Item 2</Link></li>
+                                        <li className="py-2 text-sm text-gray-700"><Link href="/blog/fashion-3">Fashion Item 3</Link></li>
+                                    </ul>
+                                    </div>
+                                </li>
+                                <li className="nav-item group relative">
+                                    <p className="my-1 text-sm text-gray-900 hover:text-gray-700 font-normal md:mx-3 md:my-0">
+                                    <span>Tech</span>
+                                    </p>
+                                    <div className="mega-menu absolute -left-[249px] top-full hidden w-96 bg-white shadow-lg group-hover:block rounded-3xl">
+                                    <ul className="p-4">
+                                        <li className="py-2 text-sm text-gray-700"><Link href="/blog/tech-1">Tech Item 1</Link></li>
+                                        <li className="py-2 text-sm text-gray-700"><Link href="/blog/tech-2">Tech Item 2</Link></li>
+                                        <li className="py-2 text-sm text-gray-700"><Link href="/blog/tech-3">Tech Item 3</Link></li>
+                                    </ul>
+                                    </div>
+                                </li>
+                                <li className="nav-item group relative">
+                                    <p className="my-1 text-sm text-gray-900 hover:text-gray-700 font-normal md:mx-3 md:my-0">
+                                    <span>Motor</span>
+                                    </p>
+                                    <div className="mega-menu absolute -left-[306px] top-full hidden w-96 bg-white shadow-lg group-hover:block rounded-3xl">
+                                    <ul className="p-4">
+                                        <li className="py-2 text-sm text-gray-700"><Link href="/blog/motor-1">Motor Item 1</Link></li>
+                                        <li className="py-2 text-sm text-gray-700"><Link href="/blog/motor-2">Motor Item 2</Link></li>
+                                        <li className="py-2 text-sm text-gray-700"><Link href="/blog/motor-3">Motor Item 3</Link></li>
+                                    </ul>
+                                    </div>
                                 </li>
                             </ul>
+
                             <div className="flex">
                             <div onClick={() => setSearchOpen(!searchOpen)} className="pr-2 flex justify-center cursor-pointer">
                                 <p className="sm:hidden relative text-gray-900 hover:text-gray-700" target="_blank">
