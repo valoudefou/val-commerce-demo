@@ -16,7 +16,6 @@ export default function Context() {
 
     useEffect(() => {
         setContext({['geolocation']: 'uk'})
-        console.log(context)
         updateContext({['geolocation']: 'uk'})
     }, [])
 

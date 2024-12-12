@@ -61,6 +61,35 @@ export default function ProductRecs() {
     const flagProductRecs = flagProductRecsVal.getValue(
         "2dd95ccd-103c-4633-bca6-0c25a272096d"
     );
+    const flagConfigCarouselVal = useFsFlag("flagConfigCarousel");
+    const flagConfigCarousel = flagConfigCarouselVal.getValue({
+        dots: true,
+        infinite: true,
+        autoplay: false,
+        speed: 400,
+        slidesToShow: 5,
+        slidesToScroll: 1,
+        responsive: [
+            {
+                breakpoint: 1024,
+                settings: {
+                    slidesToShow: 3
+                }
+            },
+            {
+                breakpoint: 768,
+                settings: {
+                    slidesToShow: 2
+                }
+            },
+            {
+                breakpoint: 600,
+                settings: {
+                    slidesToShow: 1
+                }
+            }
+        ]
+    });
 
     function cn(...classes) {
         return classes.filter(Boolean).join(" ");
@@ -78,36 +107,7 @@ export default function ProductRecs() {
         getRecs();
     }, []);
 
-    const settings = {
-        dots: false,
-        infinite: true,
-        autoplay: false,
-        speed: 400,
-        slidesToShow: 5,
-        slidesToScroll: 1,
-        nextArrow: <NextArrow />,
-        prevArrow: <PrevArrow />,
-        responsive: [
-            {
-                breakpoint: 1024,
-                settings: {
-                    slidesToShow: 3,
-                },
-            },
-            {
-                breakpoint: 768,
-                settings: {
-                    slidesToShow: 2,
-                },
-            },
-            {
-                breakpoint: 600,
-                settings: {
-                    slidesToShow: 1,
-                },
-            },
-        ],
-    };
+    const settings = (flagConfigCarousel);
 
     return (
         <div className="flex-col pt-10 pb-60 relative px-4 sm:px-6 lg:px-8">
