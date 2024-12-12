@@ -69,6 +69,8 @@ export default function ProductRecs() {
         speed: 400,
         slidesToShow: 5,
         slidesToScroll: 1,
+        // nextArrow: <NextArrow />,
+        // prevArrow: <PrevArrow />,
         responsive: [
             {
                 breakpoint: 1024,
