@@ -2,7 +2,6 @@ import '../styles/globals.css'
 import Head from 'next/head'
 import { Flagship, FlagshipProvider, useFsFlag, useFlagship } from "@flagship.io/react-sdk"
 import App from "next/app"
-import { v4 as uuidv4 } from 'uuid'
 import { createContext, useState } from 'react'
 import { atom, useAtom } from 'jotai'
 import { usePathname } from "next/navigation"
@@ -11,13 +10,11 @@ import Context from '../components/Context'
 export const AppContext = createContext()
 export const themeAtom = atom(false)
 export const pagePath = atom('')
-export const userId = atom('')
 
 function MyApp({ Component, pageProps, initialFlagsData, initialVisitorData }) {
     const [isShown, setIsShown] = useState(false)
     const pathname = usePathname()
     const [path, setPath] = useAtom(pagePath)
-    const [userTest, setUserTest] = useAtom(userId)
     setPath(pathname)
 
     // Get flag 

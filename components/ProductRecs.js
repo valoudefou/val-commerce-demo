@@ -103,6 +103,7 @@ export default function ProductRecs() {
     }
 
     useEffect(() => {
+        console.log(context)
         updateContext({[context]: context})
         async function getRecs() {
             const res = await fetch(

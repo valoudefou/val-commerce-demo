@@ -1,6 +1,5 @@
 import { useFlagship } from "@flagship.io/react-sdk"
 import { atom, useAtom } from 'jotai'
-import { useEffect } from "react"
 
 export const userContext = atom({['']: ''})
 
