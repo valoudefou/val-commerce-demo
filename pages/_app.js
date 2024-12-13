@@ -3,7 +3,7 @@ import Head from 'next/head'
 import { Flagship, FlagshipProvider, useFsFlag, useFlagship } from "@flagship.io/react-sdk"
 import App from "next/app"
 import { v4 as uuidv4 } from 'uuid'
-import { createContext, useState, useEffect } from 'react'
+import { createContext, useState } from 'react'
 import { atom, useAtom } from 'jotai'
 import { usePathname } from "next/navigation"
 import Context from '../components/Context'

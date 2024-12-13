@@ -1,10 +1,12 @@
 import Image from "next/image";
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { useFsFlag } from "@flagship.io/react-sdk";
+import { useAtom } from 'jotai'
+import { useFsFlag, useFlagship } from "@flagship.io/react-sdk";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import { userContext } from '../components/Context'
 
 function NextArrow({ onClick }) {
     return (
@@ -92,12 +94,17 @@ export default function ProductRecs() {
             }
         ]
     });
+    const { updateContext } = useFlagship();
+    const [context, setContext] = useAtom(userContext);
+    const settings = (flagConfigCarousel);
 
     function cn(...classes) {
         return classes.filter(Boolean).join(" ");
     }
 
     useEffect(() => {
+        console.log(context)
+        updateContext({[context]: context})
         async function getRecs() {
             const res = await fetch(
                 `https://client.experiences.get-potions.com/v1/715/experience/` +
@@ -107,9 +114,7 @@ export default function ProductRecs() {
             setRec(data);
         }
         getRecs();
-    }, []);
-
-    const settings = (flagConfigCarousel);
+    }, [context]);
 
     return (
         <div className="flex-col pt-10 pb-60 relative px-4 sm:px-6 lg:px-8">
