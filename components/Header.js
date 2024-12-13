@@ -41,7 +41,7 @@ export default function Header() {
             <span className="block" style={{color: flagBackgroundColor}}>{flagIndustry}</span>
             </h1>
             <div className="mt-10 flex justify-center">
-              <Link href="/products">
+              <Link href="/categories/beauty">
                 <button onClick={()=>{
                     fs.sendHits({
                       type: HitType.EVENT, 

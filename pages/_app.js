@@ -20,13 +20,6 @@ function MyApp({ Component, pageProps, initialFlagsData, initialVisitorData }) {
     const [userTest, setUserTest] = useAtom(userId)
     setPath(pathname)
 
-    useEffect(() => {
-        if (userTest !== '') {
-            alert('Coupon ' + userTest + ' does not exist')
-        }
-    }, [userTest])
-
-
     // Get flag 
     const flagIndustryVal = useFsFlag("flagIndustry")
     const flagIndustry = flagIndustryVal.getValue("Product")

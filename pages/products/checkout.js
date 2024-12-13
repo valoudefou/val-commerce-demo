@@ -52,6 +52,12 @@ export default function Checkout() {
   //   ({target:{name,value}}) => setInputs(state => ({ ...state, [name]:value }), [setError('')])
   // )
 
+  useEffect(() => {
+    if (userTest !== '') {
+        alert('Coupon ' + userTest + ' does not exist')
+    }
+  }, [userTest])
+
   const [formData, setFormData] = useState({
     email: "",
     first_name: "",
