@@ -166,7 +166,9 @@ const Navbar = () => {
                                 </li>
                                 <li className="nav-item group relative">
                                     <p className="my-1 text-sm text-gray-900 hover:text-gray-700 font-normal md:mx-3 md:my-0">
-                                    <span>Food</span>
+                                    <Link href="/blog/content-1">
+                                        <span>Food</span>
+                                    </Link>
                                     </p>
                                     <div className="mega-menu absolute -left-[110px] top-full hidden w-96 bg-white shadow-lg group-hover:block rounded-3xl">
                                     <ul className="p-6">
@@ -177,7 +179,9 @@ const Navbar = () => {
                                 </li>
                                 <li className="nav-item group relative">
                                     <p className="my-1 text-sm text-gray-900 hover:text-gray-700 font-normal md:mx-3 md:my-0">
-                                    <span>Fashion</span>
+                                    <Link href="/blog/content-1">
+                                        <span>Fashion</span>
+                                    </Link>
                                     </p>
                                     <div className="mega-menu absolute -left-[170px] top-full hidden w-96 bg-white shadow-lg group-hover:block rounded-3xl">
                                     <ul className="p-6">
@@ -198,7 +202,9 @@ const Navbar = () => {
                                 </li>
                                 <li className="nav-item group relative">
                                     <p className="my-1 text-sm text-gray-900 hover:text-gray-700 font-normal md:mx-3 md:my-0">
-                                    <span>Tech</span>
+                                    <Link href="/blog/content-1">
+                                        <span>Tech</span>
+                                    </Link>
                                     </p>
                                     <div className="mega-menu absolute -left-[249px] top-full hidden w-96 bg-white shadow-lg group-hover:block rounded-3xl">
                                     <ul className="p-6">
@@ -211,7 +217,9 @@ const Navbar = () => {
                                 </li>
                                 <li className="nav-item group relative">
                                     <p className="my-1 text-sm text-gray-900 hover:text-gray-700 font-normal md:mx-3 md:my-0">
-                                    <span>Motor</span>
+                                    <Link href="/blog/content-1">
+                                        <span>Motor</span>
+                                    </Link>
                                     </p>
                                     <div className="mega-menu absolute -left-[306px] top-full hidden w-96 bg-white shadow-lg group-hover:block rounded-3xl">
                                     <ul className="p-6">
