@@ -157,10 +157,10 @@ const Navbar = () => {
                                     </Link>
                                     </p>
                                     <div className="mega-menu absolute -left-[20px] top-full hidden w-96 bg-white shadow-lg group-hover:block rounded-3xl">
-                                    <ul className="p-4">
-                                        <li className="py-2 text-sm text-gray-700"><Link href="/blog/cosmetic-1">Cosmetic Item 1</Link></li>
-                                        <li className="py-2 text-sm text-gray-700"><Link href="/blog/cosmetic-2">Cosmetic Item 2</Link></li>
-                                        <li className="py-2 text-sm text-gray-700"><Link href="/blog/cosmetic-3">Cosmetic Item 3</Link></li>
+                                    <ul className="p-6">
+                                        <li className="py-2 text-sm text-gray-700"><Link href="/categories/beauty">Beauty</Link></li>
+                                        <li className="py-2 text-sm text-gray-700"><Link href="/categories/fragrances">Fragrances</Link></li>
+                                        <li className="py-2 text-sm text-gray-700"><Link href="/categories/skin-care">Skin Care</Link></li>
                                     </ul>
                                     </div>
                                 </li>
@@ -169,10 +169,9 @@ const Navbar = () => {
                                     <span>Food</span>
                                     </p>
                                     <div className="mega-menu absolute -left-[110px] top-full hidden w-96 bg-white shadow-lg group-hover:block rounded-3xl">
-                                    <ul className="p-4">
-                                        <li className="py-2 text-sm text-gray-700"><Link href="/blog/food-1">Food Item 1</Link></li>
-                                        <li className="py-2 text-sm text-gray-700"><Link href="/blog/food-2">Food Item 2</Link></li>
-                                        <li className="py-2 text-sm text-gray-700"><Link href="/blog/food-3">Food Item 3</Link></li>
+                                    <ul className="p-6">
+                                        <li className="py-2 text-sm text-gray-700"><Link href="/categories/groceries">Gorceries</Link></li>
+                                        <li className="py-2 text-sm text-gray-700"><Link href="/categories/categories/kitchen-accessories">Kitchen</Link></li>
                                     </ul>
                                     </div>
                                 </li>
@@ -181,10 +180,19 @@ const Navbar = () => {
                                     <span>Fashion</span>
                                     </p>
                                     <div className="mega-menu absolute -left-[170px] top-full hidden w-96 bg-white shadow-lg group-hover:block rounded-3xl">
-                                    <ul className="p-4">
-                                        <li className="py-2 text-sm text-gray-700"><Link href="/blog/fashion-1">Fashion Item 1</Link></li>
-                                        <li className="py-2 text-sm text-gray-700"><Link href="/blog/fashion-2">Fashion Item 2</Link></li>
-                                        <li className="py-2 text-sm text-gray-700"><Link href="/blog/fashion-3">Fashion Item 3</Link></li>
+                                    <ul className="p-6">
+                                        <li className="py-2 text-sm text-gray-700"><Link href="/categories/home-decoration">Home</Link></li>
+                                        <li className="py-2 text-sm text-gray-700"><Link href="/categories/mens-shirts">Men Shirts</Link></li>
+                                        <li className="py-2 text-sm text-gray-700"><Link href="/categories/mens-shoes">Men Shoes</Link></li>
+                                        <li className="py-2 text-sm text-gray-700"><Link href="/categories/womens-shoes">Womens Shoes</Link></li>
+                                        <li className="py-2 text-sm text-gray-700"><Link href="/categories/mens-watches">Mens Watches</Link></li>
+                                        <li className="py-2 text-sm text-gray-700"><Link href="/categories/womens-watches">Womens Watches</Link></li>
+                                        <li className="py-2 text-sm text-gray-700"><Link href="/categories/sports-accessories">Sports</Link></li>
+                                        <li className="py-2 text-sm text-gray-700"><Link href="/categories/sunglasses">Sunglasses</Link></li>
+                                        <li className="py-2 text-sm text-gray-700"><Link href="/categories/tops">Tops</Link></li>
+                                        <li className="py-2 text-sm text-gray-700"><Link href="/categories/womens-bags">Bags</Link></li>
+                                        <li className="py-2 text-sm text-gray-700"><Link href="/categories/womens-dresses">Dresses</Link></li>
+                                        <li className="py-2 text-sm text-gray-700"><Link href="/categories/womens-jewellery">Jewellery</Link></li>
                                     </ul>
                                     </div>
                                 </li>
@@ -193,10 +201,11 @@ const Navbar = () => {
                                     <span>Tech</span>
                                     </p>
                                     <div className="mega-menu absolute -left-[249px] top-full hidden w-96 bg-white shadow-lg group-hover:block rounded-3xl">
-                                    <ul className="p-4">
-                                        <li className="py-2 text-sm text-gray-700"><Link href="/blog/tech-1">Tech Item 1</Link></li>
-                                        <li className="py-2 text-sm text-gray-700"><Link href="/blog/tech-2">Tech Item 2</Link></li>
-                                        <li className="py-2 text-sm text-gray-700"><Link href="/blog/tech-3">Tech Item 3</Link></li>
+                                    <ul className="p-6">
+                                        <li className="py-2 text-sm text-gray-700"><Link href="/categories/laptops">Laptops</Link></li>
+                                        <li className="py-2 text-sm text-gray-700"><Link href="/categories/mobile-accessories">Mobile Accessories</Link></li>
+                                        <li className="py-2 text-sm text-gray-700"><Link href="/categories/smartphones">Smartphones</Link></li>
+                                        <li className="py-2 text-sm text-gray-700"><Link href="/categories/tablets">Tablets</Link></li>
                                     </ul>
                                     </div>
                                 </li>
@@ -205,10 +214,9 @@ const Navbar = () => {
                                     <span>Motor</span>
                                     </p>
                                     <div className="mega-menu absolute -left-[306px] top-full hidden w-96 bg-white shadow-lg group-hover:block rounded-3xl">
-                                    <ul className="p-4">
-                                        <li className="py-2 text-sm text-gray-700"><Link href="/blog/motor-1">Motor Item 1</Link></li>
-                                        <li className="py-2 text-sm text-gray-700"><Link href="/blog/motor-2">Motor Item 2</Link></li>
-                                        <li className="py-2 text-sm text-gray-700"><Link href="/blog/motor-3">Motor Item 3</Link></li>
+                                    <ul className="p-6">
+                                        <li className="py-2 text-sm text-gray-700"><Link href="/categories/motorcycle">Motorcycles</Link></li>
+                                        <li className="py-2 text-sm text-gray-700"><Link href="/categories/vehicle">Cars</Link></li>
                                     </ul>
                                     </div>
                                 </li>
