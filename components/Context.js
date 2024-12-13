@@ -8,11 +8,27 @@ export default function Context() {
     const { updateContext } = useFlagship()
     const [context, setContext] = useAtom(userContext)
     const handleApply = (e) => {
-        e.preventDefault()
-        setContext({[e.target.previousSibling.previousSibling.value]: e.target.previousSibling.value})
-        updateContext({[e.target.previousSibling.previousSibling.value]: e.target.previousSibling.value})
-        alert('Context key: ' + '"' + e.target.previousSibling.previousSibling.value + '"' + ' value: ' + e.target.previousSibling.value + ' added to the user!')
-    }
+        e.preventDefault();
+    
+        const key = e.target.previousSibling.previousSibling.value;
+        let value = e.target.previousSibling.value;
+    
+        // Determine if the value is a boolean
+        if (value.toLowerCase() === "true") {
+            value = true;
+        } else if (value.toLowerCase() === "false") {
+            value = false;
+        } else {
+            // Try to convert the value to an integer if applicable
+            const parsedValue = parseInt(value, 10);
+            value = !isNaN(parsedValue) ? parsedValue : value; // Use integer if valid, otherwise keep as string
+        }
+    
+        setContext({ [key]: value });
+        updateContext({ [key]: value });
+    
+        alert(`Context key: "${key}" value: ${value} added to the user!`);
+    };
 
     useEffect(() => {
         setContext({['geolocation']: 'uk'})

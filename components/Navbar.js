@@ -173,7 +173,7 @@ const Navbar = () => {
                                     <div className="mega-menu absolute -left-[110px] top-full hidden w-96 bg-white shadow-lg group-hover:block rounded-3xl">
                                     <ul className="p-6">
                                         <li className="py-2 text-sm text-gray-700"><Link href="/categories/groceries">Gorceries</Link></li>
-                                        <li className="py-2 text-sm text-gray-700"><Link href="/categories/categories/kitchen-accessories">Kitchen</Link></li>
+                                        <li className="py-2 text-sm text-gray-700"><Link href="/categories/kitchen-accessories">Kitchen</Link></li>
                                     </ul>
                                     </div>
                                 </li>

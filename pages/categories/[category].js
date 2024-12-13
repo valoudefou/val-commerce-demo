@@ -13,8 +13,8 @@ export default function CategoryPage({ products, categories, category }) {
 
     // Filter products based on the selected category, or show all if no category is selected
     const displayedProducts = selectedCategory
-        ? products.filter((product) => product.category === selectedCategory)
-        : products;
+    ? products.filter((product) => product.category === selectedCategory)
+    : products;
 
     return (
         <>
