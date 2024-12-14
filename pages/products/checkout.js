@@ -1,7 +1,7 @@
 import { useEffect, useState, useRef } from "react"
 import { useFsFlag, useFlagship } from "@flagship.io/react-sdk"
 import Link from "next/link"
-import { pagePath, userId } from "/pages/_app"
+import { pagePath } from "/pages/_app"
 import { useAtom } from "jotai"
 import { usePathname } from "next/navigation"
 
@@ -10,7 +10,6 @@ export default function Checkout() {
   const { updateContext } = useFlagship()
   const pathname = usePathname()
   const [path, setPath] = useAtom(pagePath)
-  const [userTest, setUserTest] = useAtom(userId)
   setPath(pathname)
   // Get flag 
   const paymentFeature1ClickVal = useFsFlag("paymentFeature1Click")
@@ -46,6 +45,7 @@ export default function Checkout() {
   const [country, setCountry] = useState('United Kingdom')
   const [delivery, setDelivery] = useState([flagDeliveryFeeEvri])
   const [cardNumber, setCardNumber] = useState("")
+  const [couponUsed, setCouponUsed] = useState("")
 
   // const [inputs, setInputs] = useState(initialValues)
   // const handleChange = useCallback(
@@ -53,10 +53,10 @@ export default function Checkout() {
   // )
 
   useEffect(() => {
-    if (userTest !== '') {
-        alert('Coupon ' + userTest + ' does not exist')
+    if (couponUsed !== '') {
+        alert('Coupon ' + couponUsed + ' does not exist')
     }
-  }, [userTest])
+  }, [couponUsed])
 
   const [formData, setFormData] = useState({
     email: "",
@@ -174,8 +174,8 @@ export default function Checkout() {
 
   const handleApply = (e) => {
     e.preventDefault()
-    setUserTest(e.target.previousSibling.value)
-    updateContext({['update']: userTest})
+    setCouponUsed(e.target.previousSibling.value)
+    updateContext({['update']: couponUsed})
   }
 
   useEffect(() => {
