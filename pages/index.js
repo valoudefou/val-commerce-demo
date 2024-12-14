@@ -3,6 +3,7 @@ import Header from '../components/Header'
 import { useRef } from 'react'
 import Link from 'next/link'
 import { createClient } from 'contentful'
+import { useFsFlag } from "@flagship.io/react-sdk";
 
 export default function Index( {products} ) {
     let coffeeRef = useRef()
@@ -14,6 +15,10 @@ export default function Index( {products} ) {
         })
     }
 
+    // Get flag 
+    const flagRedirectNextLinkVal = useFsFlag("flagRedirectNextLink")
+    const flagRedirectNextLink = flagRedirectNextLinkVal.getValue("/categories/beauty")
+
     return (
         <>
             <Header scrollHandler={scrollHandler} />
@@ -23,7 +28,7 @@ export default function Index( {products} ) {
                         <p className="mt-1 text-3xl font-bold uppercase text-gray-900 sm:text-3xl sm:tracking-tight lg:text-3xl"
                             ref={(element) => (coffeeRef = element)}
                         >
-                        <Link href='/categories/beauty'>
+                        <Link href={flagRedirectNextLink}>
                             Shop our products
                         </Link>
                         </p>

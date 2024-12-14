@@ -103,7 +103,6 @@ export default function ProductRecs() {
     }
 
     useEffect(() => {
-        console.log(context)
         updateContext({[context]: context})
         async function getRecs() {
             const res = await fetch(
@@ -114,7 +113,7 @@ export default function ProductRecs() {
             setRec(data);
         }
         getRecs();
-    }, [context]);
+    }, [flagProductRecs]);
 
     return (
         <div className="flex-col pt-10 pb-60 relative px-4 sm:px-6 lg:px-8">

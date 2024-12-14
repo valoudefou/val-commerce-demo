@@ -1,6 +1,6 @@
 import '../styles/globals.css'
 import Head from 'next/head'
-import { Flagship, FlagshipProvider, useFsFlag, useFlagship } from "@flagship.io/react-sdk"
+import { Flagship, FlagshipProvider, useFsFlag } from "@flagship.io/react-sdk"
 import App from "next/app"
 import { createContext, useState } from 'react'
 import { atom, useAtom } from 'jotai'

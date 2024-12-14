@@ -19,10 +19,10 @@ export default function CategoryPage({ products, categories, category }) {
     return (
         <>
             <Navbar />
-            <div className="py-20 mx-auto max-w-2xl px-4 sm:px-6 lg:max-w-7xl lg:px-8 mb-24">
+            <div className="py-12 mx-auto max-w-2xl px-4 sm:px-6 lg:max-w-7xl lg:px-8 mb-24">
                 {/* Category Filter */}
                 <div className="mb-8">
-                    <div className="flex flex-wrap gap-4">
+                    <div className="flex flex-wrap gap-3">
                         {categories.map((categoryItem) => (
                             <Link href={`/categories/${categoryItem}`} key={categoryItem}>
                                 <p
