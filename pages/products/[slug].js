@@ -144,9 +144,8 @@ export default function Product(props) {
                             {props.product.title}
                         </h1>
                         <h1 className="mt-3 text-2xl font-semibold text-slate-500">
-                            {props.product.price}€
+                            {new Intl.NumberFormat('de-DE', { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(props.product.price)} €
                         </h1>
-
                         <div className="flex items-center pt-3">
                             {Array.from({ length: 5 }).map((_, index) => {
                                 const rating = props.product.reviews[0].rating;

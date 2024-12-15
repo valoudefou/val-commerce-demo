@@ -78,16 +78,16 @@ export default function Confirmation() {
 
   return (
     <>
-      <div onLoad={pushTransaction} onClick={handleRedirect} className="confirmation cursor-pointer mx-auto max-w-2xl px-4 sm:px-6 lg:max-w-7xl lg:px-8 mb-16 mt-16">
+      <div onLoad={pushTransaction} onClick={handleRedirect} className="confirmation cursor-pointer mx-auto max-w-2xl px-4 sm:px-6 lg:max-w-7xl lg:px-8 mb-48 mt-16">
         <div className="flex items-center">
           <div className="svg-container">    
-            <svg className="ft-green-tick" xmlns="http://www.w3.org/2000/svg" height="65" width="65" viewBox="0 0 48 48" aria-hidden="true">
-            <circle className="circle" fill="#5bb543" cx="24" cy="24" r="22"/>
-            <path className="tick" fill="none" stroke="#FFF" strokeWidth="6" strokeLinecap="round" strokeLinejoin="round" strokeMiterlimit="10" d="M14 27l5.917 4.917L34 17"/>
+            <svg className="text-green-500" xmlns="http://www.w3.org/2000/svg" height="55" width="55" viewBox="0 0 48 48" aria-hidden="true">
+              <circle className="circle" fill="#5bb543" cx="24" cy="24" r="22"/>
+              <path className="tick" fill="none" stroke="#FFF" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" strokeMiterlimit="10" d="M14 27l5.917 4.917L34 17"/>
             </svg>
           </div>
           <div className="flex flex-col pl-4 pt-2 pb-1">
-            <h1 className="text-3xl dark:text-white font-semibold leading-9 text-gray-800">Your order is confirmed!</h1>
+            <h1 className="text-3xl dark:text-white font-medium leading-9 text-gray-800">Your order is confirmed!</h1>
           </div>
         </div>
         <div className="mt-10 flex flex-col xl:flex-row jusitfy-center items-stretch w-full xl:space-x-8 space-y-4 md:space-y-6 xl:space-y-0">
@@ -108,7 +108,11 @@ export default function Confirmation() {
                         <p className="text-sm dark:text-white leading-6 text-gray-700"><span className="dark:text-gray-400 text-gray-400">Category: </span> {data.productCategory}</p>
                         <p className="text-sm dark:text-white leading-6 text-gray-700"><span className="dark:text-gray-400 text-gray-400">Quantity: </span> {data.productQuantity}</p>
                       </div>
-                      <p className="text-base leading-6 dark:text-white text-gray-800">{data.productPrice} €</p>
+                      <p className="text-base leading-6 dark:text-white text-gray-800">
+                        {new Intl.NumberFormat('de-DE', { minimumFractionDigits: 2, maximumFractionDigits: 2 })
+                          .format(data.productPrice)
+                        } €
+                      </p>
                     </div>
                   </div>
                 </div>
@@ -120,16 +124,28 @@ export default function Confirmation() {
                 <div className="flex justify-center items-center w-full space-y-4 flex-col border-gray-200 border-b pb-4">
                   <div className="flex justify-between w-full">
                     <p className="text-base dark:text-white leading-4 text-gray-800">Subtotal</p>
-                    <p className="text-base dark:text-gray-300 leading-4 text-gray-600">{data.productPrice} €</p>
+                    <p className="text-base dark:text-gray-300 leading-4 text-gray-600">
+                      {new Intl.NumberFormat('de-DE', { minimumFractionDigits: 2, maximumFractionDigits: 2 })
+                        .format(data.productPrice)
+                      } €
+                    </p>
                   </div>
                   <div className="flex justify-between items-center w-full">
                     <p className="text-base dark:text-white leading-4 text-gray-800">Shipping</p>
-                    <p className="text-base dark:text-gray-300 leading-4 text-gray-600">{confirmation.delivery_fee ? confirmation.delivery_fee : "5.99"} €</p>
+                    <p className="text-base dark:text-gray-300 leading-4 text-gray-600">
+                      {confirmation.delivery_fee ? new Intl.NumberFormat('de-DE', { minimumFractionDigits: 2, maximumFractionDigits: 2 })
+                        .format(confirmation.delivery_fee) : "5,99"
+                      } €
+                    </p>
                   </div>
                 </div>
                 <div className="flex justify-between items-center w-full">
                   <p className="text-lg dark:text-white font-semibold leading-4 text-gray-800">Total</p>
-                  <p className="text-lg dark:text-gray-300 font-semibold leading-4 text-gray-800">{(data.productPrice + Math.round(confirmation.delivery_fee ? confirmation.delivery_fee : "5.99")).toFixed(2)} €</p>
+                  <p className="text-lg dark:text-gray-300 font-semibold leading-4 text-gray-800">
+                    {new Intl.NumberFormat('de-DE', { minimumFractionDigits: 2, maximumFractionDigits: 2 })
+                      .format(data.productPrice + Math.round(confirmation.delivery_fee ? confirmation.delivery_fee : 5.99))
+                    } €
+                  </p>
                 </div>
               </div>
               <div className="flex flex-col justify-start px-5 py-7 w-full dark:bg-gray-800 space-y-6">
@@ -145,7 +161,11 @@ export default function Confirmation() {
                       </p>
                     </div>
                   </div>
-                  <p className="text-base font-semibold leading-6 dark:text-white text-gray-800">{confirmation.delivery_fee ? confirmation.delivery_fee : "5.99"} €</p>
+                  <p className="text-base font-semibold leading-6 dark:text-white text-gray-800">
+                    {confirmation.delivery_fee ? new Intl.NumberFormat('de-DE', { minimumFractionDigits: 2, maximumFractionDigits: 2 })
+                      .format(confirmation.delivery_fee) : "5.99"
+                    } €
+                  </p>
                 </div>
               </div>
             </div>

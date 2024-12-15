@@ -293,7 +293,7 @@ export default function Checkout() {
   return (
     <>
       <form noValidate onSubmit={handleSubmit}>
-        <div className="mx-auto max-w-2xl px-4 sm:px-6 lg:max-w-7xl lg:px-8 mb-10 py-2">
+        <div className="mx-auto max-w-2xl px-4 sm:px-6 lg:max-w-7xl lg:px-8 mb-24 py-2">
           <div className="flex justify-between">
             <div className="relative flex justify-between lg:w-auto lg:static lg:block lg:justify-start">
               <a className="text-2xl px-2 font-bold leading-relaxed inline-block py-3 whitespace-nowrap uppercase text-gray-900" href="/">
@@ -705,7 +705,11 @@ export default function Checkout() {
                             </div>
                           </div>
                           <div className="flex ml-auto">
-                            <p className="text-base font-semibold leading-6 dark:text-white text-gray-800">{flagDeliveryFeeDpd} €</p>
+                            <p className="text-base font-semibold leading-6 dark:text-white text-gray-800">
+                              {new Intl.NumberFormat('de-DE', { minimumFractionDigits: 2, maximumFractionDigits: 2 })
+                                .format(flagDeliveryFeeDpd)
+                              }€
+                            </p>
                           </div>
                         </div>
                       </label>
@@ -723,7 +727,11 @@ export default function Checkout() {
                             </div>
                           </div>
                           <div className="flex ml-auto">
-                            <p className="text-base font-semibold leading-6 dark:text-white text-gray-800">{flagDeliveryFeeEvri} €</p>
+                            <p className="text-base font-semibold leading-6 dark:text-white text-gray-800">
+                              {new Intl.NumberFormat('de-DE', { minimumFractionDigits: 2, maximumFractionDigits: 2 })
+                                .format(flagDeliveryFeeEvri)
+                              }€
+                            </p>
                           </div>
                         </div>
                       </label>
@@ -838,7 +846,11 @@ export default function Checkout() {
                             </span> {data.productQuantity}
                           </p>
                         </div>
-                        <p className="text-base leading-6 dark:text-white text-gray-800">{data.productPrice} €</p>
+                        <p className="text-base leading-6 dark:text-white text-gray-800">
+                          {new Intl.NumberFormat('de-DE', { minimumFractionDigits: 2, maximumFractionDigits: 2 })
+                            .format(data.productPrice)
+                          } €
+                        </p>
                       </div>
                     </div>
                   </div>
@@ -859,20 +871,32 @@ export default function Checkout() {
                     <div className="flex justify-between w-full">
                       <p className="text-base dark:text-white leading-4 text-gray-800">
                         Subtotal</p>
-                      <p className="text-base dark:text-gray-300 leading-4 text-gray-600">{data.productPrice} €</p>
+                      <p className="text-base dark:text-gray-300 leading-4 text-gray-600">
+                        {new Intl.NumberFormat('de-DE', { minimumFractionDigits: 2, maximumFractionDigits: 2 })
+                          .format(data.productPrice)
+                        } €
+                      </p>
                     </div>
                     <div className="flex justify-between items-center w-full">
                       <p className="text-base dark:text-white leading-4 text-gray-800">
                         Shipping</p>
                       <p className="text-base dark:text-gray-300 leading-4 text-gray-600">
-                        {Number.parseFloat(delivery[1]) ? Number.parseFloat(delivery[1]) : 0} €</p>
+                        {Number.parseFloat(delivery[1]) ? new Intl.NumberFormat('de-DE', { minimumFractionDigits: 2, maximumFractionDigits: 2 })
+                          .format(delivery[1]) : 0
+                        } €
+                      </p>
                     </div>
                   </div>
                   <div className="flex justify-between items-center w-full">
                       <p className="text-lg dark:text-white font-semibold leading-4 text-gray-800">
                         Total
                       </p>
-                    <p className="text-lg dark:text-gray-300 font-semibold leading-4 text-gray-800">{delivery[1] ? (data.productPrice + Number.parseFloat(delivery[1])).toFixed(2) : data.productPrice} €</p>
+                    <p className="text-lg dark:text-gray-300 font-semibold leading-4 text-gray-800">
+                      {delivery[1] ? new Intl.NumberFormat('de-DE', { minimumFractionDigits: 2, maximumFractionDigits: 2 })
+                        .format((data.productPrice + Number.parseFloat(delivery[1])).toFixed(2)) : new Intl.NumberFormat('de-DE', { minimumFractionDigits: 2, maximumFractionDigits: 2 })
+                        .format(data.productPrice)
+                      } €
+                    </p>
                   </div>
                 </div>
               </div>

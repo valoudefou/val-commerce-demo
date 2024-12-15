@@ -145,7 +145,7 @@ export default function ProductRecs() {
                             <div className="flex justify-between text-base font-normal text-gray-900">
                                 <h3>{item.title}</h3>
                                 <p className="font-base font-bold text-slate-600 tracking-wide">
-                                    {item.price}€
+                                    {new Intl.NumberFormat('de-DE', { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(item.price)}€
                                 </p>
                             </div>
                             <Link href={item.link}>

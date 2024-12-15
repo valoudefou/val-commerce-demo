@@ -80,7 +80,7 @@ export default function MiniCart() {
                                     <span className="text-gray-900 font-light text-sm mt-2">{data.productTitle}</span>
                                     <div className="flex items-center">      
                                         <span className="text-gray-500 font-light text-sm">{data.productQuantity} x</span>
-                                        <span className="text-gray-500 font-light text-sm px-2">{data.productPrice} €</span>
+                                        <span className="text-gray-500 font-light text-sm px-2">{new Intl.NumberFormat('de-DE', { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(data.productPrice)} €</span>
                                     </div>
                                 </div>
                             )}
@@ -94,7 +94,7 @@ export default function MiniCart() {
                             )}
                             {cartContent && (
                                 <button onClick={handleClick} className="navbar-close ml-5">
-                                    <svg onClick={() => [handleRemoveItem()]} className="h-5 w-5 text-gray-400 cursor-pointer hover:text-gray-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <svg onClick={() => [handleRemoveItem()]} className="border border-gray-400 p-1 rounded-xl h-6 w-6 text-gray-400 cursor-pointer" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12"></path>
                                     </svg>
                                 </button>
@@ -105,7 +105,7 @@ export default function MiniCart() {
                             <span className="text-gray-500">
                                 Total
                             </span>
-                            <span className="text-gray-500">{data.productPrice} €</span>
+                            <span className="text-gray-500">{new Intl.NumberFormat('de-DE', { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(data.productPrice)} €</span>
                         </div>
                         )}
                         {cartContent && (
