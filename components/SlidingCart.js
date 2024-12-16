@@ -7,6 +7,11 @@ import Image from "next/image"
 function SlidingCart() {
   const [isShown, setIsShown] = useContext(AppContext)
 
+  // Function to format the price
+  const formatPrice = (price) => {
+    return new Intl.NumberFormat('de-DE', { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(price);
+  }
+
   async function handleRemoveItem () {
     setIsShown(false)
     const itemName = 'currentProduct'
@@ -72,7 +77,7 @@ function SlidingCart() {
                 <span className="text-gray-900 font-light text-sm mt-2">{data.productTitle}</span>
                 <div className="flex items-center">      
                   <span className="text-gray-500 font-light text-sm">{data.productQuantity} x</span>
-                  <span className="text-gray-500 font-light text-sm px-2">{data.productPrice} €</span>
+                  <span className="text-gray-500 font-light text-sm px-2">{formatPrice(data.productPrice)} €</span>
                 </div>
               </div>
             )}
@@ -99,7 +104,7 @@ function SlidingCart() {
               <span className="text-gray-500">
                 Total
               </span>
-              <span className="text-gray-500">{data.productPrice} €</span>
+              <span className="text-gray-500">{formatPrice(data.productPrice)} €</span>
             </div>
           )}
           {cartContent && (

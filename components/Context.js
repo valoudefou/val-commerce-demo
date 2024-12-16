@@ -38,7 +38,7 @@ export default function Context() {
     };
 
     return (
-        <div className="border flex flex-col border-gray-200 my-5 mx-5 py-7 px-9 fixed bottom-0 right-0 z-10 w-auto bg-white rounded-3xl shadow-xl">
+        <div className="border flex flex-col border-gray-200 my-5 mx-4 py-7 px-9 fixed bottom-0 right-0 z-10 w-auto bg-white rounded-3xl shadow-xl">
             {!successMessage && (
                 <h3 className="flex flex-col text-md dark:text-white font-semibold leading-5 text-gray-800 px-2 mb-4">
                     User context to activate flag
@@ -46,11 +46,11 @@ export default function Context() {
             )}
             {successMessage ? (
             <div className="flex gap-2 items-center justify-center">    
-                <svg className="text-green-500" xmlns="http://www.w3.org/2000/svg" height="25" width="25" viewBox="0 0 48 48" aria-hidden="true">
+                <svg xmlns="http://www.w3.org/2000/svg" height="25" width="25" viewBox="0 0 48 48" aria-hidden="true">
                     <circle className="circle" fill="#5bb543" cx="24" cy="24" r="22"/>
                     <path className="tick" fill="none" stroke="#FFF" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" strokeMiterlimit="10" d="M14 27l5.917 4.917L34 17"/>
                 </svg>
-                <div className="text-green-500 font-medium text-sm text-center">
+                <div className="text-[#5bb543] font-medium text-sm text-center">
                     Context successfully sent!
                 </div>
             </div>

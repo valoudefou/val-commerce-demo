@@ -4,12 +4,13 @@ import Link from "next/link"
 import { pagePath } from "/pages/_app"
 import { useAtom } from "jotai"
 import { usePathname } from "next/navigation"
+import { useRouter } from 'next/router';
 
 export default function Checkout() {
-  // AB TASTY UPDATECONTEXT
   const { updateContext } = useFlagship()
   const pathname = usePathname()
   const [path, setPath] = useAtom(pagePath)
+  const router = useRouter(); // Initialize the router
   setPath(pathname)
   // Get flag 
   const paymentFeature1ClickVal = useFsFlag("paymentFeature1Click")
@@ -33,6 +34,7 @@ export default function Checkout() {
   const searchInput = useRef(null)
   const [error, setError] = useState([])
   const [paymentStep, setPaymentStep] = useState(false)
+  const [loading, setLoading] = useState(false); // Add a loading state
   // CUSTOMER DATA
   const [first_name, setFirstName] = useState("")
   const [last_name, setLastName] = useState("")
@@ -82,29 +84,61 @@ export default function Checkout() {
     });
   };
 
-  const sendOrder = (e) => {
+  const sendOrder = async (e) => {
+    e.preventDefault(); // Prevents default button behavior
+  
     if (cardNumber && delivery[0]) {
       const confirmation = {
-        "email": formData.email,
-        "first_name": formData.first_name,
-        "last_name": formData.last_name,
-        "address_1": address_1,
-        "address_2": address_2,
-        "city": city,
-        "postcode": postcode,
-        "country": country,
-        "delivery": delivery[0],
-        "delivery_fee": delivery[1],
-        "delivery_src": delivery[2],
-        "delivery_info": delivery[3]
+        date: data.date,
+        total: data.productPrice + Number(delivery[1]),
+        product_category: data.productCategory,
+        product_id: data.productId,
+        product_price: data.productPrice,
+        product_quantity: data.productQuantity,
+        product_title: data.productTitle,
+        transaction_id: data.transactionId,
+        email: formData.email,
+        first_name: formData.first_name,
+        last_name: formData.last_name,
+        address_1,
+        address_2,
+        city,
+        postcode,
+        country,
+        delivery: delivery[0],
+        delivery_fee: delivery[1],
+        delivery_info: delivery[3],
+      };
+      localStorage.setItem('confirmationData', JSON.stringify(confirmation));
+      setLoading(true); // Start the loader
+      try {
+        const response = await fetch('https://live-server1.vercel.app/submit-data', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(confirmation),
+        });
+  
+        if (!response.ok) {
+          // Redirect to /checkout if the server response is not OK
+          window.location.assign('/products/checkout');
+          alert('An error occurred while processing your order. Please try again.');
+          return; // Stop further execution
+        }
+  
+        // Navigate to the confirmation page after success
+        router.push('/products/confirmation');
+      } catch (error) {
+        console.error('Error sending confirmation:', error);
+        alert('An error occurred while processing your order. Please try again.');
+      } finally {
+        setLoading(false); // Stop the loader
       }
-      console.log('Order confirmed!')
-      localStorage.setItem('confirmationData', JSON.stringify(confirmation))
     } else {
-      e.preventDefault()
-      alert('Delivery or card missing')
+      alert('Delivery or card information is missing.');
     }
-  }
+  };  
 
   const generateCard = (e) => {
     e.preventDefault()
@@ -213,11 +247,9 @@ export default function Checkout() {
   }
 
   const addShipping = (e) => {
-    console.log('SPA component reload')
     if (window.ABTasty !== undefined) {
       window?.ABTastyReload()
     }
-    console.log(Number(delivery[1]))
     setDelivery([e.target.id, e.target.value, e.target.nextElementSibling.firstChild.firstChild.src, e.target.nextElementSibling.lastChild.firstChild.lastChild.innerText])
     window.dataLayer = window.dataLayer || []
     window.dataLayer.push({
@@ -293,7 +325,7 @@ export default function Checkout() {
   return (
     <>
       <form noValidate onSubmit={handleSubmit}>
-        <div className="mx-auto max-w-2xl px-4 sm:px-6 lg:max-w-7xl lg:px-8 mb-24 py-2">
+        <div className="mx-auto max-w-2xl px-4 sm:px-6 lg:max-w-7xl lg:px-8 mb-48 py-2">
           <div className="flex justify-between">
             <div className="relative flex justify-between lg:w-auto lg:static lg:block lg:justify-start">
               <a className="text-2xl px-2 font-bold leading-relaxed inline-block py-3 whitespace-nowrap uppercase text-gray-900" href="/">
@@ -801,14 +833,25 @@ export default function Checkout() {
                           Terms and Conditions
                         </a>
                       </p>
-                        <Link href='/products/confirmation'>
-                          <button onClick={(e) => sendOrder(e)} className="w-full flex font-medium bg-black text-white py-4 px-16 rounded-full hover:bg-neutral-800">
+                      <button
+                        onClick={(e) => sendOrder(e)}
+                        className={`w-2/4 flex items-center justify-center font-medium bg-black text-white py-4 px-16 rounded-full hover:bg-neutral-800 ${loading ? 'opacity-50 cursor-not-allowed' : ''}`}
+                        disabled={loading}
+                      >
+                        {loading ? (
+                          <svg className="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                            <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                            <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z"></path>
+                          </svg>
+                        ) : (
+                          <>
                             <svg xmlns="http://www.w3.org/2000/svg" className="mx-2" width="20" height="20" viewBox="0 0 24 24" fill="#ffffff">
                               <path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"></path>
                             </svg>
                             Pay Now
-                          </button>
-                        </Link>
+                          </>
+                        )}
+                      </button>
                       </div>
                     </div>
                   </div>

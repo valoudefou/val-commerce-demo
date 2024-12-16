@@ -47,16 +47,21 @@ export default function MiniCart() {
         const storedHtml = localStorage.getItem('currentProduct')
         const cartContent = '<p>1 item in your basket</p>'
 
-    if (storedHtml) {
-        setHtmlContent(cartContent)
-        const value = window.localStorage.getItem('currentProduct')
-        setData(JSON.parse(value))
-    }
-  }, [])
+        if (storedHtml) {
+            setHtmlContent(cartContent)
+            const value = window.localStorage.getItem('currentProduct')
+            setData(JSON.parse(value))
+        }
+    }, [])
 
-  // Get flag 
-  const paymentFeature1ClickVal = useFsFlag("paymentFeature1Click")
-  const paymentFeature1Click = paymentFeature1ClickVal.getValue(false)
+    // Get flag 
+    const paymentFeature1ClickVal = useFsFlag("paymentFeature1Click")
+    const paymentFeature1Click = paymentFeature1ClickVal.getValue(false)
+
+    // Function to format price as "19,00"
+    const formatPrice = (price) => {
+        return new Intl.NumberFormat('de-DE', { style: 'currency', currency: 'EUR' }).format(price);
+    }
 
     return (
         <div>
@@ -69,7 +74,7 @@ export default function MiniCart() {
                         </div>
                         {cartContent ? (
                             <div className="grid grid-cols-1 gap-3" dangerouslySetInnerHTML={{ __html: cartContent }} />
-                            ) : (
+                        ) : (
                             <p className="grid grid-cols-1 gap-3">
                                 The cart is empty
                             </p>
@@ -80,7 +85,7 @@ export default function MiniCart() {
                                     <span className="text-gray-900 font-light text-sm mt-2">{data.productTitle}</span>
                                     <div className="flex items-center">      
                                         <span className="text-gray-500 font-light text-sm">{data.productQuantity} x</span>
-                                        <span className="text-gray-500 font-light text-sm px-2">{new Intl.NumberFormat('de-DE', { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(data.productPrice)} €</span>
+                                        <span className="text-gray-500 font-light text-sm px-2">{formatPrice(data.productPrice)}</span>
                                     </div>
                                 </div>
                             )}
@@ -101,15 +106,15 @@ export default function MiniCart() {
                             )}
                         </div>
                         {cartContent && (
-                        <div className="flex justify-between border-t-[1px] py-3 mt-3 text-lg">
-                            <span className="text-gray-500">
-                                Total
-                            </span>
-                            <span className="text-gray-500">{new Intl.NumberFormat('de-DE', { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(data.productPrice)} €</span>
-                        </div>
+                            <div className="flex justify-between border-t-[1px] py-3 mt-3 text-lg">
+                                <span className="text-gray-500">
+                                    Total
+                                </span>
+                                <span className="text-gray-500">{formatPrice(data.productPrice)}</span>
+                            </div>
                         )}
                         {cartContent && (
-                                <div className="flex justify-between mt-3">
+                            <div className="flex justify-between mt-3">
                                 {paymentFeature1Click === true &&
                                 <Link href='/products/confirmation'>
                                     <button className="w-[130px] flex items-center justify-center text-base font-medium bg-black text-white text-bold py-3 rounded-full hover:bg-neutral-800">

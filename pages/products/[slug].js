@@ -1,18 +1,18 @@
-import Image from 'next/image'
-import { useRouter } from 'next/router'
-import { useFsFlag, useFlagship } from "@flagship.io/react-sdk"
-import { useState, useEffect, useRef } from 'react'
-import Navbar from '../../components/Navbar'
-import Emotion from '../../components/Emotion'
-import ProductRecs from '../../components/ProductRecs'
-import { useAtom } from 'jotai'
-import { pagePath } from "/pages/_app"
+import Image from 'next/image';
+import { useRouter } from 'next/router';
+import { useFsFlag, useFlagship } from "@flagship.io/react-sdk";
+import { useState, useEffect, useRef } from 'react';
+import Navbar from '../../components/Navbar';
+import Emotion from '../../components/Emotion';
+import ProductRecs from '../../components/ProductRecs';
+import { useAtom } from 'jotai';
+import { pagePath } from "/pages/_app";
 
 export default function Product(props) {
-    const [data, setData] = useState('')
-    const sendData = useRef(0) // Prevent pushView() from being called multiple times
-    const { updateContext } = useFlagship()
-    const [path, setPath] = useAtom(pagePath)
+    const [data, setData] = useState('');
+    const sendData = useRef(0); // Prevent pushView() from being called multiple times
+    const { updateContext } = useFlagship();
+    const [path, setPath] = useAtom(pagePath);
 
     const possibleLabel = [
         "4 in stock", 
@@ -20,20 +20,20 @@ export default function Product(props) {
         "5 in stock", 
         "Popular",
         "2 in stock"
-    ]
+    ];
 
     useEffect(() => {
-        updateContext({['route']: path})
-    }, [path])
+        updateContext({['route']: path});
+    }, [path]);
 
     async function pushView() {
-        sendData.current = sendData.current + 1
+        sendData.current = sendData.current + 1;
 
         if (sendData.current === 1) {
-            window.dataLayer = window.dataLayer || []
+            window.dataLayer = window.dataLayer || [];
 
             if (window.ABTasty !== undefined) {
-                window?.ABTastyReload()
+                window?.ABTastyReload();
             }
 
             window.dataLayer.push({
@@ -50,17 +50,13 @@ export default function Product(props) {
                         'quantity': 1
                     }]
                 }
-            })
+            });
         }
     }
 
     function pushCart() {
-        const transactionId = '#' + Math.floor(Math.random() * 100000)
-        const today = new Date()
-        const dd = String(today.getDate()).padStart(2, '0')
-        const mm = String(today.getMonth() + 1).padStart(2, '0')
-        const yyyy = today.getFullYear()
-        const todayDate = mm + '/' + dd + '/' + yyyy
+        const transactionId = '#' + Math.floor(10000 + Math.random() * 90000);
+        const today = new Date();
         const product = {
             "productId": props.product.id,
             "productCategory": props.product.category,
@@ -69,12 +65,12 @@ export default function Product(props) {
             "productImage": props.product.images[0],
             "productQuantity": 1,
             "transactionId": transactionId,
-            "date": todayDate,
+            "date": today,
             "info": "Popular"
-        }
+        };
 
-        localStorage.setItem('currentProduct', JSON.stringify(product))
-        window.dataLayer = window.dataLayer || []
+        localStorage.setItem('currentProduct', JSON.stringify(product));
+        window.dataLayer = window.dataLayer || [];
 
         window.dataLayer.push({
             event: 'add_to_cart',
@@ -89,40 +85,40 @@ export default function Product(props) {
                     'quantity': data.productQuantity
                 }]
             }
-        })
+        });
         
-        const x = window.scrollX
-        const y = window.scrollY
-        window.scroll(x, y - 1)
+        const x = window.scrollX;
+        const y = window.scrollY;
+        window.scroll(x, y - 1);
     }
 
     const handleClick = () => {
-        const storedHtml = localStorage.getItem('currentProduct')
+        const storedHtml = localStorage.getItem('currentProduct');
 
         if (!storedHtml) {
-            alert('Please Add To Cart')
+            alert('Please Add To Cart');
         } 
         else {
-            window.location.href = "/products/confirmation"
+            window.location.href = "/products/confirmation";
         }
-    }
+    };
 
     useEffect(() => {
-        const storedHtml = localStorage.getItem('currentProduct')
+        const storedHtml = localStorage.getItem('currentProduct');
 
         if (storedHtml) {
-            const value = window.localStorage.getItem('currentProduct')
-            setData(JSON.parse(value))
+            const value = window.localStorage.getItem('currentProduct');
+            setData(JSON.parse(value));
         }
-    }, [])
+    }, []);
 
     // Get flag 
-    const paymentFeature1ClickVal = useFsFlag("paymentFeature1Click")
-    const paymentFeature1Click = paymentFeature1ClickVal.getValue(false)
-    const router = useRouter()
+    const paymentFeature1ClickVal = useFsFlag("paymentFeature1Click");
+    const paymentFeature1Click = paymentFeature1ClickVal.getValue(false);
+    const router = useRouter();
 
     if (router.isFallback) {
-        return <div className='flex justify-center h-screen items-center text-4xl font-thin invisible'>Loading...</div>
+        return <div className='flex justify-center h-screen items-center text-4xl font-thin invisible'>Loading...</div>;
     }
 
     return (
@@ -215,19 +211,19 @@ export default function Product(props) {
             </div>
             <ProductRecs />
         </div>
-    )
+    );
 }
 
 export async function getStaticProps(context) {
-    const { params } = context
-    const res = await fetch(`https://dummyjson.com/products/${params.slug}`)
-    const data = await res.json()
+    const { params } = context;
+    const res = await fetch(`https://dummyjson.com/products/${params.slug}`);
+    const data = await res.json();
 
     return {
         props: {
             product: data,
         },
-    }
+    };
 }
 
 export async function getStaticPaths() {
@@ -236,5 +232,5 @@ export async function getStaticPaths() {
             params: { slug: '1'} 
         }],
         fallback: true
-    }
+    };
 }

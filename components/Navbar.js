@@ -142,7 +142,7 @@ const Navbar = () => {
                             <input 
                                 onChange={(e) => setSearchQuery(e.target.value)}
                                 type="search" 
-                                className="w-96 block p-3 font-light pl-12 text-gray-900 bg-gray-50 rounded-lg border border-gray-200" 
+                                className="w-[350px] block p-3 font-light pl-12 text-gray-900 bg-gray-50 rounded-lg border border-gray-200" 
                                 placeholder='Search term ...'
                                 onKeyDown={(e) => handleKeyDown(e)}
                             />
