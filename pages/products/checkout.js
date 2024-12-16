@@ -136,7 +136,7 @@ export default function Checkout() {
         setLoading(false); // Stop the loader
       }
     } else {
-      alert('Delivery or card information is missing.');
+      alert('Delivery or card information is missing.')
     }
   };  
 
