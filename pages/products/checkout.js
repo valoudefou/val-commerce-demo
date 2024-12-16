@@ -90,7 +90,7 @@ export default function Checkout() {
     if (cardNumber && delivery[0]) {
       const confirmation = {
         date: data.date,
-        total: data.productPrice + Number(delivery[1]),
+        total: Number((Number(data.productPrice || 0) + Number(delivery[1] || 0)).toFixed(2)),
         product_category: data.productCategory,
         product_id: data.productId,
         product_price: data.productPrice,
@@ -106,7 +106,7 @@ export default function Checkout() {
         postcode,
         country,
         delivery: delivery[0],
-        delivery_fee: delivery[1],
+        delivery_fee: Number(delivery[1]),
         delivery_info: delivery[3],
       };
       localStorage.setItem('confirmationData', JSON.stringify(confirmation));
@@ -143,7 +143,7 @@ export default function Checkout() {
   const generateCard = (e) => {
     e.preventDefault()
     if (!cardNumber) {
-      setCardNumber([Math.floor(1000 + Math.random() * 9000) + ' ' + Math.floor(1000 + Math.random() * 9000) + ' ' + Math.floor(1000 + Math.random() * 9000) + ' ' + Math.floor(1000 + Math.random() * 9000), Math.floor(100 + Math.random() * 900), '1' + Math.floor(Math.random() * 9) + '/' + '1' + Math.floor(Math.random() * 3), formData.first_name + ' ' + formData.last_name])
+      setCardNumber([Math.floor(1000 + Math.random() * 9000) + ' ' + Math.floor(1000 + Math.random() * 9000) + ' ' + Math.floor(1000 + Math.random() * 9000) + ' ' + Math.floor(1000 + Math.random() * 9000), Math.floor(100 + Math.random() * 900), "10/27" , formData.first_name + ' ' + formData.last_name])
       window.dataLayer = window.dataLayer || []
       window.dataLayer.push({
         event: 'add_payment_info',
@@ -612,17 +612,32 @@ export default function Checkout() {
                           <div className={error.includes("city") ? "text-red-400 text-sm py-1 px-1 font-medium" : "hidden"}>Please enter your city</div>
                         </div>
                         <div className="flex mb-4">
-                          <div className="w-1/2 mr-1">
-                            <label className="block text-grey-darker text-sm font-normal mb-2 ml-2" htmlFor="country">
-                              Country
-                            </label>
-                            <select 
+                        <div className="w-1/2 mr-1">
+                          <label className="block text-grey-darker text-sm font-normal mb-2 ml-2" htmlFor="country">
+                            Country
+                          </label>
+                          <div className="relative">
+                            <select
                               value={country}
-                              onChange={e => setCountry(e.target.value)}
-                              className="flex w-full py-4 px-4 text-grey-darker border-r-8 border border-slate-300">
+                              onChange={e => setCountry(e.target.value.replace('>', ''))}
+                              className="flex w-full py-4 px-4 pr-10 text-grey-darker border rounded-2xl border-slate-300 appearance-none">
                               <option value=">United Kingdom">United Kingdom</option>
                               <option value=">Isle of Man">Isle of Man</option>
                             </select>
+                            <svg
+                              className="absolute right-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-500"
+                              xmlns="http://www.w3.org/2000/svg"
+                              viewBox="0 0 20 20"
+                              fill="currentColor"
+                              aria-hidden="true"
+                            >
+                              <path
+                                fillRule="evenodd"
+                                d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                                clipRule="evenodd"
+                              />
+                            </svg>
+                          </div>
                           </div>
                           <div className="w-1/2 ml-1">
                             <label className="block text-grey-darker text-sm font-normal mb-2 ml-2" htmlFor="postcode">

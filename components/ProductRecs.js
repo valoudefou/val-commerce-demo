@@ -122,7 +122,7 @@ export default function ProductRecs() {
             </h2>
             <Slider {...settings} className="mt-6">
                 {rec.products?.map((item) => (
-                    <div key={item.id} className="px-4 h-full mb-6">
+                    <div key={item.id} className="px-4 h-full">
                         <Link href={item.link}>
                             <div className="flex rounded-xl bg-gray-200 justify-center">
                                 <Image
@@ -149,7 +149,7 @@ export default function ProductRecs() {
                                 </p>
                             </div>
                             <Link href={item.link}>
-                                <button className="w-full flex items-center justify-center py-4 px-8 mt-4 bg-slate-950 border border-slate-600 text-white text-bold text-sm rounded-full font-medium">
+                                <button className="w-full flex items-center justify-center py-4 px-8 my-4 bg-slate-950 border border-slate-600 text-white text-bold text-sm rounded-full font-medium">
                                     <svg
                                         xmlns="http://www.w3.org/2000/svg"
                                         fill="none"

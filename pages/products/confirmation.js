@@ -28,12 +28,19 @@ export default function Confirmation() {
   }
 
   useEffect(() => {
-    const storedHtml = localStorage.getItem('confirmationData')
-    if (storedHtml) {
-      const data = window.localStorage.getItem('confirmationData')
-      setConfirmation(JSON.parse(data))
+    const confirmationData = localStorage.getItem('confirmationData');
+    if (confirmationData) {
+      setConfirmation(JSON.parse(confirmationData));
     }
-  }, [])
+  
+    const currentProduct = localStorage.getItem('currentProduct');
+    if (currentProduct) {
+      setData(JSON.parse(currentProduct));
+    }
+    if (sendItemView.current === 0) {
+      window.location.href = '/products/checkout'
+    }
+  }, []);
 
   useEffect(() => {
     let timerId
@@ -68,25 +75,17 @@ export default function Confirmation() {
     })
   }
 
-  useEffect(() => {
-    const storedHtml = localStorage.getItem('currentProduct')
-    if (storedHtml) {
-      const value = window.localStorage.getItem('currentProduct')
-      setData(JSON.parse(value))
-    }
-  }, [])
-
   return (
     <>
-      <div onLoad={pushTransaction} onClick={handleRedirect} className="confirmation cursor-pointer mx-auto max-w-2xl px-4 sm:px-6 lg:max-w-7xl lg:px-8 mb-48 mt-16">
-        <div className="flex items-center">
+      <div onLoad={pushTransaction} className="confirmation mx-auto max-w-2xl px-4 sm:px-6 lg:max-w-7xl lg:px-8 mb-48 mt-16">
+        <div className="flex items-center mx-4">
           <div className="svg-container">    
-            <svg className="text-green-500" xmlns="http://www.w3.org/2000/svg" height="55" width="55" viewBox="0 0 48 48" aria-hidden="true">
+            <svg onClick={handleRedirect} className="cursor-pointer" xmlns="http://www.w3.org/2000/svg" height="48" width="48" viewBox="0 0 48 48" aria-hidden="true">
               <circle className="circle" fill="#5bb543" cx="24" cy="24" r="22"/>
               <path className="tick" fill="none" stroke="#FFF" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" strokeMiterlimit="10" d="M14 27l5.917 4.917L34 17"/>
             </svg>
           </div>
-          <div className="flex flex-col pl-4 pt-2 pb-1">
+          <div className="flex flex-col pl-3 pt-2 pb-1">
             <h1 className="text-3xl dark:text-white font-medium leading-9 text-gray-800">Your order is confirmed!</h1>
           </div>
         </div>
@@ -143,7 +142,7 @@ export default function Confirmation() {
                   <p className="text-lg dark:text-white font-semibold leading-4 text-gray-800">Total</p>
                   <p className="text-lg dark:text-gray-300 font-semibold leading-4 text-gray-800">
                     {new Intl.NumberFormat('de-DE', { minimumFractionDigits: 2, maximumFractionDigits: 2 })
-                      .format(data.productPrice + Math.round(confirmation.delivery_fee ? confirmation.delivery_fee : 5.99))
+                      .format(data.productPrice + (confirmation.delivery_fee ? confirmation.delivery_fee : 5.99))
                     } €
                   </p>
                 </div>
@@ -163,7 +162,7 @@ export default function Confirmation() {
                   </div>
                   <p className="text-base font-semibold leading-6 dark:text-white text-gray-800">
                     {confirmation.delivery_fee ? new Intl.NumberFormat('de-DE', { minimumFractionDigits: 2, maximumFractionDigits: 2 })
-                      .format(confirmation.delivery_fee) : "5.99"
+                      .format(confirmation.delivery_fee) : 5.99
                     } €
                   </p>
                 </div>

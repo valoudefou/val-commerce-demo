@@ -126,14 +126,16 @@ export default function Product(props) {
             <Navbar />
             <div className="mx-auto max-w-1xl px-4 sm:px-6 lg:max-w-7xl lg:px-8">
                 <div className="relative mx-auto items-center flex flex-col lg:flex-row">
-                    <div id='ab-product' className='relative'>
-                        <Image
-                            alt="coffee"
-                            className="rounded-lg object-contain self-center px-8"
-                            src={props.product.images[0]}
-                            width={560}
-                            height={640}
-                        />
+                    <div id='ab-product' className='relative w-full'>
+                        <div className="group relative overflow-hidden">
+                            <Image
+                                alt="coffee"
+                                className="rounded-lg object-contain self-center px-8 transition-transform duration-500 group-hover:scale-105"
+                                src={props.product.images[0]}
+                                width={560}
+                                height={640}
+                            />
+                        </div>
                     </div>
                     <div className="flex flex-col lg:p-20 md:p-10">
                         <h1 className="mt-1 text-2xl font-medium text-gray-900 sm:text-2xl sm:tracking-tight lg:text-3xl">
