@@ -130,7 +130,7 @@ export default function Product(props) {
                         <div className="group relative overflow-hidden">
                             <Image
                                 alt="coffee"
-                                className="rounded-lg object-contain self-center px-8 transition-transform duration-500 group-hover:scale-105"
+                                className="rounded-lg object-scale-down self-center px-8 transition-transform duration-500 group-hover:scale-105"
                                 src={props.product.images[0]}
                                 width={560}
                                 height={640}
