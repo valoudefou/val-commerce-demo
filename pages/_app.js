@@ -20,10 +20,18 @@ function MyApp({ Component, pageProps, initialFlagsData, initialVisitorData }) {
     // Get flag 
     const flagIndustryVal = useFsFlag("flagIndustry")
     const flagIndustry = flagIndustryVal.getValue("Product")
-
-    // useEffect(() => {
-    //     ABTastyReload(); // Ensure SPA client side
-    // }, [path])
+    
+    useEffect(() => {
+        const checkAndReload = () => {
+            if (typeof window.ABTastyReload === 'function') {
+                ABTastyReload(); // Call the function if it's available
+            } else {
+                console.error("ABTastyReload is not available yet.");
+            }
+        };
+    
+        checkAndReload();
+    }, [path]);
 
     return (
         <>
