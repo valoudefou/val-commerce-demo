@@ -38,7 +38,7 @@ function MyApp({ Component, pageProps, initialFlagsData, initialVisitorData }) {
         };
     
         loadABTastyScript();
-    }, []); // Runs once on component mount
+    }, [path]); // Runs once on component mount
 
     return (
         <>
