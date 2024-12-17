@@ -20,17 +20,21 @@ function MyApp({ Component, pageProps, initialFlagsData, initialVisitorData }) {
     // Get flag 
     const flagIndustryVal = useFsFlag("flagIndustry")
     const flagIndustry = flagIndustryVal.getValue("Product")
-    
+
     useEffect(() => {
-        const checkAndReload = () => {
+        const retryReload = (attempts = 0) => {
+            if (attempts > 5) {
+                console.error("ABTastyReload is not available after multiple attempts.");
+                return;
+            }
             if (typeof window.ABTastyReload === 'function') {
                 ABTastyReload(); // Call the function if it's available
             } else {
-                console.error("ABTastyReload is not available yet.");
+                setTimeout(() => retryReload(attempts + 1), 1000); // Retry after 1 second
             }
         };
-    
-        checkAndReload();
+
+        retryReload();
     }, [path]);
 
     return (
