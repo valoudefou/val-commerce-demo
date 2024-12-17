@@ -22,20 +22,23 @@ function MyApp({ Component, pageProps, initialFlagsData, initialVisitorData }) {
     const flagIndustry = flagIndustryVal.getValue("Product")
 
     useEffect(() => {
-        const retryReload = (attempts = 0) => {
-            if (attempts > 5) {
-                console.error("ABTastyReload is not available after multiple attempts.");
-                return;
-            }
+        const loadABTastyScript = () => {
+          const script = document.createElement('script');
+          script.src = "https://try.abtasty.com/1ceff369b6cd9aceaa9ee318e6498167.js"; // Update with the actual URL
+          script.async = true;
+          script.onload = () => {
+            // Once the script is loaded, call ABTastyReload
             if (typeof window.ABTastyReload === 'function') {
-                ABTastyReload(); // Call the function if it's available
+              ABTastyReload();
             } else {
-                setTimeout(() => retryReload(attempts + 1), 1000); // Retry after 1 second
+              console.error("ABTastyReload is not available.");
             }
+          };
+          document.head.appendChild(script);
         };
-
-        retryReload();
-    }, [path]);
+    
+        loadABTastyScript();
+    }, []); // Runs once on component mount
 
     return (
         <>
