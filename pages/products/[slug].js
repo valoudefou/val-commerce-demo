@@ -31,8 +31,8 @@ export default function Product(props) {
     
         if (sendData.current === 1) {
             // Set the viewed product in a global JS variable
-            window.GLOBAL = window.GLOBAL || {};
-            window.GLOBAL.viewingProduct = {
+            window.DATA = window.DATA || {};
+            window.DATA.viewingProduct = {
                 id: props.product.id,
                 title: props.product.title,
                 price: props.product.price,
