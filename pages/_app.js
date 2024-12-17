@@ -21,9 +21,9 @@ function MyApp({ Component, pageProps, initialFlagsData, initialVisitorData }) {
     const flagIndustryVal = useFsFlag("flagIndustry")
     const flagIndustry = flagIndustryVal.getValue("Product")
 
-    useEffect(() => {
-        ABTastyReload(); // Ensure SPA client side
-    }, [path])
+    // useEffect(() => {
+    //     ABTastyReload(); // Ensure SPA client side
+    // }, [path])
 
     return (
         <>
