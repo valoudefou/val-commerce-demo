@@ -2,7 +2,7 @@ import '../styles/globals.css'
 import Head from 'next/head'
 import { Flagship, FlagshipProvider, useFsFlag } from "@flagship.io/react-sdk"
 import App from "next/app"
-import { createContext, useState } from 'react'
+import { createContext, useEffect, useState } from 'react'
 import { atom, useAtom } from 'jotai'
 import { usePathname } from "next/navigation"
 import Context from '../components/Context'
@@ -20,6 +20,10 @@ function MyApp({ Component, pageProps, initialFlagsData, initialVisitorData }) {
     // Get flag 
     const flagIndustryVal = useFsFlag("flagIndustry")
     const flagIndustry = flagIndustryVal.getValue("Product")
+
+    useEffect(() => {
+        ABTastyReload(); // Ensure SPA client side
+    }, [path])
 
     return (
         <>
