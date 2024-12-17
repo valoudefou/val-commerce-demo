@@ -28,14 +28,24 @@ export default function Product(props) {
 
     async function pushView() {
         sendData.current = sendData.current + 1;
-
+    
         if (sendData.current === 1) {
+            // Set the viewed product in a global JS variable
+            window.GLOBAL = window.GLOBAL || {};
+            window.GLOBAL.viewingProduct = {
+                id: props.product.id,
+                title: props.product.title,
+                price: props.product.price,
+                category: props.product.category,
+                image: props.product.images[0],
+            };
+    
             window.dataLayer = window.dataLayer || [];
-
+    
             if (window.ABTasty !== undefined) {
                 window?.ABTastyReload();
             }
-
+    
             window.dataLayer.push({
                 event: 'view_item',
                 info: possibleLabel[(Math.floor(Math.random() * possibleLabel.length))],
