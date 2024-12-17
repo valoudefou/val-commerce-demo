@@ -2,7 +2,7 @@ import '../styles/globals.css'
 import Head from 'next/head'
 import { Flagship, FlagshipProvider, useFsFlag } from "@flagship.io/react-sdk"
 import App from "next/app"
-import { createContext, useEffect, useState } from 'react'
+import { createContext, useState } from 'react'
 import { atom, useAtom } from 'jotai'
 import { usePathname } from "next/navigation"
 import Context from '../components/Context'
@@ -20,25 +20,6 @@ function MyApp({ Component, pageProps, initialFlagsData, initialVisitorData }) {
     // Get flag 
     const flagIndustryVal = useFsFlag("flagIndustry")
     const flagIndustry = flagIndustryVal.getValue("Product")
-
-    useEffect(() => {
-        const loadABTastyScript = () => {
-          const script = document.createElement('script');
-          script.src = "https://try.abtasty.com/1ceff369b6cd9aceaa9ee318e6498167.js"; // Update with the actual URL
-          script.async = true;
-          script.onload = () => {
-            // Once the script is loaded, call ABTastyReload
-            if (typeof window.ABTastyReload === 'function') {
-              ABTastyReload();
-            } else {
-              console.error("ABTastyReload is not available.");
-            }
-          };
-          document.head.appendChild(script);
-        };
-    
-        loadABTastyScript();
-    }, [path]); // Runs once on component mount
 
     return (
         <>

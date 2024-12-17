@@ -2,7 +2,7 @@ import { useFlagship } from "@flagship.io/react-sdk";
 import { atom, useAtom } from "jotai";
 import { useState } from "react";
 
-export const userContext = atom({ [""]: "" });
+export const userContext = atom({ ["key"]: "value" });
 
 export default function Context() {
     const { updateContext } = useFlagship();
