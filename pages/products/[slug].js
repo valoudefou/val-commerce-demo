@@ -33,12 +33,13 @@ export default function Product(props) {
             // Set the viewed product in a global JS variable
             window.DATA = window.DATA || {};
             window.DATA.viewingProduct = {
-                id: props.product.id,
+                id: props.product.id.toString(),
                 title: props.product.title,
                 price: props.product.price,
                 category: props.product.category,
                 image: props.product.images[0],
             };
+            console.log(window.DATA)
     
             window.dataLayer = window.dataLayer || [];
     
