@@ -78,16 +78,13 @@ export default function Product(props) {
             "date": today,
             "info": "Popular"
         };
-
-        // Set the cart product in a global JS variable
-        window.DATA = window.DATA || {};
-        window.DATA.cartProduct = {
-            id: data.productId.toString(),
-        };
-
+    
+        // Set the productId in the global cartProduct variable
+        window.DATA.cartProduct = product.productId;
+    
         localStorage.setItem('currentProduct', JSON.stringify(product));
         window.dataLayer = window.dataLayer || [];
-
+    
         window.dataLayer.push({
             event: 'add_to_cart',
             ecommerce: {
@@ -106,7 +103,7 @@ export default function Product(props) {
         const x = window.scrollX;
         const y = window.scrollY;
         window.scroll(x, y - 1);
-    }
+    }    
 
     const handleClick = () => {
         const storedHtml = localStorage.getItem('currentProduct');
