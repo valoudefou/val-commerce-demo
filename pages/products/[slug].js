@@ -39,7 +39,6 @@ export default function Product(props) {
                 category: props.product.category,
                 image: props.product.images[0],
             };
-            console.log(window.DATA)
     
             window.dataLayer = window.dataLayer || [];
     
@@ -78,6 +77,12 @@ export default function Product(props) {
             "transactionId": transactionId,
             "date": today,
             "info": "Popular"
+        };
+
+        // Set the cart product in a global JS variable
+        window.DATA = window.DATA || {};
+        window.DATA.cartProduct = {
+            id: data.productId.toString(),
         };
 
         localStorage.setItem('currentProduct', JSON.stringify(product));
