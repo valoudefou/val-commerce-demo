@@ -61,7 +61,7 @@ export default function ProductRecs() {
     const [isLoading, setLoading] = useState(true);
     const flagProductRecsVal = useFsFlag("flagProductRecs");
     const flagProductRecs = flagProductRecsVal.getValue(
-        "2dd95ccd-103c-4633-bca6-0c25a272096d"
+        "4ce1a290-4b79-4a8d-9aa8-0ef891168941"
     );
     const flagConfigCarouselVal = useFsFlag("flagConfigCarousel");
     const flagConfigCarousel = flagConfigCarouselVal.getValue({
@@ -103,17 +103,20 @@ export default function ProductRecs() {
     }
 
     useEffect(() => {
-        updateContext({[context]: context})
+        updateContext({[context]: context});
         async function getRecs() {
-            const res = await fetch(
-                `https://client.experiences.get-potions.com/v1/715/experience/` +
-                    flagProductRecs
-            );
-            const data = await res.json();
-            setRec(data);
+            try {
+                const res = await fetch(
+                    `https://client.experiences.get-potions.com/v1/715/experience/` + flagProductRecs
+                );
+                const data = await res.json();
+                setRec(data);
+            } catch (error) {
+                console.error('Error fetching data:', error);
+            }
         }
         getRecs();
-    }, [flagProductRecs]);
+    }, [flagProductRecs]);    
 
     return (
         <div className="flex-col pt-10 pb-60 relative px-4 sm:px-6 lg:px-8">
