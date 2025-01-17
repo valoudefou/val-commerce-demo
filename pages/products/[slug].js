@@ -1,19 +1,20 @@
 import Image from 'next/image';
 import { useRouter } from 'next/router';
 import { useFsFlag, useFlagship } from "@flagship.io/react-sdk";
-import { useState, useEffect, useRef } from 'react';
+import { useState, useContext, useEffect, useRef } from 'react';
 import Navbar from '../../components/Navbar';
-import Emotion from '../../components/Emotion';
 import ProductRecs from '../../components/ProductRecs';
+import Footer from '../../components/Footer';
 import { useAtom } from 'jotai';
 import { pagePath } from "/pages/_app";
+import { AppContext } from "/pages/_app";
 
 export default function Product(props) {
     const [data, setData] = useState('');
     const sendData = useRef(0); // Prevent pushView() from being called multiple times
     const { updateContext } = useFlagship();
     const [path, setPath] = useAtom(pagePath);
-
+    const [isShown, setIsShown] = useContext(AppContext)
     const possibleLabel = [
         "4 in stock", 
         "3 in stock", 
@@ -132,7 +133,7 @@ export default function Product(props) {
     }
 
     return (
-        <div onLoad={() => [pushView()]} className="flex h-auto flex-col justify-between">
+        <div onLoad={() => [pushView()]} className="flex min-h-screen flex-col justify-between">
             <Navbar />
             <div className="mx-auto max-w-1xl px-4 sm:px-6 lg:max-w-7xl lg:px-8">
                 <div className="relative mx-auto items-center flex flex-col lg:flex-row">
@@ -202,7 +203,12 @@ export default function Product(props) {
                         </div>
 
                         <button onClick={() => [pushCart()]} className="mt-5 bg-white border-2 hover:bg-gray-50 border-gray-300 text-slate-600 text-semibold text-sm rounded-full font-medium w-full">
-                            <Emotion />
+                        <div className="add-to-cart px-4 py-4 flex items-center justify-center text-sm font-base" onClick={() => setIsShown(!isShown)}>
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1" stroke="currentColor" className="w-6 h-6 py-1">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3" />
+            </svg>
+            Add To Cart
+        </div>
                         </button>
                         {paymentFeature1Click === true &&
                             <button onClick={handleClick} className="justify-center mt-4 items-center w-full flex text-xl tracking-tight font-medium bg-black text-white text-extrabold py-4 px-14 rounded-full hover:bg-neutral-800"> 
@@ -222,6 +228,7 @@ export default function Product(props) {
                 </div>
             </div>
             <ProductRecs />
+            <Footer />
         </div>
     );
 }

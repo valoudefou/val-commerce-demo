@@ -1,5 +1,6 @@
 import { useEffect, useState, useRef } from "react"
 import { HitType, useFlagship } from "@flagship.io/react-sdk"
+import Footer from "../../components/Footer"
 
 export default function Confirmation() {
   const [data, setData] = useState('')
@@ -203,6 +204,7 @@ export default function Confirmation() {
           </div>
         </div>
       </div>
+      <Footer />
     </>
   )
 }

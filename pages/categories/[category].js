@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'; // Import useState and useEffect hooks
 import Navbar from '../../components/Navbar';
 import ProductCard from '../../components/ProductCard';
+import Footer from '../../components/Footer';
 import Link from 'next/link';
 
 export default function CategoryPage({ products, categories, category }) {
@@ -45,6 +46,7 @@ export default function CategoryPage({ products, categories, category }) {
                     ))}
                 </div>
             </div>
+            <Footer />
         </>
     );
 }

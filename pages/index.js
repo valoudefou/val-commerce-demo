@@ -1,4 +1,5 @@
 import ProductCard from '../components/ProductCard'
+import Footer from '../components/Footer'
 import Header from '../components/Header'
 import { useRef } from 'react'
 import Link from 'next/link'
@@ -42,6 +43,7 @@ export default function Index( {products} ) {
                     </>
                 </div>
             </div>
+            <Footer />
         </>
     )
 }
