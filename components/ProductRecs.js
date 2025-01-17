@@ -1,12 +1,10 @@
 import Image from "next/image";
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { useAtom } from 'jotai'
-import { useFsFlag, useFlagship } from "@flagship.io/react-sdk";
+import { useFsFlag } from "@flagship.io/react-sdk";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import { userContext } from '../components/Context'
 
 function NextArrow({ onClick }) {
     return (
@@ -94,8 +92,6 @@ export default function ProductRecs() {
             }
         ]
     });
-    const { updateContext } = useFlagship();
-    const [context, setContext] = useAtom(userContext);
     const settings = (flagConfigCarousel);
 
     function cn(...classes) {
@@ -103,7 +99,6 @@ export default function ProductRecs() {
     }
 
     useEffect(() => {
-        updateContext({[context]: context});
         async function getRecs() {
             try {
                 const res = await fetch(

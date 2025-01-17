@@ -12,7 +12,6 @@ export default function Checkout() {
   const pathname = usePathname()
   const [path, setPath] = useAtom(pagePath)
   const router = useRouter(); // Initialize the router
-  setPath(pathname)
   // Get flag 
   const paymentFeature1ClickVal = useFsFlag("paymentFeature1Click")
   const paymentFeature1Click = paymentFeature1ClickVal.getValue(false)
@@ -54,6 +53,11 @@ export default function Checkout() {
   // const handleChange = useCallback(
   //   ({target:{name,value}}) => setInputs(state => ({ ...state, [name]:value }), [setError('')])
   // )
+
+  useEffect(() => {
+    setPath(pathname); // Update the atom state when `pathname` changes.
+    console.log(pathname);
+  }, [pathname, setPath]); // Dependencies to avoid unnecessary reruns.
 
   useEffect(() => {
     if (couponUsed !== '') {
@@ -326,7 +330,7 @@ export default function Checkout() {
   return (
     <>
       <form noValidate onSubmit={handleSubmit}>
-        <div className="mx-auto max-w-2xl px-4 sm:px-6 lg:max-w-7xl lg:px-8 mb-48 py-2">
+        <div className="mx-auto max-w-2xl px-4 sm:px-6 lg:max-w-7xl lg:px-8 mb-24 py-2 min-h-screen">
           <div className="flex justify-between">
             <div className="relative flex justify-between lg:w-auto lg:static lg:block lg:justify-start">
               <a className="text-2xl px-2 font-bold leading-relaxed inline-block py-3 whitespace-nowrap uppercase text-gray-900" href="/">
@@ -509,8 +513,8 @@ export default function Checkout() {
                             <div className="flex sm:flex-row flex-col">
                               <span className="text-md px-3 py-1 mr-3 flex items-center justify-center">or</span>
                               <Link href='/products/confirmation'>
-                                <button className="justify-center items-center w-full flex text-xl tracking-tight font-medium bg-black text-white text-extrabold py-4 px-16 rounded-full hover:bg-neutral-800">
-                                  <svg xmlns="http://www.w3.org/2000/svg" fill="#FFFFFF" viewBox="0 0 24 24" width="20px" height="20px">    
+                                <button className="justify-center items-center w-full flex text-xl tracking-wide font-medium bg-black text-white text-extrabold py-4 px-16 rounded-full hover:bg-neutral-800">
+                                  <svg xmlns="http://www.w3.org/2000/svg" fill="#FFFFFF" viewBox="0 0 24 24" width="25px" height="25px">    
                                     <path d="M 16.125 1 C 14.972 1.067 13.648328 1.7093438 12.861328 2.5273438 C 12.150328 3.2713438 11.589359 4.3763125 11.818359 5.4453125 C 13.071359 5.4783125 14.329031 4.8193281 15.082031 3.9863281 C 15.785031 3.2073281 16.318 2.12 16.125 1 z M 16.193359 5.4433594 C 14.384359 5.4433594 13.628 6.5546875 12.375 6.5546875 C 11.086 6.5546875 9.9076562 5.5136719 8.3476562 5.5136719 C 6.2256562 5.5146719 3 7.4803281 3 12.111328 C 3 16.324328 6.8176563 21 8.9726562 21 C 10.281656 21.013 10.599 20.176969 12.375 20.167969 C 14.153 20.154969 14.536656 21.011 15.847656 21 C 17.323656 20.989 18.476359 19.367031 19.318359 18.082031 C 19.922359 17.162031 20.170672 16.692344 20.638672 15.652344 C 17.165672 14.772344 16.474672 9.1716719 20.638672 8.0136719 C 19.852672 6.6726719 17.558359 5.4433594 16.193359 5.4433594 z"/>
                                   </svg>
                                   Pay

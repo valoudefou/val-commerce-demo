@@ -5,7 +5,6 @@ import { useFsFlag } from "@flagship.io/react-sdk"
 import SlidingCart from "./SlidingCart"
 import MiniCart from "./MiniCart"
 import Link from 'next/link'
-import Footer from "./Footer"
 import { themeAtom } from "../pages/_app"
 import { useAtom } from "jotai"
 
@@ -120,7 +119,6 @@ const Navbar = () => {
                                         </li>
                                     </ul>
                                 </div>
-                                <Footer />
                             </nav> 
                         </div>
                     )} 

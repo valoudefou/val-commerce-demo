@@ -38,9 +38,6 @@ export default function Confirmation() {
     if (currentProduct) {
       setData(JSON.parse(currentProduct));
     }
-    if (sendItemView.current === 0) {
-      window.location.href = '/products/checkout'
-    }
   }, []);
 
   useEffect(() => {
@@ -78,7 +75,7 @@ export default function Confirmation() {
 
   return (
     <>
-      <div onLoad={pushTransaction} className="confirmation mx-auto max-w-2xl px-4 sm:px-6 lg:max-w-7xl lg:px-8 mb-48 mt-16">
+      <div onLoad={pushTransaction} className="confirmation mx-auto max-w-2xl px-4 sm:px-6 lg:max-w-7xl lg:px-8 mb-24 mt-16 min-h-screen">
         <div className="flex items-center mx-4">
           <div className="svg-container">    
             <svg onClick={handleRedirect} className="cursor-pointer" xmlns="http://www.w3.org/2000/svg" height="48" width="48" viewBox="0 0 48 48" aria-hidden="true">

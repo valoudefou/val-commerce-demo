@@ -15,7 +15,11 @@ function MyApp({ Component, pageProps, initialFlagsData, initialVisitorData }) {
     const [isShown, setIsShown] = useState(false)
     const pathname = usePathname()
     const [path, setPath] = useAtom(pagePath)
-    setPath(pathname)
+
+    useEffect(() => {
+        setPath(pathname); // Update the atom state when `pathname` changes.
+        console.log(pathname);
+    }, [pathname, setPath]); // Dependencies to avoid unnecessary reruns.
 
     useEffect(() => {
         // Create a custom event

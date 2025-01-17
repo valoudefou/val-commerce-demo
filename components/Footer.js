@@ -41,9 +41,9 @@ const Footer = () => {
   }, [formData.email]);
 
   return (
-    <div className="bg-gray-900 text-white mt-auto">
-      <div className="p-6 ml-3">
-        <div className="container mx-auto pt-10 px-6 flex flex-col md:flex-col justify-between items-left">
+    <div className="bg-black text-white flex flex-col mt-auto">
+      <div className="p-6 ml-1">
+        <div className="container mx-auto pt-4 px-6 flex flex-col md:flex-col justify-between items-left">
           <h4 className="text-xl font-bold mb-2">Newsletter</h4>
           <p className="text-base text-gray-400 mb-4">Get the latest updates and offers.</p>
           {!formData.subscribed ? (
@@ -93,7 +93,7 @@ const Footer = () => {
             <p className="text-base text-[#5bb543] font-bold">{formData.message}</p>
           )}
           {formData.message && !formData.subscribed && (
-            <p className="mt-1 ml-1 text-left text-sm text-red-500">{formData.message}</p>
+            <p className="mt-1 ml-1 text-left text-base font-medium text-orange-500">{formData.message}</p>
           )}
         </div>
       </div>
