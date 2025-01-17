@@ -7,7 +7,6 @@ export const userContext = atom({ ["key"]: "value" });
 export default function Context() {
     const { updateContext } = useFlagship();
     const [context, setContext] = useAtom(userContext);
-
     const [step, setStep] = useState("key"); // Tracks if we're entering the "key" or "value"
     const [key, setKey] = useState(""); // Stores the key input
     const [value, setValue] = useState(""); // Stores the value input

@@ -4,6 +4,7 @@ import ProductCard from '/components/ProductCard'
 import { useSearchParams } from 'next/navigation'
 import { themeAtom } from "../pages/_app"
 import { useAtom } from "jotai"
+import Footer from './Footer'
 
 export default function SearchResults() {
     const [searchResults, useData] = useState([])
@@ -51,6 +52,7 @@ export default function SearchResults() {
                         ))}
                 </div>
             </div>
+            <Footer />
         </>
     )
 }

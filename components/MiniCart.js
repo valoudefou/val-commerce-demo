@@ -99,8 +99,8 @@ export default function MiniCart() {
                             )}
                             {cartContent && (
                                 <button onClick={handleClick} className="navbar-close ml-5">
-                                    <svg onClick={() => [handleRemoveItem()]} className="border-[0.5px] border-gray-400 rounded-xl h-5 w-5 text-gray-400 cursor-pointer" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1" d="M6 18L18 6M6 6l12 12"></path>
+                                    <svg onClick={() => [handleRemoveItem()]} className="p-0.5 border-[1.5px] border-gray-400 rounded-xl h-5 w-5 text-gray-400 cursor-pointer" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12"></path>
                                     </svg>
                                 </button>
                             )}
