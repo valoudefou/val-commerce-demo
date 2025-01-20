@@ -14,9 +14,16 @@ const Footer = () => {
 
   const handleSubmit = useCallback(async (e) => {
     e.preventDefault();
+  
+    // Check if the email field is empty
+    if (!formData.email.trim()) {
+      setFormData((prev) => ({ ...prev, message: "The field is empty." }));
+      return;
+    }
+  
     setIsLoading(true);
     setFormData((prev) => ({ ...prev, message: "" }));
-
+  
     try {
       const response = await fetch("https://live-server1.vercel.app/submit-email", {
         method: "POST",
@@ -25,9 +32,9 @@ const Footer = () => {
         },
         body: JSON.stringify({ email: formData.email }),
       });
-
+  
       const data = await response.json();
-
+  
       if (response.ok) {
         setFormData({ email: "", subscribed: true, message: data.message });
       } else {
@@ -39,13 +46,13 @@ const Footer = () => {
       setIsLoading(false);
     }
   }, [formData.email]);
-
+  
   return (
     <div className="bg-black text-white flex flex-col mt-auto">
       <div className="p-6 ml-1">
         <div className="container mx-auto pt-4 px-6 flex flex-col md:flex-col justify-between items-left">
-          <h4 className="text-xl font-bold mb-2">Newsletter</h4>
-          <p className="text-base text-gray-400 mb-4">Get the latest updates and offers.</p>
+          <h4 className="text-xl font-bold mb-2 px-1">Newsletter</h4>
+          <p className="text-base text-gray-400 mb-4 px-1">Get the latest updates and offers.</p>
           {!formData.subscribed ? (
             <div className="flex flex-col md:flex-row w-full md:w-auto">
               <input
@@ -53,7 +60,7 @@ const Footer = () => {
                 placeholder="Enter your email"
                 value={formData.email}
                 onChange={handleEmailChange}
-                className="w-full md:w-64 py-4 px-4 text-base rounded-2xl md:rounded-l-2xl md:rounded-r-none focus:outline-none text-gray-800"
+                className="w-full md:w-64 py-4 px-5 text-base rounded-2xl md:rounded-l-2xl md:rounded-r-none focus:outline-none text-gray-800"
               />
               <button
                 onClick={handleSubmit}

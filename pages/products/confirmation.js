@@ -173,7 +173,7 @@ export default function Confirmation() {
                 <div className="flex flex-col justify-start items-start flex-shrink-0">
                   <div className="flex justify-center w-full md:justify-start items-center space-x-4 py-8 border-b border-gray-200">
                     <div className="flex justify-start sm:items-start items-center flex-col space-y-2">
-                      <p className="text-base dark:text-white font-semibold leading-4 text-left text-gray-800">{confirmation.first_name ? confirmation.first_name : "Mystery"} {confirmation.last_name ? confirmation.last_name : "Client"}</p>
+                      <p className="text-base dark:text-white font-semibold leading-4 text-left text-gray-800">{confirmation.first_name ? confirmation.first_name : "Secret"} {confirmation.last_name ? confirmation.last_name : "client"}</p>
                       <p className="text-sm dark:text-gray-300 leading-5 text-gray-600">1 previous order</p>
                     </div>
                   </div>
