@@ -145,8 +145,7 @@ export default function Checkout() {
     }
   };  
 
-  const generateCard = (e) => {
-    e.preventDefault()
+  const generateCard = () => {
     if (!cardNumber) {
       setCardNumber([Math.floor(1000 + Math.random() * 9000) + ' ' + Math.floor(1000 + Math.random() * 9000) + ' ' + Math.floor(1000 + Math.random() * 9000) + ' ' + Math.floor(1000 + Math.random() * 9000), Math.floor(100 + Math.random() * 900), "10/27" , formData.first_name + ' ' + formData.last_name])
       window.dataLayer = window.dataLayer || []
@@ -170,7 +169,6 @@ export default function Checkout() {
 
   useEffect(() => {
     const errorList = []
-
     if (!formData.email) {
       errorList.push("email")
     }
@@ -197,7 +195,6 @@ export default function Checkout() {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-
     if (!fullAddressComponent) {
       setFullAddressComponent(!fullAddressComponent)
     }
@@ -255,6 +252,7 @@ export default function Checkout() {
     if (window.ABTasty !== undefined) {
       window?.ABTastyReload()
     }
+    generateCard()
     setDelivery([e.target.id, e.target.value, e.target.nextElementSibling.firstChild.firstChild.src, e.target.nextElementSibling.lastChild.firstChild.lastChild.innerText])
     window.dataLayer = window.dataLayer || []
     window.dataLayer.push({
@@ -310,7 +308,6 @@ export default function Checkout() {
 
   useEffect(() => {
     let timerId
-
     if (data) {
       timerId = setTimeout(() => {
         beginCheckout()
@@ -815,16 +812,16 @@ export default function Checkout() {
                           </div>
                         </label>
                         <div className="w-full my-6">
-                          <input onClick={(e) => generateCard(e)} type="text" id="card-number" className="select-none border-slate-300 outline-none border rounded-2xl w-full py-4 px-4 text-slate-300" readOnly={true} defaultValue={cardNumber[0]} placeholder="1111 1111 1111 1110" />
+                          <input type="text" id="card-number" className="select-none border-slate-300 outline-none border rounded-2xl w-full py-4 px-4 text-slate-300" readOnly={true} defaultValue={cardNumber[0]} placeholder="1111 1111 1111 1110" />
                           <div className="flex gap-x-2 my-4">
                             <div className="flex-1">
-                              <input onClick={(e) => generateCard(e)} type="text" id="card-date" className="select-none border-slate-300 outline-none border rounded-2xl w-full py-4 px-4 text-slate-300" readOnly={true} defaultValue={cardNumber[2]} placeholder="01/26" />
+                              <input type="text" id="card-date" className="select-none border-slate-300 outline-none border rounded-2xl w-full py-4 px-4 text-slate-300" readOnly={true} defaultValue={cardNumber[2]} placeholder="01/26" />
                             </div>
                             <div className="flex-1">
-                              <input onClick={(e) => generateCard(e)} type="text" id="card-crypto" className="select-none border-slate-300 outline-none border rounded-2xl w-full py-4 px-4 text-slate-300" readOnly={true} defaultValue={cardNumber[1]} placeholder="123" />
+                              <input type="text" id="card-crypto" className="select-none border-slate-300 outline-none border rounded-2xl w-full py-4 px-4 text-slate-300" readOnly={true} defaultValue={cardNumber[1]} placeholder="123" />
                             </div>
                           </div>
-                          <input onClick={(e) => generateCard(e)} type="text" id="card-name" className="select-none border-slate-300 outline-none border rounded-2xl w-full py-4 px-4 text-slate-300" readOnly={true} defaultValue={cardNumber[3]} placeholder="Mike Bee" />
+                          <input type="text" id="card-name" className="select-none border-slate-300 outline-none border rounded-2xl w-full py-4 px-4 text-slate-300" readOnly={true} defaultValue={cardNumber[3]} placeholder="Mike Bee" />
                           <div className="flex mt-7 justify-between">
                             <div>  
                               <h3 className="text-lg dark:text-white font-semibold leading-5 text-gray-800">Billing address</h3>
@@ -847,47 +844,47 @@ export default function Checkout() {
                         </div>
                       </div>
                       <div className="flex flex-col items-center w-full justify-center">
-                      <p className="mb-8 text-center leading-6">
-                        By submitting this order you are accepting our <br/>
-                        <a className="cursor-pointer underline text-amber-500" rel="noopener noreferrer" target="_blank">
-                          Terms and Conditions
-                        </a>
-                      </p>
-                      <button
-                        onClick={(e) => sendOrder(e)}
-                        className={`w-2/4 flex items-center justify-center font-medium bg-black text-white py-4 px-16 rounded-full hover:bg-neutral-800 ${loading ? 'opacity-50 cursor-not-allowed' : ''}`}
-                        disabled={loading}
-                      >
-                        {loading ? (
-                          <svg
-                            className="animate-spin h-5 w-5 text-white"
-                            xmlns="http://www.w3.org/2000/svg"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                          >
-                            <circle
-                              className="opacity-25"
-                              cx="12"
-                              cy="12"
-                              r="10"
-                              stroke="currentColor"
-                              strokeWidth="4"
-                            ></circle>
-                            <path
-                              className="opacity-75"
-                              fill="currentColor"
-                              d="M4 12a8 8 0 018-8v4a4 4 0 100 8v4a8 8 0 01-8-8z"
-                            ></path>
-                          </svg>
-                        ) : (
-                          <>
-                            <svg xmlns="http://www.w3.org/2000/svg" className="mx-2" width="20" height="20" viewBox="0 0 24 24" fill="#ffffff">
-                              <path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"></path>
+                        <p className="mb-8 text-center leading-6">
+                          By submitting this order you are accepting our <br/>
+                          <a className="cursor-pointer underline text-amber-500" rel="noopener noreferrer" target="_blank">
+                            Terms and Conditions
+                          </a>
+                        </p>
+                        <button
+                          onClick={(e) => sendOrder(e)}
+                          className={`w-2/4 flex items-center justify-center font-medium bg-black text-white py-4 w-48 rounded-full hover:bg-neutral-800 ${loading ? 'opacity-50 cursor-not-allowed' : ''}`}
+                          disabled={loading}
+                        >
+                          {loading ? (
+                            <svg
+                              className="animate-spin h-5 w-5 text-white"
+                              xmlns="http://www.w3.org/2000/svg"
+                              fill="none"
+                              viewBox="0 0 24 24"
+                            >
+                              <circle
+                                className="opacity-25"
+                                cx="12"
+                                cy="12"
+                                r="10"
+                                stroke="currentColor"
+                                strokeWidth="4"
+                              ></circle>
+                              <path
+                                className="opacity-75"
+                                fill="currentColor"
+                                d="M4 12a8 8 0 018-8v4a4 4 0 100 8v4a8 8 0 01-8-8z"
+                              ></path>
                             </svg>
-                            Pay Now
-                          </>
-                        )}
-                      </button>
+                          ) : (
+                            <>
+                              <svg xmlns="http://www.w3.org/2000/svg" className="mx-2" width="20" height="20" viewBox="0 0 24 24" fill="#ffffff">
+                                <path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"></path>
+                              </svg>
+                              Pay Now
+                            </>
+                          )}
+                        </button>
                       </div>
                     </div>
                   </div>

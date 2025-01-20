@@ -5,7 +5,7 @@ import { useState } from "react";
 export const userContext = atom({ ["key"]: "value" });
 
 export default function Context() {
-    const { updateContext } = useFlagship();
+    const { updateContext, clearContext } = useFlagship();
     const [context, setContext] = useAtom(userContext);
     const [step, setStep] = useState("key"); // Tracks if we're entering the "key" or "value"
     const [key, setKey] = useState(""); // Stores the key input
@@ -19,6 +19,7 @@ export default function Context() {
             setStep("value");
         } else if (step === "value") {
             if (value.trim() === "") return alert("Please enter a value");
+            clearContext();
             const newContext = { [key]: value };
             setContext(newContext);
             updateContext(newContext);
