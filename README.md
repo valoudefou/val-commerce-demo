@@ -2,7 +2,8 @@
 
 # AB Tasty React Next.js SPA App
 
-This app demonstrates AB Tasty's feature experimentation capabilities and product recommendation engine on a front-end e-commerce platform built as a single-page application (SPA) with server-side rendering (SSR). The goal is to dynamically enable features and recommendation logic by leveraging user context. User context includes details such as geolocation (e.g., "location" equals "UK") or user attributes (e.g., "visitor" equals "returning"), enabling personalized and targeted experiences.
+This app demonstrates AB Tasty's feature experimentation capabilities and product recommendation engine on a front-end e-commerce platform built as a single-page application (SPA) with server-side rendering (SSR). The goal is to dynamically enable features and recommendation logics from user information. 
+User information is passed as user context and can include details such as geolocation (e.g., "location" equals "UK") or user attributes (e.g., "visitor" equals "returning"), enabling personalized and targeted experiences.
 
 ## Features
 
@@ -20,6 +21,6 @@ Configuration in AB Tasty:
 
 <img src="https://assets-manager.abtasty.com/1ceff369b6cd9aceaa9ee318e6498167/config1.gif" alt="Shipping fee flag configuration in AB Tasty" width="950"/>
 
-#### Outcome:
+Outcome:
 
 <img src="https://assets-manager.abtasty.com/1ceff369b6cd9aceaa9ee318e6498167/ezgif-4-10839796ee.gif" alt="AB Tasty shipping fee flag demonstration" width="550"/>
