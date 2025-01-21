@@ -12,7 +12,7 @@ The following features will display in real time when the user meets the targeti
 
 | Flag | Type | Value    | User Context    |
 | :---: | :---:   | :---: | :---: |
-| The value of the following flag can be defined in AB Tasty `flagDeliveryFeeDpd`   | `integer` | `7.99` or any `integer` configured   | key `user` value `retuning` configured   |
+| The value can be defined in AB Tasty `flagDeliveryFeeDpd`   | `integer` | `7.99` or any `number`   | key `user` value `retuning` configured   |
 
 ### Demonstration
 
