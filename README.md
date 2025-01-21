@@ -12,7 +12,7 @@ The following features will display in real time when the user meets the targeti
 
 | Flag | Type | Value    | User Context    |
 | :---: | :---:   | :---: | :---: |
-| The value can be defined in AB Tasty `flagDeliveryFeeDpd`   | `integer` | `7.99` or any `number`   | key `user` value `retuning` configured   |
+| The value can be defined in AB Tasty `flagDeliveryFeeDpd`   | `integer` | `7.99` or any `number`   | key `user` value `retuning`   |
 
 ### Demonstration
 
@@ -20,6 +20,6 @@ Configuration in AB Tasty:
 
 <img src="https://assets-manager.abtasty.com/1ceff369b6cd9aceaa9ee318e6498167/config1.gif" alt="Shipping fee flag configuration in AB Tasty" width="950"/>
 
-Outcome:
+#### Outcome:
 
 <img src="https://assets-manager.abtasty.com/1ceff369b6cd9aceaa9ee318e6498167/ezgif-4-10839796ee.gif" alt="AB Tasty shipping fee flag demonstration" width="650"/>
