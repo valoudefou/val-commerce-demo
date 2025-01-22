@@ -56,7 +56,7 @@ const LoginPage = () => {
             />
           </div>
           {error && (
-            <p className="text-[#842029] text-sm text-center mb-4 py-2 bg-[#f8d7da] border border-[#f5c2c7] rounded-sm">
+            <p id="danger" className="text-[#842029] text-sm text-center mb-4 py-2 bg-[#f8d7da] border border-[#f5c2c7] rounded-sm">
               {error}
             </p>
           )}

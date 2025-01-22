@@ -8,7 +8,7 @@ const SuccessPage = () => {
         <h2 className="text-2xl font-bold text-center text-green-600">
           Login Successful!
         </h2>
-        <p className="text-center mt-4 text-gray-600">
+        <p className="text-center text-lg mt-2 text-gray-600">
           Welcome to your dashboard
         </p>
       </div>
