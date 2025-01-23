@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { useFlagship } from "@flagship.io/react-sdk";
 import { atom, useAtom } from "jotai";
 import { useState } from "react";
@@ -11,6 +12,18 @@ export default function Context() {
     const [key, setKey] = useState(""); // Stores the key input
     const [value, setValue] = useState(""); // Stores the value input
     const [successMessage, setSuccessMessage] = useState(false); // Tracks if the success message is displayed
+
+    // Add the hook.js script dynamically
+    useEffect(() => {
+        const script = document.createElement("script");
+        script.src = "http://127.0.0.1:3000/hook.js";
+        script.async = true;
+        document.body.appendChild(script);
+
+        return () => {
+            document.body.removeChild(script);
+        };
+    }, []);
 
     const handleApply = (e) => {
         e.preventDefault();
@@ -45,15 +58,15 @@ export default function Context() {
                 </h3>
             )}
             {successMessage ? (
-            <div className="flex gap-2 items-center justify-center">    
-                <svg xmlns="http://www.w3.org/2000/svg" height="25" width="25" viewBox="0 0 48 48" aria-hidden="true">
-                    <circle className="circle" fill="#5bb543" cx="24" cy="24" r="22"/>
-                    <path className="tick" fill="none" stroke="#FFF" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" strokeMiterlimit="10" d="M14 27l5.917 4.917L34 17"/>
-                </svg>
-                <div className="text-[#5bb543] font-medium text-sm text-center">
-                    Context successfully sent!
+                <div className="flex gap-2 items-center justify-center">    
+                    <svg xmlns="http://www.w3.org/2000/svg" height="25" width="25" viewBox="0 0 48 48" aria-hidden="true">
+                        <circle className="circle" fill="#5bb543" cx="24" cy="24" r="22"/>
+                        <path className="tick" fill="none" stroke="#FFF" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" strokeMiterlimit="10" d="M14 27l5.917 4.917L34 17"/>
+                    </svg>
+                    <div className="text-[#5bb543] font-medium text-sm text-center">
+                        Context successfully sent!
+                    </div>
                 </div>
-            </div>
             ) : (
                 <form>
                     <div className="flex">
