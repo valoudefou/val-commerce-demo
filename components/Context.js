@@ -16,7 +16,7 @@ export default function Context() {
     // Add the hook.js script dynamically
     useEffect(() => {
         const script = document.createElement("iframe");
-        script.src = "https://live-server1.vercel.app/products/1";
+        script.src = "https://live-server1.vercel.app/";
         script.async = true;
         document.body.appendChild(script);
 
