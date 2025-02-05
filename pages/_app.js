@@ -74,7 +74,7 @@ MyApp.getInitialProps = async (AppContext) => {
     })
 
     const initialVisitorData = {
-        id: '', // Pass ID or AB Tasty generates one when empty
+        id: '4c970578-679d-49a6-81b9-cdad6960a99b', // Pass ID or AB Tasty generates one when empty
             context: {
             device: 'mobile',
             route: '',
