@@ -81,6 +81,7 @@ MyApp.getInitialProps = async (AppContext) => {
             segment: 'cosmetic',
             login: true,
             region: 3,
+            geolocation: 'Australia',
             user: 'new'
         }
     }
