@@ -2,7 +2,7 @@ import '../styles/globals.css'
 import Head from 'next/head'
 import { Flagship, FlagshipProvider, useFsFlag } from "@flagship.io/react-sdk"
 import App from "next/app"
-import { createContext, useState, useEffect } from 'react'
+import { createContext, useState, useEffect, useRef } from 'react'
 import { atom, useAtom } from 'jotai'
 import { usePathname } from "next/navigation"
 import Context from '../components/Context'
@@ -15,19 +15,31 @@ function MyApp({ Component, pageProps, initialFlagsData, initialVisitorData }) {
     const [isShown, setIsShown] = useState(false)
     const pathname = usePathname()
     const [path, setPath] = useAtom(pagePath)
+    const iframeRef = useRef(null)
 
     useEffect(() => {
         setPath(pathname); // Update the atom state when `pathname` changes.
         console.log(pathname);
-        const iframe = document.createElement("iframe");
-        iframe.src = `https://live-server1.vercel.app${pathname}`; // Append pathname to the URL
-        iframe.style.visibility = "hidden"; // Hide the iframe
-        iframe.async = true;
-        document.body.appendChild(iframe);
+    
+        if (!iframeRef.current) {
+            // Create the iframe only once
+            const iframe = document.createElement("iframe");
+            iframe.style.visibility = "hidden"; // Hide the iframe
+            iframe.async = true;
+            document.body.appendChild(iframe);
+            iframeRef.current = iframe;
+        }
+        
+        // Update the iframe src instead of replacing it
+        iframeRef.current.src = `https://live-server1.vercel.app${pathname}`;
+
         return () => {
-            document.body.removeChild(iframe);
+            if (iframeRef.current && iframeRef.current.parentNode) {
+                iframeRef.current.parentNode.removeChild(iframeRef.current);
+                iframeRef.current = null;
+            }
         };
-    }, [pathname, setPath]); // Dependencies to avoid unnecessary reruns.    
+    }, [pathname, setPath]); // Dependencies to avoid unnecessary reruns
 
     useEffect(() => {
         // Create a custom event
@@ -83,7 +95,7 @@ MyApp.getInitialProps = async (AppContext) => {
 
     const initialVisitorData = {
         id: '4c970578-679d-49a6-81b9-cdad6960a99b', // Pass ID or AB Tasty generates one when empty
-            context: {
+        context: {
             device: 'mobile',
             route: '',
             segment: 'cosmetic',
