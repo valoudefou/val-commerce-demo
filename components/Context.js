@@ -13,17 +13,17 @@ export default function Context() {
     const [value, setValue] = useState(""); // Stores the value input
     const [successMessage, setSuccessMessage] = useState(false); // Tracks if the success message is displayed
 
-    useEffect(() => {
-        const iframe = document.createElement("iframe");
-        iframe.src = "https://live-server1.vercel.app/";
-        iframe.style.display = "none"; // Hide the iframe
-        iframe.async = true;
-        document.body.appendChild(iframe);
+    // useEffect(() => {
+    //     const iframe = document.createElement("iframe");
+    //     iframe.src = "https://live-server1.vercel.app/";
+    //     iframe.style.visibility = "hidden"; // Hide the iframe
+    //     iframe.async = true;
+    //     document.body.appendChild(iframe);
     
-        return () => {
-            document.body.removeChild(iframe);
-        };
-    }, []);
+    //     return () => {
+    //         document.body.removeChild(iframe);
+    //     };
+    // }, []);
 
     const handleApply = (e) => {
         e.preventDefault();

