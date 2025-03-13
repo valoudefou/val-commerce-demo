@@ -100,18 +100,21 @@ const Navbar = () => {
                     </div>
                     {products.length > 0 && (
                         <div className="absolute top-20 left-6 w-[90%] max-h-80 overflow-y-auto bg-white border border-gray-200 rounded-lg shadow-lg p-4">
-                            {products.map((product) => (
-                                product.id ? (
-                                    <div key={product.id} className="p-2 border-b last:border-b-0">
-                                        <Link href={`/products/${product.id}`} passHref>
-                                            <div className="block">
-                                                <p className="text-gray-900 font-medium">{product.title}</p>
-                                                <p className="text-sm text-gray-500">{product.price} USD</p>
-                                            </div>
-                                        </Link>
-                                    </div>
-                                ) : null
-                            ))}
+                            <div>
+                                <p className="text-gray-700 font-semibold mb-2 mt-2 p-2">We recommend...</p>
+                                {products.map((product) => (
+                                    product.id ? (
+                                        <div key={product.id} className="p-2 border-b last:border-b-0">
+                                            <Link href={`/products/${product.id}`} passHref>
+                                                <div className="block">
+                                                    <p className="text-gray-900 font-medium">{product.title}</p>
+                                                    <p className="text-sm text-gray-500">{product.price} USD</p>
+                                                </div>
+                                            </Link>
+                                        </div>
+                                    ) : null
+                                ))}
+                            </div>
                         </div>
                     )}
                 </form>
