@@ -1,4 +1,4 @@
-import { useState, useEffect, useContext } from "react"
+import { useState, useRef, useEffect, useContext } from "react"
 import { AppContext } from "../pages/_app"
 import { useRouter } from "next/navigation"
 import { useFsFlag } from "@flagship.io/react-sdk"
@@ -16,6 +16,32 @@ const Navbar = () => {
     const [searchQuery, setSearchQuery] = useState("")
     const router = useRouter()
     const [search, setSearch] = useAtom(themeAtom)
+    const [products, setProducts] = useState([]);
+    const totalCount = useRef(0);
+
+    useEffect(() => {
+        if (!searchQuery) {
+            setProducts([]);
+            return;
+        }
+
+        const fetchData = async () => {
+            try {
+                const response = await fetch(`https://dummyjson.com/products/search?q=${searchQuery}`);
+                const data = await response.json();
+                totalCount.current = data.total;
+                setProducts(data.products || []);
+            } catch (error) {
+                console.error("Error fetching products:", error);
+            }
+        };
+
+        const delayDebounce = setTimeout(() => {
+            fetchData();
+        }, 500); // Debounce API calls to avoid spam requests
+
+        return () => clearTimeout(delayDebounce);
+    }, [searchQuery]);
 
     const onSearch = (e) => {
         e.preventDefault()
@@ -72,6 +98,16 @@ const Navbar = () => {
                             <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
                         </svg>
                     </div>
+                    {products.length > 0 && (
+                    <div className="absolute top-20 left-6 w-[90%] max-h-80 overflow-y-auto bg-white border border-gray-200 rounded-lg shadow-lg p-4">
+                        {products.map((product) => (
+                            <div key={product.id} className="p-2 border-b last:border-b-0">
+                                <p className="text-gray-900 font-medium">{product.title}</p>
+                                <p className="text-sm text-gray-500">{product.price} USD</p>
+                            </div>
+                        ))}
+                    </div>
+                    )}
                 </form>
             )}
             <nav className="relative w-full z-20 flex flex-wrap items-center lg:justify-between sm:px-5 sm:py-1 px-2 py-1 bg-white border-b-[1px] border-gray-200">
