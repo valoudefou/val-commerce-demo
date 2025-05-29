@@ -140,7 +140,7 @@ export default function Product(props) {
                     <div id='ab-product' className='relative w-full'>
                         <div className="group relative overflow-hidden">
                             <Image
-                                alt="coffee"
+                                alt={props.product.title}
                                 className="rounded-lg object-scale-down self-center px-8 transition-transform duration-500 group-hover:scale-105"
                                 src={props.product.thumbnail}
                                 width={560}
