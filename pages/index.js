@@ -1,25 +1,38 @@
+import { useState, useEffect, useRef } from 'react'
 import ProductCard from '../components/ProductCard'
 import Footer from '../components/Footer'
 import Header from '../components/Header'
-import { useRef } from 'react'
 import Link from 'next/link'
-import { createClient } from 'contentful'
-import { useFsFlag } from "@flagship.io/react-sdk";
+import { useFsFlag } from "@flagship.io/react-sdk"
 
-export default function Index({ products }) {
-  let coffeeRef = useRef()
+export default function Index({ products: initialData }) {
+  const [products, setProducts] = useState(initialData.products)
+  const [limit, setLimit] = useState(20)
+  const [loadingMore, setLoadingMore] = useState(false)
+  const coffeeRef = useRef()
 
   const scrollHandler = (e) => {
     e.preventDefault()
-    coffeeRef.scrollIntoView({
-      behavior: 'smooth',
-      block: 'start',
-    })
+    coffeeRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' })
   }
 
-  // Get flag 
   const flagRedirectNextLinkVal = useFsFlag("flagRedirectNextLink")
   const flagRedirectNextLink = flagRedirectNextLinkVal.getValue("/categories/beauty")
+
+  const loadMore = async () => {
+    const newLimit = limit + 20
+    setLoadingMore(true)
+    try {
+      const res = await fetch(`https://live-server1.vercel.app/products/?limit=${newLimit}`)
+      const newData = await res.json()
+      setProducts(newData.products)
+      setLimit(newLimit)
+    } catch (err) {
+      console.error("Error loading more products:", err)
+    } finally {
+      setLoadingMore(false)
+    }
+  }
 
   return (
     <>
@@ -27,20 +40,26 @@ export default function Index({ products }) {
       <div className="mx-auto max-w-2xl px-4 sm:px-6 lg:max-w-7xl lg:px-8 mb-24 min-h-screen">
         <div className="sm:py-15 mx-auto max-w-7xl py-16 px-4 sm:px-6 lg:px-8">
           <div className="text-center">
-            <p
-              className="mt-1 text-3xl font-medium uppercase text-gray-900 sm:text-3xl sm:tracking-tight lg:text-3xl"
-              ref={(element) => (coffeeRef = element)}
-            >
-              <Link href={flagRedirectNextLink}>
-                Shop our products
-              </Link>
+            <p className="mt-1 text-3xl font-medium uppercase text-gray-900" ref={coffeeRef}>
+              <Link href={flagRedirectNextLink}>Shop our products</Link>
             </p>
           </div>
         </div>
+
         <div className="grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
-          {products.products.map((product) => (
+          {products.map((product) => (
             <ProductCard product={product} key={product.id} />
           ))}
+        </div>
+
+        <div className="mt-10 text-center">
+          <button
+            onClick={loadMore}
+            disabled={loadingMore}
+            className="inline-block rounded-full bg-slate-800 px-6 py-3 text-white font-medium hover:bg-slate-700 disabled:opacity-50"
+          >
+            {loadingMore ? 'Loading...' : 'Load More'}
+          </button>
         </div>
       </div>
       <Footer />
@@ -48,26 +67,13 @@ export default function Index({ products }) {
   )
 }
 
-export async function getServerSideProps(context) {
-  // Initialize Contentful client
-  const client = createClient({
-    space: process.env.NEXT_PUBLIC_SPACE,
-    accessToken: process.env.NEXT_PUBLIC_TOKEN,
-  })
-
-  // Fetch products from your API (assuming this is your own product endpoint)
-  const res = await fetch('https://live-server1.vercel.app/products/?limit=12')
+export async function getServerSideProps() {
+  const res = await fetch('https://live-server1.vercel.app/products/?limit=20')
   const data = await res.json()
-
-  // Fetch articles if needed (optional, based on your original code)
-  const art = await client.getEntries({
-    content_type: 'articles',
-  })
 
   return {
     props: {
       products: data,
-      articles: art.items, // Note: If you don’t use articles on this page, consider removing
     },
   }
 }
