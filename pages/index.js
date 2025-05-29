@@ -53,7 +53,7 @@ export async function getStaticProps() {
         space: (process.env.NEXT_PUBLIC_SPACE),
         accessToken: (process.env.NEXT_PUBLIC_TOKEN)
     })
-    const res = await fetch('https://live-server1.vercel.app/products')
+    const res = await fetch('https://live-server1.vercel.app/products/?limit=12')
     const data = await res.json()
     const art = await client.getEntries({
         content_type: 'articles'
