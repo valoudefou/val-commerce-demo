@@ -1,3 +1,4 @@
+// next.config.js
 module.exports = {
   images: {
     unoptimized: true, // Disable Vercel image optimization
@@ -10,6 +11,25 @@ module.exports = {
   },
   async headers() {
     return [
+      // Prevent caching on product pages
+      {
+        source: "/products(.*)", // This matches everything under /products
+        headers: [
+          {
+            key: "Cache-Control",
+            value: "no-store, no-cache, must-revalidate, proxy-revalidate, max-age=0"
+          },
+          {
+            key: "Pragma",
+            value: "no-cache"
+          },
+          {
+            key: "Expires",
+            value: "0"
+          }
+        ]
+      },
+      // Keep your existing API CORS config
       {
         source: "/api/(.*)",
         headers: [
