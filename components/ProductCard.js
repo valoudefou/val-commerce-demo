@@ -2,7 +2,6 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { useState } from 'react'
 import { HitType, useFlagship, useFsFlag } from "@flagship.io/react-sdk"
-import Footer from './Footer'
 
 function ProductCard( {product} ) {
     const fs = useFlagship()
@@ -21,7 +20,7 @@ function ProductCard( {product} ) {
                 <div className="rounded-2xl flex-1 aspect-w-1 aspect-h-1 w-full overflow-hidden bg-gray-200 xl:aspect-w-7 xl:aspect-h-8">
                     <Image
                         alt={product.title}
-                        src={product.images[0]}
+                        src={product.thumbnail}
                         layout='fill'
                         objectFit="cover"
                         className={cn(
