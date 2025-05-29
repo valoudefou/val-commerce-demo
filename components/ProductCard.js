@@ -22,7 +22,7 @@ function ProductCard( {product} ) {
                         alt={product.title}
                         src={product.thumbnail}
                         layout='fill'
-                        objectFit="cover"
+                        style={{ objectFit: 'cover' }}
                         className={cn(
                             'duration-700 ease-in-out group-hover:opacity-75',
                             isLoading
