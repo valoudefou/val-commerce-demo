@@ -40,7 +40,7 @@ export default function Index({ products: initialData }) {
       <div className="mx-auto max-w-2xl px-4 sm:px-6 lg:max-w-7xl lg:px-8 mb-24 min-h-screen">
         <div className="sm:py-15 mx-auto max-w-7xl py-16 px-4 sm:px-6 lg:px-8">
           <div className="text-center">
-            <p className="mt-1 text-3xl font-medium uppercase text-gray-900" ref={coffeeRef}>
+            <p className="mt-1 text-2xl font-medium uppercase text-gray-900" ref={coffeeRef}>
               <Link href={flagRedirectNextLink}>Shop our products</Link>
             </p>
           </div>
