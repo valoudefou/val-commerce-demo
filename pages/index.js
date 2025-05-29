@@ -6,9 +6,10 @@ import Link from 'next/link'
 import { useFsFlag } from "@flagship.io/react-sdk"
 
 export default function Index({ products = [] }) {
-  const [productList, setProductList] = useState(products);  // consistent state name
-  const [limit, setLimit] = useState(20);
+  const [productList, setProductList] = useState(products);
+  const [limit, setLimit] = useState(products.length || 12); // ✅ Dynamic initial limit
   const [loadingMore, setLoadingMore] = useState(false);
+  const [hasMore, setHasMore] = useState(true); // ✅ Track if more data available
   const coffeeRef = useRef()
 
   const scrollHandler = (e) => {
@@ -20,15 +21,31 @@ export default function Index({ products = [] }) {
   const flagRedirectNextLink = flagRedirectNextLinkVal.getValue("/categories/beauty")
 
   const loadMore = async () => {
+    if (loadingMore || !hasMore) return; // ✅ Prevent duplicate calls
+    
     const newLimit = limit + 20
     setLoadingMore(true)
+    
     try {
       const res = await fetch(`https://live-server1.vercel.app/products/?limit=${newLimit}`)
+      
+      if (!res.ok) {
+        throw new Error(`HTTP ${res.status}: ${res.statusText}`);
+      }
+      
       const newData = await res.json()
-      setProductList(newData.products)    // <-- use setProductList here
+      const newProducts = Array.isArray(newData.products) ? newData.products : [];
+      
+      // ✅ Check if we've reached the end
+      if (newProducts.length < newLimit || newProducts.length === productList.length) {
+        setHasMore(false);
+      }
+      
+      setProductList(newProducts)
       setLimit(newLimit)
     } catch (err) {
       console.error("Error loading more products:", err)
+      // ✅ Could show user-friendly error message
     } finally {
       setLoadingMore(false)
     }
@@ -47,20 +64,22 @@ export default function Index({ products = [] }) {
         </div>
 
         <div className="grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
-          {productList.map((product) => (      // <-- use productList here
+          {productList.map((product) => (
             <ProductCard product={product} key={product.id} />
           ))}
         </div>
 
-        <div className="mt-10 text-center">
-          <button
-            onClick={loadMore}
-            disabled={loadingMore}
-            className="inline-block rounded-full bg-slate-800 px-6 py-3 text-white font-medium hover:bg-slate-700 disabled:opacity-50"
-          >
-            {loadingMore ? 'Loading...' : 'Load More'}
-          </button>
-        </div>
+        {hasMore && (
+          <div className="mt-10 text-center">
+            <button
+              onClick={loadMore}
+              disabled={loadingMore}
+              className="inline-block rounded-full bg-slate-800 px-6 py-3 text-white font-medium hover:bg-slate-700 disabled:opacity-50"
+            >
+              {loadingMore ? 'Loading...' : 'Load More'}
+            </button>
+          </div>
+        )}
       </div>
       <Footer />
     </>
@@ -76,16 +95,18 @@ export async function getStaticProps() {
     }
 
     const data = await res.json();
-
     const products = Array.isArray(data.products) ? data.products : [];
 
     return {
       props: { products },
+      revalidate: 3600, // ✅ Regenerate every hour
     };
   } catch (error) {
     console.error('Error fetching products:', error.message);
     return {
       props: { products: [] },
+      revalidate: 60, // ✅ Retry in 1 minute on error
     };
   }
 }
+
