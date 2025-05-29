@@ -68,7 +68,7 @@ export default function Index({ products: initialData }) {
 }
 
 export async function getServerSideProps() {
-  const res = await fetch('https://live-server1.vercel.app/products/?limit=20')
+  const res = await fetch('https://live-server1.vercel.app/products/?limit=8')
   const data = await res.json()
 
   return {
