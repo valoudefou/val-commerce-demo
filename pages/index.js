@@ -6,7 +6,7 @@ import Link from 'next/link'
 import { useFsFlag } from "@flagship.io/react-sdk"
 
 export default function Index({ products = [] }) {
-  const [productList, setProductList] = useState(products); // Rename to avoid collision
+  const [productList, setProductList] = useState(products);  // consistent state name
   const [limit, setLimit] = useState(20);
   const [loadingMore, setLoadingMore] = useState(false);
   const coffeeRef = useRef()
@@ -25,7 +25,7 @@ export default function Index({ products = [] }) {
     try {
       const res = await fetch(`https://live-server1.vercel.app/products/?limit=${newLimit}`)
       const newData = await res.json()
-      setProducts(newData.products)
+      setProductList(newData.products)    // <-- use setProductList here
       setLimit(newLimit)
     } catch (err) {
       console.error("Error loading more products:", err)
@@ -47,7 +47,7 @@ export default function Index({ products = [] }) {
         </div>
 
         <div className="grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
-          {products.map((product) => (
+          {productList.map((product) => (      // <-- use productList here
             <ProductCard product={product} key={product.id} />
           ))}
         </div>
