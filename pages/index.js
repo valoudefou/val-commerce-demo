@@ -67,13 +67,23 @@ export default function Index({ products: initialData }) {
   )
 }
 
-export async function getServerSideProps() {
-  const res = await fetch('https://live-server1.vercel.app/products/?limit=8')
-  const data = await res.json()
+export async function getStaticProps() {
+  try {
+    const res = await fetch('https://live-server1.vercel.app/products/?limit=12');
 
-  return {
-    props: {
-      products: data,
-    },
+    if (!res.ok) {
+      throw new Error(`Failed to fetch: ${res.status}`);
+    }
+
+    const data = await res.json();
+
+    return {
+      props: { products: data },
+    };
+  } catch (error) {
+    console.error('Error fetching products:', error.message);
+    return {
+      props: { products: [] }, // or set error fallback
+    };
   }
 }
