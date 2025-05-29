@@ -115,7 +115,7 @@ export default function ProductRecs() {
 
     return (
         <div className="flex-col pt-10 pb-60 relative px-4 sm:px-6 lg:px-8">
-            <h2 className="mt-1 flex justify-center text-3xl uppercase text-gray-900 sm:text-3xl sm:tracking-tight lg:text-3xl">
+            <h2 className="mt-1 text-3xl font-medium text-center uppercase text-gray-900 sm:text-3xl lg:text-3xl leading-relaxed">
                 {rec.name}
             </h2>
             <Slider {...settings} className="mt-6">
