@@ -88,10 +88,15 @@ export default function Index({ products = [] }) {
 
 export async function getStaticProps() {
   try {
-    const res = await fetch('https://live-server1.vercel.app/products/?limit=12');
+    const res = await fetch('https://live-server1.vercel.app/products/?limit=12', {
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      }
+    });
 
     if (!res.ok) {
-      throw new Error(`Failed to fetch: ${res.status}`);
+      throw new Error(`Failed to fetch: ${res.status} ${res.statusText}`);
     }
 
     const data = await res.json();
@@ -99,14 +104,15 @@ export async function getStaticProps() {
 
     return {
       props: { products },
-      revalidate: 3600, // ✅ Regenerate every hour
+      revalidate: 3600, // ✅ Keep ISR for reliability
     };
   } catch (error) {
     console.error('Error fetching products:', error.message);
     return {
       props: { products: [] },
-      revalidate: 60, // ✅ Retry in 1 minute on error
+      revalidate: 60, // ✅ Retry soon on error
     };
   }
 }
+
 
