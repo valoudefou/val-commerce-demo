@@ -183,12 +183,9 @@ export default function Product({ product }) {
     </div>
   );
 }
-
 export async function getStaticPaths() {
   const res = await fetch('https://live-server1.vercel.app/products');
   const data = await res.json();
-
-  console.log("Fetched product data:", data); // Debugging
 
   const products = Array.isArray(data) ? data : data.products;
 
@@ -197,13 +194,13 @@ export async function getStaticPaths() {
   }
 
   const paths = products
-    .filter(product => product.slug)
+    .filter(product => product.id !== undefined)
     .map(product => ({
-      params: { slug: String(product.slug) }
+      params: { id: String(product.id) }
     }));
 
   if (paths.length === 0) {
-    throw new Error('No valid slugs found in products');
+    throw new Error('No valid IDs found in products');
   }
 
   return {
