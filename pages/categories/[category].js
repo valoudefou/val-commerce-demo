@@ -53,7 +53,7 @@ export default function CategoryPage({ products, categories, category }) {
 
 export async function getStaticPaths() {
     // Fetch all products to extract unique categories
-    const res = await fetch('https://dummyjson.com/products?limit=0');
+    const res = await fetch('https://live-server1.vercel.app/products');
     const data = await res.json();
     const categories = Array.from(new Set(data.products.map((product) => product.category)));
 
@@ -69,7 +69,7 @@ export async function getStaticProps({ params }) {
     const { category } = params;
 
     // Fetch all products
-    const res = await fetch('https://dummyjson.com/products?limit=0');
+    const res = await fetch('https://live-server1.vercel.app/products');
     const data = await res.json();
 
     // If category is selected, filter products based on the category

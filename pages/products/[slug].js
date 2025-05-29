@@ -38,7 +38,7 @@ export default function Product(props) {
                 title: props.product.title,
                 price: props.product.price,
                 category: props.product.category,
-                image: props.product.images[0],
+                image: props.product.thumbnail,
             };
     
             window.dataLayer = window.dataLayer || [];
@@ -73,7 +73,7 @@ export default function Product(props) {
             "productCategory": props.product.category,
             "productTitle": props.product.title, 
             "productPrice": props.product.price,
-            "productImage": props.product.images[0],
+            "productImage": props.product.thumbnail,
             "productQuantity": 1,
             "transactionId": transactionId,
             "date": today,
@@ -142,7 +142,7 @@ export default function Product(props) {
                             <Image
                                 alt="coffee"
                                 className="rounded-lg object-scale-down self-center px-8 transition-transform duration-500 group-hover:scale-105"
-                                src={props.product.images[0]}
+                                src={props.product.thumbnail}
                                 width={560}
                                 height={640}
                             />
@@ -157,7 +157,7 @@ export default function Product(props) {
                         </h1>
                         <div className="flex items-center pt-3">
                             {Array.from({ length: 5 }).map((_, index) => {
-                                const rating = props.product.reviews[0].rating;
+                                const rating = 5;
                                 const isFullStar = index + 1 <= Math.floor(rating);
                                 const isHalfStar = index + 1 === Math.ceil(rating) && !Number.isInteger(rating);
 
@@ -233,23 +233,53 @@ export default function Product(props) {
     );
 }
 
-export async function getStaticProps(context) {
-    const { params } = context;
-    const res = await fetch(`https://dummyjson.com/products/${params.slug}`);
+// pages/products/[slug].js
+
+export async function getStaticProps({ params }) {
+  try {
+    const res = await fetch(`https://live-server1.vercel.app/products/${params.slug}`);
+    
+    if (!res.ok) {
+      return { notFound: true };
+    }
+
     const data = await res.json();
 
     return {
-        props: {
-            product: data,
-        },
+      props: {
+        product: data,
+      },
+      revalidate: 60, // optional, for ISR
     };
+  } catch (error) {
+    console.error('getStaticProps error:', error);
+    return { notFound: true };
+  }
 }
 
 export async function getStaticPaths() {
+  try {
+    const res = await fetch('https://live-server1.vercel.app/products');
+
+    if (!res.ok) {
+      return { paths: [], fallback: 'blocking' };
+    }
+
+    const products = await res.json();
+
+    const paths = products.map((product) => ({
+      params: { slug: product.id.toString() }, // Adjust if using a real slug
+    }));
+
     return {
-        paths: [{ 
-            params: { slug: '1'} 
-        }],
-        fallback: true
+      paths,
+      fallback: 'blocking',
     };
+  } catch (error) {
+    console.error('getStaticPaths error:', error);
+    return {
+      paths: [],
+      fallback: 'blocking',
+    };
+  }
 }
