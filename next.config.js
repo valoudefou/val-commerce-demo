@@ -1,5 +1,6 @@
 module.exports = {
   images: {
+    unoptimized: true, // Disable Vercel image optimization
     remotePatterns: [
       {
         protocol: 'https',

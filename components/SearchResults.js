@@ -15,13 +15,13 @@ export default function SearchResults() {
     const [newSearch, setSearch] = useAtom(themeAtom)
     const [message, setMessage] = useState('Searching products...')
       
-    useEffect(() => {
-        const timeoutId = setTimeout(() => {
-            setMessage('No products found')
-        }, 2000)
+    // useEffect(() => {
+    //     const timeoutId = setTimeout(() => {
+    //         setMessage('No products found')
+    //     }, 2000)
 
-        return () => clearTimeout(timeoutId)
-    }, [])
+    //     return () => clearTimeout(timeoutId)
+    // }, [])
 
     useEffect(() => {
         const getData = async () => {
