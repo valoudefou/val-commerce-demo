@@ -44,7 +44,7 @@ export default function CategoryPage({ products, categories, category }) {
                             <ProductCard product={product} key={product.id} />
                         ))
                     ) : (
-                        <p>No products found in this category.</p>
+                        <p></p>
                     )}
                 </div>
             </div>
