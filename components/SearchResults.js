@@ -7,29 +7,19 @@ import { useAtom } from "jotai"
 import Footer from './Footer'
 
 export default function SearchResults() {
-    const [searchResults, useData] = useState([])
+    const [searchResults, setSearchResults] = useState([])
     const totalCount = useRef(0)
     const search = useSearchParams()
     const searchQuery = search ? search?.get('q') : null
-    // const encodedSearchQuery = encodeURI(searchQuery || "")
     const [newSearch, setSearch] = useAtom(themeAtom)
-    const [message, setMessage] = useState('Searching products...')
-      
-    // useEffect(() => {
-    //     const timeoutId = setTimeout(() => {
-    //         setMessage('No products found')
-    //     }, 2000)
-
-    //     return () => clearTimeout(timeoutId)
-    // }, [])
+    const [message, setMessage] = useState('Search results')
 
     useEffect(() => {
         const getData = async () => {
-            let response
-            response = await fetch(`https://live-server1.vercel.app/products/search?q=${searchQuery}`)
+            const response = await fetch(`https://live-server1.vercel.app/products/search?q=${searchQuery}`)
             const data = await response.json()
             totalCount.current = data.total
-            useData(data)
+            setSearchResults(data)
             setSearch(true)
         }
         getData()
@@ -47,9 +37,9 @@ export default function SearchResults() {
                     </div>
                 </div>
                 <div className="grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
-                        {searchResults.products?.map((product) => (
-                            <ProductCard product={product} key={product.id} className="cursor-pointer py-3 px-5 border-b hover:bg-slate-100" />
-                        ))}
+                    {searchResults.products?.map((product) => (
+                        <ProductCard product={product} key={product.id} className="cursor-pointer py-3 px-5 border-b hover:bg-slate-100" />
+                    ))}
                 </div>
             </div>
             <Footer />
