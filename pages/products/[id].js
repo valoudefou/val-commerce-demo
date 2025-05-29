@@ -183,38 +183,43 @@ export default function Product({ product }) {
     </div>
   );
 }
+
 export async function getStaticPaths() {
   const res = await fetch('https://live-server1.vercel.app/products');
-  const data = await res.json();
 
-  const products = Array.isArray(data) ? data : data.products;
+  if (!res.ok) {
+    throw new Error(`Failed to fetch products: ${res.statusText}`);
+  }
+
+  const data = await res.json();
+  const products = data.products; // ✅ properly access the array
 
   if (!Array.isArray(products)) {
-    throw new Error('Products is not an array');
+    throw new Error('Expected products to be an array');
   }
 
-  const paths = products
-    .filter(product => product.id !== undefined)
-    .map(product => ({
-      params: { id: String(product.id) }
-    }));
-
-  if (paths.length === 0) {
-    throw new Error('No valid IDs found in products');
-  }
+  const paths = products.map(product => ({
+    params: { id: String(product.id) }, // ✅ id must be a string
+  }));
 
   return {
     paths,
-    fallback: false
+    fallback: false,
   };
 }
 
 export async function getStaticProps({ params }) {
   const res = await fetch(`https://live-server1.vercel.app/products/${params.id}`);
+
+  if (!res.ok) {
+    return {
+      notFound: true,
+    };
+  }
+
   const product = await res.json();
 
   return {
-    props: { product }
+    props: { product },
   };
 }
-
