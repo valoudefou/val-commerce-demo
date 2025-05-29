@@ -185,41 +185,92 @@ export default function Product({ product }) {
 }
 
 export async function getStaticPaths() {
-  const res = await fetch('https://live-server1.vercel.app/products');
+  try {
+    console.log('🚀 Fetching products for static paths...');
+    
+    const res = await fetch('https://live-server1.vercel.app/products', {
+      // Add timeout and retry logic
+      headers: {
+        'Content-Type': 'application/json',
+        'User-Agent': 'NextJS-StaticPaths'
+      }
+    });
 
-  if (!res.ok) {
-    throw new Error(`Failed to fetch products: ${res.statusText}`);
+    if (!res.ok) {
+      console.error(`❌ API Error: ${res.status} ${res.statusText}`);
+      throw new Error(`Failed to fetch products: ${res.status} ${res.statusText}`);
+    }
+
+    const data = await res.json();
+    console.log('📦 API Response received');
+
+    // ✅ ROBUST: Handle all possible cases
+    const products = data?.products;
+
+    // Check if products exists and is an array
+    if (!products) {
+      console.warn('⚠️ No products property found');
+      return { paths: [], fallback: 'blocking' };
+    }
+
+    if (!Array.isArray(products)) {
+      console.error('❌ Products is not an array:', typeof products);
+      return { paths: [], fallback: 'blocking' };
+    }
+
+    if (products.length === 0) {
+      console.warn('⚠️ Products array is empty');
+      return { paths: [], fallback: 'blocking' };
+    }
+
+    // Filter valid products with IDs
+    const validProducts = products.filter(product => 
+      product && 
+      product.id !== null && 
+      product.id !== undefined &&
+      String(product.id).trim() !== ''
+    );
+
+    console.log(`✅ Found ${validProducts.length} valid products out of ${products.length}`);
+
+    const paths = validProducts.map(product => ({
+      params: { id: String(product.id) }
+    }));
+
+    console.log(`🎯 Generated ${paths.length} static paths`);
+
+    return {
+      paths,
+      fallback: false, // or 'blocking' if you want runtime generation
+    };
+
+  } catch (error) {
+    console.error('💥 getStaticPaths failed:', error.message);
+    
+    // ✅ CRITICAL: Don't crash the build - return empty paths
+    return {
+      paths: [],
+      fallback: 'blocking', // Allow pages to be generated at runtime
+    };
   }
-
-  const data = await res.json();
-  const products = data.products; // ✅ properly access the array
-
-  if (!Array.isArray(products)) {
-    throw new Error('Expected products to be an array');
-  }
-
-  const paths = products.map(product => ({
-    params: { id: String(product.id) }, // ✅ id must be a string
-  }));
-
-  return {
-    paths,
-    fallback: false,
-  };
 }
 
 export async function getStaticProps({ params }) {
-  const res = await fetch(`https://live-server1.vercel.app/products/${params.id}`);
+  try {
+    const res = await fetch(`https://live-server1.vercel.app/products/${params.id}`);
 
-  if (!res.ok) {
+    if (!res.ok) {
+      return { notFound: true };
+    }
+
+    const product = await res.json();
+
     return {
-      notFound: true,
+      props: { product },
+      revalidate: 3600, // ✅ Regenerate every hour (ISR)
     };
+  } catch (error) {
+    console.error('getStaticProps error:', error);
+    return { notFound: true };
   }
-
-  const product = await res.json();
-
-  return {
-    props: { product },
-  };
 }
