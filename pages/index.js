@@ -5,10 +5,10 @@ import Header from '../components/Header'
 import Link from 'next/link'
 import { useFsFlag } from "@flagship.io/react-sdk"
 
-export default function Index({ products: initialData }) {
-  const [products, setProducts] = useState(initialData.products)
-  const [limit, setLimit] = useState(20)
-  const [loadingMore, setLoadingMore] = useState(false)
+export default function Index({ products = [] }) {
+  const [productList, setProductList] = useState(products); // Rename to avoid collision
+  const [limit, setLimit] = useState(20);
+  const [loadingMore, setLoadingMore] = useState(false);
   const coffeeRef = useRef()
 
   const scrollHandler = (e) => {
@@ -77,13 +77,15 @@ export async function getStaticProps() {
 
     const data = await res.json();
 
+    const products = Array.isArray(data.products) ? data.products : [];
+
     return {
-      props: { products: data },
+      props: { products },
     };
   } catch (error) {
     console.error('Error fetching products:', error.message);
     return {
-      props: { products: [] }, // or set error fallback
+      props: { products: [] },
     };
   }
 }
