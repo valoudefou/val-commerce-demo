@@ -26,7 +26,7 @@ export default function SearchResults() {
     useEffect(() => {
         const getData = async () => {
             let response
-            response = await fetch(`https://dummyjson.com/products/search?q=${searchQuery}`)
+            response = await fetch(`https://live-server1.vercel.app/products/search?q=${searchQuery}`)
             const data = await response.json()
             totalCount.current = data.total
             useData(data)
