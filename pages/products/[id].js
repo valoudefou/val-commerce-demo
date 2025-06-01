@@ -114,8 +114,9 @@ export default function Product({ product }) {
   const paymentFeature1ClickVal = useFsFlag('paymentFeature1Click');
   const paymentFeature1Click = paymentFeature1ClickVal.getValue(false);
 
+  // ✅ FIXED: Fallback handling now matches the fallback strategy
   if (router.isFallback) {
-    return <div className='flex justify-center h-screen items-center text-4xl font-thin invisible'>Loading...</div>;
+    return <div className='flex justify-center h-screen items-center text-4xl font-thin'>Loading...</div>;
   }
 
   return (
@@ -184,16 +185,18 @@ export default function Product({ product }) {
   );
 }
 
+// ✅ FIXED: Improved error handling and fallback strategy
 export async function getStaticPaths() {
   try {
     console.log('🚀 Fetching products for static paths...');
     
     const res = await fetch('https://live-server1.vercel.app/products', {
-      // Add timeout and retry logic
       headers: {
         'Content-Type': 'application/json',
         'User-Agent': 'NextJS-StaticPaths'
-      }
+      },
+      // ✅ ADDED: Timeout to prevent hanging builds
+      signal: AbortSignal.timeout(15000) // 15 second timeout
     });
 
     if (!res.ok) {
@@ -204,23 +207,14 @@ export async function getStaticPaths() {
     const data = await res.json();
     console.log('📦 API Response received');
 
-    // ✅ ROBUST: Handle all possible cases
     const products = data?.products;
 
-    // Check if products exists and is an array
-    if (!products) {
-      console.warn('⚠️ No products property found');
-      return { paths: [], fallback: 'blocking' };
-    }
-
-    if (!Array.isArray(products)) {
-      console.error('❌ Products is not an array:', typeof products);
-      return { paths: [], fallback: 'blocking' };
-    }
-
-    if (products.length === 0) {
-      console.warn('⚠️ Products array is empty');
-      return { paths: [], fallback: 'blocking' };
+    if (!products || !Array.isArray(products) || products.length === 0) {
+      console.warn('⚠ No valid products found, using fallback strategy');
+      return { 
+        paths: [], 
+        fallback: 'blocking' // ✅ CHANGED: Allow runtime generation
+      };
     }
 
     // Filter valid products with IDs
@@ -233,44 +227,81 @@ export async function getStaticPaths() {
 
     console.log(`✅ Found ${validProducts.length} valid products out of ${products.length}`);
 
-    const paths = validProducts.map(product => ({
+    // ✅ IMPROVED: Only pre-generate popular products to reduce build time
+    const priorityPaths = validProducts.slice(0, 50).map(product => ({
       params: { id: String(product.id) }
     }));
 
-    console.log(`🎯 Generated ${paths.length} static paths`);
+    console.log(`🎯 Generated ${priorityPaths.length} static paths`);
 
     return {
-      paths,
-      fallback: false, // or 'blocking' if you want runtime generation
+      paths: priorityPaths,
+      fallback: 'blocking', // ✅ FIXED: Changed from false to blocking
     };
 
   } catch (error) {
     console.error('💥 getStaticPaths failed:', error.message);
     
-    // ✅ CRITICAL: Don't crash the build - return empty paths
+    // ✅ CRITICAL: Don't crash the build - return empty paths with fallback
     return {
       paths: [],
-      fallback: 'blocking', // Allow pages to be generated at runtime
+      fallback: 'blocking', // ✅ Allow all pages to be generated at runtime
     };
   }
 }
 
+// ✅ FIXED: Added retry logic and better error handling
 export async function getStaticProps({ params }) {
-  try {
-    const res = await fetch(`https://live-server1.vercel.app/products/${params.id}`);
+  const maxRetries = 3;
+  let lastError;
 
-    if (!res.ok) {
-      return { notFound: true };
+  for (let attempt = 1; attempt <= maxRetries; attempt++) {
+    try {
+      console.log(`🔍 Attempt ${attempt} for product ${params.id}`);
+      
+      const res = await fetch(`https://live-server1.vercel.app/products/${params.id}`, {
+        headers: {
+          'Content-Type': 'application/json',
+          'User-Agent': 'NextJS-GetStaticProps'
+        },
+        // ✅ ADDED: Timeout to prevent hanging requests
+        signal: AbortSignal.timeout(10000) // 10 second timeout
+      });
+
+      if (!res.ok) {
+        if (res.status === 404) {
+          console.log(`❌ Product ${params.id} not found (404)`);
+          return { notFound: true };
+        }
+        throw new Error(`HTTP ${res.status}: ${res.statusText}`);
+      }
+
+      const product = await res.json();
+
+      // ✅ ADDED: Validate product data
+      if (!product || !product.id) {
+        console.log(`❌ Invalid product data for ${params.id}`);
+        return { notFound: true };
+      }
+
+      console.log(`✅ Successfully fetched product ${params.id}`);
+
+      return {
+        props: { product },
+        revalidate: 3600, // ✅ Regenerate every hour (ISR)
+      };
+
+    } catch (error) {
+      console.error(`❌ Attempt ${attempt} failed for product ${params.id}:`, error.message);
+      lastError = error;
+      
+      // ✅ ADDED: Wait before retry (exponential backoff)
+      if (attempt < maxRetries) {
+        await new Promise(resolve => setTimeout(resolve, 1000 * attempt));
+      }
     }
-
-    const product = await res.json();
-
-    return {
-      props: { product },
-      revalidate: 3600, // ✅ Regenerate every hour (ISR)
-    };
-  } catch (error) {
-    console.error('getStaticProps error:', error);
-    return { notFound: true };
   }
+
+  console.error(`💥 All attempts failed for product ${params.id}:`, lastError.message);
+  return { notFound: true };
 }
