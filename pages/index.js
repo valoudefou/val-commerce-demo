@@ -7,49 +7,45 @@ import { useFsFlag } from "@flagship.io/react-sdk"
 
 export default function Index({ products = [] }) {
   const [productList, setProductList] = useState(products);
-  const [limit, setLimit] = useState(products.length || 12); // ✅ Dynamic initial limit
   const [loadingMore, setLoadingMore] = useState(false);
-  const [hasMore, setHasMore] = useState(true); // ✅ Track if more data available
-  const coffeeRef = useRef()
+  const [hasMore, setHasMore] = useState(true);
+  const coffeeRef = useRef();
 
   const scrollHandler = (e) => {
-    e.preventDefault()
-    coffeeRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' })
-  }
+    e.preventDefault();
+    coffeeRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  };
 
-  const flagRedirectNextLinkVal = useFsFlag("flagRedirectNextLink")
-  const flagRedirectNextLink = flagRedirectNextLinkVal.getValue("/categories/beauty")
+  const flagRedirectNextLinkVal = useFsFlag("flagRedirectNextLink");
+  const flagRedirectNextLink = flagRedirectNextLinkVal.getValue("/categories/beauty");
 
   const loadMore = async () => {
-    if (loadingMore || !hasMore) return; // ✅ Prevent duplicate calls
-    
-    const newLimit = limit + 20
-    setLoadingMore(true)
-    
+    if (loadingMore || !hasMore) return;
+
+    setLoadingMore(true);
     try {
-      const res = await fetch(`https://live-server1.vercel.app/products/?limit=${newLimit}`)
-      
+      const offset = productList.length;
+      const limit = 20;
+      const res = await fetch(`https://live-server1.vercel.app/products/?limit=${limit}&offset=${offset}`);
+
       if (!res.ok) {
         throw new Error(`HTTP ${res.status}: ${res.statusText}`);
       }
-      
-      const newData = await res.json()
+
+      const newData = await res.json();
       const newProducts = Array.isArray(newData.products) ? newData.products : [];
-      
-      // ✅ Check if we've reached the end
-      if (newProducts.length < newLimit || newProducts.length === productList.length) {
+
+      if (newProducts.length === 0) {
         setHasMore(false);
+      } else {
+        setProductList(prev => [...prev, ...newProducts]);
       }
-      
-      setProductList(newProducts)
-      setLimit(newLimit)
     } catch (err) {
-      console.error("Error loading more products:", err)
-      // ✅ Could show user-friendly error message
+      console.error("Error loading more products:", err);
     } finally {
-      setLoadingMore(false)
+      setLoadingMore(false);
     }
-  }
+  };
 
   return (
     <>
@@ -83,12 +79,12 @@ export default function Index({ products = [] }) {
       </div>
       <Footer />
     </>
-  )
+  );
 }
 
 export async function getStaticProps() {
   try {
-    const res = await fetch('https://live-server1.vercel.app/products/?limit=12', {
+    const res = await fetch('https://live-server1.vercel.app/products/?limit=20&offset=0', {
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json',
@@ -104,15 +100,13 @@ export async function getStaticProps() {
 
     return {
       props: { products },
-      revalidate: 3600, // ✅ Keep ISR for reliability
+      revalidate: 3600,
     };
   } catch (error) {
     console.error('Error fetching products:', error.message);
     return {
       props: { products: [] },
-      revalidate: 60, // ✅ Retry soon on error
+      revalidate: 60,
     };
   }
 }
-
-
