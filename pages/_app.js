@@ -41,15 +41,15 @@ function MyApp({ Component, pageProps, initialFlagsData, initialVisitorData }) {
         };
     }, [pathname, setPath]); // Dependencies to avoid unnecessary reruns
 
-    useEffect(() => {
-        // Create a custom event
-        const customEvent = new CustomEvent('spaDetection', {
-            detail: { message: 'SPA' },
-        });
+    // useEffect(() => {
+    //     // Create a custom event
+    //     const customEvent = new CustomEvent('spaDetection', {
+    //         detail: { message: 'SPA' },
+    //     });
 
-        // Dispatch the event on the window object
-        window.dispatchEvent(customEvent);
-    }, [path]);
+    //     // Dispatch the event on the window object
+    //     window.dispatchEvent(customEvent);
+    // }, [path]);
 
     // Get flag 
     const flagIndustryVal = useFsFlag("flagIndustry")
