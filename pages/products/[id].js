@@ -8,6 +8,7 @@ import Footer from '../../components/Footer';
 import { useAtom } from 'jotai';
 import { pagePath } from '/pages/_app';
 import { AppContext } from '/pages/_app';
+import { pushToDataLayer } from '../../utils/analytics';
 
 export default function Product({ product }) {
   const [data, setData] = useState('');
@@ -34,10 +35,9 @@ export default function Product({ product }) {
         image: product.thumbnail,
       };
 
-      window.dataLayer = window.dataLayer || [];
       if (window.ABTasty) window.ABTastyReload();
 
-      window.dataLayer.push({
+      pushToDataLayer({
         event: 'view_item',
         info: possibleLabel[Math.floor(Math.random() * possibleLabel.length)],
         ecommerce: {
@@ -73,9 +73,8 @@ export default function Product({ product }) {
     };
 
     localStorage.setItem('currentProduct', JSON.stringify(productData));
-    window.dataLayer = window.dataLayer || [];
 
-    window.dataLayer.push({
+    pushToDataLayer({
       event: 'add_to_cart',
       ecommerce: {
         currency: 'EUR',

@@ -1,11 +1,12 @@
-import '../styles/globals.css'
-import Head from 'next/head'
-import { Flagship, FlagshipProvider, useFsFlag } from "@flagship.io/react-sdk"
-import App from "next/app"
-import { createContext, useState, useEffect, useRef } from 'react'
-import { atom, useAtom } from 'jotai'
-import { usePathname } from "next/navigation"
-import Context from '../components/Context'
+import '../styles/globals.css';
+import Head from 'next/head';
+import { Flagship, FlagshipProvider, useFsFlag } from "@flagship.io/react-sdk";
+import App from "next/app";
+import { createContext, useState, useEffect, useRef } from 'react';
+import { atom, useAtom } from 'jotai';
+import { usePathname } from "next/navigation";
+import Context from '../components/Context';
+import { pushToDataLayer } from '../utils/analytics';
 
 export const AppContext = createContext()
 export const themeAtom = atom(false)
@@ -64,7 +65,7 @@ function MyApp({ Component, pageProps, initialFlagsData, initialVisitorData }) {
                     visitorData={initialVisitorData}
                     initialFlagsData={initialFlagsData || {}}
                     onVisitorExposed={({ exposedVisitor, fromFlag }) => 
-                        dataLayer.push({
+                        pushToDataLayer({
                             'event': 'abtasty_flag',
                             "campaignId": fromFlag.metadata.campaignId,
                             "campaignType": fromFlag.metadata.campaignType,

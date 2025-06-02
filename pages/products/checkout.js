@@ -1,11 +1,12 @@
-import { useEffect, useState, useRef } from "react"
-import { useFsFlag, useFlagship } from "@flagship.io/react-sdk"
-import Link from "next/link"
-import { pagePath } from "/pages/_app"
-import { useAtom } from "jotai"
-import { usePathname } from "next/navigation"
+import { useEffect, useState, useRef } from "react";
+import { useFsFlag, useFlagship } from "@flagship.io/react-sdk";
+import Link from "next/link";
+import { pagePath } from "/pages/_app";
+import { useAtom } from "jotai";
+import { usePathname } from "next/navigation";
 import { useRouter } from 'next/router';
-import Footer from "../../components/Footer"
+import Footer from "../../components/Footer";
+import { pushToDataLayer } from '../../utils/analytics';
 
 export default function Checkout() {
   const { updateContext } = useFlagship()
@@ -148,18 +149,18 @@ export default function Checkout() {
   const generateCard = () => {
     if (!cardNumber) {
       setCardNumber([Math.floor(1000 + Math.random() * 9000) + ' ' + Math.floor(1000 + Math.random() * 9000) + ' ' + Math.floor(1000 + Math.random() * 9000) + ' ' + Math.floor(1000 + Math.random() * 9000), Math.floor(100 + Math.random() * 900), "10/27" , formData.first_name + ' ' + formData.last_name])
-      window.dataLayer = window.dataLayer || []
-      window.dataLayer.push({
+      
+      pushToDataLayer({
         event: 'add_payment_info',
         ecommerce: {
           'currency': 'EUR',
-          'value': data.productPrice,
+          'value': Number.parseFloat(data.productPrice),
           'payment_type': "Credit Card",
           items: [{
             'item_id': data.productId,
             'item_name': data.productTitle,
             'item_category': data.productCategory,
-            'price': data.productPrice,
+            'price': Number.parseFloat(data.productPrice),
             'quantity': data.productQuantity
           }]
         }
@@ -254,18 +255,23 @@ export default function Checkout() {
     }
     generateCard()
     setDelivery([e.target.id, e.target.value, e.target.nextElementSibling.firstChild.firstChild.src, e.target.nextElementSibling.lastChild.firstChild.lastChild.innerText])
-    window.dataLayer = window.dataLayer || []
-    window.dataLayer.push({
+    
+    // Calculate total value including shipping
+    const basePrice = Number.parseFloat(data.productPrice);
+    const shippingPrice = Number.parseFloat(e.target.value);
+    const totalValue = basePrice + shippingPrice;
+    
+    pushToDataLayer({
       event: 'add_shipping_info',
       ecommerce: {
         'currency': 'EUR',
-        'value': data.productPrice,
+        'value': totalValue,
         'shipping_tier': e.target.id,
         items: [{
           'item_id': data.productId,
           'item_name': data.productTitle,
           'item_category': data.productCategory,
-          'price': data.productPrice,
+          'price': basePrice,
           'quantity': data.productQuantity
         }]
       }
@@ -276,18 +282,16 @@ export default function Checkout() {
     sendBeginCheckout.current = sendBeginCheckout.current + 1
 
     if (sendBeginCheckout.current === 1) {
-      window.dataLayer = window.dataLayer || []
-
-      window.dataLayer.push({
+      pushToDataLayer({
         event: 'begin_checkout',
         ecommerce: {
           'currency': 'EUR',
-          'value': data.productPrice,
+          'value': Number.parseFloat(data.productPrice),
           items: [{
             'item_id': data.productId,
             'item_name': data.productTitle,
             'item_category': data.productCategory,
-            'price': data.productPrice,
+            'price': Number.parseFloat(data.productPrice),
             'quantity': data.productQuantity
           }]
         }
@@ -935,42 +939,62 @@ export default function Checkout() {
               <div className="border rounded-2xl px-5 py-7 flex flex-col-reverse md:flex-row xl:flex-col-reverse xl:justify-end justify-start items-stretch h-full w-full md:space-x-6 lg:space-x-8 xl:space-x-0">
                 <div className="flex flex-col w-full space-y-6">
                   <div className="flex border-gray-200">
-                    <input className="border border-slate-300 rounded-l-2xl w-full py-4 px-4 text-grey-darker" id="coupon" type="coupon" placeholder="Coupon code"/>
-                    <button onClick={handleApply} className="bg-black hover:bg-blue-dark text-white rounded-r-2xl text-sm font-medium px-7" type="submit">
+                    <input
+                      className="border border-slate-300 rounded-l-2xl w-full py-4 px-4 text-grey-darker"
+                      id="coupon"
+                      type="text"
+                      placeholder="Coupon code"
+                    />
+                    <button
+                      onClick={handleApply}
+                      className="bg-black hover:bg-blue-dark text-white rounded-r-2xl text-sm font-medium px-7"
+                      type="submit"
+                    >
                       Apply
                     </button>
                   </div>
+                  
                   <h3 className="text-xl dark:text-white font-semibold leading-5 text-gray-800">
                     Summary
                   </h3>
+
                   <div className="flex justify-center items-center w-full space-y-4 flex-col border-gray-200 border-b pb-7">
+                    {/* Subtotal */}
                     <div className="flex justify-between w-full">
-                      <p className="text-base dark:text-white leading-4 text-gray-800">
-                        Subtotal</p>
+                      <p className="text-base dark:text-white leading-4 text-gray-800">Subtotal</p>
                       <p className="text-base dark:text-gray-300 leading-4 text-gray-600">
-                        {new Intl.NumberFormat('de-DE', { minimumFractionDigits: 2, maximumFractionDigits: 2 })
-                          .format(data.productPrice)
-                        } €
+                        {new Intl.NumberFormat('de-DE', {
+                          minimumFractionDigits: 2,
+                          maximumFractionDigits: 2
+                        }).format(Number(data.productPrice) || 0)} €
                       </p>
                     </div>
+
+                    {/* Shipping */}
                     <div className="flex justify-between items-center w-full">
-                      <p className="text-base dark:text-white leading-4 text-gray-800">
-                        Shipping</p>
+                      <p className="text-base dark:text-white leading-4 text-gray-800">Shipping</p>
                       <p className="text-base dark:text-gray-300 leading-4 text-gray-600">
-                        {Number.parseFloat(delivery[1]) ? new Intl.NumberFormat('de-DE', { minimumFractionDigits: 2, maximumFractionDigits: 2 })
-                          .format(delivery[1]) : 0
-                        } €
+                        {new Intl.NumberFormat('de-DE', {
+                          minimumFractionDigits: 2,
+                          maximumFractionDigits: 2
+                        }).format(Number(delivery?.[1]) || 0)} €
                       </p>
                     </div>
                   </div>
+
+                  {/* Total */}
                   <div className="flex justify-between items-center w-full">
-                      <p className="text-lg dark:text-white font-semibold leading-4 text-gray-800">
-                        Total
-                      </p>
+                    <p className="text-lg dark:text-white font-semibold leading-4 text-gray-800">
+                      Total
+                    </p>
                     <p className="text-lg dark:text-gray-300 font-semibold leading-4 text-gray-800">
-                      {delivery[1] ? new Intl.NumberFormat('de-DE', { minimumFractionDigits: 2, maximumFractionDigits: 2 })
-                        .format((data.productPrice + Number.parseFloat(delivery[1])).toFixed(2)) : new Intl.NumberFormat('de-DE', { minimumFractionDigits: 2, maximumFractionDigits: 2 })
-                        .format(data.productPrice)
+                      {
+                        new Intl.NumberFormat('de-DE', {
+                          minimumFractionDigits: 2,
+                          maximumFractionDigits: 2
+                        }).format(
+                          (Number(data.productPrice) || 0) + (Number(delivery?.[1]) || 0)
+                        )
                       } €
                     </p>
                   </div>

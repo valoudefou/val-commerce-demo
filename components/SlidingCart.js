@@ -3,6 +3,7 @@ import { useFsFlag } from "@flagship.io/react-sdk"
 import { useState, useEffect, useContext } from "react"
 import { AppContext } from "../pages/_app"
 import Image from "next/image"
+import { pushToDataLayer } from "../utils/analytics"
 
 function SlidingCart() {
   const [isShown, setIsShown] = useContext(AppContext)
@@ -16,9 +17,8 @@ function SlidingCart() {
     setIsShown(false)
     const itemName = 'currentProduct'
     localStorage.removeItem(itemName)
-    window.dataLayer = window.dataLayer || []
 
-    window.dataLayer.push({
+    pushToDataLayer({
       event: 'remove_from_cart',
       ecommerce: {
         'currency': 'EUR',

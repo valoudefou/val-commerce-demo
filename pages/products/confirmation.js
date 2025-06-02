@@ -1,6 +1,7 @@
-import { useEffect, useState, useRef } from "react"
-import { HitType, useFlagship } from "@flagship.io/react-sdk"
-import Footer from "../../components/Footer"
+import { useEffect, useState, useRef } from "react";
+import { HitType, useFlagship } from "@flagship.io/react-sdk";
+import Footer from "../../components/Footer";
+import { pushToDataLayer } from '../../utils/analytics';
 
 export default function Confirmation() {
   const [data, setData] = useState('')
@@ -42,35 +43,39 @@ export default function Confirmation() {
 
   useEffect(() => {
     let timerId
-
-    if (data) {
+    if (data && confirmation) {  // Wait for both
       timerId = setTimeout(() => {
         pushGaData()
       }, 1500)
     }
     return () => clearTimeout(timerId);
-  }, [data])
+  }, [data, confirmation])  // Add confirmation as dependency
 
   const pushGaData = () => {
-    window.dataLayer = window.dataLayer || []
+    console.log('Pushing GA data:', { data, confirmation }); // Debug log
     
-    window.dataLayer.push({
-      event: 'purchase',
-      ecommerce: {
-        'transaction_id': data.transactionId,
-        'value': data.productPrice,
-        'shipping': confirmation.delivery_fee,
-        'currency': 'EUR',
-        items: [{
-          'item_id': data.productId,
-          'item_name': data.productTitle,
-          'affiliation': 'Test Drive',
-          'item_category': data.productCategory,
-          'price': data.productPrice,
-          'quantity': data.productQuantity
-        }]
-      }
-    })
+    try {
+      pushToDataLayer({
+        event: 'purchase',
+        ecommerce: {
+          'transaction_id': data.transactionId,
+          'value': data.productPrice,
+          'shipping': confirmation.delivery_fee,
+          'currency': 'EUR',
+          items: [{
+            'item_id': data.productId,
+            'item_name': data.productTitle,
+            'affiliation': 'Test Drive',
+            'item_category': data.productCategory,
+            'price': data.productPrice,
+            'quantity': data.productQuantity
+          }]
+        }
+      });
+      console.log('GA data pushed successfully');
+    } catch (error) {
+      console.error('Error pushing GA data:', error);
+    }
   }
 
   return (
@@ -139,9 +144,13 @@ export default function Confirmation() {
                 <div className="flex justify-between items-center w-full">
                   <p className="text-lg dark:text-white font-semibold leading-4 text-gray-800">Total</p>
                   <p className="text-lg dark:text-gray-300 font-semibold leading-4 text-gray-800">
-                    {new Intl.NumberFormat('de-DE', { minimumFractionDigits: 2, maximumFractionDigits: 2 })
-                      .format(data.productPrice + (confirmation.delivery_fee ? confirmation.delivery_fee : 5.99))
-                    } €
+                    {new Intl.NumberFormat('de-DE', {
+                      minimumFractionDigits: 2,
+                      maximumFractionDigits: 2
+                    }).format(
+                      (parseFloat(data?.productPrice) || 0) +
+                      (parseFloat(confirmation?.delivery_fee) || 5.99)
+                    )} €
                   </p>
                 </div>
               </div>

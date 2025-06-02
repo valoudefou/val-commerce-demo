@@ -3,6 +3,7 @@ import { useFsFlag } from "@flagship.io/react-sdk"
 import { useState, useEffect, useContext } from "react"
 import { AppContext } from "../pages/_app"
 import Image from "next/image"
+import { pushToDataLayer } from '../utils/analytics'; // This should now work
 
 export default function MiniCart() {
     const [isShown, setIsShown] = useContext(AppContext)
@@ -14,30 +15,32 @@ export default function MiniCart() {
         })
     }, [])
 
-    async function handleRemoveItem () {
+    async function handleRemoveItem() {
         setIsShown(false)
         const itemName = 'currentProduct'
         localStorage.removeItem(itemName)
-        window.dataLayer = window.dataLayer || []
 
-        window.dataLayer.push({
-            event: 'remove_from_cart',
-            ecommerce: {
-                'currency': 'EUR',
-                'value': data.productPrice,
-                items: [{
-                    'item_id': data.productId,
-                    'item_name': data.productTitle,
-                    'item_category': data.productCategory,
-                    'price': data.productPrice,
-                    'quantity': data.productQuantity
-                }]
-            }
-        })
+        // Check if data exists before pushing to dataLayer
+        if (data && data.productPrice) {
+            pushToDataLayer({
+                event: 'remove_from_cart',
+                ecommerce: {
+                    'currency': 'EUR',
+                    'value': data.productPrice,
+                    items: [{
+                        'item_id': data.productId,
+                        'item_name': data.productTitle,
+                        'item_category': data.productCategory,
+                        'price': data.productPrice,
+                        'quantity': data.productQuantity
+                    }]
+                }
+            })
+        }
     }
 
     const [cartContent, setHtmlContent] = useState('')
-    const [data, setData] = useState('')
+    const [data, setData] = useState(null)
 
     const handleClick = () => {
         setHtmlContent(false)
@@ -49,8 +52,12 @@ export default function MiniCart() {
 
         if (storedHtml) {
             setHtmlContent(cartContent)
-            const value = window.localStorage.getItem('currentProduct')
-            setData(JSON.parse(value))
+            try {
+                const value = window.localStorage.getItem('currentProduct')
+                setData(JSON.parse(value))
+            } catch (error) {
+                console.error('Error parsing stored product data:', error)
+            }
         }
     }, [])
 
@@ -80,16 +87,16 @@ export default function MiniCart() {
                             </p>
                         )}
                         <div className="flex items-center justify-between">
-                            {cartContent && (
+                            {cartContent && data && (
                                 <div className="flex flex-col text-gray-700 font-light justify-around pr-5">
                                     <span className="text-gray-900 font-light text-sm mt-2">{data.productTitle}</span>
-                                    <div className="flex items-center">      
+                                    <div className="flex items-center">     
                                         <span className="text-gray-500 font-light text-sm">{data.productQuantity} x</span>
                                         <span className="text-gray-500 font-light text-sm px-2">{formatPrice(data.productPrice)}</span>
                                     </div>
                                 </div>
                             )}
-                            {cartContent && (
+                            {cartContent && data && (
                                 <Image
                                     src={data.productImage}
                                     alt=""
@@ -99,13 +106,20 @@ export default function MiniCart() {
                             )}
                             {cartContent && (
                                 <button onClick={handleClick} className="navbar-close ml-5">
-                                    <svg onClick={() => [handleRemoveItem()]} class="h-6 w-6 text-gray-400 cursor-pointer hover:text-gray-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                                    <svg 
+                                        onClick={handleRemoveItem} 
+                                        className="h-6 w-6 text-gray-400 cursor-pointer hover:text-gray-500" 
+                                        xmlns="http://www.w3.org/2000/svg" 
+                                        fill="none" 
+                                        viewBox="0 0 24 24" 
+                                        stroke="currentColor"
+                                    >
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12"></path>
                                     </svg>
                                 </button>
                             )}
                         </div>
-                        {cartContent && (
+                        {cartContent && data && (
                             <div className="flex justify-between border-t-[1px] py-3 mt-3 text-lg">
                                 <span className="text-gray-500">
                                     Total
