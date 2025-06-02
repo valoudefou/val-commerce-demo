@@ -44,7 +44,7 @@ export default function CategoryPage({ products, categories, category }) {
                             <ProductCard product={product} key={product.id} />
                         ))
                     ) : (
-                        <p>Loading products...</p>
+                        <p></p>
                     )}
                 </div>
             </div>

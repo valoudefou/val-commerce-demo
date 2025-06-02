@@ -108,7 +108,7 @@ export default function MiniCart() {
                                 <button onClick={handleClick} className="navbar-close ml-5">
                                     <svg 
                                         onClick={handleRemoveItem} 
-                                        className="h-6 w-6 text-gray-400 cursor-pointer hover:text-gray-500" 
+                                        className="h-5 w-5 text-gray-400 cursor-pointer hover:text-gray-500" 
                                         xmlns="http://www.w3.org/2000/svg" 
                                         fill="none" 
                                         viewBox="0 0 24 24" 
