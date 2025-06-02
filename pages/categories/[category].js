@@ -44,7 +44,7 @@ export default function CategoryPage({ products, categories, category }) {
                             <ProductCard product={product} key={product.id} />
                         ))
                     ) : (
-                        <p></p>
+                        <p>Loading products...</p>
                     )}
                 </div>
             </div>
@@ -59,9 +59,8 @@ export async function getStaticPaths() {
         if (!res.ok) throw new Error('Failed to fetch products');
         const data = await res.json();
 
-        // Ensure data.products is an array
         if (!data?.products || !Array.isArray(data.products)) {
-            return { paths: [], fallback: false };
+            return { paths: [], fallback: 'blocking' };
         }
 
         const categories = Array.from(
@@ -72,10 +71,10 @@ export async function getStaticPaths() {
             params: { category },
         }));
 
-        return { paths, fallback: false };
+        return { paths, fallback: 'blocking' }; // Changed here
     } catch (error) {
         console.error('Error in getStaticPaths:', error);
-        return { paths: [], fallback: false };
+        return { paths: [], fallback: 'blocking' }; // Changed here
     }
 }
 
@@ -91,12 +90,10 @@ export async function getStaticProps({ params }) {
             return { notFound: true };
         }
 
-        // Filter products by category safely
         const filteredProducts = category
             ? data.products.filter((product) => product.category === category)
             : data.products;
 
-        // If no products for this category, return 404 to avoid build errors
         if (category && filteredProducts.length === 0) {
             return { notFound: true };
         }
@@ -111,6 +108,7 @@ export async function getStaticProps({ params }) {
                 products: filteredProducts,
                 categories,
             },
+            revalidate: 60,
         };
     } catch (error) {
         console.error('Error in getStaticProps:', error);
