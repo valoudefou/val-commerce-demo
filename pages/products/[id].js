@@ -131,6 +131,7 @@ export default function Product({ product }) {
                 src={product.thumbnail}
                 width={560}
                 height={640}
+                loading="lazy"
               />
             </div>
           </div>
