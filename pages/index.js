@@ -24,22 +24,21 @@ export default function Index({ products = [] }) {
 
     setLoadingMore(true);
     try {
-      const offset = productList.length;
-      const limit = 20;
-      const res = await fetch(`https://live-server1.vercel.app/products/?limit=${limit}&offset=${offset}`);
+      const newLimit = productList.length + 20; // always fetch total up to this point
+      const res = await fetch(`https://live-server1.vercel.app/products/?limit=${newLimit}`);
 
       if (!res.ok) {
         throw new Error(`HTTP ${res.status}: ${res.statusText}`);
       }
 
       const newData = await res.json();
-      const newProducts = Array.isArray(newData.products) ? newData.products : [];
+      const updatedProducts = Array.isArray(newData.products) ? newData.products : [];
 
-      if (newProducts.length === 0) {
-        setHasMore(false);
-      } else {
-        setProductList(prev => [...prev, ...newProducts]);
+      if (updatedProducts.length === productList.length) {
+        setHasMore(false); // No new products were added
       }
+
+      setProductList(updatedProducts);
     } catch (err) {
       console.error("Error loading more products:", err);
     } finally {
