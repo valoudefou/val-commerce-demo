@@ -12,7 +12,11 @@ export default function CategoryPage({ products, categories, category }) {
     }, [category]);
 
     const displayedProducts = selectedCategory
-        ? products.filter((product) => product.category === selectedCategory)
+        ? products.filter(
+            (product) =>
+                product.category &&
+                product.category.toLowerCase().trim() === selectedCategory.toLowerCase().trim()
+        )
         : products;
 
     return (
@@ -23,14 +27,13 @@ export default function CategoryPage({ products, categories, category }) {
                 <div className="mb-8">
                     <div className="flex flex-wrap gap-3">
                         {categories.map((categoryItem) => (
-                            <Link href={`/categories/${categoryItem}`} key={categoryItem} passHref>
+                            <Link href={`/categories/${encodeURIComponent(categoryItem)}`} key={categoryItem} passHref>
                                 <p
                                     className={`cursor-pointer px-4 py-2 text-sm font-medium rounded-3xl border transition ${
                                         selectedCategory === categoryItem
                                             ? 'bg-black text-white border-black'
                                             : 'bg-white text-gray-700 border-gray-300 hover:bg-gray-100'
                                     }`}
-                                    onClick={() => setSelectedCategory(categoryItem)}
                                 >
                                     {categoryItem}
                                 </p>
@@ -44,7 +47,7 @@ export default function CategoryPage({ products, categories, category }) {
                             <ProductCard product={product} key={product.id} />
                         ))
                     ) : (
-                        <p></p>
+                        <p>No products found in this category.</p>
                     )}
                 </div>
             </div>
@@ -68,19 +71,21 @@ export async function getStaticPaths() {
         );
 
         const paths = categories.map((category) => ({
-            params: { category },
+            params: { category: category.toString() },
         }));
 
-        return { paths, fallback: 'blocking' }; // Changed here
+        return { paths, fallback: 'blocking' };
     } catch (error) {
         console.error('Error in getStaticPaths:', error);
-        return { paths: [], fallback: 'blocking' }; // Changed here
+        return { paths: [], fallback: 'blocking' };
     }
 }
 
 export async function getStaticProps({ params }) {
     try {
-        const category = params?.category || '';
+        let category = params?.category || '';
+        // If category is an array (shouldn't be, but just in case)
+        if (Array.isArray(category)) category = category[0];
 
         const res = await fetch('https://live-server1.vercel.app/products');
         if (!res.ok) throw new Error('Failed to fetch products');
@@ -91,7 +96,11 @@ export async function getStaticProps({ params }) {
         }
 
         const filteredProducts = category
-            ? data.products.filter((product) => product.category === category)
+            ? data.products.filter(
+                (product) =>
+                    product.category &&
+                    product.category.toLowerCase().trim() === category.toLowerCase().trim()
+            )
             : data.products;
 
         if (category && filteredProducts.length === 0) {
