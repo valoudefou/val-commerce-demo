@@ -16,11 +16,26 @@ export default function SearchResults() {
 
     useEffect(() => {
         const getData = async () => {
-            const response = await fetch(`https://live-server1.vercel.app/products/search?q=${searchQuery}`)
-            const data = await response.json()
-            totalCount.current = data.total
-            setSearchResults(data)
-            setSearch(true)
+            if (!searchQuery) {
+                setMessage('No search query provided')
+                setSearchResults([])
+                return
+            }
+            try {
+                const response = await fetch(`https://live-server1.vercel.app/products/search?q=${searchQuery}`)
+                if (!response.ok) {
+                    setMessage('Error fetching data')
+                    setSearchResults([])
+                    return
+                }
+                const data = await response.json()
+                totalCount.current = data.total
+                setSearchResults(data)
+                setSearch(true)
+            } catch (error) {
+                setMessage('Invalid server response')
+                setSearchResults([])
+            }
         }
         getData()
     }, [newSearch])
