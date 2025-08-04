@@ -119,7 +119,7 @@ export default function Product({ product }) {
   }
 
   return (
-    <div className="flex min-h-screen flex-col justify-between">
+    <div id='ab-div' className="flex min-h-screen flex-col justify-between">
       <Navbar />
       <div className="mx-auto max-w-1xl px-4 sm:px-6 lg:max-w-7xl lg:px-8">
         <div className="relative mx-auto items-center flex flex-col lg:flex-row">
