@@ -19,6 +19,42 @@ export default function Product({ product }) {
   const possibleLabel = ["4 in stock", "3 in stock", "5 in stock", "Popular", "2 in stock"];
   const router = useRouter();
 
+  // ------- visibility overlay logic -------
+  const [imageLoaded, setImageLoaded] = useState(false);
+  const [pageLoaded, setPageLoaded] = useState(false);
+  const [overlayVisible, setOverlayVisible] = useState(true);
+  const [shouldRenderOverlay, setShouldRenderOverlay] = useState(true);
+
+  // Detect full page load
+  useEffect(() => {
+    if (document.readyState === 'complete') {
+      setPageLoaded(true);
+    } else {
+      const onLoad = () => setPageLoaded(true);
+      window.addEventListener('load', onLoad);
+      return () => window.removeEventListener('load', onLoad);
+    }
+  }, []);
+
+  // Hide overlay when both image and page are ready
+  useEffect(() => {
+    if (imageLoaded && pageLoaded) {
+      requestAnimationFrame(() => {
+        setOverlayVisible(false);
+      });
+    }
+  }, [imageLoaded, pageLoaded]);
+
+  // Cleanup overlay after fade-out transition
+  useEffect(() => {
+    if (!overlayVisible) {
+      const t = setTimeout(() => setShouldRenderOverlay(false), 500); // match duration-500
+      return () => clearTimeout(t);
+    }
+  }, [overlayVisible]);
+
+  // ----------------------------------------
+
   useEffect(() => {
     updateContext({ route: path });
   }, [path, updateContext]);
@@ -120,6 +156,15 @@ export default function Product({ product }) {
 
   return (
     <div className="flex min-h-screen flex-col justify-between">
+      {shouldRenderOverlay && (
+        <div
+          aria-hidden="true"
+          className={`fixed inset-0 bg-white z-[9999] flex items-center justify-center transition-opacity duration-500 pointer-events-none ${
+            overlayVisible ? 'opacity-100' : 'opacity-0'
+          }`}
+          style={{ willChange: 'opacity' }}
+        />
+      )}
       <Navbar />
       <div className="mx-auto max-w-1xl px-4 sm:px-6 lg:max-w-7xl lg:px-8">
         <div className="relative mx-auto items-center flex flex-col lg:flex-row">
@@ -132,6 +177,7 @@ export default function Product({ product }) {
                 width={560}
                 height={640}
                 loading="lazy"
+                onLoadingComplete={() => setImageLoaded(true)}
               />
             </div>
           </div>
