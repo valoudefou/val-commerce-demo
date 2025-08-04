@@ -3,155 +3,175 @@ import { useFsFlag } from "@flagship.io/react-sdk"
 import { useState, useEffect, useContext } from "react"
 import { AppContext } from "../pages/_app"
 import Image from "next/image"
-import { pushToDataLayer } from '../utils/analytics'; // This should now work
+import { pushToDataLayer } from '../utils/analytics'
 
 export default function MiniCart() {
-    const [isShown, setIsShown] = useContext(AppContext)
-    const [scroll, setScroll] = useState(false)
+  const [isShown, setIsShown] = useContext(AppContext)
+  const [scroll, setScroll] = useState(false)
 
-    useEffect(() => {
-        window.addEventListener("scroll", () => {
-            setScroll(window.scrollY > 50)
-        })
-    }, [])
+  useEffect(() => {
+    const onScroll = () => setScroll(window.scrollY > 50)
+    window.addEventListener("scroll", onScroll)
+    return () => window.removeEventListener("scroll", onScroll)
+  }, [])
 
-    async function handleRemoveItem() {
-        setIsShown(false)
-        const itemName = 'currentProduct'
-        localStorage.removeItem(itemName)
+  async function handleRemoveItem() {
+    setIsShown(false)
+    const itemName = 'currentProduct'
+    localStorage.removeItem(itemName)
 
-        // Check if data exists before pushing to dataLayer
-        if (data && data.productPrice) {
-            pushToDataLayer({
-                event: 'remove_from_cart',
-                ecommerce: {
-                    'currency': 'EUR',
-                    'value': data.productPrice,
-                    items: [{
-                        'item_id': data.productId,
-                        'item_name': data.productTitle,
-                        'item_category': data.productCategory,
-                        'price': data.productPrice,
-                        'quantity': data.productQuantity
-                    }]
-                }
-            })
+    if (data && data.productPrice) {
+      pushToDataLayer({
+        event: 'remove_from_cart',
+        ecommerce: {
+          currency: 'EUR',
+          value: data.productPrice,
+          items: [{
+            item_id: data.productId,
+            item_name: data.productTitle,
+            item_category: data.productCategory,
+            price: data.productPrice,
+            quantity: data.productQuantity
+          }]
         }
+      })
     }
+  }
 
-    const [cartContent, setHtmlContent] = useState('')
-    const [data, setData] = useState(null)
+  const [cartContent, setHtmlContent] = useState('')
+  const [data, setData] = useState(null)
 
-    const handleClick = () => {
-        setHtmlContent(false)
+  const handleClick = () => setHtmlContent(false)
+
+  useEffect(() => {
+    const storedHtml = localStorage.getItem('currentProduct')
+    const cartContent = '<p>1 item in your basket</p>'
+
+    if (storedHtml) {
+      setHtmlContent(cartContent)
+      try {
+        const value = window.localStorage.getItem('currentProduct')
+        setData(JSON.parse(value))
+      } catch (error) {
+        console.error('Error parsing stored product data:', error)
+      }
     }
+  }, [])
 
-    useEffect(() => {
-        const storedHtml = localStorage.getItem('currentProduct')
-        const cartContent = '<p>1 item in your basket</p>'
+  const paymentFeature1ClickVal = useFsFlag("paymentFeature1Click")
+  const paymentFeature1Click = paymentFeature1ClickVal.getValue(false)
 
-        if (storedHtml) {
-            setHtmlContent(cartContent)
-            try {
-                const value = window.localStorage.getItem('currentProduct')
-                setData(JSON.parse(value))
-            } catch (error) {
-                console.error('Error parsing stored product data:', error)
-            }
-        }
-    }, [])
+  const formatPrice = (price) => {
+    return new Intl.NumberFormat('de-DE', { style: 'currency', currency: 'EUR' }).format(price);
+  }
 
-    // Get flag 
-    const paymentFeature1ClickVal = useFsFlag("paymentFeature1Click")
-    const paymentFeature1Click = paymentFeature1ClickVal.getValue(false)
+  return (
+    <>
+      {/* Overlay */}
+      <div
+        onClick={() => setIsShown(false)}
+        className={`fixed inset-0 bg-black bg-opacity-30 z-40 transition-opacity ${
+          isShown ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
+        }`}
+      />
 
-    // Function to format price as "19,00"
-    const formatPrice = (price) => {
-        return new Intl.NumberFormat('de-DE', { style: 'currency', currency: 'EUR' }).format(price);
-    }
+      {/* Cart panel */}
+      <aside
+        className={`fixed top-5 right-5 z-50 w-80 max-w-full bg-white rounded-xl shadow-xl transition-transform transform ${
+          isShown ? "translate-x-0" : "translate-x-full"
+        }`}
+      >
+        <div className="p-6 flex flex-col space-y-6">
+          <header className="flex justify-between items-center">
+            <h2 className="text-2xl font-semibold text-gray-900">Cart</h2>
+   
+          </header>
 
-    return (
-        <div>
-            <div onClick={() => setIsShown(!isShown)} className="h-screen w-screen top-0 z-20 bg-gray-800 fixed opacity-0"></div>
-            <div className={scroll ? "fixed right-0 bg-white z-50 py-8 px-8 top-[0.5rem] border border-gray-200 rounded-lg mt-3 mr-[3vh] ml-[3vh] shadow-lg" : "absolute right-0 top-[3.5rem] bg-white z-50 py-8 px-8 border border-gray-200 rounded-2xl mt-3 mr-[3vh] ml-[3vh] shadow-lg"}>
-                <div className="w-72">
-                    <div className="grid grid-cols-1 gap-4">
-                        <div className="pt-2 text-3xl font-semibold text-gray-900">
-                            Cart
-                        </div>
-                        {cartContent ? (
-                            <div className="grid grid-cols-1 gap-3" dangerouslySetInnerHTML={{ __html: cartContent }} />
-                        ) : (
-                            <p className="grid grid-cols-1 gap-3">
-                                The cart is empty
-                            </p>
-                        )}
-                        <div className="flex items-center justify-between">
-                            {cartContent && data && (
-                                <div className="flex flex-col text-gray-700 font-light justify-around pr-5">
-                                    <span className="text-gray-900 font-light text-sm mt-2">{data.productTitle}</span>
-                                    <div className="flex items-center">     
-                                        <span className="text-gray-500 font-light text-sm">{data.productQuantity} x</span>
-                                        <span className="text-gray-500 font-light text-sm px-2">{formatPrice(data.productPrice)}</span>
-                                    </div>
-                                </div>
-                            )}
-                            {cartContent && data && (
-                                <Image
-                                    src={data.productImage}
-                                    alt=""
-                                    width={70}
-                                    height={70}
-                                />
-                            )}
-                            {cartContent && (
-                                <button onClick={handleClick} className="navbar-close ml-5">
-                                    <svg 
-                                        onClick={handleRemoveItem} 
-                                        className="h-5 w-5 text-gray-400 cursor-pointer hover:text-gray-500" 
-                                        xmlns="http://www.w3.org/2000/svg" 
-                                        fill="none" 
-                                        viewBox="0 0 24 24" 
-                                        stroke="currentColor"
-                                    >
-                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12"></path>
-                                    </svg>
-                                </button>
-                            )}
-                        </div>
-                        {cartContent && data && (
-                            <div className="flex justify-between border-t-[1px] py-3 mt-3 text-lg">
-                                <span className="text-gray-500">
-                                    Total
-                                </span>
-                                <span className="text-gray-500">{formatPrice(data.productPrice)}</span>
-                            </div>
-                        )}
-                        {cartContent && (
-                            <div className="flex justify-between mt-3">
-                                {paymentFeature1Click === true &&
-                                <Link href='/products/confirmation'>
-                                    <button className="flex items-center justify-center text-base w-28 font-medium bg-black text-white tracking-wide text-bold py-3 px-6 rounded-full hover:bg-neutral-800">
-                                        <svg xmlns="http://www.w3.org/2000/svg" fill="#FFFFFF" viewBox="0 0 24 24" width="20px" height="20px"> 
-                                            <path d="M 16.125 1 C 14.972 1.067 13.648328 1.7093438 12.861328 2.5273438 C 12.150328 3.2713438 11.589359 4.3763125 11.818359 5.4453125 C 13.071359 5.4783125 14.329031 4.8193281 15.082031 3.9863281 C 15.785031 3.2073281 16.318 2.12 16.125 1 z M 16.193359 5.4433594 C 14.384359 5.4433594 13.628 6.5546875 12.375 6.5546875 C 11.086 6.5546875 9.9076562 5.5136719 8.3476562 5.5136719 C 6.2256562 5.5146719 3 7.4803281 3 12.111328 C 3 16.324328 6.8176563 21 8.9726562 21 C 10.281656 21.013 10.599 20.176969 12.375 20.167969 C 14.153 20.154969 14.536656 21.011 15.847656 21 C 17.323656 20.989 18.476359 19.367031 19.318359 18.082031 C 19.922359 17.162031 20.170672 16.692344 20.638672 15.652344 C 17.165672 14.772344 16.474672 9.1716719 20.638672 8.0136719 C 19.852672 6.6726719 17.558359 5.4433594 16.193359 5.4433594 z"/>
-                                        </svg>
-                                        Pay
-                                    </button>
-                                </Link>
-                                }
-                                <Link href='/products/checkout'>
-                                    <button className="flex items-center justify-center py-3 px-6 bg-white border-2 hover:bg-gray-50 border-gray-300 text-slate-600 text-semibold text-sm rounded-full font-medium">
-                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1" stroke="currentColor" className="w-6 h-6 py-1">
-                                            <path strokeLinecap="round" strokeLinejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3"/>
-                                        </svg>
-                                        Checkout
-                                    </button>
-                                </Link>
-                            </div>
-                        )}
-                    </div>
+          {cartContent && data ? (
+            <>
+              <div className="flex items-center space-x-4">
+                <Image
+                  src={data.productImage}
+                  alt={data.productTitle || 'Product image'}
+                  width={70}
+                  height={70}
+                  className="rounded-md object-cover"
+                />
+                <div className="flex flex-col flex-1">
+                  <span className="text-gray-900 font-medium">{data.productTitle}</span>
+                  <div className="flex space-x-2 text-gray-500 text-sm">
+                    <span>{data.productQuantity} ×</span>
+                    <span>{formatPrice(data.productPrice)}</span>
+                  </div>
                 </div>
-            </div>
+                <button
+                  onClick={() => {
+                    handleRemoveItem()
+                    handleClick()
+                  }}
+                  aria-label="Remove item"
+                  className="text-gray-400 hover:text-gray-600 transition"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    className="h-5 w-5"
+                  >
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                  </svg>
+                </button>
+              </div>
+
+              <div className="flex justify-between border-t border-gray-200 pt-4">
+                <span className="text-gray-500 font-semibold">Total</span>
+                <span className="text-gray-900 font-semibold">{formatPrice(data.productPrice)}</span>
+              </div>
+
+  {/* ... inside your JSX ... */}
+<div className="flex space-x-4 mt-4">
+  {paymentFeature1Click && (
+    <Link
+      href="/products/confirmation"
+      className="flex items-center justify-center flex-1 bg-black text-white font-semibold rounded-full py-3 hover:bg-neutral-800 transition"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        fill="white"
+        viewBox="0 0 24 24"
+        width="20"
+        height="20"
+        className="mr-2"
+      >
+        <path d="M16.125 1c-1.153.067-2.477.709-3.264 1.527-.711.744-1.272 1.849-1.043 2.918 1.253.033 2.511-.626 3.264-1.459.703-.779 1.236-1.866 1.043-2.957zm.068 4.443c-1.809 0-2.565 1.111-3.818 1.111-1.289 0-2.467-1.04-4.027-1.04-2.122 0-5.347 1.965-5.347 6.596 0 4.213 3.818 9.889 5.973 9.889 1.309.013 1.627-0.823 3.403-0.832 1.778-.013 2.161.843 3.472.832 1.476-.011 2.628-1.633 3.47-2.918.604-0.92.852-1.39 1.32-2.43-3.473-.88-4.164-6.481-0.0-7.639-.786-1.34-3.08-2.57-4.445-2.57z" />
+      </svg>
+      Pay
+    </Link>
+  )}
+  <Link
+    href="/products/checkout"
+    className="flex items-center justify-center flex-1 py-3 px-6 border-2 border-gray-300 rounded-full font-semibold text-gray-700 hover:bg-gray-50 transition"
+  >
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      viewBox="0 0 24 24"
+      strokeWidth={1.5}
+      stroke="currentColor"
+      className="w-6 h-6 mr-2"
+    >
+      <path strokeLinecap="round" strokeLinejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3" />
+    </svg>
+    Checkout
+  </Link>
+</div>
+            </>
+          ) : (
+            <p className="text-gray-500 text-center py-12 font-light">Your cart is empty</p>
+          )}
         </div>
-    )
+      </aside>
+    </>
+  )
 }

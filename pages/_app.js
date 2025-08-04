@@ -99,7 +99,7 @@ MyApp.getInitialProps = async (AppContext) => {
         context: {
             device: 'mobile',
             route: '',
-            segment: 'cosmetic',
+            segment: 'coffee',
             login: true,
             region: 3,
             user: 'new'
