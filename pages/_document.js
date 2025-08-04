@@ -7,6 +7,55 @@ class MyDocument extends Document {
         return (
             <Html lang="en">
                 <Head>
+                    <Script strategy="afterInteractive" dangerouslySetInnerHTML={{ __html: `var PARAMS = {
+                        TIMEOUT: 2000, // number of ms to wait before removing the anti-flicker
+                        ASYNC_CAMPAIGNS: false, // boolean to wait for async campaigns before removing the anti flicker
+                    };
+                    var CAMPAIGNS_ASYNC_STATUS = [
+                        'pending',
+                        'currently_checking',
+                        'other_subsegment_is_checking',
+                        'target_by_event_pending',
+                        'waiting_code_resolution'
+                    ];
+                    function isACampaignPending() {
+                        return Object.keys(window.ABTasty.results).some(function(key) {
+                            var data = window.ABTasty.results[key];
+                            var status = data.status;
+                            return CAMPAIGNS_ASYNC_STATUS.indexOf(status) !== -1;
+                        });
+                    }
+                    function onExecutedCampaign() {
+                        if (
+                            !PARAMS.ASYNC_CAMPAIGNS ||
+                            (PARAMS.ASYNC_CAMPAIGNS && !isACampaignPending())
+                        ) {
+                            removeAntiFlicker();
+                        }
+                    }
+                    function createAntiFlicker() {
+                        return '<div class="abAntiFlicker" style="width: 100vw; height: 100vh; position: fixed; top: 0; left: 0; z-index: 2147483647; pointer-events: none; background-color: rgba(255, 255, 255, 1);"></div>';
+                    }
+                    function getAntiFlicker() {
+                        return document.querySelector('.abAntiFlicker');
+                    }
+                    function injectAntiFlicker() {
+                        if (getAntiFlicker()) return;
+                        var antiFlicker = createAntiFlicker();
+                        document.querySelector('body').insertAdjacentHTML('beforeend', antiFlicker);
+                    }
+                    function removeAntiFlicker() {
+                        var antiFlicker = getAntiFlicker();
+                        if (antiFlicker) antiFlicker.parentNode.removeChild(antiFlicker);
+                        window.removeEventListener('abtasty_executedCampaign', onExecutedCampaign);
+                        if (timeout) clearTimeout(timeout);
+                    }
+                    injectAntiFlicker();
+                    var timeout = setTimeout(function() {
+                        removeAntiFlicker();
+                    }, PARAMS.TIMEOUT);
+                    window.addEventListener('abtasty_executedCampaign', onExecutedCampaign);`}}>
+                    </Script>
                     <Script strategy="afterInteractive" dangerouslySetInnerHTML={{ __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
                         new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
                         j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
