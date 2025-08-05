@@ -291,8 +291,8 @@ export default function Product({ product }) {
           </div>
         </div>
       </div>
-
-      <ProductRecs />
+{/* 
+      <ProductRecs /> */}
       <Footer />
     </div>
   );
