@@ -120,25 +120,25 @@ export default function Product({ product }) {
   return (
     <div className="min-h-screen bg-gradient-to-br from-purple-50 via-white to-blue-50">
       <Navbar />
-      
+
       {/* NEW TEMPLATE INDICATOR */}
       <div className="bg-gradient-to-r from-purple-600 to-blue-600 text-white py-3">
         <div className="mx-auto max-w-7xl px-4 text-center">
           <span className="text-sm font-bold uppercase tracking-wide">✨ Enhanced New Product Template</span>
         </div>
       </div>
-      
+
       {/* Hero Section - Enhanced Design */}
       <div className="bg-white shadow-xl">
         <div className="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 gap-x-12 gap-y-16 lg:grid-cols-2">
-            
+
             {/* Product Image Section - Enhanced */}
             <div className="lg:self-end">
               <div className="relative">
                 {/* Background decoration */}
                 <div className="absolute -inset-4 bg-gradient-to-r from-purple-200 to-blue-200 rounded-3xl opacity-30"></div>
-                
+
                 <div className="relative aspect-square overflow-hidden rounded-3xl bg-gradient-to-br from-gray-50 to-gray-100 shadow-2xl">
                   <Image
                     alt={product.title}
@@ -148,7 +148,7 @@ export default function Product({ product }) {
                     height={700}
                     loading="lazy"
                   />
-                  
+
                   {/* Floating badge */}
                   <div className="absolute top-4 left-4 rounded-full bg-gradient-to-r from-purple-600 to-blue-600 px-4 py-2 text-sm font-bold text-white shadow-lg">
                     NEW DESIGN
@@ -160,13 +160,13 @@ export default function Product({ product }) {
             {/* Product Info Section - Enhanced */}
             <div className="lg:self-start">
               <div className="space-y-8">
-                
+
                 {/* Product Title & Price - Enhanced */}
                 <div className="space-y-6">
                   <h1 className="text-5xl font-black tracking-tight bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent sm:text-6xl">
                     {product.title}
                   </h1>
-                  
+
                   {typeof product?.price === 'number' && (
                     <div className="flex items-baseline space-x-3">
                       <span className="text-4xl font-black text-gray-900">
@@ -201,7 +201,7 @@ export default function Product({ product }) {
 
                 {/* Enhanced Action Buttons */}
                 <div className="space-y-4">
-                  <button 
+                  <button
                     onClick={pushCart}
                     className="w-full rounded-2xl bg-gradient-to-r from-purple-600 to-blue-600 px-8 py-5 text-lg font-bold text-white shadow-xl transition-all duration-300 hover:from-purple-700 hover:to-blue-700 hover:shadow-2xl hover:scale-105 focus:outline-none focus:ring-4 focus:ring-purple-300"
                   >
@@ -214,7 +214,7 @@ export default function Product({ product }) {
                   </button>
 
                   {paymentFeature1Click && (
-                    <button 
+                    <button
                       onClick={handleClick}
                       className="w-full rounded-2xl border-2 border-gray-300 bg-white px-8 py-5 text-lg font-bold text-gray-900 shadow-lg transition-all duration-300 hover:border-purple-300 hover:bg-purple-50 hover:shadow-xl hover:scale-105 focus:outline-none focus:ring-4 focus:ring-purple-200"
                     >
@@ -256,7 +256,7 @@ export default function Product({ product }) {
             <div className="prose prose-xl text-gray-700 text-center mb-12">
               <p className="text-lg leading-relaxed">{product.description}</p>
             </div>
-            
+
             {/* Enhanced Tabs */}
             <div className="bg-white rounded-3xl shadow-xl p-8">
               <div className="border-b border-gray-200">
@@ -291,25 +291,23 @@ export default function Product({ product }) {
           </div>
         </div>
       </div>
-{/* 
-      <ProductRecs /> */}
+      {/* <ProductRecs /> */}
       <Footer />
     </div>
   );
 }
 
-// ✅ FIXED: Improved error handling and fallback strategy
 export async function getStaticPaths() {
   try {
     console.log('🚀 Fetching products for static paths...');
-    
+
     const res = await fetch('https://live-server1.vercel.app/products', {
       headers: {
         'Content-Type': 'application/json',
         'User-Agent': 'NextJS-StaticPaths'
       },
-      // ✅ ADDED: Timeout to prevent hanging builds
-      signal: AbortSignal.timeout(15000) // 15 second timeout
+
+      signal: AbortSignal.timeout(15000)
     });
 
     if (!res.ok) {
@@ -324,23 +322,21 @@ export async function getStaticPaths() {
 
     if (!products || !Array.isArray(products) || products.length === 0) {
       console.warn('⚠ No valid products found, using fallback strategy');
-      return { 
-        paths: [], 
-        fallback: 'blocking' // ✅ CHANGED: Allow runtime generation
+      return {
+        paths: [],
+        fallback: 'blocking'
       };
     }
 
-    // Filter valid products with IDs
-    const validProducts = products.filter(product => 
-      product && 
-      product.id !== null && 
+    const validProducts = products.filter(product =>
+      product &&
+      product.id !== null &&
       product.id !== undefined &&
       String(product.id).trim() !== ''
     );
 
     console.log(`✅ Found ${validProducts.length} valid products out of ${products.length}`);
 
-    // ✅ IMPROVED: Only pre-generate popular products to reduce build time
     const priorityPaths = validProducts.slice(0, 50).map(product => ({
       params: { id: String(product.id) }
     }));
@@ -349,21 +345,19 @@ export async function getStaticPaths() {
 
     return {
       paths: priorityPaths,
-      fallback: 'blocking', // ✅ FIXED: Changed from false to blocking
+      fallback: 'blocking',
     };
 
   } catch (error) {
     console.error('💥 getStaticPaths failed:', error.message);
-    
-    // ✅ CRITICAL: Don't crash the build - return empty paths with fallback
+
     return {
       paths: [],
-      fallback: 'blocking', // ✅ Allow all pages to be generated at runtime
+      fallback: 'blocking',
     };
   }
 }
 
-// ✅ FIXED: Added retry logic and better error handling
 export async function getStaticProps({ params }) {
   const maxRetries = 3;
   let lastError;
@@ -371,14 +365,14 @@ export async function getStaticProps({ params }) {
   for (let attempt = 1; attempt <= maxRetries; attempt++) {
     try {
       console.log(`🔍 Attempt ${attempt} for product ${params.id}`);
-      
+
       const res = await fetch(`https://live-server1.vercel.app/products/${params.id}`, {
         headers: {
           'Content-Type': 'application/json',
           'User-Agent': 'NextJS-GetStaticProps'
         },
-        // ✅ ADDED: Timeout to prevent hanging requests
-        signal: AbortSignal.timeout(10000) // 10 second timeout
+
+        signal: AbortSignal.timeout(10000)
       });
 
       if (!res.ok) {
@@ -391,7 +385,6 @@ export async function getStaticProps({ params }) {
 
       const product = await res.json();
 
-      // ✅ ADDED: Validate product data
       if (!product || !product.id) {
         console.log(`❌ Invalid product data for ${params.id}`);
         return { notFound: true };
@@ -401,14 +394,13 @@ export async function getStaticProps({ params }) {
 
       return {
         props: { product },
-        revalidate: 3600, // ✅ Regenerate every hour (ISR)
+        revalidate: 3600,
       };
 
     } catch (error) {
       console.error(`❌ Attempt ${attempt} failed for product ${params.id}:`, error.message);
       lastError = error;
-      
-      // ✅ ADDED: Wait before retry (exponential backoff)
+
       if (attempt < maxRetries) {
         await new Promise(resolve => setTimeout(resolve, 1000 * attempt));
       }

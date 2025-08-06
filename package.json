@@ -12,6 +12,7 @@
     "@openfeature/js-sdk": "^1.6.1",
     "@openfeature/react-sdk": "^0.4.11",
     "contentful": "^10.2.2",
+    "form-data": "^4.0.4",
     "googleapis": "^118.0.0",
     "jotai": "^2.10.0",
     "react-ga4": "^2.1.0",
