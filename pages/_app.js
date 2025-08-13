@@ -59,7 +59,7 @@ function MyApp({ Component, pageProps, initialFlagsData, initialVisitorData }) {
     return (
         <>
             <AppContext.Provider value={[isShown, setIsShown]}>
-                <FlagshipProvider
+                {/* <FlagshipProvider
                     envId={process.env.NEXT_PUBLIC_FS_ENV}
                     apiKey={process.env.NEXT_PUBLIC_FS_KEY}
                     visitorData={initialVisitorData}
@@ -82,7 +82,7 @@ function MyApp({ Component, pageProps, initialFlagsData, initialVisitorData }) {
                     <Context />
                     <title>{'The ' + flagIndustry + ' House'}</title>
                     <Component {...pageProps} />
-                </FlagshipProvider>
+                </FlagshipProvider> */}
             </AppContext.Provider>
         </>
     )
