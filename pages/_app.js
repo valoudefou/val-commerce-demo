@@ -103,7 +103,8 @@ MyApp.getInitialProps = async (AppContext) => {
             login: true,
             region: 3,
             user: 'new'
-        }
+        },
+        fetchNow: true,
     }
 
     const visitor = flagship?.newVisitor({
